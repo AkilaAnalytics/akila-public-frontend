@@ -1,0 +1,37 @@
+{
+  "articles": [
+    {
+      "title": "The Intersection of Private Equity and Data Science",
+      "subTitle": "Speeding up the due dilligence process with no-code data science",
+      "category": "Private Equity"
+    },
+    {
+      "title": "Leveraging Data Analytics During Due Diligence",
+      "subTitle": "Identify key value drivers faster and more confidently",
+      "category": "Private Equity"
+    },
+    {
+      "title": "From Data Science to ROI: How Data Science can Drive ROI",
+      "subTitle": "Don't fall into the analysis paralysis trap",
+      "category": "Analytics"
+    },
+    {
+      "title": "Customer Segmentation",
+      "subTitle": "Leverage analytics to drive customer growth",
+      "category": "Enterprise"
+    },
+    {
+      "title": "Streamlining Operational Efficiency: Data-Driven Strategies for Private Equity Firms",
+      "subTitle": "Use analytics to automate workflows and dig deeper into portfolio companies' data",
+      "category": "Private Equity"
+    }
+  ],
+  "videos": [
+    {
+      "title": "Data Exploration",
+      "subTitle": "Learn how to better understand your data using Akila Analytics' data exploration workflow.",
+      "category": "Data Exploration",
+      "link": "https://www.youtube.com/embed/noGW8OFr6Ko?si=ZXgZdzP9uXDuEjvx"
+    }
+  ]
+}

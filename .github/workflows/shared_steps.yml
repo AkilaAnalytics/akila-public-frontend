@@ -1,0 +1,141 @@
+#name: Reusable workflow
+#
+#on:
+#  workflow_call:
+#    inputs:
+#      stage:
+#        required: true
+#        type: string
+#jobs:
+#  shared_steps:
+#    runs-on: ubuntu-latest
+#    permissions:
+#      id-token: write
+#      contents: read
+#    steps:
+#      - run: |
+#          echo "---------------------------------------- Running the shared steps"
+#          echo ${{inputs.stage}}
+#          echo $GITHUB_REF
+#          ls
+#      - uses: actions/checkout@v3
+#      - uses: actions/setup-node@v3
+#        with:
+#          node-version: '16'
+#      - name: Checkout public repository
+#        uses: actions/checkout@v3
+#      - name: Checkout cdk repo
+#        uses: actions/checkout@v3
+#        with:
+#          repository: akila-advisory/cdk
+#          token: ${{ secrets.GHA_TOKEN }} # `GH_PAT` is a secret that contains your PAT
+#          path: cdk/
+#          ref: main
+#      - name: Organize folders, move CDK repo up a directory
+#        run: |
+#          echo '--- moving the cdk app up a directoy'
+#          mv cdk ..
+#          echo '--- ls ..'
+#          ls ../
+#          echo '--- cd ../akila-public-frontend && npm ci'
+#          cd ../akila-public-frontend
+#          npm ci
+#          echo '--- cd ../cdk && npm ci'
+#          cd ../cdk
+#          npm ci
+#          npm install -g aws-cdk
+#          npm i -g esbuild
+#      - name: Upload coverage reports to Codecov
+#        uses: codecov/codecov-action@v3
+#        env:
+#          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+#      # - name: Send GitHub Action trigger data to Slack workflow
+#      #  id: slack
+#      #  uses: slackapi/slack-github-action@v1.23.0
+#      #  with:
+#      #    # For posting a rich message using Block Kit
+#      #    payload: |
+#      #      {
+#      #        "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+#      #        "blocks": [
+#      #          {
+#      #            "type": "section",
+#      #            "text": {
+#      #              "type": "mrkdwn",
+#      #              "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+#      #            }
+#      #          }
+#      #        ]
+#      #      }
+#      #  env:
+#      #    SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/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'
+#      #    SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+#      - name: Configure aws credentials
+#        uses: aws-actions/configure-aws-credentials@master
+#        with:
+#          role-to-assume: arn:aws:iam::890493149185:role/github-ci-role
+#          aws-region: 'us-east-1'
+#      #- run: echo "---------------------------------------- Starting to lint and format."
+#      #- name: prettier
+#      #  run: |
+#      #    npm run prettier:ci
+#      #- run: echo "---------------------------------------- The workflow is now ready to test your code on the runner."
+#      #- name: Unit tests
+#      #  run: |
+#      #    pwd
+#      #    echo '---------- ls'
+#      #    ls
+#      #    npm run test
+#      #- name: Infrastructure tests
+#      #  run: |
+#      #    pwd
+#      #    cd ../cdk
+#      #    echo '---------- ls'
+#      #    ls
+#      #    npm run test
+#      #- run: echo "---------------------------------------- Tests are complete. Starting to deploy."
+#      - name: npm install and deploy
+#        env:
+#          CI: true
+#        run: |
+#          echo '---------- pwd v2'
+#          pwd
+#          aws --version
+#          aws sts get-caller-identity
+#          pwd
+#          echo '---------- ls'
+#          ls
+#          echo '---------- ls ..'
+#          ls ..
+#          echo '---------- npm run build:prod'
+#          npm run build:prod
+#          echo "---------- running esbuild: for some reason esbuild needs to run twice. See README for details."
+#          npm run esbuild
+#          echo '---------- completed npm run build:prod, installing cdk globally and proceeding to cdk deploy'
+#          echo '---------- ls server'
+#          ls server
+#          echo '---------- ls..'
+#          ls ..
+#          echo '---------- ls../akila-public-frontend'
+#          ls ../akila-public-frontend
+#          echo '---------- cd ../cdk'
+#          cd ../cdk
+#          pwd
+#          echo '---------- moving server/index.js'
+#          mv ../akila-public-frontend/server/index.js remix-output/servers/public/index.js
+#          echo '---------- moving static assets'
+#          rm -rf remix-output/static/public/*
+#          mv ../akila-public-frontend/public/* remix-output/static/public
+#          echo '---------- ls remix-output/static/public/static/build'
+#          ls remix-output/static/public/static/build
+#          #mkdir remix-output/static/public/static/
+#          #mkdir remix-output/static/public/static/build
+#          #ls remix-output/static/public/static/build
+#          if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
+#            echo "inside if"
+#            cdk deploy public-stateless-prod
+#          else
+#            echo "inside else"
+#            cdk deploy public-stateless-staging
+#          fi
+#      - run: echo "---------------------------------------- Congrats. The job successfully completed."

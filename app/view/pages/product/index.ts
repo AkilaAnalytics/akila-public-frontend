@@ -1,0 +1,13 @@
+// export { default as BusinessAnalystPage } from './BusinessAnalyst'
+// export { default as DataScientistPage } from './DataScientist'
+export { default as ITOperationsPage } from './ITOperations'
+export { default as SoftwareEngineerPage } from './SoftwareEngineer'
+export { default as DevOpsPage } from './DevOps'
+export { default as DataExplorationPage } from './DataExploration'
+export { default as DataProcessingPage } from './DataProcessing'
+export { default as MachineLearningPage } from './MachineLearning'
+export { default as RecurringJobsPage } from './RecurringJobs'
+
+export { default as WatchDemoPage } from './watchDemo'
+export { default as TalkToSalesPage } from './talk-to-sales'
+export { default as TryFreePage } from './try-free'

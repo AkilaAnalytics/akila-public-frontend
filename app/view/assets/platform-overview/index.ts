@@ -1,0 +1,46 @@
+export { default as BackgroundImage } from './background-image.png'
+export { default as Framehouse } from './framehouse.svg'
+export { default as DocumentInPieces } from './document-in-pieces.svg'
+export { default as HeroImage } from './hero-image.svg'
+export { default as IconArrow } from './icon-arrow.svg'
+export { default as IconDocument } from './icon-document.svg'
+export { default as IconDollarSymbol } from './icon-dollar-symbol.svg'
+export { default as IconHouse2 } from './icon-house-2.svg'
+export { default as IconHouse3 } from './icon-house-3.svg'
+export { default as IconHouse4 } from './icon-house-4.svg'
+export { default as LaptopMagnifyingGlass } from './laptop-magnifying-glass.svg'
+export { default as ManPointing } from './man-pointing.svg'
+export { default as HouseOnNotebook } from './house-on-notebook.svg'
+export { default as Ticket } from './ticket.svg'
+export { default as FullHeroBg } from './full-hero-img.svg'
+
+export { default as VisualizaDataBg } from './visualiza-data-bg.png'
+export { default as LeverageTheCloudBg } from './levrage-the-cloud-bg.png'
+export { default as EndToEndSolutionsBg } from './end-to-end-solutions.png'
+export { default as SecurityPageBg } from './security-page-bg.png'
+export { default as FeaturesOfData } from './features-of-data.png'
+export { default as ConnectTableauIcon } from './connect_tableau.svg'
+
+export { default as IntegarteDataBg } from './integrate-data-bg.png'
+export { default as CombineAndTransformData } from './combine-and-transform-data.png'
+export { default as BuildInDataSciencePrep } from './build-in-data-science-prep.png'
+export { default as IntegrateDataAndInfrastructure } from './IntegrateDataAndInfrstructure.png'
+
+export { default as EmpowerBusinessDataScience } from './empower-business--users-with-data.png'
+
+export { default as EndToEndDataExploration } from './data-exploration.png'
+export { default as EndToEndDataProcessing } from './end-to-end-data-processing.png'
+export { default as EndToEndMachineLearning } from './end-to-end-machine-learning-section.png'
+export { default as EndToEndRecurringJobs } from './end-to-end-recurring-jobs.png'
+export { default as EndToEndReportingAndDashboard } from './end-to-end-reporting-and-dashboard.png'
+
+export { default as GovernanceBg } from './governance-bg.png'
+export { default as GovernanceFirstListImg } from './governanceFirstListImg.png'
+export { default as GovernancePageTrackAudit } from './goverance-page-track-audit.png'
+export { default as SecurityPageCustomerManagement } from './security-page-customer-management.png'
+
+export { default as SecurityInfrastructure } from './security-infrastructure.png'
+
+export { default as PaltformOverviewBg } from './platform-overview-bg.png'
+
+export { default as OverviewAkilaFeaturesButtonBg } from './overview-akila-features-button-bg.png'

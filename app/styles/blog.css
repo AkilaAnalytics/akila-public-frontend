@@ -1,0 +1,34 @@
+.markdown p {
+  font-family: serif;
+  font-size: 1.25rem;
+  margin-top: 1rem;
+}
+
+.markdown a {
+  color: rgb(83, 75, 244);
+}
+
+/* Set margin-top as 0.5 for a paragraph following any "h" heading */
+h1 + p,
+h2 + p,
+h3 + p,
+h4 + p,
+h5 + p,
+h6 + p {
+  margin-top: 0rem;
+}
+
+/* "pre" is the element that is used before all "code" elements */
+.markdown pre {
+  margin-top: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 2rem;
+  font-family: serif;
+}

@@ -1,0 +1,14 @@
+node_modules
+
+/.cache
+/build
+public/*
+server/*
+/public/build
+.env
+
+
+.DS_Store
+**/.DS_Store
+
+*.zip

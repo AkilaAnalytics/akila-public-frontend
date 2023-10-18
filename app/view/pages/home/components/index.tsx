@@ -1,0 +1,8 @@
+export { default as HomeBanner } from './homeBanner'
+export { default as UseCaseSection } from './useCaseSection'
+export { default as UseCaseCard } from './useCaseCard'
+export { default as PlatformSection } from './platformSection'
+export { default as PlatformSectionCard } from './platformSectionCard'
+export { default as SolutionsByPositions } from './solutionsByPositionsSection'
+export { default as SolutionsByPositionsCard } from './solutionsByPositionsCard'
+export { default as ContactUs } from './contactUs'
