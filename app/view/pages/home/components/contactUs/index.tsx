@@ -11,7 +11,7 @@ export default function ContactUs() {
   return (
     <div className="my-[50px] flex items-center justify-center p-3 ">
       <div>
-        <h2 className="font-raleway  pb-[72px] text-center text-[24px] font-semibold leading-[88.19%] text-[#E3E3E3]">
+        <h2 className="font-raleway pb-[72px] text-center text-[24px] font-semibold leading-[88.19%] text-[#E3E3E3]">
           Contact Us
         </h2>
         <fetcher.Form action="/api/contact-us" method="post">
@@ -20,7 +20,7 @@ export default function ContactUs() {
               placeholder="First Name"
               name="firstName"
               type="text"
-              className="min-h-[45px] w-full rounded-[5px] border-2 border-white border-opacity-25 bg-transparent p-[10px]  focus:outline-none"
+              className="min-h-[45px] w-full rounded-[5px] border-2 border-white border-opacity-25 bg-transparent p-[10px] focus:outline-none"
             />
             <input
               placeholder="Last Name"

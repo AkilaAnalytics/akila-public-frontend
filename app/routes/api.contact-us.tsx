@@ -6,12 +6,12 @@ import { sendEmail } from '~/api/emails/index.server'
 function sanitizeString(input: string) {
   // Use a basic method to sanitize: strip out any non-alphanumeric characters, except for spaces.
   // This will not be enough for fields like email, so specific sanitization should be done for them.
-  return input.replace(/[^a-z0-9 ]/gi, '')
+  return input?.replace(/[^a-z0-9 ]/gi, '')
 }
 
 function sanitizePhone(phone: string) {
   // Remove any non-numeric characters
-  return phone.replace(/\D/g, '')
+  return phone?.replace(/\D/g, '')
 }
 
 function sanitizeEmail(input: string) {

@@ -89,7 +89,6 @@ export const loader = () => {
 export default function App() {
   const location = useLocation()
   const { gaTrackingId } = useLoaderData<typeof loader>()
-  console.log(gaTrackingId, '<<< gaTrackingId')
 
   useEffect(() => {
     if (gaTrackingId?.length) {

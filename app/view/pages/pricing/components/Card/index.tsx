@@ -58,7 +58,7 @@ export default function Card({
         <br />
         <Link
           to={path}
-          className="mt-auto w-full rounded-lg bg-periwinkle p-3 text-center">
+          className="mt-auto w-full rounded-lg bg-periwinkle p-3 text-center hover:scale-105">
           {buttonText}
         </Link>
       </div>

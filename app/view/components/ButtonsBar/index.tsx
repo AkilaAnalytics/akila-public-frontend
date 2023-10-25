@@ -1,3 +1,4 @@
+import { Link } from '@remix-run/react'
 import Button from '../Button'
 
 export default function ButtonBar() {
@@ -15,10 +16,17 @@ export default function ButtonBar() {
   ]
 
   return (
-    <div className="flex gap-5">
-      {buttons.map(({ text, path, background }, i) => (
-        <Button key={path} text={text} path={path} background={background} />
-      ))}
+    <div className="flex gap-2">
+      <Link
+        to="/contact-us"
+        className="whitespace-nowrap rounded-full border-[1px] border-periwinkle px-10 py-2 hover:scale-105 hover:bg-periwinkle hover:text-white">
+        Sign Up
+      </Link>
+      <Link
+        to="/product/watch-demo"
+        className="hover:bg-gradient-to-r whitespace-nowrap rounded-full border border-primary from-linkText to-primary px-10 py-2 hover:bg-[#3bb3c1]">
+        Request Demo
+      </Link>
     </div>
   )
 }
