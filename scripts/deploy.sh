@@ -21,14 +21,16 @@ else
 fi
 
 # update the server code
-zip -j server/index.zip build/index.js
-aws s3 cp ./server/index.zip s3://$BUCKET_NAME/public-pages/server/index.zip --profile $PROFILE_NAME
+zip -j build/index.zip build/index.js
+aws s3 cp ./build/index.zip s3://$BUCKET_NAME/public-pages/server/index.zip --profile $PROFILE_NAME
 aws lambda update-function-code --function-name analytics-public-web-app-server --s3-bucket $BUCKET_NAME --s3-key public-pages/server/index.zip --profile $PROFILE_NAME
 
 # update the static assets
-cp -r public/favicons public/static/favicons
-aws s3 rm s3://$BUCKET_NAME/public-pages/static/ --recursive --profile $PROFILE_NAME
-aws s3 cp --recursive ./public/static/ s3://$BUCKET_NAME/public-pages/static --profile $PROFILE_NAME
+aws s3 rm s3://$BUCKET_NAME/public-pages/_static/ --recursive --profile $PROFILE_NAME
+aws s3 sync ./public/build s3://$BUCKET_NAME/public-pages/_static/build/ --profile $PROFILE_NAME --delete
+aws s3 sync ./public/favicons s3://$BUCKET_NAME/public-pages/favicons --profile $PROFILE_NAME --delete
+#aws s3 cp --recursive ./public/build s3://$BUCKET_NAME/public-pages/static/build --profile $PROFILE_NAME
+#aws s3 cp --recursive ./public/favicons s3://$BUCKET_NAME/public-pages/static/favicons --profile $PROFILE_NAME
 
 # clear the cloudfront cache
 distribution_id=$(aws ssm get-parameter --name "/analytics-public-stateless-${STAGE}/cloudfront-distribution-id" --query "Parameter.Value" --output text --profile $PROFILE_NAME)

@@ -8,7 +8,7 @@
     "dev": "PORT=3000 remix dev --manual -c \"arc sandbox -e testing\"",
     "start": "cross-env NODE_ENV=production arc sandbox",
     "typecheck": "tsc",
-    "esbuild": "esbuild server/index.js --outfile=build/index.js --platform=node --format=cjs --bundle  '--external:crypto' '--external:aws-sdk' '--external:@aws-sdk' --allow-overwrite",
+    "esbuild": "esbuild server/index.mjs --outfile=build/index.js --platform=node --format=cjs --bundle  '--external:crypto' '--external:aws-sdk' '--external:@aws-sdk' --allow-overwrite",
     "deploy:staging": "npm run build && npm run esbuild && ./scripts/deploy.sh staging",
     "deploy:prod": "npm run build && npm run esbuild && ./scripts/deploy.sh prod"
   },

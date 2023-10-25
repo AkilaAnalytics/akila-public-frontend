@@ -19,7 +19,7 @@ export default function PricingPage() {
           </h1>
 
           <div className="mx-auto flex flex-col justify-center gap-10 md:flex-row">
-            {priceData?.map((data: ICardData, index: number) => (
+            {priceData?.map((data: ICardData) => (
               <Card
                 key={data.title}
                 title={data.title}
@@ -53,7 +53,7 @@ const priceData = [
       'Access advanced analytics tools'
     ],
     buttonTex: 'Try for free',
-    link: '/contact-us'
+    link: 'https://app.akilaanalytics.com/auth/login'
   },
   {
     title: 'Professional',

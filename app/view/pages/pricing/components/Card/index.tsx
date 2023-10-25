@@ -1,5 +1,6 @@
 import { Button } from '~/view/components'
 import { GreenCheckMark } from '~/view/assets'
+import { Link } from '@remix-run/react'
 
 interface IProps {
   title: string
@@ -46,11 +47,7 @@ export default function Card({
         <ul className="">
           {keyPoints.map((keyPoint: any, index: number) => (
             <li key={index} className="flex space-x-3">
-              <img
-                src={GreenCheckMark}
-                className=""
-                alt="Green check mark"
-              />
+              <img src={GreenCheckMark} className="" alt="Green check mark" />
               <span className="text-base font-normal leading-tight text-greyText">
                 {keyPoint}
               </span>
@@ -59,9 +56,11 @@ export default function Card({
         </ul>
         <br />
         <br />
-        <div className="mb-5 mt-auto w-full justify-end rounded-full text-center">
-          <Button background text={buttonText} path={path} />
-        </div>
+        <Link
+          to={path}
+          className="mt-auto w-full rounded-lg bg-periwinkle p-3 text-center">
+          {buttonText}
+        </Link>
       </div>
     </div>
   )

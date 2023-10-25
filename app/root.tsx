@@ -28,21 +28,21 @@ export const links: LinksFunction = () => {
     {
       rel: 'apple-touch-icon',
       sizes: '180x180',
-      href: '/_static/favicons/apple-touch-icon.png'
+      href: '/static/favicons/apple-touch-icon.png'
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '32x32',
-      href: '/_static/favicons/favicon-32x32.png'
+      href: '/static/favicons/favicon-32x32.png'
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '16x16',
-      href: '/_static/favicons/favicon-16x16.png'
+      href: '/static/favicons/favicon-16x16.png'
     },
-    { rel: 'icon', href: '/_static/favicons/favicon.ico' },
+    { rel: 'icon', href: '/static/favicons/favicon.ico' },
 
     {
       rel: 'stylesheet',
@@ -75,7 +75,7 @@ export const meta = () => {
 }
 
 // DON'T DELETE: OUTPUTS AkilaAnalytics into the console
-console.log('v13')
+console.log('v14')
 logger.log(
   '%cAkila Analytics',
   'color: rgba(35,37,202); font-family: sans-serif; font-size: 4.5em; font-weight: bolder; text-shadow: #000 1px 1px;'
