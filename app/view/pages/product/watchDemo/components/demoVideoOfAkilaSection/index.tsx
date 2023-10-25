@@ -20,7 +20,7 @@ export default function DemoVideoOfAkilaSection({ video }) {
             className="mb-[28px] flex items-center justify-between gap-3"
             key={index}>
             <TickComponent />
-            <span> {data.desription}</span>
+            <span> {data.description}</span>
           </li>
         ))}
       </ul>
@@ -30,15 +30,14 @@ export default function DemoVideoOfAkilaSection({ video }) {
 
 const demoVideoAkilaSectionListData = [
   {
-    desription:
-      'Learn how Akila Analytics can help you collaborate with your team in real-time, share insights, and make informed decisions faster'
+    description:
+      'Learn how Akila Analytics can help you collaborate with your team in real time, share insights, and make informed decisions faster.'
   },
   {
-    desription:
-      'Learn how Akila Analytics can help you collaborate with your team in real-time, share insights, and make informed decisions faster'
+    description: 'Use Akila to quickly analyze data and drive results.'
   },
   {
-    desription:
-      'Learn how Akila Analytics can help you collaborate with your team in real-time, share insights, and make informed decisions faster'
+    description:
+      'Improve your business performance by using Akila to make data-driven decisions.'
   }
 ]
