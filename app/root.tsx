@@ -28,21 +28,21 @@ export const links: LinksFunction = () => {
     {
       rel: 'apple-touch-icon',
       sizes: '180x180',
-      href: '/static/favicons/apple-touch-icon.png'
+      href: '/_static/favicons/apple-touch-icon.png'
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '32x32',
-      href: '/static/favicons/favicon-32x32.png'
+      href: '/_static/favicons/favicon-32x32.png'
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '16x16',
-      href: '/static/favicons/favicon-16x16.png'
+      href: '/_static/favicons/favicon-16x16.png'
     },
-    { rel: 'icon', href: '/static/favicons/favicon.ico' },
+    { rel: 'icon', href: '/_static/favicons/favicon.ico' },
 
     {
       rel: 'stylesheet',
