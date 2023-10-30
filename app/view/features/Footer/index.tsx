@@ -229,7 +229,7 @@ export default function Footer() {
                   <Link to="/legal/privacy-policy">Privacy Policy</Link>{' '}
                 </div>
               </li>
-              <li className="mb-3 sm:mb-0">
+              <li className="mb-3 hidden sm:mb-0">
                 <div className="mr-4 pb-1 hover:underline sm:pb-0 md:mr-6">
                   Cookies
                 </div>

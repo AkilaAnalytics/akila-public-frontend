@@ -26,9 +26,11 @@ aws s3 cp ./build/index.zip s3://$BUCKET_NAME/public-pages/server/index.zip --pr
 aws lambda update-function-code --function-name analytics-public-web-app-server --s3-bucket $BUCKET_NAME --s3-key public-pages/server/index.zip --profile $PROFILE_NAME
 
 # update the static assets
+# NOTE: the favicons need to be in the "_static" folder because the request for the
+# favicons goes to "_static"
 aws s3 rm s3://$BUCKET_NAME/public-pages/_static/ --recursive --profile $PROFILE_NAME
 aws s3 sync ./public/build s3://$BUCKET_NAME/public-pages/_static/build/ --profile $PROFILE_NAME --delete
-aws s3 sync ./public/favicons s3://$BUCKET_NAME/public-pages/favicons --profile $PROFILE_NAME --delete
+aws s3 sync ./public/favicons s3://$BUCKET_NAME/public-pages/_static/favicons --profile $PROFILE_NAME --delete
 #aws s3 cp --recursive ./public/build s3://$BUCKET_NAME/public-pages/static/build --profile $PROFILE_NAME
 #aws s3 cp --recursive ./public/favicons s3://$BUCKET_NAME/public-pages/static/favicons --profile $PROFILE_NAME
 
