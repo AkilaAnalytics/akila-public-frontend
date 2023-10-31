@@ -4,7 +4,7 @@ import {
   HomePageUseCaseIncreaseEffectiveness2,
   SolutionsByPositionsBussinessAnalyst,
   SolutionsByPositionsDataScientist,
-  SolutionsByPositionsItoperation
+  SolutionsByPositionProductManager
 } from '~/view/assets'
 
 export const useCaseData = [
@@ -46,18 +46,18 @@ export const gettingStartedButtons = [
 
 export const solutionsByPositionsData = [
   {
-    heading: 'Business Analyst',
-    description:
-      'Business Analysts are leveraging Akila to connect models and applications from Data Scientist and Software Engineers into visualizations...',
-    link: '/positions/business-analyst',
-    img: SolutionsByPositionsBussinessAnalyst
-  },
-  {
     heading: 'Data Scientist',
     description:
       'Data scientists are leveraging Akila to streamline data cleaning and model building, ultimately putting the process back in the hands of the business.',
     link: '/positions/data-scientist',
     img: SolutionsByPositionsDataScientist
+  },
+  {
+    heading: 'Business Analyst',
+    description:
+      'Business Analysts are leveraging Akila to connect models and applications from Data Scientist and Software Engineers into visualizations...',
+    link: '/positions/business-analyst',
+    img: SolutionsByPositionsBussinessAnalyst
   },
 
   {
@@ -65,6 +65,6 @@ export const solutionsByPositionsData = [
     description:
       'Product Manager at Akila identifies the customer need and the larger business objectives that a product or feature will fulfill, articulates what success looks like for a product, and rallies a team to turn that vision into a reality',
     link: '/positions/product-manager',
-    img: SolutionsByPositionsItoperation
+    img: SolutionsByPositionProductManager
   }
 ]

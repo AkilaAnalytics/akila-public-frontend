@@ -16,7 +16,7 @@ export default function SecondaryNavbar({ handleTabChange, activeTab }) {
               key={item.name}
               className={`${
                 activeTab === item.name
-                  ? 'border-b-4 border-primary text-linkText'
+                  ? 'border-b-4 border-turqoise text-linkText'
                   : ''
               } text-md relative z-10 -mb-[5px] cursor-pointer px-2 py-4 font-medium leading-tight tracking-wide lg:-mb-1 lg:text-lg`}>
               {item.name}

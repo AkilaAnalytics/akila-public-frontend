@@ -38,7 +38,7 @@ export default function Navbar() {
       return (
         <li key={items.name + index}>
           <div
-            className="w-[fit-content] px-[24px] pb-[24px] text-[32px] "
+            className="w-[fit-content] px-[24px] pb-[24px] text-[32px]"
             onClick={() => {
               if (items.submenu) {
                 openSubMenu(index)
@@ -49,7 +49,7 @@ export default function Navbar() {
             }}>
             <Link className="flex items-center" to={items.href && items.href}>
               <span
-                className={`mr-1 ${
+                className={`mr-1 uppercase ${
                   index === activeSubMenu ? 'border-b-2' : ''
                 } `}>
                 {items.name}
@@ -111,8 +111,8 @@ export default function Navbar() {
     return (
       <div>
         <a href={privatePages} target="_blank" rel="noreferrer">
-          <button className="w-full md:w-28 p-2 bg-periwinkle rounded-md">
-            Sign In
+          <button className="w-full rounded-md bg-periwinkle bg-opacity-50 p-2 md:w-28">
+            SIGN IN
           </button>
         </a>
       </div>
@@ -127,12 +127,12 @@ export default function Navbar() {
     <nav
       className="sticky top-0 z-[999] bg-black px-2 py-[22px]"
       ref={sidebarRef}>
-      <div className="relative mx-auto max-w-[1280px] flex items-center justify-between gap-6">
+      <div className="relative mx-auto flex max-w-[1280px] items-center justify-between gap-6">
         <Link to="/" onClick={() => setIsOpen(false)}>
           <img
             src={akilaAnalyticsLogo}
             alt="Akila Analytics logo"
-            className="w-full h-full"
+            className="h-full w-full"
           />
         </Link>
         <ul className="relative hidden items-center gap-[40px] lg:flex">
@@ -140,7 +140,7 @@ export default function Navbar() {
             menu.submenu ? (
               <li className="text-text_clr group group  " key={menu.name}>
                 <span className={`flex cursor-pointer items-center `}>
-                  <span>{menu.name}</span>
+                  <span className="uppercase">{menu.name}</span>
                   <ChevronDownIcon className="ml-1 inline h-[15px] w-[15px] transform group-hover:rotate-180" />
                 </span>
                 <div className="absolute top-[62px] hidden w-9 justify-center  group-hover:flex">
@@ -152,7 +152,7 @@ export default function Navbar() {
                 </div>
 
                 <ul className="fixed left-[25%] hidden min-h-[140px] max-w-[1000px] transition duration-700 ease-in-out group-hover:flex">
-                  <div className="mt-[50px] flex bg-periwinkleToBlackGradient rounded-md">
+                  <div className="mt-[50px] flex rounded-md bg-periwinkleToBlackGradient">
                     <div className="flex min-h-full w-3/12 flex-col justify-center rounded-l-lg px-5 text-left">
                       <h5 className="uppercase">Learn more about Akila</h5>
                       <span className="text-gray-400">
@@ -179,7 +179,7 @@ export default function Navbar() {
                           <li className="cursor-pointer font-semibold uppercase tracking-[0.3px]">
                             {subItems.name}
                           </li>
-                          <div className="text-sm font-light mt-3">
+                          <div className="mt-3 text-sm font-light">
                             {subItems.description}
                           </div>
                         </Link>
@@ -372,12 +372,12 @@ const navigation = [
     ]
   },
   {
-    name: 'Pricing',
+    name: 'PRICING',
     href: '/pricing',
     current: false
   },
   {
-    name: 'Contact Us',
+    name: 'CONTACT US',
     href: '/contact-us',
     current: false
   }

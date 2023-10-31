@@ -62,7 +62,7 @@ export default function DemoPageForm() {
           <input type="hidden" name="source" value="demoPage" />
           <button
             type="submit"
-            className="mt-[8px] min-h-[60px] w-full bg-red-500 bg-gradient-to-r from-linkText to-primary rounded-md">
+            className="bg-gradient-to-r mt-[8px] min-h-[60px] w-full rounded-md bg-red-500 from-linkText to-turqoise">
             Submit
           </button>
           {fetcher.data && (

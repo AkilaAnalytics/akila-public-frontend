@@ -11,7 +11,11 @@ export default function SolutionsByPositionsCard({
   return (
     <div className="min-h-[324px] w-full max-w-[350px] rounded-[6px] border border-[#2A303E] hover:scale-105">
       <div className="min-h-[153px] ">
-        <img src={img} className="w-full" alt="" />
+        <img
+          src={img}
+          className="max-h-[300px] w-full"
+          alt={`${heading} logo`}
+        />
       </div>
       <div className="p-[16px]">
         <h3 className="font-raleway mb-[3px] text-xl font-medium leading-7 text-[#ffffff]">

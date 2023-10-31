@@ -52,7 +52,7 @@ export default function TalkToSalesForm() {
           />
           <input type="hidden" name="source" value="TalkToSalesForm" />
 
-          <button className="mt-[8px] min-h-[60px] w-full bg-red-500 bg-gradient-to-r from-linkText to-primary">
+          <button className="bg-gradient-to-r mt-[8px] min-h-[60px] w-full bg-red-500 from-linkText to-turqoise">
             Submit
           </button>
         </fetcher.Form>

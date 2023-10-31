@@ -66,7 +66,7 @@ export default function Form() {
             name="message"
           />{' '}
           <input type="hidden" name="source" value="contact-us form" />
-          <button className="mt-[32px] w-full rounded-md bg-periwinkle bg-gradient-to-r from-linkText to-primary px-1 py-[16px]">
+          <button className="bg-gradient-to-r mt-[32px] w-full rounded-md bg-periwinkle from-linkText to-turqoise px-1 py-[16px]">
             Submit
           </button>
           {fetcher.data && (

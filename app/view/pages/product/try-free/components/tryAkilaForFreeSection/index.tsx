@@ -36,7 +36,7 @@ export default function TryAkilaForFreeSection() {
 
             <button
               type="submit"
-              className="to-primary' min-h-[49px] w-full max-w-[170px] rounded-full bg-gradient-to-r from-linkText to-primary">
+              className="to-turqoise' bg-gradient-to-r min-h-[49px] w-full max-w-[170px] rounded-full from-linkText to-turqoise">
               Create Account
             </button>
           </form>

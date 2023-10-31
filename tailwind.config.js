@@ -12,7 +12,7 @@ module.exports = {
         periwinkle: '#544BFD',
         darkBlue: '#2325C9',
         // other colors
-        primary: '#3BB3C1',
+        turqoise: '#3BB3C1',
         darkGrey: '#292B2C',
         background: '#0C0C0C',
         secondaryBackground: '#1E1E1E',
@@ -29,11 +29,7 @@ module.exports = {
       decimal: 'decimal',
       square: 'square',
       roman: 'upper-roman'
-    },
-    backgroundImage: (theme) => ({
-      periwinkleToBlackGradient:
-        'linear-gradient(to right, rgb(32,30,100), rgb(7,6,9))'
-    })
+    }
   },
   plugins: []
 }

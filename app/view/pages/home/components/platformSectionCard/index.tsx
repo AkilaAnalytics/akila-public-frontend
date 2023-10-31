@@ -12,20 +12,19 @@ export default function PlatformSectionCard({ logo, title, link }: IProps) {
   return (
     <Link
       to={link}
-      className="flex min-h-[169px]   w-full max-w-[160px] flex-col items-center justify-center hover:scale-105"
+      className="flex min-h-[169px] w-full max-w-[160px] flex-col items-center justify-center hover:scale-105"
       style={{
         backgroundImage: `url(${PlatformSectionCardBgImg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}>
       <div>
-        <div className="mb-[20px]">
-          <img src={logo} alt="" />
-        </div>
-
-        <div className="font-raleway  text-center text-[16px] font-medium leading-[76.69%] text-[#FFFFFF]">
+        <div className="px-2 text-center text-[16px] font-medium uppercase">
           {title}
         </div>
+        <br />
+
+        <img src={logo} alt="" className="mx-auto mb-[20px]" />
       </div>
     </Link>
   )

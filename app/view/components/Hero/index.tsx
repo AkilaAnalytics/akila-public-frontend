@@ -5,13 +5,13 @@ interface Props {
 
 export default function Hero({ title, subTitle }: Props) {
   return (
-    <div className="space-y-4 tracking-wider text-center mt-24 mb-12">
-      <h1 className="text-2xl sm:text-3xl md:text-5xl font-semibold text-white">
+    <div className="mb-12 mt-24 space-y-4 text-center tracking-wider">
+      <h1 className="text-2xl font-semibold text-white sm:text-3xl md:text-5xl">
         {title}
       </h1>
-      <p className="text-md md:text-lg text-white">{subTitle}</p>
+      <p className="text-md text-white md:text-lg">{subTitle}</p>
 
-      <div className="w-14 h-1 bg-gradient-to-r from-linkText to-primary m-auto" />
+      <div className="bg-gradient-to-r m-auto h-1 w-14 from-linkText to-turqoise" />
     </div>
   )
 }

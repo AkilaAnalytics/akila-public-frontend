@@ -8,3 +8,4 @@ export { default as SolutionsByPositionsBussinessAnalyst } from './solution-by-p
 export { default as SolutionsByPositionsDataScientist } from './solution-by-position-data-scientist.png'
 export { default as SolutionsByPositionsSoftwareEngineer } from './solution-by-position-software-engineer.png'
 export { default as SolutionsByPositionsItoperation } from './solution-by-position-it-operation.png'
+export { default as SolutionsByPositionProductManager } from './solutions-by-position-product-manager.png'
