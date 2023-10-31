@@ -150,7 +150,6 @@ const socialMediaLinks = [
 ]
 
 function displayLinks(category: string, links: Array<any>) {
-  console.log(links.length, '<<< links.ength')
   return (
     <ul>
       <li
