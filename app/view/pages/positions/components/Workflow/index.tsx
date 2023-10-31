@@ -7,7 +7,7 @@ interface Props {
 
 export default function Workflow({ title, workflows }: Props) {
   return (
-    <div className="flex flex-col space-y-8 p-16 sm:px-32">
+    <div className="flex flex-col space-y-8 p-5 md:px-32">
       <h1 className=" text-2xl font-semibold text-white sm:text-3xl md:text-5xl md:font-medium">
         {title}
       </h1>
@@ -30,7 +30,7 @@ export default function Workflow({ title, workflows }: Props) {
             <div className="my-auto  flex justify-center">
               <img
                 src={RightArrow}
-                className="h-96 w-96 object-contain"
+                className="hidden h-96 w-96 object-contain md:inline-block"
                 alt="Banner"
               />
             </div>
