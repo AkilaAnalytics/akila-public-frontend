@@ -150,6 +150,7 @@ const socialMediaLinks = [
 ]
 
 function displayLinks(category: string, links: Array<any>) {
+  console.log(links.length, '<<< links.ength')
   return (
     <ul>
       <li
@@ -164,7 +165,9 @@ function displayLinks(category: string, links: Array<any>) {
               className="mt-3 text-sm font-medium text-greyText "
               key={link.key + index}>
               <Link to={link.path}>{link.text}</Link>
-              <span className="ml-2 md:hidden">|</span>
+              {index < links.length - 1 && (
+                <span className="ml-2 md:hidden">|</span>
+              )}
             </li>
           )
         })}

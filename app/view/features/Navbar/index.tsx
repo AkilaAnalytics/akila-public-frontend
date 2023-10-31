@@ -152,7 +152,7 @@ export default function Navbar() {
                 </div>
 
                 <ul className="fixed left-[25%] hidden min-h-[140px] max-w-[1000px] transition duration-700 ease-in-out group-hover:flex">
-                  <div className="mt-[50px] flex rounded-md bg-periwinkleToBlackGradient">
+                  <div className="bg-periwinkleToBlackGradient mt-[50px] flex rounded-md">
                     <div className="flex min-h-full w-3/12 flex-col justify-center rounded-l-lg px-5 text-left">
                       <h5 className="uppercase">Learn more about Akila</h5>
                       <span className="text-gray-400">
