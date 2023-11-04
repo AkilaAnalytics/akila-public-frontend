@@ -4,19 +4,6 @@ import GettingStarted from '~/view/features/GettingStarted'
 import KeyPoints from './components/KeyPoints'
 import Workflow from './components/Workflow'
 
-const buttons = [
-  {
-    text: 'Request a Demo',
-    path: '/product/watch-demo',
-    background: true
-  },
-  {
-    text: 'Sign Up',
-    path: '/contact-us',
-    background: false
-  }
-]
-
 const keyPoints = [
   {
     title: 'Clearly Communicate Analyses With Stakeholders',
@@ -76,7 +63,6 @@ export default function BusinessAnalystPage() {
         title="Business Analyst"
         subTitle="Explore how Akila is increasing efficiency during the due diligence process"
         image="/assets/company-pages/business-analyst.png"
-        buttons={buttons}
       />
       <KeyPoints
         title="Enabling Business Analysts to Focus on Driving Value for

@@ -1,3 +1,5 @@
+import HorizontalLine from '../horizontailLine'
+
 export default function SolutionsByPositions({ heading, children }) {
   return (
     <div className="container_class">
@@ -5,6 +7,7 @@ export default function SolutionsByPositions({ heading, children }) {
         <div className="font-raleway pb-[20px] text-[40px] font-semibold leading-[88%]">
           {heading}
         </div>
+        <HorizontalLine />
       </div>
       {children}
     </div>

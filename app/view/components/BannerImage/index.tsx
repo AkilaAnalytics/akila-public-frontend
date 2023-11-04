@@ -4,7 +4,6 @@ interface Props {
   image: string
   title?: string
   subTitle?: string
-  buttons?: Array<any>
   superTitle?: string
   horizontalLine?: boolean
 }
