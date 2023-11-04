@@ -12,13 +12,19 @@ export default function DemoVideoOfAkilaSection({ video }) {
         growth.
       </p>
       <div className="mb-[29px] h-full  max-w-[540px]     ">
-        <img src={video} alt="" className="w-full" />
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/noGW8OFr6Ko?si=xzNP8MrtwninZZMU&controls=1&showinfo=0"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          rel={'0'}
+          allowFullScreen></iframe>
       </div>
       <ul className="">
         {demoVideoAkilaSectionListData.map((data, index) => (
-          <li
-            className="mb-[28px] flex items-center justify-between gap-3"
-            key={index}>
+          <li className="mb-[28px] flex gap-3" key={index}>
             <TickComponent />
             <span> {data.description}</span>
           </li>

@@ -23,8 +23,7 @@ export default function TalkToSalesForm() {
           action="/api/contact-us"
           method="post">
           <h2 className="font-raleway mb-[40px] text-[24px] font-semibold leading-8">
-            Fill out this form to request a call from Akila’s sales
-            representative.
+            Request a call from Akila’s sales representative.
           </h2>
           <input
             type="text"
@@ -52,7 +51,7 @@ export default function TalkToSalesForm() {
           />
           <input type="hidden" name="source" value="TalkToSalesForm" />
 
-          <button className="bg-gradient-to-r mt-[8px] min-h-[60px] w-full bg-red-500 from-linkText to-turqoise">
+          <button className="mt-[8px] min-h-[60px] w-full bg-red-500 bg-gradient-to-r from-linkText to-turqoise">
             Submit
           </button>
         </fetcher.Form>

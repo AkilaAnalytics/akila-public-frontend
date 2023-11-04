@@ -11,7 +11,7 @@ export default function DemoPageForm() {
     <div className="w-[100%]  ">
       <div className="min-h-[751px] w-full items-center justify-center bg-[#191919] p-[40px]">
         <h2 className="font-raleway mb-[40px] text-[24px] font-semibold leading-8">
-          Fill out this form to talk with a member from Akila’s sales team.
+          Request a call from Akila’s sales representative.
         </h2>
         <fetcher.Form
           method="post"
@@ -62,7 +62,7 @@ export default function DemoPageForm() {
           <input type="hidden" name="source" value="demoPage" />
           <button
             type="submit"
-            className="bg-gradient-to-r mt-[8px] min-h-[60px] w-full rounded-md bg-red-500 from-linkText to-turqoise">
+            className="mt-[8px] min-h-[60px] w-full rounded-md bg-red-500 bg-gradient-to-r from-linkText to-turqoise">
             Submit
           </button>
           {fetcher.data && (
