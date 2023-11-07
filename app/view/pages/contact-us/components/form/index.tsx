@@ -23,6 +23,8 @@ export default function Form() {
         </h5>
         <br />
         <br />
+        <br />
+        <br />
 
         <fetcher.Form
           method="post"
@@ -33,13 +35,13 @@ export default function Form() {
               name="firstName"
               placeholder="First Name"
               type="text"
-              className="mb-[24px] w-full rounded-md bg-[#030912] px-[8px] py-[16px] focus:outline-none"
+              className="mb-[24px] w-full border-b-[1px] border-periwinkle bg-[rgb(26,24,58)] px-[8px] py-[16px] focus:outline-none"
             />
             <input
               name="lastName"
               placeholder="Last Name"
               type="text"
-              className="mb-[24px] w-full rounded-md bg-[#030912]  px-[8px] py-[16px] focus:outline-none"
+              className="mb-[24px] w-full border-b-[1px] border-periwinkle bg-[rgb(26,24,58)] px-[8px] py-[16px] focus:outline-none"
             />
           </div>
           <div className="flex flex-col gap-x-[20px]   sm:flex-row">
@@ -47,36 +49,36 @@ export default function Form() {
               name="email"
               placeholder="Email"
               type="email"
-              className="mb-[24px] w-full rounded-md bg-[#030912] px-[8px] py-[16px] focus:outline-none"
+              className="mb-[24px] w-full border-b-[1px] border-periwinkle bg-[rgb(26,24,58)] px-[8px] py-[16px] focus:outline-none"
             />
             <input
               name="phone"
               placeholder="Phone Number"
               type="tel"
-              className="mb-[24px] w-full rounded-md bg-[#030912] px-[8px] py-[16px] focus:outline-none"
+              className="mb-[24px] w-full border-b-[1px] border-periwinkle bg-[rgb(26,24,58)] px-[8px] py-[16px] focus:outline-none"
             />
           </div>
           <div className="flex flex-col gap-x-[20px]   sm:flex-row">
             <input
               name="company"
               type="text"
-              className="mb-[24px] w-full rounded-md bg-[#030912] px-[8px] py-[16px] focus:outline-none"
+              className="mb-[24px] w-full border-b-[1px] border-periwinkle bg-[rgb(26,24,58)] px-[8px] py-[16px] focus:outline-none"
               placeholder="Company Name"
             />
             <input
               name="jobTitle"
               placeholder="Job Title"
               type="text"
-              className="mb-[24px] w-full rounded-md bg-[#030912] px-[8px] py-[16px] focus:outline-none"
+              className="mb-[24px] w-full border-b-[1px] border-periwinkle bg-[rgb(26,24,58)] px-[8px] py-[16px] focus:outline-none"
             />
           </div>
           <textarea
             placeholder="Message"
-            className="min-h-[203px] w-full rounded-md bg-[#030912]  px-[8px] py-[8px]"
+            className="min-h-[203px] w-full rounded-md border-[1px] border-periwinkle bg-[rgb(26,24,58)] px-[8px] py-[8px] focus:outline-none"
             name="message"
           />{' '}
           <input type="hidden" name="source" value="contact-us form" />
-          <button className="mt-[32px] w-full rounded-md bg-periwinkle bg-gradient-to-r from-linkText to-turqoise px-1 py-[16px]">
+          <button className="button-gradient hover:button-gradient-hover mt-[32px] w-full rounded-md px-1 py-[16px] hover:scale-105">
             Submit
           </button>
           {fetcher.data && (

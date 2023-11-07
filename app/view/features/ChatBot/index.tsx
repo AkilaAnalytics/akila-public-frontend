@@ -79,7 +79,7 @@ export default function ChatBot() {
             showChat ? '' : 'bg-periwinkle'
           }`}>
           <div className="flex h-full w-full flex-col overflow-y-scroll rounded-lg bg-white md:w-80">
-            <div className="flex w-full items-center justify-between gap-5 rounded-t-lg bg-periwinkle py-2 text-center font-semibold text-white">
+            <div className="button-gradient flex w-full items-center justify-between gap-5 rounded-t-lg py-2 text-center font-semibold text-white">
               <div className="flex-grow p-2">
                 <h6 className="text-center md:scale-105">
                   Akila Analytics' Help Center
