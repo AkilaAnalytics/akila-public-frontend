@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+.gradient-div {
+  --periwinkle: rgb(84, 75, 253);
+  --periwinkleDark: rgba(84, 75, 253, 0.2);
+  background-image: radial-gradient(
+    circle at center top,
+    var(--periwinkle) 0%,
+    var(--periwinkleDark) 30%
+  );
+}
+
+.gradient-button {
+  --periwinkle: rgb(84, 75, 253);
+  --periwinkleDark: rgba(84, 75, 253, 0);
+  background-image: linear-gradient(
+      0deg,
+      var(--periwinkle) 0%,
+      var(--periwinkle) 20%,
+      var(--periwinkleDark) 100%
+    ),
+    linear-gradient(
+      90deg,
+      var(--periwinkleDark) 0%,
+      var(--periwinkle) 50%,
+      var(--periwinkleDark) 100%
+    );
+}
+
+.gradient-button:hover {
+  background: var(--periwinkle);
+}
+
 @layer base {
   :root {
     --gradient-angle: 89.93deg;
@@ -51,6 +82,12 @@
     font-size: 12px;
     line-height: 32px;
     src: url('../../public/font/Raleway-VariableFont_wght.ttf');
+  }
+  @font-face {
+    font-family: 'Poppins'; /* sans-serif */
+    font-size: 12px;
+    line-height: 32px;
+    src: url('../../public/font/Poppins-Regular.ttf');
   }
 
   /* Banners & Linear gradients */

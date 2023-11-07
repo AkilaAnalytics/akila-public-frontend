@@ -105,14 +105,34 @@ export default function Navbar() {
   }, [])
 
   // sign in button
+  //via-gray-periwinkleDark bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-periwinkle to-periwinkleDark  const location = useLocation()
   const location = useLocation()
+
   //console.log(location, '<<< location')
   const signInButton = () => {
     return (
-      <div>
+      <div className="flex gap-2">
+        <Link to="/contact-us">
+          <button className="via-gray-periwinkleDark flex w-full whitespace-nowrap rounded-md bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-periwinkle to-periwinkleDark p-2 text-sm hover:scale-105 md:w-auto">
+            Book a Demo
+            <svg
+              className="-mr-1 ml-2 h-5 w-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </button>
+        </Link>
         <a href={privatePages} target="_blank" rel="noreferrer">
-          <button className="w-full rounded-md bg-periwinkle bg-opacity-50 p-2 md:w-28">
-            SIGN IN
+          <button className="flex w-full whitespace-nowrap rounded-md p-2 text-sm hover:scale-105 md:w-auto">
+            Sign In
           </button>
         </a>
       </div>
@@ -127,7 +147,7 @@ export default function Navbar() {
     <nav
       className="sticky top-0 z-[999] bg-black px-2 py-[22px]"
       ref={sidebarRef}>
-      <div className="relative mx-auto flex max-w-[1280px] items-center justify-between gap-6">
+      <div className="relative mx-auto flex w-10/12 items-center justify-between gap-2">
         <Link to="/" onClick={() => setIsOpen(false)}>
           <img
             src={akilaAnalyticsLogo}
@@ -135,74 +155,76 @@ export default function Navbar() {
             className="h-full w-full"
           />
         </Link>
-        <ul className="relative hidden items-center gap-[40px] lg:flex">
-          {navigation.map((menu, index) =>
-            menu.submenu ? (
-              <li className="text-text_clr group group  " key={menu.name}>
-                <span className={`flex cursor-pointer items-center `}>
-                  <span className="uppercase">{menu.name}</span>
-                  <ChevronDownIcon className="ml-1 inline h-[15px] w-[15px] transform group-hover:rotate-180" />
-                </span>
-                <div className="absolute top-[62px] hidden w-9 justify-center  group-hover:flex">
-                  <img
-                    style={{ filter: 'invert(100%)' }}
-                    src={Triangle}
-                    alt=""
-                  />
-                </div>
-
-                <ul className="fixed left-[25%] hidden min-h-[140px] max-w-[1000px] transition duration-700 ease-in-out group-hover:flex">
-                  <div className="mt-[50px] flex rounded-md bg-gradient-to-r from-[rgb(32,30,100)] to-[rgb(7,6,9)]">
-                    <div className="flex min-h-full w-3/12 flex-col justify-center rounded-l-lg px-5 text-left">
-                      <h5 className="uppercase">Learn more about Akila</h5>
-                      <span className="text-gray-400">
-                        Simplify your business analytics and data science.
-                      </span>
-                      <br />
-                      <br />
-                      <Link to="/product/talk-to-sales" className="uppercase">
-                        <span>Talk to Sales</span>
-                      </Link>
-                      <Link to="/product/watch-demo" className="uppercase">
-                        <span>Watch a Demo</span>
-                      </Link>
-                      <Link to="#" className="uppercase">
-                        <span>Documentation</span>
-                      </Link>
-                    </div>
-                    <div className="grid w-9/12 grid-cols-4 rounded-r-lg py-3 text-left">
-                      {menu.submenu.map((subItems) => (
-                        <Link
-                          to={subItems.href}
-                          key={subItems.href}
-                          className="px-3 py-3">
-                          <li className="cursor-pointer font-semibold uppercase tracking-[0.3px]">
-                            {subItems.name}
-                          </li>
-                          <div className="mt-3 text-sm font-light">
-                            {subItems.description}
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
+        <div>
+          <ul className="relative hidden items-center gap-[40px] lg:flex">
+            {navigation.map((menu, index) =>
+              menu.submenu ? (
+                <li className="text-text_clr group group  " key={menu.name}>
+                  <span className={`flex cursor-pointer items-center `}>
+                    <span className="text-sm uppercase">{menu.name}</span>
+                    <ChevronDownIcon className="ml-1 inline h-[15px] w-[15px] transform group-hover:rotate-180" />
+                  </span>
+                  <div className="absolute top-[62px] hidden w-9 justify-center group-hover:flex">
+                    <img
+                      style={{ filter: 'invert(100%)' }}
+                      src={Triangle}
+                      alt=""
+                    />
                   </div>
-                </ul>
 
-                {/*  */}
-              </li>
-            ) : (
-              <Link
-                to={menu.href}
-                key={index}
-                className={`${
-                  matches[1]?.pathname === menu?.href ? 'active' : ''
-                }  text-text_clr`}>
-                <li className="">{menu.name}</li>
-              </Link>
-            )
-          )}
-          {signInButton()}
-        </ul>
+                  <ul className="fixed left-[25%] hidden min-h-[140px] max-w-[1000px] transition duration-700 ease-in-out group-hover:flex">
+                    <div className="mt-[50px] flex rounded-md bg-gradient-to-r from-[rgb(32,30,100)] to-[rgb(7,6,9)]">
+                      <div className="flex min-h-full w-3/12 flex-col justify-center rounded-l-lg px-5 text-left">
+                        <h5 className="uppercase">Learn more about Akila</h5>
+                        <span className="text-gray-400">
+                          Simplify your business analytics and data science.
+                        </span>
+                        <br />
+                        <br />
+                        <Link to="/talk-to-sales" className="uppercase">
+                          <span>Talk to Sales</span>
+                        </Link>
+                        <Link to="/product/watch-demo" className="uppercase">
+                          <span>Watch a Demo</span>
+                        </Link>
+                        <Link to="#" className="uppercase">
+                          <span>Documentation</span>
+                        </Link>
+                      </div>
+                      <div className="grid w-9/12 grid-cols-4 rounded-r-lg py-3 text-left">
+                        {menu.submenu.map((subItems) => (
+                          <Link
+                            to={subItems.href}
+                            key={subItems.href}
+                            className="px-3 py-3">
+                            <li className="cursor-pointer font-semibold uppercase tracking-[0.3px]">
+                              {subItems.name}
+                            </li>
+                            <div className="mt-3 text-sm font-light">
+                              {subItems.description}
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </ul>
+
+                  {/*  */}
+                </li>
+              ) : (
+                <Link
+                  to={menu.href}
+                  key={index}
+                  className={`${
+                    matches[1]?.pathname === menu?.href ? 'active' : ''
+                  }  text-text_clr`}>
+                  <li className="text-sm uppercase">{menu.name}</li>
+                </Link>
+              )
+            )}
+          </ul>
+        </div>
+        {signInButton()}
         <div className="lg:hidden">
           {isOpen ? (
             <XMarkIcon
@@ -317,11 +339,6 @@ const navigation = [
         name: 'Try Free',
         href: '/product/try-free',
         description: 'Sign up for our free trial.'
-      },
-      {
-        name: 'Talk to Sales',
-        href: '/product/talk-to-sales',
-        description: 'Set up a call to discuss how we can get you started.'
       }
     ]
   },
@@ -372,12 +389,12 @@ const navigation = [
     ]
   },
   {
-    name: 'PRICING',
+    name: 'Pricing',
     href: '/pricing',
     current: false
   },
   {
-    name: 'CONTACT US',
+    name: 'Contact Us',
     href: '/contact-us',
     current: false
   }

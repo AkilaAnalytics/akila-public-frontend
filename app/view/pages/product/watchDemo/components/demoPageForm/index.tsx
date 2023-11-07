@@ -11,7 +11,7 @@ export default function DemoPageForm() {
     <div className="w-[100%]  ">
       <div className="min-h-[751px] w-full items-center justify-center bg-[#191919] p-[40px]">
         <h2 className="font-raleway mb-[40px] text-[24px] font-semibold leading-8">
-          Request a call from Akila’s sales representative.
+          Learn how Akila can help you.
         </h2>
         <fetcher.Form
           method="post"

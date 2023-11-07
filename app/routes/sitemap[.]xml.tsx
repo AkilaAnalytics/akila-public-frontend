@@ -3,9 +3,6 @@ export const loader = () => {
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.akilaanalytics.com/api/payment/payment-confirmation</loc>
-  </url>
-  <url>
     <loc>https://www.akilaanalytics.com/company/overview</loc>
   </url>
   <url>
@@ -78,7 +75,7 @@ export const loader = () => {
     <loc>https://www.akilaanalytics.com/product/recurring-jobs</loc>
   </url>
   <url>
-    <loc>https://www.akilaanalytics.com/product/talk-to-sales</loc>
+    <loc>https://www.akilaanalytics.com/talk-to-sales</loc>
   </url>
   <url>
     <loc>https://www.akilaanalytics.com/product/try-free</loc>
@@ -105,18 +102,12 @@ export const loader = () => {
     <loc>https://www.akilaanalytics.com/use-cases/private-equity</loc>
   </url>
 </urlset>
-
-
-</urlset>
-
   `.trim()
 
   return new Response(content, {
     status: 200,
     headers: {
-      'Content-Type': 'application/xml',
-      'xml-version': '1.0',
-      encoding: 'UTF-8'
+      'Content-Type': 'application/xml'
     }
   })
 }

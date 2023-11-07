@@ -1,4 +1,5 @@
 import type { LoaderArgs, ActionArgs } from '@remix-run/node'
+import { MetaFunction } from '@remix-run/node'
 
 import { GetObjectCommand } from '@aws-sdk/client-s3'
 import { json } from '@remix-run/node'
@@ -65,23 +66,23 @@ export default function Index() {
       <hr className="md:border-t-3 hidden md:block md:border-periwinkle" />
       <br />
       <br />
-      <div className="flex flex-col md:flex-row gap-3 md:gap-10 md:px-5 w-full">
+      <div className="flex w-full flex-col gap-3 md:flex-row md:gap-10 md:px-5">
         <div className="w-full">
           <iframe
             src="https://www.youtube.com/embed/noGW8OFr6Ko?si=ZXgZdzP9uXDuEjvx"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            className="p-5 bg-gray-800 rounded-md w-full h-full"
+            className="h-full w-full rounded-md bg-gray-800 p-5"
             allowFullScreen
           />{' '}
         </div>
-        <div className="w-full md:w-3/4 p-5 md:p-0">
+        <div className="w-full p-5 md:w-3/4 md:p-0">
           <h4>Recommended</h4>
           {res.meta?.articles &&
             res.meta.articles.map((ele, idx) => (
               <div
-                className="flex flex-row items-center gap-5 border-t border-b border-periwinkle-[1px] w-full py-3"
+                className="border-periwinkle-[1px] flex w-full flex-row items-center gap-5 border-b border-t py-3"
                 key={ele.title}>
                 <h2>{idx + 1}</h2>
                 <div key={ele.title} className="my-auto">
@@ -101,4 +102,16 @@ export default function Index() {
       <br />
     </div>
   )
+}
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: 'Insights' },
+    { property: 'og:title', content: 'Insights' },
+    {
+      name: 'description',
+      content:
+        'Stay updated with the latest insights in data science, platform updates, and more from the Akila Analytics team.'
+    }
+  ]
 }

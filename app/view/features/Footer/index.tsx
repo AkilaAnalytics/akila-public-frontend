@@ -1,8 +1,7 @@
-import { Link } from '@remix-run/react'
+import { Link, useLoaderData } from '@remix-run/react'
+import type { ILoaderData } from '~/utils'
 
 import { akilaAnalyticsLogo } from '~/view/assets'
-
-import styles from './styles.css'
 
 const platformLinks = [
   {
@@ -78,11 +77,6 @@ const productLinks = [
     text: 'Try Free',
     path: 'product/try-free',
     key: 'product'
-  },
-  {
-    text: 'Talk to Sales',
-    path: 'product/talk-to-sales',
-    key: 'product'
   }
 ]
 
@@ -123,6 +117,11 @@ const companyLinks = [
     text: 'Overview',
     path: 'company/overview',
     key: 'company'
+  },
+  {
+    text: 'Talk to Sales',
+    path: 'talk-to-sales',
+    key: 'product'
   }
 ]
 
@@ -149,12 +148,18 @@ const socialMediaLinks = [
   }
 ]
 
+function createEmailLink(email: string) {
+  return (
+    <a href={`mailto:${email}@akilaanalytics.com`}>
+      {email}@AkilaAnalytics.com
+    </a>
+  )
+}
+
 function displayLinks(category: string, links: Array<any>) {
   return (
     <ul>
-      <li
-        className="my-[24px]  text-lg font-semibold text-white"
-        key={category}>
+      <li className="my-[24px] text-lg font-semibold text-white" key={category}>
         {category}
       </li>
       <ul className="flex flex-wrap justify-start gap-3  md:flex-col">
@@ -176,8 +181,9 @@ function displayLinks(category: string, links: Array<any>) {
 }
 
 export default function Footer() {
+  const loaderData = useLoaderData<ILoaderData>()
   return (
-    <footer className=" mx-auto  mt-[50px] overflow-hidden bg-secondaryBackground ">
+    <footer className="mx-auto mt-[50px] overflow-hidden bg-secondaryBackground ">
       <div className="wave ">
         <svg
           className=""
@@ -193,21 +199,46 @@ export default function Footer() {
       {/*  */}
 
       <div className="p-3">
-        <div className="container_class">
-          <div className="w-full max-w-lg md:mb-16">
-            <img
-              src={akilaAnalyticsLogo}
-              className="block"
-              alt="Akila Analytics"
-            />
-          </div>
+        <div>
           {/* <div className="md hidden md:grid md:grid-cols-4 md:gap-6 lg:grid-cols-6"> */}
-          <div className="mb-3 mt-8 flex flex-col justify-between md:flex-row ">
+          <div className="mb-3 mt-8 flex flex-col justify-between px-5 md:flex-row ">
+            <div>
+              <div className="w-[400px] text-white">
+                <img
+                  src={akilaAnalyticsLogo}
+                  className="my-[24px] text-lg font-semibold"
+                  height="200"
+                  width="400"
+                />
+                <p className="text-white">
+                  Simplify and automate your data analytics workflows with an
+                  intuitive and easy-to-use interface.
+                </p>
+                <br />
+                <p>
+                  Call our sales or technical support team: <br />
+                  <span className="font-poppins">
+                    {loaderData.PHONE_NUMBER}
+                  </span>
+                </p>
+              </div>
+            </div>
             <div>{displayLinks('Platform', platformLinks)}</div>
             <div>{displayLinks('Product', productLinks)}</div>
             <div>{displayLinks('Enterprise', enterpriseLinks)}</div>
             <div>{displayLinks('Resources', resourceLinks)}</div>
             <div>{displayLinks('Company', companyLinks)}</div>
+            <div>
+              <li className="my-[24px] list-none text-lg font-semibold text-white">
+                Contact
+              </li>
+              <ul className="flex flex-wrap justify-start gap-3  text-greyText md:flex-col">
+                <li>{createEmailLink('sales')}</li>
+                <li>{createEmailLink('support')}</li>
+                <li>{createEmailLink('careers')}</li>
+                <li>{createEmailLink('press')}</li>
+              </ul>
+            </div>
             {/* <div className="hidden md:inline">
             {displayLinks('Social Media', socialMediaLinks)}
           </div> */}
@@ -247,13 +278,4 @@ export default function Footer() {
       </div>
     </footer>
   )
-}
-
-export function links() {
-  return [
-    {
-      rel: 'stylesheet',
-      href: styles
-    }
-  ]
 }

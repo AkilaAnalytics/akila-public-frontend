@@ -4,7 +4,7 @@ export default function DemoVideoOfAkilaSection({ video }) {
   return (
     <div className="flex w-[100%] flex-col items-center">
       <h2 className="font-raleway mb-[42px] text-[32px] font-semibold leading-[36px] text-[#E7E7E7] sm:leading-[48px] sm:text-[40x]">
-        Demo Video of Akila
+        Schedule a Demo
       </h2>
       <p className="font-raleway mb-[27px] text-center text-[14px] font-normal leading-[22px] text-[#E7E7E7] sm:text-base">
         Watch our demo video to see how Akila Analytics can help you gain

@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet'
 import { json, useLoaderData } from 'react-router'
+import { MetaFunction } from '@remix-run/node'
 
 export const loader = () => {
   return json({ test: 'value' })
@@ -21,4 +22,16 @@ export default function PrivacyPolicy() {
       </div>
     </div>
   )
+}
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: 'Privacy Policy' },
+    { property: 'og:title', content: 'Privacy Policy' },
+    {
+      name: 'description',
+      content:
+        "Learn about Akila Analytics' commitment to user privacy and how we protect your data."
+    }
+  ]
 }

@@ -61,7 +61,7 @@ const priceData = [
     description:
       'Great for start-ups and small businesses that do not already have mature cloud-based solutions.',
     keyPoints: [
-      'Start processing data today',
+      'Everything in the Free package',
       'Easy configuration',
       'Zero maintenance',
       'Unlimited Processing'
@@ -74,7 +74,10 @@ const priceData = [
     price: 'Contact Us',
     description:
       'Take your data analysis to the next level with the full suite of Akila Analytics features, plus expert support and enhanced security.',
-    keyPoints: ['Everything in the Professional package'],
+    keyPoints: [
+      'Everything in the Professional package',
+      'Configure Akila in your own cloud environment'
+    ],
     buttonTex: 'Contact Us',
     link: '/contact-us'
   }

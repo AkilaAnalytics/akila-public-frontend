@@ -1,5 +1,6 @@
 api.payment.payment-confirmation.ts
 company.overview.tsx
+talk-to-sales.tsx
 contact-us.tsx
 enterprise.by-role.tsx
 enterprise.data-science.tsx
@@ -23,7 +24,6 @@ product.data-exploration.tsx
 product.data-processing.tsx
 product.machine-learning.tsx
 product.recurring-jobs.tsx
-product.talk-to-sales.tsx
 product.try-free.tsx
 product.watch-demo.tsx
 resources.insights.tsx

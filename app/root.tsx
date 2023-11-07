@@ -1,6 +1,7 @@
 import type { LinksFunction } from '@remix-run/node'
 
 import { json } from '@remix-run/node'
+import { ChatBot } from './view/features'
 import {
   Links,
   LiveReload,
@@ -14,7 +15,7 @@ import {
 import { useEffect } from 'react'
 
 import * as gtag from '~/utils/client/gtags.client'
-import Footer, { links as FooterLinks } from '~/view/features/Footer'
+import Footer from '~/view/features/Footer'
 
 import componentStyles from './styles/components.css'
 import globalStyles from './styles/global.css'
@@ -55,8 +56,7 @@ export const links: LinksFunction = () => {
     {
       rel: 'stylesheet',
       href: componentStyles
-    },
-    ...FooterLinks()
+    }
   ]
 }
 
@@ -83,7 +83,10 @@ logger.log(
 
 // Load the GA tracking id from the .env
 export const loader = () => {
-  return json({ gaTrackingId: process.env.GA_TRACKING_ID })
+  return json({
+    gaTrackingId: process.env.GA_TRACKING_ID,
+    PHONE_NUMBER: process.env.PHONE_NUMBER
+  })
 }
 
 export default function App() {
@@ -135,6 +138,7 @@ export default function App() {
         <Outlet />
         <ScrollRestoration />
         <Scripts />
+        <ChatBot />
         <LiveReload />
       </body>
       <Footer />

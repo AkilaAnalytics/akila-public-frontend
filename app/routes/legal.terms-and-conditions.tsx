@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet'
+import { MetaFunction } from '@remix-run/node'
 
 export default function TermsAndConditions() {
   return (
@@ -12,4 +13,15 @@ export default function TermsAndConditions() {
         data-type="iframe"></div>
     </div>
   )
+}
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: 'Terms and Conditions - Akila Analytics' },
+    { property: 'og:title', content: 'Terms and Conditions - Akila Analytics' },
+    {
+      name: 'description',
+      content: 'Our terms and conditions to ensure transparent services.'
+    }
+  ]
 }

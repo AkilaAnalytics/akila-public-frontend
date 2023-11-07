@@ -1,24 +1,34 @@
 import type { IFetcherResponse } from '~/view/pages/home/components/contactUs'
 
+import type { ILoaderData } from '~/utils/types'
+
 import { useFetcher } from 'react-router-dom'
 
 import { StatusMessageFetcher } from '~/view/components'
+import { useLoaderData } from '@remix-run/react'
 
 export default function Form() {
   const fetcher = useFetcher<IFetcherResponse>()
+  const loaderData = useLoaderData<ILoaderData>()
 
   return (
-    <div className="container_class">
-      <div className="my-[100px] rounded-[9px] bg-[#191919] p-[48px]">
+    <div>
+      <div className="gradient-div mx-auto my-[100px] w-full rounded-[9px] p-[48px] md:w-2/3">
         <h2 className="font-raleway mb-[32px] text-center font-semibold leading-[40px] text-[#E7E7E7] text-[push32px]">
           Let us know how we can help!
         </h2>
+        <h5 className="text-center font-sans">
+          Call us directly at:{' '}
+          <span className="font-poppins">{loaderData.PHONE_NUMBER}</span>
+        </h5>
+        <br />
+        <br />
 
         <fetcher.Form
           method="post"
           action="/api/contact-us"
           className="mx-auto max-w-[820px]">
-          <div className="flex flex-col gap-x-[20px]   sm:flex-row">
+          <div className="flex flex-col gap-x-[20px] sm:flex-row">
             <input
               name="firstName"
               placeholder="First Name"
@@ -66,7 +76,7 @@ export default function Form() {
             name="message"
           />{' '}
           <input type="hidden" name="source" value="contact-us form" />
-          <button className="bg-gradient-to-r mt-[32px] w-full rounded-md bg-periwinkle from-linkText to-turqoise px-1 py-[16px]">
+          <button className="mt-[32px] w-full rounded-md bg-periwinkle bg-gradient-to-r from-linkText to-turqoise px-1 py-[16px]">
             Submit
           </button>
           {fetcher.data && (

@@ -24,8 +24,8 @@ export default function HomePage() {
   return (
     <div className="">
       <HomeBanner
-        title="Business Analytics and Data Science Made Easy"
-        subTitle="Akila Analytics is a thoughtful approach to modern-day analytics and management. Ready to use from day one, Akila simplifies business analytics and data science, enhancing collaboration between analytics experts and executives for a more efficient workplace."
+        title=""
+        subTitle="Simplify and automate your data analytics workflows with an intuitive and easy-to-use interface."
         image={HomeBg}
       />
       <UseCaseSection heading="Use Cases">

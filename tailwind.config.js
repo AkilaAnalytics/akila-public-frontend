@@ -4,13 +4,15 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Raleway', 'sans-serif'],
-        serif: ['Merriweather', 'serif']
+        serif: ['Merriweather', 'serif'],
+        poppins: ['Poppins']
       },
       colors: {
         // Akila's colors
         cyan: '#00B8E9',
         periwinkle: '#544BFD',
         darkBlue: '#2325C9',
+        periwinkleDark: 'rgb(41, 38, 122)',
         // other colors
         turqoise: '#3BB3C1',
         darkGrey: '#292B2C',
