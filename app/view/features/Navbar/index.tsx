@@ -7,6 +7,7 @@ import { Link, useLocation, useMatches } from '@remix-run/react'
 import { useState, useEffect, useRef } from 'react'
 
 import { Triangle, akilaAnalyticsLogo } from '~/view/assets'
+import { BookDemo } from '~/view/components'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -112,26 +113,9 @@ export default function Navbar() {
   const signInButton = () => {
     return (
       <div className="flex gap-2">
-        <Link to="/contact-us">
-          <button className="via-gray-periwinkleDark flex w-full whitespace-nowrap rounded-md bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-periwinkle to-periwinkleDark p-2 text-sm hover:scale-105 md:w-auto">
-            Book a Demo
-            <svg
-              className="-mr-1 ml-2 h-5 w-5"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </button>
-        </Link>
+        <BookDemo />
         <a href={privatePages} target="_blank" rel="noreferrer">
-          <button className="flex w-full whitespace-nowrap rounded-md p-2 text-sm hover:scale-105 md:w-auto">
+          <button className="flex w-full whitespace-nowrap rounded-md p-2 text-xs uppercase hover:scale-105 md:w-auto">
             Sign In
           </button>
         </a>
@@ -159,9 +143,9 @@ export default function Navbar() {
           <ul className="relative hidden items-center gap-[40px] lg:flex">
             {navigation.map((menu, index) =>
               menu.submenu ? (
-                <li className="text-text_clr group group  " key={menu.name}>
+                <li className="text-text_clr group group" key={menu.name}>
                   <span className={`flex cursor-pointer items-center `}>
-                    <span className="text-sm uppercase">{menu.name}</span>
+                    <span className="text-xs uppercase">{menu.name}</span>
                     <ChevronDownIcon className="ml-1 inline h-[15px] w-[15px] transform group-hover:rotate-180" />
                   </span>
                   <div className="absolute top-[62px] hidden w-9 justify-center group-hover:flex">

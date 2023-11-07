@@ -1,4 +1,5 @@
 export { default as BannerImage } from './BannerImage'
+export { default as BookDemo } from './BookDemo'
 export { default as Button } from './Button'
 export { default as LoadingSpinner } from './LoadingSpinner'
 export { default as StatusMessage } from './StatusMessage'

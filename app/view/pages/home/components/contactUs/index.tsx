@@ -47,7 +47,7 @@ export default function ContactUs() {
           <div className="flex items-center justify-center">
             <button
               type="submit"
-              className="w-full max-w-[100%] rounded-md bg-periwinkle py-3 hover:scale-105">
+              className="button-gradient hover:button-gradient-hover w-full max-w-[100%] rounded-md bg-periwinkle py-3 hover:scale-105">
               SEND
             </button>
           </div>

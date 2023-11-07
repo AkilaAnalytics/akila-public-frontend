@@ -59,7 +59,9 @@ export default function ChatBot() {
     <div>
       <div
         className={`h-15 fixed bottom-10 right-10 z-50 rounded-full p-5 ${
-          showChat ? '' : 'bg-periwinkle'
+          showChat
+            ? ''
+            : 'bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-periwinkle via-periwinkle to-darkGrey'
         }`}>
         <img
           src={ChatLogo}
@@ -242,7 +244,7 @@ export default function ChatBot() {
                         { method: 'post', action: '/api/chat-bot' }
                       )
                     }}
-                    className="w-full rounded-md bg-periwinkle p-3">
+                    className="button-gradient w-full rounded-md p-3">
                     Send
                   </button>
                 </fetcher.Form>
