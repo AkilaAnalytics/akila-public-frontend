@@ -13,9 +13,9 @@ export default function Form() {
 
   return (
     <div>
-      <div className="gradient-div mx-auto my-[100px] w-full rounded-[9px] p-[48px] md:w-2/3">
+      <div className="gradient-div mx-auto w-full rounded-[9px] p-10 md:w-2/3">
         <h2 className="font-raleway mb-[32px] text-center font-semibold leading-[40px] text-[#E7E7E7] text-[push32px]">
-          Let us know how we can help!
+          Let's build together
         </h2>
         <h5 className="text-center font-sans">
           Call us directly at:{' '}

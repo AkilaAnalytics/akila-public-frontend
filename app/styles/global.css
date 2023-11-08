@@ -345,3 +345,15 @@
   -webkit-line-clamp: 5; /* Number of lines to show */
   overflow: hidden;
 }
+
+/* Add this within your global CSS file */
+@keyframes shooting-star {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(300px, 600px); /* These values will be dynamic */
+    opacity: 0;
+  }
+}

@@ -8,10 +8,10 @@ export default function DemoPageForm() {
   const inputClassName =
     'mb-[24px] w-full bg-[#030912] p-[16px] placeholder:text-[#8B8B8B] rounded-md outline-none'
   return (
-    <div className="w-[100%]  ">
-      <div className="min-h-[751px] w-full items-center justify-center bg-[#191919] p-[40px]">
-        <h2 className="font-raleway mb-[40px] text-[24px] font-semibold leading-8">
-          Learn how Akila can help you.
+    <div className="w-[100%]">
+      <div className="min-h-[751px] w-full items-center justify-center bg-[#191919] p-10">
+        <h2 className="font-raleway mb-[40px] font-semibold leading-10">
+          Schedule a Demo Today.
         </h2>
         <fetcher.Form
           method="post"
@@ -62,7 +62,7 @@ export default function DemoPageForm() {
           <input type="hidden" name="source" value="demoPage" />
           <button
             type="submit"
-            className="mt-[8px] min-h-[60px] w-full rounded-md bg-red-500 bg-gradient-to-r from-linkText to-turqoise">
+            className="button-gradient mt-[8px] min-h-[60px] w-full rounded-md bg-red-500">
             Submit
           </button>
           {fetcher.data && (

@@ -12,11 +12,11 @@ import { DemoPageFormDemoPageForm, DemoVideoOfAkilaSection } from './components'
 
 export default function WatchDemo() {
   return (
-    <div className=" ">
+    <div className="px-5">
       <div className="container_class">
         <div className="mt-[120px] flex flex-col justify-between gap-4 lg:flex-row ">
-          <DemoVideoOfAkilaSection video={DemoVideoImage} />
           <DemoPageFormDemoPageForm />
+          <DemoVideoOfAkilaSection video={DemoVideoImage} />
         </div>
         <TrustedBySection heading="Trusted Customers">
           <img src={Fjord} alt="" />

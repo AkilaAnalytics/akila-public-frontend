@@ -1,13 +1,15 @@
 import { EarthVideo } from '~/view/assets'
 import { useEffect, useState } from 'react'
 import { BookDemo } from '~/view/components'
+import ShootingStar from './ShootingStar'
+import ShootingStars from './ShootingStar'
 
 export default function HomeBanner() {
   const texts = [
     'Data Science',
     'Machine Learning',
     'Business Analytics',
-    'Pushing Boundaries'
+    'Data Exploration'
   ]
   const [animateOut, setAnimateOut] = useState(false)
   const [currentText, setCurrentText] = useState('Business Analytics')
@@ -30,7 +32,7 @@ export default function HomeBanner() {
   }, [])
 
   return (
-    <div className="z-50 flex min-h-[813px] flex-col items-center bg-cover bg-center">
+    <div className="shooting-star-container z-50 flex min-h-[813px] flex-col items-center bg-cover bg-center">
       <video
         autoPlay
         loop
@@ -39,6 +41,7 @@ export default function HomeBanner() {
         <source src={EarthVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+      <ShootingStars count={10} />
       <div className="absolute left-0 top-0 z-10 h-full w-full bg-black opacity-50"></div>
 
       <div className="z-50 mt-[15vh]">
@@ -55,6 +58,12 @@ export default function HomeBanner() {
           and easy-to-use interface.
         </p>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
       <BookDemo />
     </div>
   )
