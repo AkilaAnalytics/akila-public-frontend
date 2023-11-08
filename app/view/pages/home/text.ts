@@ -1,32 +1,36 @@
 import {
-  HomePageUseCaseHowAkilaHelpsPrivateEquity,
-  HomePageUseCaseIncreaseEffectiveness1,
-  HomePageUseCaseIncreaseEffectiveness2,
   SolutionsByPositionsBussinessAnalyst,
   SolutionsByPositionsDataScientist,
-  SolutionsByPositionProductManager
+  SolutionsByPositionProductManager,
+  UseCasePrivateEquity,
+  UseCaseMarketingAnalytics,
+  UseCaseCustomerProfitability,
+  UseCaseNyc
 } from '~/view/assets'
 
 export const useCaseData = [
   {
+    category: 'Private Equity',
     heading: 'How Akila helps private equity firms during due diligence',
     description:
       'Use Akila Analytics to quickly analyze data during due diligence, identify opportunities, and make data-driven investment decisions.',
-    img: HomePageUseCaseHowAkilaHelpsPrivateEquity,
+    img: UseCasePrivateEquity,
     link: '/use-cases/private-equity'
   },
   {
+    category: 'Marketing Analytics',
     heading: 'Increasing the effectiveness of marketing analytics',
     description:
-      'Optimize marketing campaigns with Akila Analytics. Analyze customer data, identify profitable segments, and develop targeted campaigns for increased ROI.',
-    img: HomePageUseCaseIncreaseEffectiveness1,
+      'Analyze trends, identify profitable segments, and develop targeted campaigns for increased ROI.',
+    img: UseCaseMarketingAnalytics,
     link: '/use-cases/marketing-analytics'
   },
   {
+    category: 'Customer Profitability',
     heading: 'Improving Customer Profitability',
     description:
       'Improve customer profitability with Akila Analytics. Analyze customer behavior, identify profitable segments, and develop product and service offerings that meet their needs.',
-    img: HomePageUseCaseIncreaseEffectiveness2,
+    img: UseCaseCustomerProfitability,
     link: '/use-cases/customer-profitability'
   }
 ]

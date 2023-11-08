@@ -9,18 +9,19 @@ export default function SolutionsByPositionsCard({
   link
 }) {
   return (
-    <div className="min-h-[324px] w-full max-w-[350px] rounded-[6px] border border-[#2A303E] hover:scale-105">
-      <div className="min-h-[153px] ">
+    <div className="min-h-[324px] w-full max-w-[350px] rounded-[6px] border border-[#2A303E]">
+      <div className="relative flex min-h-[153px] items-center justify-center">
         <img
           src={img}
-          className="max-h-[300px] w-full"
+          className="h-[300px] w-full object-cover"
           alt={`${heading} logo`}
         />
-      </div>
-      <div className="p-[16px]">
-        <h3 className="font-raleway mb-[3px] text-xl font-medium leading-7 text-[#ffffff]">
+        <h3 className="font-raleway absolute inset-0 mx-auto my-auto flex h-1/3 w-4/5 items-center justify-center rounded-md border-[1px] border-periwinkle bg-black p-4 text-xl font-medium leading-7 text-white">
           {heading}
         </h3>
+      </div>
+
+      <div className="p-[16px]">
         <p className="font-raleway mb-[15px] line-clamp-4 font-normal leading-[22px] text-[#E7E7E7]">
           {description}
         </p>

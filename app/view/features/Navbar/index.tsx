@@ -70,7 +70,7 @@ export default function Navbar() {
                 return (
                   <li
                     key={item.name + index}
-                    className={`my-[24px] px-[24px]  text-xl text-slate-200 `}
+                    className={`my-[24px] px-[24px] text-xl text-slate-200 `}
                     onClick={() => {
                       setIsOpen(false)
                       setActiveSubMenu(null)
@@ -112,10 +112,10 @@ export default function Navbar() {
   //console.log(location, '<<< location')
   const signInButton = () => {
     return (
-      <div className="flex gap-2">
+      <div className="hidden gap-2 md:flex">
         <BookDemo />
         <a href={privatePages} target="_blank" rel="noreferrer">
-          <button className="flex w-full whitespace-nowrap rounded-md p-2 text-xs uppercase hover:scale-105 md:w-auto">
+          <button className="z-50 my-auto flex w-full items-center whitespace-nowrap rounded-md p-2 text-xs uppercase tracking-widest hover:scale-105 md:w-auto">
             Sign In
           </button>
         </a>
@@ -129,7 +129,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="sticky top-0 z-[999] bg-black px-2 py-[22px]"
+      className="sticky top-0 z-[999] bg-black px-2 py-[22px] text-xs"
       ref={sidebarRef}>
       <div className="relative mx-auto flex w-10/12 items-center justify-between gap-2">
         <Link to="/" onClick={() => setIsOpen(false)}>
@@ -159,7 +159,9 @@ export default function Navbar() {
                   <ul className="fixed left-[25%] hidden min-h-[140px] max-w-[1000px] transition duration-700 ease-in-out group-hover:flex">
                     <div className="mt-[50px] flex rounded-md bg-gradient-to-r from-[rgb(32,30,100)] to-[rgb(7,6,9)]">
                       <div className="flex min-h-full w-3/12 flex-col justify-center rounded-l-lg px-5 text-left">
-                        <h5 className="uppercase">Learn more about Akila</h5>
+                        <h5 className="uppercase leading-7">
+                          Learn more about Akila
+                        </h5>
                         <span className="text-gray-400">
                           Simplify your business analytics and data science.
                         </span>
@@ -202,7 +204,7 @@ export default function Navbar() {
                   className={`${
                     matches[1]?.pathname === menu?.href ? 'active' : ''
                   }  text-text_clr`}>
-                  <li className="text-sm uppercase">{menu.name}</li>
+                  <li className="text-xs uppercase">{menu.name}</li>
                 </Link>
               )
             )}
@@ -232,8 +234,17 @@ export default function Navbar() {
             isOpen ? 'opacity-100 ' : 'opacity-0 '
           } transition-all  duration-1000  ease-in-out`}>
           <div className="flex h-full flex-col pt-[40px]">
-            <ul ref={menuRef}>{renderMenus(navigation)}</ul>
-            {signInButton()}
+            <ul ref={menuRef}>
+              {renderMenus(navigation)}
+              <BookDemo />
+              <div className="mx-auto">
+                <a href={privatePages} target="_blank" rel="noreferrer">
+                  <button className="z-50 mx-auto flex w-full items-center justify-center rounded-md p-2 text-center text-xs uppercase tracking-widest hover:scale-105 md:w-auto md:whitespace-nowrap">
+                    Sign In
+                  </button>
+                </a>
+              </div>
+            </ul>
           </div>
         </div>
       </div>

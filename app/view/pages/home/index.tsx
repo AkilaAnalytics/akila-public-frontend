@@ -22,16 +22,13 @@ import { useCaseData, solutionsByPositionsData } from './text'
 
 export default function HomePage() {
   return (
-    <div className="">
-      <HomeBanner
-        title=""
-        subTitle="Simplify and automate your data analytics workflows with an intuitive and easy-to-use interface."
-        image={HomeBg}
-      />
+    <div>
+      <HomeBanner />
       <UseCaseSection heading="Use Cases">
-        <div className="flex flex-col items-center justify-center gap-[30px] md:flex-row">
+        <div className="flex flex-col items-center justify-center gap-[30px] p-5 md:flex-row md:p-0">
           {useCaseData.map((data, index) => (
             <UseCaseCard
+              category={data.category}
               key={index}
               heading={data.heading}
               description={data.description}

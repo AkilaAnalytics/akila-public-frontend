@@ -9,7 +9,6 @@ export default function UseCaseSection({ heading, children }) {
         </div>
         <HorizontalLine />
       </div>
-
       {children}
     </div>
   )
