@@ -3,7 +3,8 @@ import { MetaFunction } from '@remix-run/node'
 
 export const loader = () => {
   return {
-    PHONE_NUMBER: process.env.PHONE_NUMBER
+    PHONE_NUMBER: process.env.PHONE_NUMBER,
+    SUPPORT_EMAIL: process.env.SUPPORT_EMAIL
   }
 }
 

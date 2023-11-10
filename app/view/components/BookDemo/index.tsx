@@ -4,7 +4,7 @@ export default function BookDemo() {
   return (
     <Link
       to="/product/watch-demo"
-      className="button-gradient z-50 mx-auto flex w-full items-center justify-center rounded-md p-2 text-center text-xs uppercase tracking-widest hover:scale-105 md:w-auto md:whitespace-nowrap">
+      className="button-gradient z-50 mx-auto mt-[10%] flex w-full items-center justify-center rounded-md p-2 text-center text-xs uppercase tracking-widest hover:scale-105 md:w-auto md:whitespace-nowrap">
       Book a Demo
       <svg
         className="-mr-1 ml-2 h-4 w-4"

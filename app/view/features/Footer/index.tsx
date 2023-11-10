@@ -183,7 +183,7 @@ function displayLinks(category: string, links: Array<any>) {
 export default function Footer() {
   const loaderData = useLoaderData<ILoaderData>()
   return (
-    <footer className="mx-auto mt-[50px] overflow-hidden bg-gradient-to-r from-background to-secondaryBackground">
+    <footer className="contact-us-gradient mx-auto mt-[50px] overflow-hidden">
       <div className="wave ">
         <svg
           className=""

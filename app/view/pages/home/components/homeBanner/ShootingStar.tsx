@@ -27,9 +27,13 @@ function ShootingStar() {
   )
 }
 
-export default function ShootingStars({ count }) {
+interface IProps {
+  count: number
+}
+export default function ShootingStars({ count }: IProps) {
   return (
-    <div className="absolute inset-0 h-screen w-full overflow-hidden bg-black">
+    <div className="absolute inset-0 h-[80vh] w-full overflow-hidden md:h-screen">
+      {/* The mobile height needs to match the mobile height on the ./index file */}
       {[...Array(count)].map((_, index) => (
         <ShootingStar key={index} />
       ))}

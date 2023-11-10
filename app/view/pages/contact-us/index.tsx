@@ -1,4 +1,4 @@
-import { ContactUsBg } from '~/view/assets'
+import { ContactUsBg, doubleChevronRight } from '~/view/assets'
 import { BannerImage } from '~/view/components'
 import { Form } from './components'
 import type { LinksFunction } from '@remix-run/node' // or cloudflare/deno
@@ -29,38 +29,38 @@ export default function ContactUsPage() {
 
   return (
     <div>
-      <BannerImage image={ContactUsBg} title="Contact Us" />
-      <div className="flex gap-5 p-10">
+      {/*<BannerImage image={ContactUsBg} title="Contact Us" /> */}
+      <div className="contact-us-gradient gap-5 p-10">
         <div className="flex-1">
           <Form />
         </div>
-        <div className="flex-1 rounded-md border-[1px] border-gray-600 p-10">
+        <div className="flex-1 rounded-md p-10">
           <h2>Learn how Akila Analytics can help your business.</h2>
           One of our product experts will provide a platform demonstration
           tailored to your needs.
           <br />
           <br />
-          <ul>
+          <div className="flex flex-col flex-wrap md:flex-row">
+            {' '}
+            {/* This container will wrap its children. */}
             {bulletPoints.map((point, index) => (
-              <div>
-                <div key={index} className="mt-5 flex list-none items-center">
-                  {/* Here's your SVG check icon */}
-                  <svg
-                    className="mr-1 mt-2 -rotate-90 fill-current text-periwinkle"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    width="20"
-                    height="20">
-                    <path d="M0 0h20v20H0V0z" fill="none" />
-                    <path d="M7 10l5 5 5-5h-3V5H10v5H7z" />
-                  </svg>
-                  <span className="font-bold">{point.title}</span>
+              <div key={index} className="min-w-[50%] flex-1">
+                {/* Each bullet point takes up at least half the width of its container. */}
+                <div className="mt-5 flex items-center">
+                  <img
+                    src={doubleChevronRight}
+                    alt="double chevron pointing right"
+                    height="50"
+                    width="50"
+                  />
+                  <span className="button-gradient rounded-full p-2 font-bold">
+                    {point.title}
+                  </span>
                 </div>
-                {/* Left align the description with the title. 28 pixels because that's the margin plus width of the svg icon */}
-                <p className="ml-[28px]">{point.description}</p>
+                <p className="ml-[58px]">{point.description}</p>
               </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </div>

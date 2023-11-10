@@ -24,20 +24,22 @@ export default function HomePage() {
   return (
     <div>
       <HomeBanner />
-      <UseCaseSection heading="Use Cases">
-        <div className="flex flex-col items-center justify-center gap-[30px] p-5 md:flex-row md:p-0">
-          {useCaseData.map((data, index) => (
-            <UseCaseCard
-              category={data.category}
-              key={index}
-              heading={data.heading}
-              description={data.description}
-              img={data.img}
-              link={data.link}
-            />
-          ))}
-        </div>
-      </UseCaseSection>
+      <div className="z-50 mt-[10vh] bg-background">
+        <UseCaseSection heading="Use Cases">
+          <div className="flex flex-col items-center justify-center gap-[30px] md:flex-row">
+            {useCaseData.map((data, index) => (
+              <UseCaseCard
+                category={data.category}
+                key={index}
+                heading={data.heading}
+                description={data.description}
+                img={data.img}
+                link={data.link}
+              />
+            ))}
+          </div>
+        </UseCaseSection>
+      </div>
       <PlatformSection>
         <div className="flex flex-col items-center justify-center gap-[21px] sm:flex-row">
           <PlatformSectionCard

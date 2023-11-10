@@ -106,3 +106,10 @@ export { default as OverviewCloudProviders } from './overview-cloud-providers.sv
 
 export { default as Triangle } from './triangle.svg'
 export { default as GreenCheckMark } from './green-check-mark.svg'
+
+// contact-us page
+export { default as email } from './email.svg'
+export { default as location } from './location.svg'
+export { default as internet } from './internet.svg'
+export { default as phone } from './phone.svg'
+export { default as doubleChevronRight } from './double-chevron-right.svg'
