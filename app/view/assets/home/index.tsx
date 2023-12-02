@@ -1,6 +1,7 @@
 //export { default as HomeBg } from './home-bg.png'
-export { default as HomeBg } from './earth.jpg'
+//export { default as HomeBg } from './earth.jpg'
 export { default as EarthVideo } from './earth.mp4'
+export { default as EarthImage } from './earth.png'
 export { default as HomePageUseCaseHowAkilaHelpsPrivateEquity } from './home-page-use-case-how-akila-helps-private-equity.png'
 export { default as UseCasePrivateEquity } from './use-cases-private-equity.png'
 export { default as UseCaseMarketingAnalytics } from './use-cases-marketing-analytics.png'

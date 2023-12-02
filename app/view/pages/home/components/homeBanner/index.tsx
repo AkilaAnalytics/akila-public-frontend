@@ -1,4 +1,4 @@
-import { EarthVideo } from '~/view/assets'
+import { EarthImage, EarthVideo } from '~/view/assets'
 import { useEffect, useState } from 'react'
 import { BookDemo } from '~/view/components'
 import ShootingStar from './ShootingStar'
@@ -32,15 +32,20 @@ export default function HomeBanner() {
   }, [])
 
   return (
-    <div className="flex h-[90vh] flex-col items-center">
+    <div className="flex h-[80vh] flex-col items-center md:h-[90vh]">
       <video
         autoPlay
         loop
         muted
-        className="absolute inset-0 z-10 h-[80vh] w-full overflow-hidden object-fill md:h-full">
+        className="hiden absolute inset-0 z-10 h-[80vh] w-full overflow-hidden object-fill md:block md:h-full">
         <source src={EarthVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+      <img
+        src={EarthImage}
+        alt="Earth from outer space"
+        className="absolute inset-0 z-10 h-[80vh] w-full overflow-hidden object-fill md:hidden"
+      />
       <div className="z-50 mt-[15vh]">
         <div className="my-auto text-center">
           <div className={`rollingText ${animateOut ? 'rollOut' : 'rollIn'}`}>
@@ -50,7 +55,7 @@ export default function HomeBanner() {
           </div>
           <h2>Made Easy</h2>
         </div>
-        <p className="text-md mb-10 px-5 text-white md:text-lg">
+        <p className="text-md px-5 text-white md:text-lg">
           Simplify and automate your data analytics workflows with an intuitive
           and easy-to-use interface.
         </p>

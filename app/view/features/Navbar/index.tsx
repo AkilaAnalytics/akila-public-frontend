@@ -114,7 +114,11 @@ export default function Navbar() {
     return (
       <div className="hidden gap-2 md:flex">
         <BookDemo />
-        <a href={privatePages} target="_blank" rel="noreferrer">
+        <a
+          href={privatePages}
+          target="_blank"
+          rel="noreferrer"
+          className="my-auto">
           <button className="z-50 my-auto flex w-full items-center whitespace-nowrap rounded-md p-2 text-xs uppercase tracking-widest hover:scale-105 md:w-auto">
             Sign In
           </button>
@@ -237,13 +241,11 @@ export default function Navbar() {
             <ul ref={menuRef}>
               {renderMenus(navigation)}
               <BookDemo />
-              <div className="mx-auto">
-                <a href={privatePages} target="_blank" rel="noreferrer">
-                  <button className="z-50 mx-auto flex w-full items-center justify-center rounded-md p-2 text-center text-xs uppercase tracking-widest hover:scale-105 md:w-auto md:whitespace-nowrap">
-                    Sign In
-                  </button>
-                </a>
-              </div>
+              <a href={privatePages} target="_blank" rel="noreferrer">
+                <button className="z-50 mx-auto my-auto flex w-full items-center justify-center rounded-md p-2 text-center text-xs uppercase tracking-widest hover:scale-105 md:w-auto md:whitespace-nowrap">
+                  Sign In
+                </button>
+              </a>
             </ul>
           </div>
         </div>

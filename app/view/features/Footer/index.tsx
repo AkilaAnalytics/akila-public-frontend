@@ -203,7 +203,7 @@ export default function Footer() {
           {/* <div className="md hidden md:grid md:grid-cols-4 md:gap-6 lg:grid-cols-6"> */}
           <div className="mb-3 mt-8 flex flex-col justify-between px-5 md:flex-row ">
             <div>
-              <div className="w-[400px] text-white">
+              <div className="w-[300px] text-white md:w-[400px]">
                 <img
                   src={akilaAnalyticsLogo}
                   className="my-[24px] text-lg font-semibold"
