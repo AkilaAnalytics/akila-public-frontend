@@ -1,0 +1,156 @@
+{
+    "articles": [
+        {
+            "title": "Unlocking Hidden Business Potential with Data",
+            "subTitle": "How Akila Analytics Can Reveal Opportunities You Never Knew Existed",
+            "category": "Data Analytics",
+            "preview": "In today's digital age, data has become the lifeblood of businesses across",
+            "recommended": null,
+            "link": "Unlocking+Hidden+Business+Potential+with+Data/image.jpg"
+        },
+        {
+            "title": "Maximizing Efficiency: The Hidden Power of Your Business Data",
+            "subTitle": "Are you using your data to its full potential?",
+            "category": "Business Analytics",
+            "preview": "Maximizing Efficiency: The Hidden Power of Your Business Data",
+            "recommended": null,
+            "link": "Maximizing+Efficiency%3A+The+Hidden+Power+of+Your+Business+Data/image.jpg"
+        },
+        {
+            "title": "Feeling Overwhelmed by Data? Simplify with No-Code Tools",
+            "subTitle": "Learn how no-code solutions can help you process your data.",
+            "category": "Data Analytics",
+            "preview": "Feeling Overwhelmed by Data? Simplify with No-Code Tools",
+            "recommended": null,
+            "link": "Feeling+Overwhelmed+by+Data%3F+Simplify+with+No-Code+Tools/image.jpg"
+        },
+        {
+            "title": "From Data Confusion to Clarity: Your Path Forward",
+            "subTitle": "See How Akila Analytics Makes Sense of Your Data Puzzle",
+            "category": "Data Analytics",
+            "preview": "In today's data-driven world, businesses are faced with an overwhelming amount",
+            "recommended": null,
+            "link": "From+Data+Confusion+to+Clarity%3A+Your+Path+Forward/image.jpg"
+        },
+        {
+            "title": "Transforming Raw Data into Revenue",
+            "subTitle": "A Data-Driven Growth Strategy with Akila Analytics",
+            "category": "Business Analytics",
+            "preview": "In today's rapidly evolving business landscape, data has become an invaluable",
+            "recommended": null,
+            "link": "Transforming+Raw+Data+into+Revenue/image.jpg"
+        },
+        {
+            "title": "Data-Driven Transformations",
+            "subTitle": "Navigating Changing Business Landscapes with Data",
+            "category": "Business Analytics",
+            "preview": "In today's fast-paced and ever-changing business environment, organizations need",
+            "recommended": true,
+            "link": "Data-Driven+Transformations/image.jpg"
+        },
+        {
+            "title": "From Data to Decisions: A Data Analytics Journey",
+            "subTitle": "Transform Your Data into Strategic Business Moves",
+            "category": "Data Analytics",
+            "preview": "In today's fast-paced and data-driven business landscape, the ability to",
+            "recommended": false,
+            "link": "From+Data+to+Decisions%3A+A+Data+Analytics+Journey/image.jpg"
+        },
+        {
+            "title": "The Silent Business Growth Killer - Ignored Data",
+            "subTitle": "Overlooking Data Insights Can Cost Your Business In Unexpected Ways",
+            "category": "Business Analytics",
+            "preview": "In today's data-driven world, businesses have access to an overwhelming amount",
+            "recommended": null,
+            "link": "The+Silent+Business+Growth+Killer+-+Ignored+Data/image.jpg"
+        },
+        {
+            "title": "Beyond Subjective Views: Using Data to Drive Business Decisions",
+            "subTitle": "Incorporating Data Science Into Your Business Strategy",
+            "category": "Business Analytics",
+            "preview": "In today's fast-paced business landscape, making informed decisions has become",
+            "recommended": true,
+            "link": "Beyond+Subjective+Views%3A+Using+Data+to+Drive+Business+Decisions/image.jpg"
+        },
+        {
+            "title": "Struggling with Data Overload? There\u2019s an Easier Way",
+            "subTitle": "Leverage modern tools to make sense of your data.",
+            "category": "Business Analytics",
+            "preview": "In today's digital age, businesses are inundated with vast amounts of data. This",
+            "recommended": null,
+            "link": "Struggling+with+Data+Overload%3F+There%E2%80%99s+an+Easier+Way/image.jpg"
+        },
+        {
+            "title": "Implementing a Data-Driven Culture",
+            "subTitle": "A Guide to Organizational Success",
+            "category": "Data Analytics",
+            "preview": "In today's fast-paced and data-driven world, organizations are increasingly",
+            "recommended": null,
+            "link": "Implementing+a+Data-Driven+Culture/image.jpg"
+        },
+        {
+            "title": "Customer Churn",
+            "subTitle": "Identify customers that are most likely to churn",
+            "category": "Retail Analytics",
+            "preview": "Customer churn, a term used to describe when customers end their relationship",
+            "recommended": true,
+            "link": "Customer+Churn/image.jpg"
+        },
+        {
+            "title": "Choosing the Right Data Analytics Tool for Your Business",
+            "subTitle": "What are some of the key factors to consider?",
+            "category": "Data Analytics",
+            "preview": "In today's data-driven business landscape, choosing the right data analytics",
+            "recommended": true,
+            "link": "Choosing+the+Right+Data+Analytics+Tool+for+Your+Business/image.jpg"
+        },
+        {
+            "title": "The Future of Business Intelligence: A No-Code Approach",
+            "subTitle": "Empowering Teams with Easy to Use Tools and Actionable Insights",
+            "category": "Business Intelligence",
+            "preview": "The future of business intelligence is on the horizon, and it involves a",
+            "recommended": null,
+            "link": "The+Future+of+Business+Intelligence%3A+A+No-Code+Approach/image.jpg"
+        },
+        {
+            "title": "How Data Science is Changing the Way Business is Done",
+            "subTitle": "A Closer Look at How Data Science Is Redefining Success",
+            "category": "Data Science",
+            "preview": "Data science has emerged as a powerful force that is reshaping the business",
+            "recommended": null,
+            "link": "How+Data+Science+is+Changing+the+Way+Business+is+Done/image.jpg"
+        },
+        {
+            "title": "Maximizing ROI on Data Analytics",
+            "subTitle": "How does data analytics impact your bottom line?",
+            "category": "Data Analytics",
+            "preview": "In today's data-driven world, organizations are constantly seeking ways to",
+            "recommended": null,
+            "link": "Maximizing+ROI+on+Data+Analytics/image.jpg"
+        },
+        {
+            "title": "Leveraging Data Analytics During Due Diligence",
+            "subTitle": "Optimizing Due Diligence: The Synergy of Data Science in Private Equity Decisions",
+            "category": "Private Equity",
+            "preview": "## Moving Faster and More Confidently",
+            "recommended": null,
+            "link": "Leveraging+Data+Analytics+During+Due+Diligence/image.jpg"
+        },
+        {
+            "title": "The Intersection of Private Equity and Data Science",
+            "subTitle": "How did data science and alternative data seep into an industry driven by traditional analysis?",
+            "category": "Private Equity",
+            "preview": "## An Unlikely Duo: Private Equity & Data Science ",
+            "recommended": null,
+            "link": "The+Intersection+of+Private+Equity+and+Data+Science/image.jpg"
+        }
+    ],
+    "videos": [
+        {
+            "title": "Data Exploration",
+            "subTitle": "Learn how to better understand your data using Akila Analytics' data exploration workflow.",
+            "category": "Data Exploration",
+            "link": "https://www.youtube.com/embed/noGW8OFr6Ko?si=ZXgZdzP9uXDuEjvx"
+        }
+    ]
+}

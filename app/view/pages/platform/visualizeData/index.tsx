@@ -31,7 +31,7 @@ export default function VisualizaData() {
 
       <CenterAlignHeadingDescription
         heading="Ultimate freedom to Visualize Data"
-        description="Lorem beatae necessitatibus quia animi velit. Laborum eum magni eaque delectus assumenda Repellat cumque sint aliquid cum facilis Assumenda assumenda"
+        description="Utilize pre-built visualizations on the Akila platform and export to third-party platforms like Tableau and PowerBI to ensure your workflows are seamless."
       />
       <div className="my-[50px] ">
         <div className="container_class ">

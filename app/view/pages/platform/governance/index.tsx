@@ -28,7 +28,6 @@ import {
   AkilaBussinessCloudSection,
   CenterAlignHeadingDescription
 } from '~/view/components'
-import { Navbar } from '~/view/features'
 
 export default function Governance() {
   return (

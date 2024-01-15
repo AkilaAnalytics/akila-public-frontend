@@ -65,8 +65,7 @@ export default function DevOpsPage() {
         image="/assets/company-pages/devops.png"
       />
       <KeyPoints
-        title="Enabling Dev Opss to Focus on Driving Value for
-the Business"
+        title="Enabling Dev Opss to Focus on Driving Value for the Business"
         subTitle="Elit corporis error dolor quis molestiae Odit officia numquam voluptatum dicta vero
 suscipit, illum vel Dicta dolor voluptates dolor odit hic mollitia explicabo
 consequuntur Ipsa beatae enim sunt sit a? Velit animi natus ipsam dolorem fugit, velit

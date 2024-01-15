@@ -19,4 +19,14 @@ else
 	exit 1
 fi
 
-aws s3 sync ./content/private-equity s3://$BUCKET_NAME/blog --profile $PROFILE_NAME
+
+echo "-------------------- organize_and_update_articles.py -------------------- \n\n\n"
+python /Users/brandongoldney/Documents/Akila-Analytics/public/frontend/content/python/organize_and_update_articles.py
+echo "-------------------- update_files.py -------------------- \n\n\n"
+python /Users/brandongoldney/Documents/Akila-Analytics/public/frontend/content/python/upload_files.py $STAGE
+echo "-------------------- meta.py -------------------- \n\n\n"
+python /Users/brandongoldney/Documents/Akila-Analytics/public/frontend/content/python/create_meta.py
+echo "-------------------- AWS CP & SYNC -------------------- \n\n\n"
+aws s3 cp ./content/json/meta.json s3://$BUCKET_NAME/_blog/ --profile $PROFILE_NAME
+#aws s3 sync ./content/general s3://$BUCKET_NAME/_blog --profile $PROFILE_NAME --exclude "*.DS_Store" --exclude "*/.DS_Store"
+#aws s3 sync ./content/private-equity s3://$BUCKET_NAME/_blog --profile $PROFILE_NAME --exclude "*.DS_Store" --exclude "*/.DS_Store"

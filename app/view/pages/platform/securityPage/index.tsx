@@ -1,7 +1,5 @@
 import {
   SecurityPageBg,
-  gettingStarted,
-  akilaAnalyticsLogo,
   ModernDayAnalytics,
   ImproveCollboration,
   EnhancedSecurity,

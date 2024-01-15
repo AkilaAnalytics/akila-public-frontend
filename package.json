@@ -10,7 +10,9 @@
     "typecheck": "tsc",
     "esbuild": "esbuild server/index.mjs --outfile=build/index.js --platform=node --format=cjs --bundle  '--external:crypto' '--external:aws-sdk' '--external:@aws-sdk' --allow-overwrite",
     "deploy:staging": "npm run build && npm run esbuild && ./scripts/deploy.sh staging",
-    "deploy:prod": "npm run build && npm run esbuild && ./scripts/deploy.sh prod"
+    "deploy:prod": "npm run build && npm run esbuild && ./scripts/deploy.sh prod",
+    "update-content:staging": "./scripts/update-content.sh staging",
+    "update-content:prod": "./scripts/update-content.sh prod"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.417.0",

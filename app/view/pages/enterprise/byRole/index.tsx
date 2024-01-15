@@ -87,7 +87,7 @@ export default function ByRole() {
         </div>
         <div className="mb-[30px] flex flex-col items-center justify-center gap-[36px] md:flex-row">
           <HelpYourTeamCard
-            heading="Bi"
+            heading="BI"
             description="Get a holistic, accurate picture of your company’s financial health."
             img={ByRoleBi}
           />
