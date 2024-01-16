@@ -4,11 +4,11 @@ import { RocketMan } from '~/view/assets/'
 
 export default function MissingPage() {
   return (
-    <div className="flex flex-col md:flex-row bg-black">
+    <div className="flex flex-col bg-black md:flex-row">
       <img
         src={RocketMan}
         alt="astronaut in space"
-        className="h-full w-full md:h-3/4 md:w-1/2 mx-auto"
+        className="mx-auto h-screen w-full  md:w-1/2"
       />
       <div className="mx-auto my-auto">
         <h3>

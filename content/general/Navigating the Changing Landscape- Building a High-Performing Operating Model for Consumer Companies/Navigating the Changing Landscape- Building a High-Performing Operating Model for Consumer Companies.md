@@ -1,0 +1,52 @@
+---
+category: Business
+date: June 2023
+headers:
+- 'Cache-Control: max-age=86400'
+points:
+- Consumer companies must adapt to economic uncertainty, labor market challenges,
+  and geopolitical conflicts while meeting changing consumer habits and preferences.
+- Digital technologies, including AI and advanced analytics, are crucial for growth
+  and profitability, requiring the integration of digital capabilities throughout
+  the organization.
+- Consumer companies must strike a balance between localization and global scale to
+  remain competitive.
+recommended: true
+subTitle: Adapting to New Realities
+title: 'Navigating the Changing Landscape: Building a High-Performing Operating Model
+  for Consumer Companies'
+---
+
+In the rapidly evolving landscape of consumer companies, leaders are faced with a multitude of challenges, from economic uncertainty and a tough labor market to geopolitical conflicts. Adding to the complexity, consumers are constantly changing their habits and preferences. To thrive in this environment, business leaders must make tough decisions. It is no longer enough to prioritize either growth or profitability; shareholders demand both. Embracing digital technologies, such as AI and advanced analytics, is essential for success, necessitating the integration of digital capabilities across the entire organization, rather than just in specific functions. In this world of "ands," consumer companies must be both local and global to stay competitive. 
+
+Agility and adaptability are key qualities for leaders in the consumer industry. Recognizing that traditional operating models are insufficient to address the challenges of today, consumer leaders understand that there is no one-size-fits-all solution. The right operating model depends on a company's strategy, portfolio, and geographic reach. However, simplicity is also crucial. Leaders strive to develop operating models that are agile, clear, and easy to navigate while effectively responding to the demands of the business. Recent research provides insights into building a high-performing operating model in the consumer industry. 
+
+Based on research on the "rewired enterprise," several hallmarks of high-performing operating models have been identified. These rewired consumer enterprises achieve superior growth and margin while driving innovation at scale. They prioritize upgrading talent, elevating technology and engineering excellence, and leveraging data and analytics as differentiators. By focusing on these imperatives, consumer companies can learn from experiences in other industries and enhance their own operating models.
+
+Upgrading talent is crucial for success. Even companies that prioritize attracting and retaining top talent often fall short in certain areas. Rewired enterprises assign their best talent to critical roles, refine their employee value propositions to align with the expectations of today's workforce, and provide attractive career paths for high performers. They also invest in reskilling and upskilling programs to develop technical and digital capabilities, and form external partnerships to overcome skill gaps.
+
+Elevating technology and engineering excellence is another key aspect of a high-performing operating model. Rewired enterprises adopt a distributed operating model that integrates technology and engineering skills throughout the organization, rather than limiting them to the IT department. They use the cloud for flexible operations, leverage machine learning to automate processes, and break down their technology stack into microservices to reduce dependence on legacy systems.
+
+Data and analytics play a crucial role in driving differentiation for consumer companies. While many companies recognize the importance of data and analytics, they struggle to deploy these capabilities strategically and efficiently. Rewired companies embed data and analytics throughout their business functions, ensuring that teams in every department can make data-driven decisions. They automate complex decision-making processes using algorithms and foundational models, enabling efficient processing of unstructured data.
+
+Although all six imperatives are crucial for a high-performing operating model, three of them present unique challenges for consumer companies. Prioritizing around the consumer, creating a team-based operating model, and fostering a culture of ownership and accountability require nuanced approaches. In this article, we delve deeper into these three challenges to provide insights into how consumer companies can navigate them successfully.
+
+While rewiring an enterprise may seem daunting, the potential rewards are significant. By implementing the right operating model, consumer companies can achieve faster and more profitable growth, drive innovation at scale, and reduce operating expenses. Success stories from retailers and consumer-packaged-goods companies around the world serve as inspiration and guidance for companies looking to redesign their operating models. With industry-specific insights and a focus on the imperatives of prioritization, team-based collaboration, and accountability, consumer companies can adapt and thrive in the rapidly changing landscape. Embrace a transformative culture centered on customer support and transparency, revolutionizing the way global centers operate. This shift breaks free from the traditional "ivory tower" model, bringing global roles closer to market needs. Renaming global centers to reflect this change has become a common practice among forward-thinking companies.
+
+A major player in the food and beverage industry took their global roles and strategically placed them in key markets to enhance responsiveness. In addition, functional leaders from these markets were given global roles overseeing special projects, effectively integrating their expertise. For example, the chief marketing officer of a key market served as the global lead for a major brand campaign. Another global retailer established an efficient system of communication to ensure visibility and alignment between global and local priorities. Biweekly "fireside chats" hosted by the chief marketing officer previewed global campaigns and addressed any local market questions. Furthermore, regular sharing of best practices among functional leaders from similar markets resulted in greater resource efficiency and improved outcomes for customers and consumers.
+
+In order to effectively progress towards their ultimate goals, companies need to identify the specific tasks and locations that require a local presence and expertise. This exercise often reveals opportunities for simplification and offers possibilities for increased productivity through automation and AI at various levels of the organization.
+
+Break away from the constraints of the traditional organizational structure by forming agile, cross-functional teams focused on value creation. These teams can be reconfigured as necessary, allowing for greater flexibility and innovation. By drawing on skills and talent from different functions, companies can revolutionize their talent ecosystem, potentially requiring the development of new staffing models and inventive incentive systems for these teams.
+
+While many companies have begun piloting agile ways of working, only a small percentage have successfully rolled them out across the entire organization. Those that have done so, however, have reaped significant rewards. Take, for example, a Walmart subsidiary in Mexico that formed entrepreneurial "squads" comprised of multidisciplinary team members from various parts of the organization. This approach led to the opening of over 400 new omnichannel stores, generating revenues exceeding $40 billion annually and consistently expanding margins.
+
+Foster a culture rooted in ownership and accountability to drive success in consumer companies. Simplify the organizational structure by clearly defining decision rights, ensuring that every role is accountable at every level. By pushing decision-making authority closer to the action, employees can take ownership of their work and its outcomes.
+
+An example of this shift can be seen in a beverage company that realized leaders for key customer accounts, responsible for over 60 percent of revenue, were too far removed from the CEO. To rectify this, the company restructured its commercial organization, elevating the account leads to be closer to the top team and empowering them to understand and drive growth. An empowered "chief commercial officer" role was also established to build world-class sales capabilities. Similarly, a global food player restructured its organization to focus on consumer-centric categories, embedding vital components of sales, supply chain, and finance within business units. This streamlining increased decision-making efficiency, response times, alignment with strategic priorities, and employee engagement.
+
+Enable learning and knowledge sharing to foster innovation and continuous improvement among consumer companies. This requires establishing a culture of accountability and visibility within the organization. Solving problems once is another key aspect, utilizing processes and forums to share and reuse proven solutions across markets, customer segments, and business units. Prioritizing visibility and transparency fosters an enterprise-wide mindset.
+
+A multinational food retailer discovered that two European markets had separately commissioned studies on making their store locations carbon neutral. To avoid duplication of effort, the company encouraged business leaders to embrace a culture of "shameless stealing," committing to using and improving existing solutions rather than starting from scratch.
+
+Consumer leaders looking to rewire their enterprises should conduct a comprehensive assessment of their company's performance in relation to the imperatives outlined above. While some aspects may already be strong, there will inevitably be areas that require improvement. Taking a phased approach to address these areas of weakness is recommended. However, with the need for action becoming increasingly urgent, there is no better time than now to initiate the transformation.

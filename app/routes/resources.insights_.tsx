@@ -19,7 +19,8 @@ interface IArticles {
   category: string
   recommended: boolean
   preview: string
-  link: string
+  image_link: string
+  article_link: string
 }
 interface IVideos extends IArticles {
   link: string
@@ -131,7 +132,7 @@ export default function Index() {
                 key={ele.title}
               >
                 <img
-                  src={`${basePath}/${ele.link}`}
+                  src={`${basePath}/${ele.image_link}`}
                   className="h-1/3 w-full"
                   alt={`${ele.title}`}
                 />

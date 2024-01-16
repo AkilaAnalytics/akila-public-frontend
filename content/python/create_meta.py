@@ -31,7 +31,8 @@ def parse_md_files(base_path):
                                 "category": category,
                                 "preview": preview,
                                 "recommended": recommended,
-                                "link": link + "/image.jpg",
+                                "image_link": link + "/image.jpg",
+                                "article_link": f"{link}/{link}.md",
                             }
                         )
     return articles

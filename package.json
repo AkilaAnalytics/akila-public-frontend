@@ -30,7 +30,7 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-markdown": "^8.0.7",
-    "react-share": "^4.4.1",
+    "react-share": "^5.0.3",
     "rehype-pretty-code": "^0.10.1",
     "shiki": "^0.14.4"
   },

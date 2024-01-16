@@ -1,12 +1,12 @@
-import * as pkg from 'react-share'
-const {
+import { logger } from '~/utils'
+import {
   LinkedinIcon,
   LinkedinShareButton,
   TwitterIcon,
   TwitterShareButton,
   WhatsappIcon,
   WhatsappShareButton
-} = pkg
+} from 'react-share'
 
 const printIcon = () => {
   return (
@@ -17,7 +17,8 @@ const printIcon = () => {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="rgb(83,75,244)"
-        className="w-8 h-8">
+        className="h-8 w-8"
+      >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -35,20 +36,30 @@ interface IProps {
 }
 
 export default function ShareOnSocialMedia({ title, subTitle, url }: IProps) {
+  logger.log(
+    title,
+    subTitle,
+    url,
+    '<<< title, subTitle, url from ShareOnSocialMedia'
+  )
   return (
-    <div className="print:hidden flex justify-between">
+    <div className="flex justify-between print:hidden">
       <div className="flex gap-3">
-        <TwitterShareButton title={title} url={url}>
+        <TwitterShareButton
+          title={title || 'test'}
+          url={url || 'https://akilaanalytics.com'}
+        >
           <TwitterIcon size={32} round />
         </TwitterShareButton>
         <LinkedinShareButton
           title={title}
           summary={subTitle}
-          source="https://wwww.akilaanalytics.com"
-          url={url}>
+          source="https//:www.akilaanalytics.com"
+          url={url}
+        >
           <LinkedinIcon size={32} round />
         </LinkedinShareButton>
-        <WhatsappShareButton url={url}>
+        <WhatsappShareButton url={url || 'https://akilaanalytics.com/'}>
           <WhatsappIcon size={32} round />
         </WhatsappShareButton>
         {printIcon()}

@@ -6,7 +6,8 @@
             "category": "Data Analytics",
             "preview": "In today's digital age, data has become the lifeblood of businesses across",
             "recommended": null,
-            "link": "Unlocking+Hidden+Business+Potential+with+Data/image.jpg"
+            "image_link": "Unlocking+Hidden+Business+Potential+with+Data/image.jpg",
+            "article_link": "Unlocking+Hidden+Business+Potential+with+Data/Unlocking+Hidden+Business+Potential+with+Data.md"
         },
         {
             "title": "Maximizing Efficiency: The Hidden Power of Your Business Data",
@@ -14,7 +15,8 @@
             "category": "Business Analytics",
             "preview": "Maximizing Efficiency: The Hidden Power of Your Business Data",
             "recommended": null,
-            "link": "Maximizing+Efficiency%3A+The+Hidden+Power+of+Your+Business+Data/image.jpg"
+            "image_link": "Maximizing+Efficiency%3A+The+Hidden+Power+of+Your+Business+Data/image.jpg",
+            "article_link": "Maximizing+Efficiency%3A+The+Hidden+Power+of+Your+Business+Data/Maximizing+Efficiency%3A+The+Hidden+Power+of+Your+Business+Data.md"
         },
         {
             "title": "Feeling Overwhelmed by Data? Simplify with No-Code Tools",
@@ -22,7 +24,8 @@
             "category": "Data Analytics",
             "preview": "Feeling Overwhelmed by Data? Simplify with No-Code Tools",
             "recommended": null,
-            "link": "Feeling+Overwhelmed+by+Data%3F+Simplify+with+No-Code+Tools/image.jpg"
+            "image_link": "Feeling+Overwhelmed+by+Data%3F+Simplify+with+No-Code+Tools/image.jpg",
+            "article_link": "Feeling+Overwhelmed+by+Data%3F+Simplify+with+No-Code+Tools/Feeling+Overwhelmed+by+Data%3F+Simplify+with+No-Code+Tools.md"
         },
         {
             "title": "From Data Confusion to Clarity: Your Path Forward",
@@ -30,7 +33,8 @@
             "category": "Data Analytics",
             "preview": "In today's data-driven world, businesses are faced with an overwhelming amount",
             "recommended": null,
-            "link": "From+Data+Confusion+to+Clarity%3A+Your+Path+Forward/image.jpg"
+            "image_link": "From+Data+Confusion+to+Clarity%3A+Your+Path+Forward/image.jpg",
+            "article_link": "From+Data+Confusion+to+Clarity%3A+Your+Path+Forward/From+Data+Confusion+to+Clarity%3A+Your+Path+Forward.md"
         },
         {
             "title": "Transforming Raw Data into Revenue",
@@ -38,7 +42,8 @@
             "category": "Business Analytics",
             "preview": "In today's rapidly evolving business landscape, data has become an invaluable",
             "recommended": null,
-            "link": "Transforming+Raw+Data+into+Revenue/image.jpg"
+            "image_link": "Transforming+Raw+Data+into+Revenue/image.jpg",
+            "article_link": "Transforming+Raw+Data+into+Revenue/Transforming+Raw+Data+into+Revenue.md"
         },
         {
             "title": "Data-Driven Transformations",
@@ -46,7 +51,8 @@
             "category": "Business Analytics",
             "preview": "In today's fast-paced and ever-changing business environment, organizations need",
             "recommended": true,
-            "link": "Data-Driven+Transformations/image.jpg"
+            "image_link": "Data-Driven+Transformations/image.jpg",
+            "article_link": "Data-Driven+Transformations/Data-Driven+Transformations.md"
         },
         {
             "title": "From Data to Decisions: A Data Analytics Journey",
@@ -54,7 +60,8 @@
             "category": "Data Analytics",
             "preview": "In today's fast-paced and data-driven business landscape, the ability to",
             "recommended": false,
-            "link": "From+Data+to+Decisions%3A+A+Data+Analytics+Journey/image.jpg"
+            "image_link": "From+Data+to+Decisions%3A+A+Data+Analytics+Journey/image.jpg",
+            "article_link": "From+Data+to+Decisions%3A+A+Data+Analytics+Journey/From+Data+to+Decisions%3A+A+Data+Analytics+Journey.md"
         },
         {
             "title": "The Silent Business Growth Killer - Ignored Data",
@@ -62,7 +69,8 @@
             "category": "Business Analytics",
             "preview": "In today's data-driven world, businesses have access to an overwhelming amount",
             "recommended": null,
-            "link": "The+Silent+Business+Growth+Killer+-+Ignored+Data/image.jpg"
+            "image_link": "The+Silent+Business+Growth+Killer+-+Ignored+Data/image.jpg",
+            "article_link": "The+Silent+Business+Growth+Killer+-+Ignored+Data/The+Silent+Business+Growth+Killer+-+Ignored+Data.md"
         },
         {
             "title": "Beyond Subjective Views: Using Data to Drive Business Decisions",
@@ -70,7 +78,8 @@
             "category": "Business Analytics",
             "preview": "In today's fast-paced business landscape, making informed decisions has become",
             "recommended": true,
-            "link": "Beyond+Subjective+Views%3A+Using+Data+to+Drive+Business+Decisions/image.jpg"
+            "image_link": "Beyond+Subjective+Views%3A+Using+Data+to+Drive+Business+Decisions/image.jpg",
+            "article_link": "Beyond+Subjective+Views%3A+Using+Data+to+Drive+Business+Decisions/Beyond+Subjective+Views%3A+Using+Data+to+Drive+Business+Decisions.md"
         },
         {
             "title": "Struggling with Data Overload? There\u2019s an Easier Way",
@@ -78,7 +87,8 @@
             "category": "Business Analytics",
             "preview": "In today's digital age, businesses are inundated with vast amounts of data. This",
             "recommended": null,
-            "link": "Struggling+with+Data+Overload%3F+There%E2%80%99s+an+Easier+Way/image.jpg"
+            "image_link": "Struggling+with+Data+Overload%3F+There%E2%80%99s+an+Easier+Way/image.jpg",
+            "article_link": "Struggling+with+Data+Overload%3F+There%E2%80%99s+an+Easier+Way/Struggling+with+Data+Overload%3F+There%E2%80%99s+an+Easier+Way.md"
         },
         {
             "title": "Implementing a Data-Driven Culture",
@@ -86,7 +96,8 @@
             "category": "Data Analytics",
             "preview": "In today's fast-paced and data-driven world, organizations are increasingly",
             "recommended": null,
-            "link": "Implementing+a+Data-Driven+Culture/image.jpg"
+            "image_link": "Implementing+a+Data-Driven+Culture/image.jpg",
+            "article_link": "Implementing+a+Data-Driven+Culture/Implementing+a+Data-Driven+Culture.md"
         },
         {
             "title": "Customer Churn",
@@ -94,7 +105,8 @@
             "category": "Retail Analytics",
             "preview": "Customer churn, a term used to describe when customers end their relationship",
             "recommended": true,
-            "link": "Customer+Churn/image.jpg"
+            "image_link": "Customer+Churn/image.jpg",
+            "article_link": "Customer+Churn/Customer+Churn.md"
         },
         {
             "title": "Choosing the Right Data Analytics Tool for Your Business",
@@ -102,7 +114,8 @@
             "category": "Data Analytics",
             "preview": "In today's data-driven business landscape, choosing the right data analytics",
             "recommended": true,
-            "link": "Choosing+the+Right+Data+Analytics+Tool+for+Your+Business/image.jpg"
+            "image_link": "Choosing+the+Right+Data+Analytics+Tool+for+Your+Business/image.jpg",
+            "article_link": "Choosing+the+Right+Data+Analytics+Tool+for+Your+Business/Choosing+the+Right+Data+Analytics+Tool+for+Your+Business.md"
         },
         {
             "title": "The Future of Business Intelligence: A No-Code Approach",
@@ -110,7 +123,8 @@
             "category": "Business Intelligence",
             "preview": "The future of business intelligence is on the horizon, and it involves a",
             "recommended": null,
-            "link": "The+Future+of+Business+Intelligence%3A+A+No-Code+Approach/image.jpg"
+            "image_link": "The+Future+of+Business+Intelligence%3A+A+No-Code+Approach/image.jpg",
+            "article_link": "The+Future+of+Business+Intelligence%3A+A+No-Code+Approach/The+Future+of+Business+Intelligence%3A+A+No-Code+Approach.md"
         },
         {
             "title": "How Data Science is Changing the Way Business is Done",
@@ -118,7 +132,8 @@
             "category": "Data Science",
             "preview": "Data science has emerged as a powerful force that is reshaping the business",
             "recommended": null,
-            "link": "How+Data+Science+is+Changing+the+Way+Business+is+Done/image.jpg"
+            "image_link": "How+Data+Science+is+Changing+the+Way+Business+is+Done/image.jpg",
+            "article_link": "How+Data+Science+is+Changing+the+Way+Business+is+Done/How+Data+Science+is+Changing+the+Way+Business+is+Done.md"
         },
         {
             "title": "Maximizing ROI on Data Analytics",
@@ -126,7 +141,8 @@
             "category": "Data Analytics",
             "preview": "In today's data-driven world, organizations are constantly seeking ways to",
             "recommended": null,
-            "link": "Maximizing+ROI+on+Data+Analytics/image.jpg"
+            "image_link": "Maximizing+ROI+on+Data+Analytics/image.jpg",
+            "article_link": "Maximizing+ROI+on+Data+Analytics/Maximizing+ROI+on+Data+Analytics.md"
         },
         {
             "title": "Leveraging Data Analytics During Due Diligence",
@@ -134,7 +150,8 @@
             "category": "Private Equity",
             "preview": "## Moving Faster and More Confidently",
             "recommended": null,
-            "link": "Leveraging+Data+Analytics+During+Due+Diligence/image.jpg"
+            "image_link": "Leveraging+Data+Analytics+During+Due+Diligence/image.jpg",
+            "article_link": "Leveraging+Data+Analytics+During+Due+Diligence/Leveraging+Data+Analytics+During+Due+Diligence.md"
         },
         {
             "title": "The Intersection of Private Equity and Data Science",
@@ -142,7 +159,8 @@
             "category": "Private Equity",
             "preview": "## An Unlikely Duo: Private Equity & Data Science ",
             "recommended": null,
-            "link": "The+Intersection+of+Private+Equity+and+Data+Science/image.jpg"
+            "image_link": "The+Intersection+of+Private+Equity+and+Data+Science/image.jpg",
+            "article_link": "The+Intersection+of+Private+Equity+and+Data+Science/The+Intersection+of+Private+Equity+and+Data+Science.md"
         }
     ],
     "videos": [

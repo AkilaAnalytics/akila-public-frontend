@@ -20,6 +20,7 @@ interface IProps {
 }
 export const loader = async ({ params }: IProps) => {
   console.log('loader fired from blog.$title')
+  logger.log(params, '<<< params from laoder in resources.insights.$title')
   const bucketParams = {
     Bucket: process.env.STATIC_BUCKET,
     Key: `_blog/${params.title}/${params.title}.md`
@@ -29,10 +30,10 @@ export const loader = async ({ params }: IProps) => {
   const command = new GetObjectCommand(bucketParams)
   const response = await s3Client.send(command)
   const str = await response.Body.transformToString()
-  logger.log(response, '<<< response from insights.$title')
-  logger.log(str, '<<< str from insights.$title')
+  //logger.log(response, '<<< response from insights.$title')
+  //logger.log(str, '<<< str from insights.$title')
   const { attributes, body } = fm(str)
-  return { attributes, body }
+  return { attributes, body, title: params.title }
 }
 
 interface IAttributes {
@@ -46,10 +47,14 @@ interface IAttributes {
 interface IData {
   attributes: IAttributes
   body: string
+  title: string
 }
 
 export default function BlogTemplate() {
-  const { attributes, body } = useLoaderData<IData>()
+  const { attributes, body, title } = useLoaderData<IData>()
+  logger.log(attributes, '<<<< attributes')
+  //logger.log(body, '<<<< body')
+  logger.log(title, '<<<< title')
   return (
     <div>
       <Title
@@ -57,7 +62,12 @@ export default function BlogTemplate() {
         date={attributes.date}
         title={attributes.title}
         subTitle={attributes.subTitle}
+        link={`${title}/image.jpg`}
       />
+      <br />
+      <br />
+      <br />
+
       <Body>
         <Summary points={attributes.points} />
         <ReactMarkdown linkTarget="_blank" className="markdown">
