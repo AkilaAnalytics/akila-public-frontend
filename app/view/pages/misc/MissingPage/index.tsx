@@ -4,7 +4,7 @@ import { RocketMan } from '~/view/assets/'
 
 export default function MissingPage() {
   return (
-    <div className="flex flex-col bg-black md:flex-row">
+    <div className="flex flex-col bg-black px-5 md:flex-row">
       <img
         src={RocketMan}
         alt="astronaut in space"

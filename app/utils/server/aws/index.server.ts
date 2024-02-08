@@ -19,5 +19,4 @@ const config = isProd ? prodCredentials : devCredentials
 
 const s3Client = new S3Client(config)
 const sesClient = new SESClient(config)
-
 export { s3Client, sesClient }

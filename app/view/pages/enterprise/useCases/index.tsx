@@ -58,7 +58,8 @@ export default function UseCases() {
       />
       <AkilaBussinessCloudSection
         heading="The Akila’s Business Cloud is where work gets done faster and smarter."
-        description="Akila Analytics can help you harness the power of your data with apps to drive business action.">
+        description="Akila Analytics can help you harness the power of your data with apps to drive business action."
+      >
         <div className="grid justify-items-center gap-[30px] md:grid-flow-col">
           {akilasPlatformSectionData?.map((data, index) => (
             <CommonGrayCard
@@ -98,8 +99,7 @@ export default function UseCases() {
 //
 const partnerAnalytics = [
   {
-    description:
-      'External self-service analyticsExternal self-service analytics'
+    description: 'External self-service analytics'
   },
   {
     description: 'Deliver value to customers'

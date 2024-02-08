@@ -75,7 +75,7 @@ export const meta = () => {
 }
 
 // DON'T DELETE: OUTPUTS AkilaAnalytics into the console
-console.log('v14')
+console.log('v16')
 logger.log(
   '%cAkila Analytics',
   'color: rgba(35,37,202); font-family: sans-serif; font-size: 4.5em; font-weight: bolder; text-shadow: #000 1px 1px;'

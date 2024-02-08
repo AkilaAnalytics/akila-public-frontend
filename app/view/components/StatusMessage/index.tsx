@@ -1,13 +1,13 @@
 import { StatusMessageTypes } from '~/utils'
 
-interface input {
+interface IProps {
   type: StatusMessageTypes
   message: string
 }
 
 const baseStyle = 'min-w-full p-2 text-center rounded-md'
 
-export default function StatusMessage({ type, message }: input) {
+export default function StatusMessage({ type, message }: IProps) {
   if (type === StatusMessageTypes.SUCCESS) {
     return (
       <span className={`${baseStyle} bg-green-200 text-green-900`}>

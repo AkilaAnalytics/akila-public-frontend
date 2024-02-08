@@ -1,10 +1,16 @@
 import type { LoaderArgs, ActionArgs } from '@remix-run/node'
-import { MetaFunction } from '@remix-run/node'
+import { MetaFunction, createCookie } from '@remix-run/node'
 
 import { GetObjectCommand } from '@aws-sdk/client-s3'
 import { json } from '@remix-run/node'
-import { useLoaderData, Link, useFetcher } from '@remix-run/react'
-import { useState } from 'react'
+import {
+  useLoaderData,
+  Link,
+  useFetcher,
+  useLocation,
+  useRouteError
+} from '@remix-run/react'
+import { useEffect, useState } from 'react'
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
 
 import { MissingPage } from '~/view/pages/misc'
@@ -12,6 +18,7 @@ import { s3Client } from '~/utils/server/index.server'
 import { logger } from '~/utils'
 import { InsightsBannerImage } from '~/view/assets'
 import { BannerImage } from '~/view/components'
+import { EmailSignUp } from '~/view/features'
 
 interface IArticles {
   title: string
@@ -26,22 +33,18 @@ interface IVideos extends IArticles {
   link: string
 }
 
-interface IBlogMeta {
+export interface IBlogMeta {
   meta: {
     articles: IArticles[]
     videos: IVideos[]
   }
+  isSubscribed: boolean
+  basePath: string
 }
 
-let basePath
-logger.log(process.env.NODE_ENV, '<<< NODE_ENV')
-if (process.env.NODE_ENV === 'development') {
-  basePath = 'https://www.staging.akilaanalytics.com/_blog'
-} else {
-  basePath = 'https://www.akilaanalytics.com/_blog'
-}
-
-export const loader = async () => {
+export const loader = async ({ request }) => {
+  const cookie = createCookie('isSubscribed')
+  const cookies = await cookie.parse(request.headers.get('Cookie'))
   try {
     const params = {
       Bucket: process.env.STATIC_BUCKET,
@@ -49,10 +52,22 @@ export const loader = async () => {
     }
     const command = new GetObjectCommand(params)
     const response = await s3Client.send(command)
+    //console.log(response, '<<<< response from resources.insights')
     const str = await response.Body.transformToString()
-    logger.log(str, '<<< str')
+    //logger.log(str, '<<<< str from resources.insights')
+    let basePath
+    if (process.env.NODE_ENV === 'production') {
+      basePath = 'https://www.akilaanalytics.com/_blog'
+    } else {
+      basePath = 'https://www.staging.akilaanalytics.com/_blog'
+    }
     return json(
-      { ok: true, meta: JSON.parse(str) },
+      {
+        ok: true,
+        meta: JSON.parse(str),
+        isSubscribed: cookies?.isSubscribed,
+        basePath
+      },
       {
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
@@ -61,13 +76,16 @@ export const loader = async () => {
       }
     )
   } catch (e) {
-    logger.log(e, '<<<  e from routes/resources.insights')
+    console.log(e, '<<<  e from routes/resources.insights')
     return { ok: false }
   }
 }
 
-export default function Index() {
+export default function Insights() {
   const res = useLoaderData<IBlogMeta>()
+  logger.log(res, '<<< res from useLoaderData')
+  const location = useLocation()
+  const [basePath, setBasePath] = useState<string>(res.basePath)
 
   if (!res?.meta?.articles) return <MissingPage />
 
@@ -137,23 +155,44 @@ export default function Index() {
                   alt={`${ele.title}`}
                 />
                 <br />
+
                 <span className="text-sm">{ele.category}</span>
-                <Link to={ele.title}>
-                  <h5 className="h-[7rem] font-semibold">
-                    <span className="line-clamp-3 inline">{ele.title}</span>
-                    <ChevronRightIcon className="inline h-6 w-20 text-periwinkle" />
-                  </h5>
-                </Link>
+                <div className="flex items-center">
+                  <Link to={ele.title}>
+                    <h5 className="h-[7rem] items-center justify-start font-semibold">
+                      {/* Display the whole title except the last word */}
+                      {ele.title.substring(0, ele.title.lastIndexOf(' '))}
+                      <span className="whitespace-nowrap">
+                        {/* Display the last word of the title */}{' '}
+                        {ele.title.substring(ele.title.lastIndexOf(' ') + 1)}
+                        {'  '}
+                        <span className="h-6 w-20 text-2xl text-periwinkle">
+                          &rsaquo;
+                        </span>
+                      </span>
+                    </h5>
+                  </Link>
+                </div>
 
                 <br />
-                <p className="line-clamp-3">{ele.preview}</p>
+                <p className="line-clamp-3">
+                  {' '}
+                  {ele.preview.replace(/[^a-zA-Z0-9 ]/g, '')}
+                </p>
               </div>
             )
           })}
         </div>
       </div>
+      {!res.isSubscribed && <EmailSignUp />}
     </div>
   )
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError()
+  console.log('ERROR FROM BOUNDARY', error)
+  return <div>Error</div>
 }
 
 export const meta: MetaFunction = () => {

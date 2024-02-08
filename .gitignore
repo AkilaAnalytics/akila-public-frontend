@@ -12,3 +12,4 @@ server/*
 **/.DS_Store
 
 *.zip
+*.csv

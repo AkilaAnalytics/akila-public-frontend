@@ -1,11 +1,28 @@
 .markdown p {
-  font-family: serif;
+  font-family: sans-serif;
   font-size: 1.25rem;
   margin-top: 1rem;
 }
 
 .markdown a {
   color: rgb(83, 75, 244);
+}
+
+blockquote p {
+  font-style: normal;
+  font-family: sans-serif;
+  font-size: 1rem;
+  margin: 20px;
+}
+
+blockquote p:first-child {
+  border-top: 1px solid #544bfd;
+  padding-top: 20px;
+}
+
+blockquote p:last-child {
+  border-bottom: 1px solid #544bfd;
+  padding-bottom: 20px;
 }
 
 /* Set margin-top as 0.5 for a paragraph following any "h" heading */

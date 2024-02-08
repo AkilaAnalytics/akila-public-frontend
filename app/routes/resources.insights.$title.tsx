@@ -1,4 +1,4 @@
-import type { LinksFunction } from '@remix-run/node'
+import { createCookie, type LinksFunction } from '@remix-run/node'
 
 import { GetObjectCommand } from '@aws-sdk/client-s3'
 import { useLoaderData } from '@remix-run/react'
@@ -8,8 +8,9 @@ import ReactMarkdown from 'react-markdown'
 import styles from '~/styles/blog.css'
 import { s3Client } from '~/utils/server/index.server'
 import { GettingStartedSection } from '~/view/components'
-import { Body, Summary, Title } from '~/view/features/Blog'
+import { Summary, Title } from '~/view/features/Blog'
 import { logger } from '~/utils'
+import { EmailSignUp } from '~/view/features'
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }]
 
@@ -18,9 +19,12 @@ interface IProps {
     title: string
   }
 }
-export const loader = async ({ params }: IProps) => {
-  console.log('loader fired from blog.$title')
-  logger.log(params, '<<< params from laoder in resources.insights.$title')
+export const loader = async ({ request, params }: IProps) => {
+  logger.log(request, '<<< params from laoder in resources.insights.$title')
+  // check if user is already subscribed to receive email alerts on the blog
+  const cookie = createCookie('isSubscribed')
+  const cookies = await cookie.parse(request.headers.get('Cookie'))
+
   const bucketParams = {
     Bucket: process.env.STATIC_BUCKET,
     Key: `_blog/${params.title}/${params.title}.md`
@@ -30,10 +34,16 @@ export const loader = async ({ params }: IProps) => {
   const command = new GetObjectCommand(bucketParams)
   const response = await s3Client.send(command)
   const str = await response.Body.transformToString()
+  createCookie
   //logger.log(response, '<<< response from insights.$title')
   //logger.log(str, '<<< str from insights.$title')
   const { attributes, body } = fm(str)
-  return { attributes, body, title: params.title }
+  return {
+    attributes,
+    body,
+    title: params.title,
+    isSubscribed: cookies?.isSubscribed
+  }
 }
 
 interface IAttributes {
@@ -51,7 +61,7 @@ interface IData {
 }
 
 export default function BlogTemplate() {
-  const { attributes, body, title } = useLoaderData<IData>()
+  const { attributes, body, title, isSubscribed } = useLoaderData<IData>()
   logger.log(attributes, '<<<< attributes')
   //logger.log(body, '<<<< body')
   logger.log(title, '<<<< title')
@@ -68,16 +78,82 @@ export default function BlogTemplate() {
       <br />
       <br />
 
-      <Body>
+      <div className="mx-auto flex w-full flex-col justify-center border-b-[1px] border-gray-800 px-5 md:w-1/2 md:px-0">
         <Summary points={attributes.points} />
-        <ReactMarkdown linkTarget="_blank" className="markdown">
+        <ReactMarkdown
+          linkTarget="_blank"
+          className="markdown"
+          skipHtml={true}
+          components={{
+            // Map `h1` (`# heading`) to use `h2`s.
+            h4(props) {
+              const { node, ...rest } = props
+              return (
+                <h4
+                  style={{
+                    borderBottom: '1px solid rgb(41, 38, 122)',
+                    fontStyle: 'normal',
+                    fontFamily: 'serif',
+                    letterSpacing: '0.025em'
+                  }}
+                  {...rest}
+                />
+              )
+            },
+            ul(props) {
+              const { node, ...rest } = props
+              return (
+                <ul
+                  style={{
+                    width: '100%'
+                  }}
+                  {...rest}
+                />
+              )
+            },
+            li(props) {
+              const { node, ...rest } = props
+              return (
+                <li
+                  style={{
+                    width: '100%'
+                  }}
+                  {...rest}
+                />
+              )
+            },
+            em(props) {
+              const { node, ...rest } = props
+              return (
+                <i
+                  style={{
+                    backgroundColor: 'rgb(41, 38, 122)',
+                    fontStyle: 'normal',
+                    fontFamily: 'sans-serif',
+                    padding: '20px',
+                    borderRadius: '20px',
+                    float: 'right',
+                    width: '40%',
+                    marginLeft: '20px'
+                  }}
+                  {...rest}
+                />
+              )
+            },
+            blockquote(props) {
+              const { node, ...rest } = props
+              return <blockquote {...rest} />
+            }
+          }}
+        >
           {body}
         </ReactMarkdown>
-      </Body>
+      </div>
       <br />
       <br />
       <br />
       <GettingStartedSection />
+      {!isSubscribed && <EmailSignUp />}
     </div>
   )
 }

@@ -18,15 +18,6 @@ export default function Title({
   subTitle,
   link
 }: IProps) {
-  logger.log(
-    category,
-    date,
-    title,
-    subTitle,
-    link,
-    '<<< category, date, title, subTitle1, link'
-  )
-
   let basePath
   //logger.log(process.env.NODE_ENV, '<<< NODE_ENV')
   logger.log(link, '<<< link from Blog/Title/index')
@@ -43,12 +34,12 @@ export default function Title({
           alt="Data Science"
           className="h-[50vh] w-full"
         />
-        <div className="absolute bottom-0 top-20 h-[50vh] w-full transform rounded-md bg-secondaryBackground p-3 md:left-20 md:top-0 md:h-auto md:h-auto md:max-w-[66%] md:translate-y-[50%]">
+        <div className="absolute bottom-0 top-20 h-[50vh] w-full transform rounded-md bg-secondaryBackground p-3 md:left-20 md:top-0 md:h-auto md:max-w-[66%] md:translate-y-[50%]">
           <div className="flex flex-col">
             <div>
-              <div className="font-serif font-bold text-periwinkle">
+              <p className="font-sans-serif font-bold tracking-wide text-periwinkle">
                 {category}
-              </div>
+              </p>
               <h2>{title}</h2>
               <h5>{subTitle}</h5>
             </div>

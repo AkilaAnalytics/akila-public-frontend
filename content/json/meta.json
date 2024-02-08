@@ -1,148 +1,130 @@
 {
     "articles": [
         {
-            "title": "Unlocking Hidden Business Potential with Data",
-            "subTitle": "How Akila Analytics Can Reveal Opportunities You Never Knew Existed",
-            "category": "Data Analytics",
-            "preview": "In today's digital age, data has become the lifeblood of businesses across",
-            "recommended": null,
-            "image_link": "Unlocking+Hidden+Business+Potential+with+Data/image.jpg",
-            "article_link": "Unlocking+Hidden+Business+Potential+with+Data/Unlocking+Hidden+Business+Potential+with+Data.md"
-        },
-        {
-            "title": "Maximizing Efficiency: The Hidden Power of Your Business Data",
-            "subTitle": "Are you using your data to its full potential?",
-            "category": "Business Analytics",
-            "preview": "Maximizing Efficiency: The Hidden Power of Your Business Data",
-            "recommended": null,
-            "image_link": "Maximizing+Efficiency%3A+The+Hidden+Power+of+Your+Business+Data/image.jpg",
-            "article_link": "Maximizing+Efficiency%3A+The+Hidden+Power+of+Your+Business+Data/Maximizing+Efficiency%3A+The+Hidden+Power+of+Your+Business+Data.md"
-        },
-        {
-            "title": "Feeling Overwhelmed by Data? Simplify with No-Code Tools",
-            "subTitle": "Learn how no-code solutions can help you process your data.",
-            "category": "Data Analytics",
-            "preview": "Feeling Overwhelmed by Data? Simplify with No-Code Tools",
-            "recommended": null,
-            "image_link": "Feeling+Overwhelmed+by+Data%3F+Simplify+with+No-Code+Tools/image.jpg",
-            "article_link": "Feeling+Overwhelmed+by+Data%3F+Simplify+with+No-Code+Tools/Feeling+Overwhelmed+by+Data%3F+Simplify+with+No-Code+Tools.md"
-        },
-        {
-            "title": "From Data Confusion to Clarity: Your Path Forward",
-            "subTitle": "See How Akila Analytics Makes Sense of Your Data Puzzle",
-            "category": "Data Analytics",
-            "preview": "In today's data-driven world, businesses are faced with an overwhelming amount",
-            "recommended": null,
-            "image_link": "From+Data+Confusion+to+Clarity%3A+Your+Path+Forward/image.jpg",
-            "article_link": "From+Data+Confusion+to+Clarity%3A+Your+Path+Forward/From+Data+Confusion+to+Clarity%3A+Your+Path+Forward.md"
-        },
-        {
-            "title": "Transforming Raw Data into Revenue",
-            "subTitle": "A Data-Driven Growth Strategy with Akila Analytics",
-            "category": "Business Analytics",
-            "preview": "In today's rapidly evolving business landscape, data has become an invaluable",
-            "recommended": null,
-            "image_link": "Transforming+Raw+Data+into+Revenue/image.jpg",
-            "article_link": "Transforming+Raw+Data+into+Revenue/Transforming+Raw+Data+into+Revenue.md"
-        },
-        {
-            "title": "Data-Driven Transformations",
-            "subTitle": "Navigating Changing Business Landscapes with Data",
-            "category": "Business Analytics",
-            "preview": "In today's fast-paced and ever-changing business environment, organizations need",
-            "recommended": true,
-            "image_link": "Data-Driven+Transformations/image.jpg",
-            "article_link": "Data-Driven+Transformations/Data-Driven+Transformations.md"
-        },
-        {
-            "title": "From Data to Decisions: A Data Analytics Journey",
-            "subTitle": "Transform Your Data into Strategic Business Moves",
-            "category": "Data Analytics",
-            "preview": "In today's fast-paced and data-driven business landscape, the ability to",
+            "title": "Unlocking the Potential of Gen AI for Value Creation",
+            "subTitle": "Maximizing Opportunities and Managing Risks",
+            "category": "Finance",
+            "preview": "Technology is evolving at an unprecedented pace, bringing about radical changes",
             "recommended": false,
-            "image_link": "From+Data+to+Decisions%3A+A+Data+Analytics+Journey/image.jpg",
-            "article_link": "From+Data+to+Decisions%3A+A+Data+Analytics+Journey/From+Data+to+Decisions%3A+A+Data+Analytics+Journey.md"
+            "image_link": "Unlocking+the+Potential+of+Gen+AI+for+Value+Creation/image.jpg",
+            "article_link": "Unlocking+the+Potential+of+Gen+AI+for+Value+Creation/Unlocking+the+Potential+of+Gen+AI+for+Value+Creation.md"
         },
         {
-            "title": "The Silent Business Growth Killer - Ignored Data",
-            "subTitle": "Overlooking Data Insights Can Cost Your Business In Unexpected Ways",
-            "category": "Business Analytics",
-            "preview": "In today's data-driven world, businesses have access to an overwhelming amount",
-            "recommended": null,
-            "image_link": "The+Silent+Business+Growth+Killer+-+Ignored+Data/image.jpg",
-            "article_link": "The+Silent+Business+Growth+Killer+-+Ignored+Data/The+Silent+Business+Growth+Killer+-+Ignored+Data.md"
+            "title": "Transforming Risk Modeling and Model Risk Management: Key Themes and Trends",
+            "subTitle": "Driving Efficiency, Expanding Scope, and Maximizing Potential",
+            "category": "Risk Management",
+            "preview": "In a rapidly evolving macroeconomic landscape, financial institutions are embracing new analytics capabilities to navigate rising uncertainty and volatility. Amidst this backdrop, the field of risk modeling and model risk management (MRM) is undergoing significant transformations, characterized by a strong focus on efficiency, an expanded scope, and the exploration of artificial intelligence and big data.",
+            "recommended": false,
+            "image_link": "Transforming+Risk+Modeling+and+Model+Risk+Management%3A+Key+Themes+and+Trends/image.jpg",
+            "article_link": "Transforming+Risk+Modeling+and+Model+Risk+Management%3A+Key+Themes+and+Trends/Transforming+Risk+Modeling+and+Model+Risk+Management%3A+Key+Themes+and+Trends.md"
         },
         {
-            "title": "Beyond Subjective Views: Using Data to Drive Business Decisions",
-            "subTitle": "Incorporating Data Science Into Your Business Strategy",
-            "category": "Business Analytics",
-            "preview": "In today's fast-paced business landscape, making informed decisions has become",
+            "title": "The Power of Gen AI in Real Estate",
+            "subTitle": "Unlocking Value and Innovating the Industry",
+            "category": "Real Estate",
+            "preview": "Generative AI (Gen AI) is ushering in a new era of innovation in the real estate",
             "recommended": true,
-            "image_link": "Beyond+Subjective+Views%3A+Using+Data+to+Drive+Business+Decisions/image.jpg",
-            "article_link": "Beyond+Subjective+Views%3A+Using+Data+to+Drive+Business+Decisions/Beyond+Subjective+Views%3A+Using+Data+to+Drive+Business+Decisions.md"
+            "image_link": "The+Power+of+Gen+AI+in+Real+Estate/image.jpg",
+            "article_link": "The+Power+of+Gen+AI+in+Real+Estate/The+Power+of+Gen+AI+in+Real+Estate.md"
         },
         {
-            "title": "Struggling with Data Overload? There\u2019s an Easier Way",
-            "subTitle": "Leverage modern tools to make sense of your data.",
-            "category": "Business Analytics",
-            "preview": "In today's digital age, businesses are inundated with vast amounts of data. This",
-            "recommended": null,
-            "image_link": "Struggling+with+Data+Overload%3F+There%E2%80%99s+an+Easier+Way/image.jpg",
-            "article_link": "Struggling+with+Data+Overload%3F+There%E2%80%99s+an+Easier+Way/Struggling+with+Data+Overload%3F+There%E2%80%99s+an+Easier+Way.md"
+            "title": "The Power of Generative AI: Revolutionizing Productivity",
+            "subTitle": "Unlocking Trillions of Dollars in Value",
+            "category": "Technology",
+            "preview": "Our analysis focuses solely on the direct impact that generative AI can have on the productivity of customer operations. However, it is important to note that there are additional benefits that may arise from improved customer satisfaction and retention. By enhancing the customer experience and providing more personalized support and recommendations, generative AI can contribute to higher customer satisfaction and increased loyalty.",
+            "recommended": false,
+            "image_link": "The+Power+of+Generative+AI%3A+Revolutionizing+Productivity/image.jpg",
+            "article_link": "The+Power+of+Generative+AI%3A+Revolutionizing+Productivity/The+Power+of+Generative+AI%3A+Revolutionizing+Productivity.md"
         },
         {
-            "title": "Implementing a Data-Driven Culture",
-            "subTitle": "A Guide to Organizational Success",
-            "category": "Data Analytics",
-            "preview": "In today's fast-paced and data-driven world, organizations are increasingly",
-            "recommended": null,
-            "image_link": "Implementing+a+Data-Driven+Culture/image.jpg",
-            "article_link": "Implementing+a+Data-Driven+Culture/Implementing+a+Data-Driven+Culture.md"
-        },
-        {
-            "title": "Customer Churn",
-            "subTitle": "Identify customers that are most likely to churn",
-            "category": "Retail Analytics",
-            "preview": "Customer churn, a term used to describe when customers end their relationship",
+            "title": "Unlocking Sustainable Growth in the Tech Industry",
+            "subTitle": "Harnessing Data to Drive Success",
+            "category": "Business",
+            "preview": "The tech industry is standing at a crucial crossroad. While tech companies have redefined innovation and experienced remarkable growth, they now face increasing pressure from investors to pursue sustainable growth. To achieve this, tech companies need to prioritize cash flows, cost reductions, productivity enhancements, and a better customer experience. However, these endeavors require effective data management practices\u2014a critical element that many tech companies struggle with.",
             "recommended": true,
-            "image_link": "Customer+Churn/image.jpg",
-            "article_link": "Customer+Churn/Customer+Churn.md"
+            "image_link": "Unlocking+Sustainable+Growth+in+the+Tech+Industry/image.jpg",
+            "article_link": "Unlocking+Sustainable+Growth+in+the+Tech+Industry/Unlocking+Sustainable+Growth+in+the+Tech+Industry.md"
         },
         {
-            "title": "Choosing the Right Data Analytics Tool for Your Business",
-            "subTitle": "What are some of the key factors to consider?",
-            "category": "Data Analytics",
-            "preview": "In today's data-driven business landscape, choosing the right data analytics",
+            "title": "Transforming Marketing with Gen AI",
+            "subTitle": "Unlocking Hyperpersonalization and Efficiency",
+            "category": "Marketing",
+            "preview": "Imagine a world where marketers have complete creative freedom and can deliver the perfect offer to the right person, at the right time, in a seamless and cohesive way. This world is now within reach, thanks to the power of Generative AI (gen AI). Gen AI is revolutionizing consumer marketing by enabling hyperpersonalization at scale, driving efficiency gains and unlocking valuable customer insights.",
+            "recommended": false,
+            "image_link": "Transforming+Marketing+with+Gen+AI/image.jpg",
+            "article_link": "Transforming+Marketing+with+Gen+AI/Transforming+Marketing+with+Gen+AI.md"
+        },
+        {
+            "title": "Managing Data for Maximum Value",
+            "subTitle": "Transforming Data Strategy for Optimal Results",
+            "category": "Data Management",
+            "preview": "Organizations often struggle to extract maximum value from their data investments. Traditional grassroots and big-bang data strategies have proven to be inadequate in delivering real results. However, by adopting a new approach and treating data like a consumer product, companies can unlock immediate value while paving the way for future opportunities.",
+            "recommended": false,
+            "image_link": "Managing+Data+for+Maximum+Value/image.jpg",
+            "article_link": "Managing+Data+for+Maximum+Value/Managing+Data+for+Maximum+Value.md"
+        },
+        {
+            "title": "Navigating the Changing Landscape of Consumer Businesses",
+            "subTitle": "Adapting to Disruptions and Seizing Opportunities",
+            "category": "Uncategorised",
+            "preview": "Leaders of consumer It is crucial for accountable executives to have complete",
             "recommended": true,
-            "image_link": "Choosing+the+Right+Data+Analytics+Tool+for+Your+Business/image.jpg",
-            "article_link": "Choosing+the+Right+Data+Analytics+Tool+for+Your+Business/Choosing+the+Right+Data+Analytics+Tool+for+Your+Business.md"
+            "image_link": "Navigating+the+Changing+Landscape+of+Consumer+Businesses/image.jpg",
+            "article_link": "Navigating+the+Changing+Landscape+of+Consumer+Businesses/Navigating+the+Changing+Landscape+of+Consumer+Businesses.md"
         },
         {
-            "title": "The Future of Business Intelligence: A No-Code Approach",
-            "subTitle": "Empowering Teams with Easy to Use Tools and Actionable Insights",
-            "category": "Business Intelligence",
-            "preview": "The future of business intelligence is on the horizon, and it involves a",
-            "recommended": null,
-            "image_link": "The+Future+of+Business+Intelligence%3A+A+No-Code+Approach/image.jpg",
-            "article_link": "The+Future+of+Business+Intelligence%3A+A+No-Code+Approach/The+Future+of+Business+Intelligence%3A+A+No-Code+Approach.md"
+            "title": "Unlocking the Potential of a Data Mesh",
+            "subTitle": "Harnessing the Power of Distributed Data Access",
+            "category": "Technology",
+            "preview": "Data mesh has emerged as a transformative solution to address the data access",
+            "recommended": false,
+            "image_link": "Unlocking+the+Potential+of+a+Data+Mesh/image.jpg",
+            "article_link": "Unlocking+the+Potential+of+a+Data+Mesh/Unlocking+the+Potential+of+a+Data+Mesh.md"
         },
         {
-            "title": "How Data Science is Changing the Way Business is Done",
-            "subTitle": "A Closer Look at How Data Science Is Redefining Success",
-            "category": "Data Science",
-            "preview": "Data science has emerged as a powerful force that is reshaping the business",
-            "recommended": null,
-            "image_link": "How+Data+Science+is+Changing+the+Way+Business+is+Done/image.jpg",
-            "article_link": "How+Data+Science+is+Changing+the+Way+Business+is+Done/How+Data+Science+is+Changing+the+Way+Business+is+Done.md"
+            "title": "Unlocking the Power of Digital and AI: How Leaders Drive Competitive Advantage",
+            "subTitle": "Building the Right Capabilities for Success",
+            "category": "Business Transformation",
+            "preview": "Digital and AI capabilities have become essential for businesses to drive",
+            "recommended": true,
+            "image_link": "Unlocking+the+Power+of+Digital+and+AI%3A+How+Leaders+Drive+Competitive+Advantage/image.jpg",
+            "article_link": "Unlocking+the+Power+of+Digital+and+AI%3A+How+Leaders+Drive+Competitive+Advantage/Unlocking+the+Power+of+Digital+and+AI%3A+How+Leaders+Drive+Competitive+Advantage.md"
         },
         {
-            "title": "Maximizing ROI on Data Analytics",
-            "subTitle": "How does data analytics impact your bottom line?",
-            "category": "Data Analytics",
-            "preview": "In today's data-driven world, organizations are constantly seeking ways to",
-            "recommended": null,
-            "image_link": "Maximizing+ROI+on+Data+Analytics/image.jpg",
-            "article_link": "Maximizing+ROI+on+Data+Analytics/Maximizing+ROI+on+Data+Analytics.md"
+            "title": "Navigating the Power of Generative AI: Key Questions for Boards",
+            "subTitle": "Ensuring Value Creation and Risk Management in the Age of Rapid Technological Advancements",
+            "category": "Technology",
+            "preview": "As the world grapples with the nascent yet powerful technology of generative AI,",
+            "recommended": false,
+            "image_link": "Navigating+the+Power+of+Generative+AI%3A+Key+Questions+for+Boards/image.jpg",
+            "article_link": "Navigating+the+Power+of+Generative+AI%3A+Key+Questions+for+Boards/Navigating+the+Power+of+Generative+AI%3A+Key+Questions+for+Boards.md"
+        },
+        {
+            "title": "Embracing an AI-Enabled Mindset for Lasting Value",
+            "subTitle": "Unlocking the Power of AI in Organizations",
+            "category": "AI and Analytics",
+            "preview": "Executives have recognized that to achieve lasting value at scale with artificial intelligence (AI), organizations must go beyond merely running experiments and proofs of concept. Building strong foundations is crucial, which involves aligning AI with core business areas, embracing cultural and organizational shifts, and investing in new technology and processes. Adopting these practices has shown to yield the highest bottom-line impact from AI. However, successful organizations go beyond just behavioral changes \u2013 they think differently about AI. An AI-enabled mindset is deeply ingrained in their collective mentality, driving the integration of AI into decision-making processes and business operations. They value collaboration, continuous learning, and the potential for future knowledge growth. Furthermore, these organizations prioritize end-to-end thinking and consistent architectural principles when combining AI with existing infrastructure. Building such a mindset is challenging but essential for organizations to fully leverage the value of data and technology.",
+            "recommended": true,
+            "image_link": "Embracing+an+AI-Enabled+Mindset+for+Lasting+Value/image.jpg",
+            "article_link": "Embracing+an+AI-Enabled+Mindset+for+Lasting+Value/Embracing+an+AI-Enabled+Mindset+for+Lasting+Value.md"
+        },
+        {
+            "title": "Building an Ethical Data Management Framework",
+            "subTitle": "Ensuring Responsible Data Use Across the Value Chain",
+            "category": "Data Management",
+            "preview": "Now more than ever, companies need to prioritize ethical data management to avoid significant reputational and financial costs. The exponential growth of data production, estimated to reach 463 exabytes per day by 2025, requires organizations to address not only the operational aspects but also the ethical considerations of data management.",
+            "recommended": false,
+            "image_link": "Building+an+Ethical+Data+Management+Framework/image.jpg",
+            "article_link": "Building+an+Ethical+Data+Management+Framework/Building+an+Ethical+Data+Management+Framework.md"
+        },
+        {
+            "title": "Unlocking the Power of Data",
+            "subTitle": "Transforming Business Through Data Analytics",
+            "category": "Technology",
+            "preview": "In today's data-driven world, businesses have the opportunity to leverage the",
+            "recommended": false,
+            "image_link": "Unlocking+the+Power+of+Data/image.jpg",
+            "article_link": "Unlocking+the+Power+of+Data/Unlocking+the+Power+of+Data.md"
         },
         {
             "title": "Leveraging Data Analytics During Due Diligence",

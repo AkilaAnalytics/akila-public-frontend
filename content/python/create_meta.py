@@ -43,6 +43,7 @@ def create_meta_json(folders, videos_file):
     for folder in folders:
         all_articles.extend(parse_md_files(folder))
 
+    # print(all_articles, "<<< all_articles")
     # Read and parse videos.json
     try:
         with open(videos_file, "r") as f:
