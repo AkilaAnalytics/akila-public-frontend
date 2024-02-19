@@ -29,7 +29,7 @@ export default function BlogCard({
             </div>
           </div>
           <div className="font-raleway text-base font-normal leading-6 text-[#E7E7E7]">
-            Rread More
+            Read More
           </div>
         </div>
       </div>

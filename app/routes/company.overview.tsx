@@ -7,10 +7,10 @@ export default function Overview() {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Overview' },
+    { title: 'Overview: No-Code Data Science' },
     {
       property: 'og:title',
-      content: 'Overview'
+      content: 'Overview: No-Code Data Science'
     },
     {
       name: 'description',

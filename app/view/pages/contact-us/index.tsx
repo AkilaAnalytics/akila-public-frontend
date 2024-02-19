@@ -35,7 +35,7 @@ export default function ContactUsPage() {
           <Form />
         </div>
         <div className="flex-1 rounded-md p-10">
-          <h2>Learn how Akila Analytics can help your business.</h2>
+          <h1>Learn how Akila Analytics can help your business.</h1>
           One of our product experts will provide a platform demonstration
           tailored to your needs.
           <br />

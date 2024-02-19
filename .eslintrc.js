@@ -1,4 +1,4 @@
-/** @type {import('eslint').Linter.Config} */
+// @type {import('eslint').Linter.Config}
 // source for using eslint-plugin-import: https://github.com/remix-run/remix/discussions/3090
 // https://kentcdodds.com/blog/common-mistakes-with-react-testing-library
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
     'plugin:import/typescript',
     '@remix-run/eslint-config',
     '@remix-run/eslint-config/node',
-    '@remix-run/eslint-config/jest-testing-library',
+    '@remix-run/eslint-config/jest-testing-library'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {

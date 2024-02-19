@@ -7,8 +7,11 @@ export default function Overview() {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Platform Overview' },
-    { property: 'og:title', content: 'Platform Overview' },
+    { title: 'Platform Overview: Data Analytics Made Easy' },
+    {
+      property: 'og:title',
+      content: 'Platform Overview: Data Analytics Made Easy'
+    },
     {
       name: 'description',
       content:

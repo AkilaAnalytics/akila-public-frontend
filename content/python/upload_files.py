@@ -40,7 +40,7 @@ def process_folder(folder_path):
                     title = post.get("title", "untitled")
 
                 # S3 Paths
-                s3_md_path = f"_blog/{title}/{file}"
+                s3_md_path = f"_blog/{title}/{title}.md"
                 s3_image_path = f"_blog/{title}/image.jpg"
 
                 # Upload Markdown file
@@ -50,9 +50,19 @@ def process_folder(folder_path):
                 image_file_path = os.path.join(root, f"image.jpg")
                 if os.path.exists(image_file_path):
                     upload_file_to_s3(image_file_path, s3_image_path)
+            if file.endswith("meta.json"):
+                result = upload_file_to_s3(
+                    f"{base_path}/json/meta.json", "_blog/meta.json"
+                )
+                print(result, "<<< result \n\n\n", flush=True)
 
 
 base_path = "/Users/brandongoldney/Documents/Akila-Analytics/public/frontend/content"
-folders = [f"{base_path}/general", f"{base_path}/private-equity"]
+folders = [
+    f"{base_path}/blog-general",
+    f"{base_path}/blog-private-equity",
+    # f"{base_path}/blog-programming",
+    f"{base_path}/json",
+]
 for folder in folders:
     process_folder(folder)

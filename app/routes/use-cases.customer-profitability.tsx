@@ -7,8 +7,11 @@ export default function PrivateEquity() {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Customer Profitability' },
-    { property: 'og:title', content: 'Customer Profitability' },
+    { title: 'Customer Profitability: Drive Value with Analytics' },
+    {
+      property: 'og:title',
+      content: 'Customer Profitability: Drive Value with Analytics'
+    },
     {
       name: 'description',
       content: 'Dive deep into customer profitability analytics with Akila.'

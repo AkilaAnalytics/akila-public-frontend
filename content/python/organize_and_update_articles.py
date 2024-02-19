@@ -1,3 +1,6 @@
+# PURPOSE: this script ensures all folders match the title of the article.
+# Except Mac's can't have a ":" in the folder so this replaces that with a "-"
+
 import os
 import shutil
 import frontmatter
@@ -36,5 +39,6 @@ def rename_folders(base_path):
 
 
 base_path = "/Users/brandongoldney/Documents/Akila-Analytics/public/frontend/content"
-rename_folders(f"{base_path}/general")
-rename_folders(f"{base_path}/private-equity")
+rename_folders(f"{base_path}/blog-general")
+rename_folders(f"{base_path}/blog-private-equity")
+rename_folders(f"{base_path}/blog-private-equity")

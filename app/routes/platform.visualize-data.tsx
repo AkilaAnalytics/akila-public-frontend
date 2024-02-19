@@ -7,8 +7,11 @@ export default function VisualizaData() {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Visualize Data' },
-    { property: 'og:title', content: 'Visualize Data' },
+    { title: 'Visualize Data: Data Analysis Made Easy' },
+    {
+      property: 'og:title',
+      content: 'Visualize Data: Data Analysis Made Easy'
+    },
     {
       name: 'description',
       content:

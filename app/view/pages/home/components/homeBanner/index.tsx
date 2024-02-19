@@ -37,7 +37,8 @@ export default function HomeBanner() {
         autoPlay
         loop
         muted
-        className="hiden absolute inset-0 z-10 h-[80vh] w-full overflow-hidden object-fill md:block md:h-full">
+        className="hiden absolute inset-0 z-10 h-[80vh] w-full overflow-hidden object-fill md:block md:h-full"
+      >
         <source src={EarthVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -49,9 +50,9 @@ export default function HomeBanner() {
       <div className="z-50 mt-[15vh]">
         <div className="my-auto text-center">
           <div className={`rollingText ${animateOut ? 'rollOut' : 'rollIn'}`}>
-            <h2 className="whitespace-nowrap">
+            <h1 className="whitespace-nowrap">
               <p className="text-gradient">{currentText}</p>
-            </h2>
+            </h1>
           </div>
           <h2>Made Easy</h2>
         </div>

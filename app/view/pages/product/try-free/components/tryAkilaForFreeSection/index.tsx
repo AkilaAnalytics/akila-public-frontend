@@ -16,9 +16,9 @@ export default function TryAkilaForFreeSection() {
     <div className="container_class">
       <div className="mx-auto mb-[50px] mt-[120px] min-h-[436px] max-w-[575px] ">
         <div className="  pb-[70px]">
-          <h2 className="font-raleway mb-[11px] text-center text-[32px] font-semibold sm:text-[40px]">
+          <h1 className="font-raleway mb-[11px] text-center text-[32px] font-semibold sm:text-[40px]">
             Try Akila for Free
-          </h2>
+          </h1>
           <p className="font-raleway mb-[40px] text-center text-[14px] font-medium sm:text-[18px]">
             Sign up for our free trial to see how Akila Analytics can help you
             gain insights from your data, make data-driven decisions, and drive
@@ -26,7 +26,8 @@ export default function TryAkilaForFreeSection() {
           </p>
           <form
             onSubmit={submitHandler}
-            className=" flex gap-1 rounded-full border-2 border-[#0398E1] p-[4px]">
+            className=" flex gap-1 rounded-full border-2 border-[#0398E1] p-[4px]"
+          >
             <input
               value={email}
               onChange={emailHandler}
@@ -36,7 +37,8 @@ export default function TryAkilaForFreeSection() {
 
             <button
               type="submit"
-              className="to-turqoise' bg-gradient-to-r min-h-[49px] w-full max-w-[170px] rounded-full from-linkText to-turqoise">
+              className="to-turqoise' min-h-[49px] w-full max-w-[170px] rounded-full bg-gradient-to-r from-linkText to-turqoise"
+            >
               Create Account
             </button>
           </form>

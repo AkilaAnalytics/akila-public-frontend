@@ -7,8 +7,11 @@ export default function PrivateEquity() {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Marketing Analytics' },
-    { property: 'og:title', content: 'Marketing Analytics' },
+    { title: 'Marketing Analytics: Gain Insights Faster' },
+    {
+      property: 'og:title',
+      content: 'Marketing Analytics: Gain Insights Faster'
+    },
     {
       name: 'description',
       content: 'Optimize your marketing strategies using Akila Analytics.'

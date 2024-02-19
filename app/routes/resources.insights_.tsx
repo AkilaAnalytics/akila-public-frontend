@@ -83,11 +83,11 @@ export const loader = async ({ request }) => {
 
 export default function Insights() {
   const res = useLoaderData<IBlogMeta>()
-  logger.log(res, '<<< res from useLoaderData')
   const location = useLocation()
   const [basePath, setBasePath] = useState<string>(res.basePath)
 
   if (!res?.meta?.articles) return <MissingPage />
+  logger.log(res.meta.articles[10], '<<< res from useLoaderData')
 
   const recommendedArticles = res.meta?.articles.filter(
     (ele) => ele.recommended === true
@@ -197,8 +197,8 @@ export function ErrorBoundary() {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Insights' },
-    { property: 'og:title', content: 'Insights' },
+    { title: 'Insights: No-Code Data Science' },
+    { property: 'og:title', content: 'Insights: No-Code Data Science' },
     {
       name: 'description',
       content:

@@ -3,7 +3,7 @@ export const loader = () => {
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.akilaanalytics.com/company/overview</loc>
+    <loc>https://akilaanalytics.com/company/overview</loc>
   </url>
   <url>
     <loc>https://www.akilaanalytics.com/contact-us</loc>
@@ -16,9 +16,6 @@ export const loader = () => {
   </url>
   <url>
     <loc>https://www.akilaanalytics.com/enterprise/use-cases</loc>
-  </url>
-  <url>
-    <loc>https://www.akilaanalytics.com/</loc>
   </url>
   <url>
     <loc>https://www.akilaanalytics.com/legal/privacy-policy</loc>

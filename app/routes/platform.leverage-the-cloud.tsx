@@ -7,8 +7,8 @@ export default function LeverageTheCloud() {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Leverage the Cloud' },
-    { property: 'og:title', content: 'Leverage the Cloud' },
+    { title: 'Leverage the Cloud: Easily Scale' },
+    { property: 'og:title', content: 'Leverage the Cloud: Easily Scale' },
     {
       name: 'description',
       content: 'Harness the power of the cloud with Akila Analytics.'

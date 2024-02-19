@@ -2,6 +2,7 @@
 
 import { logger } from '~/utils'
 import ShareOnSocialMedia from '../ShareOnSocialMedia'
+import { useLoaderData } from '@remix-run/react'
 
 interface IProps {
   category: 'Private Equity' | 'Technology'
@@ -19,7 +20,6 @@ export default function Title({
   link
 }: IProps) {
   let basePath
-  //logger.log(process.env.NODE_ENV, '<<< NODE_ENV')
   logger.log(link, '<<< link from Blog/Title/index')
   if (process.env.NODE_ENV === 'development') {
     basePath = 'https://www.staging.akilaanalytics.com/_blog'
@@ -27,32 +27,28 @@ export default function Title({
     basePath = 'https://www.akilaanalytics.com/_blog'
   }
   return (
-    <div className="h-[70vh]">
-      <div className="relative text-white">
-        <img
-          src={`${basePath}/${link}`}
-          alt="Data Science"
-          className="h-[50vh] w-full"
-        />
-        <div className="absolute bottom-0 top-20 h-[50vh] w-full transform rounded-md bg-secondaryBackground p-3 md:left-20 md:top-0 md:h-auto md:max-w-[66%] md:translate-y-[50%]">
-          <div className="flex flex-col">
-            <div>
-              <p className="font-sans-serif font-bold tracking-wide text-periwinkle">
-                {category}
-              </p>
-              <h2>{title}</h2>
-              <h5>{subTitle}</h5>
-            </div>
-            <br />
-            <div className="font-light">{date}</div>
-            <br />
-            <ShareOnSocialMedia
-              title={title}
-              subTitle={subTitle}
-              url="akilaanalytics.com"
-            />
-          </div>
+    <div>
+      <img
+        src={`${basePath}/${link}`}
+        alt="Data Science"
+        className="h-[50vh] w-full"
+      />
+      <div className="static h-auto w-full transform rounded-md bg-secondaryBackground p-3 md:relative md:left-20 md:top-[-30vh] md:h-auto md:w-2/3">
+        <div>
+          <p className="font-sans-serif font-bold tracking-wide text-periwinkle">
+            {category}
+          </p>
+          <h1 className="text-6xl">{title}</h1>
+          <h5>{subTitle}</h5>
         </div>
+        <br />
+        <div className="font-light">{date}</div>
+        <br />
+        <ShareOnSocialMedia
+          title={title}
+          subTitle={subTitle}
+          url="akilaanalytics.com"
+        />
       </div>
     </div>
   )

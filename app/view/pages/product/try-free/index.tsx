@@ -4,7 +4,7 @@ import { Fjord, Haes, Norsk, Solund, Wergerland } from '~/view/assets'
 
 export default function TryFree() {
   return (
-    <div className=" ">
+    <div>
       <TryAkilaForFreeSection />
       <TrustedBySection>
         <img src={Fjord} alt="" />

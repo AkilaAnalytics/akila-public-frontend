@@ -1,7 +1,8 @@
 import { createCookie, type LinksFunction } from '@remix-run/node'
+import { MetaFunction } from '@remix-run/node'
 
 import { GetObjectCommand } from '@aws-sdk/client-s3'
-import { useLoaderData } from '@remix-run/react'
+import { useLoaderData, useRouteError } from '@remix-run/react'
 import fm from 'front-matter'
 import ReactMarkdown from 'react-markdown'
 
@@ -20,10 +21,10 @@ interface IProps {
   }
 }
 export const loader = async ({ request, params }: IProps) => {
-  logger.log(request, '<<< params from laoder in resources.insights.$title')
   // check if user is already subscribed to receive email alerts on the blog
   const cookie = createCookie('isSubscribed')
   const cookies = await cookie.parse(request.headers.get('Cookie'))
+  logger.log(params, '<<< params from resources.blog.$title')
 
   const bucketParams = {
     Bucket: process.env.STATIC_BUCKET,
@@ -31,10 +32,16 @@ export const loader = async ({ request, params }: IProps) => {
   }
   logger.log(bucketParams, '<<< bucketParams from resources.blog.$title')
 
-  const command = new GetObjectCommand(bucketParams)
-  const response = await s3Client.send(command)
-  const str = await response.Body.transformToString()
-  createCookie
+  let str
+  try {
+    const command = new GetObjectCommand(bucketParams)
+    const response = await s3Client.send(command)
+    str = await response.Body.transformToString()
+    logger.log(response, '<<< response from s3 in insights.$title')
+  } catch (error) {
+    logger.log(error, '<<< error from s3 in insights.$title')
+  }
+  //createCookie
   //logger.log(response, '<<< response from insights.$title')
   //logger.log(str, '<<< str from insights.$title')
   const { attributes, body } = fm(str)
@@ -66,7 +73,7 @@ export default function BlogTemplate() {
   //logger.log(body, '<<<< body')
   logger.log(title, '<<<< title')
   return (
-    <div>
+    <div className="flex flex-col gap-5">
       <Title
         category={attributes.category}
         date={attributes.date}
@@ -74,10 +81,6 @@ export default function BlogTemplate() {
         subTitle={attributes.subTitle}
         link={`${title}/image.jpg`}
       />
-      <br />
-      <br />
-      <br />
-
       <div className="mx-auto flex w-full flex-col justify-center border-b-[1px] border-gray-800 px-5 md:w-1/2 md:px-0">
         <Summary points={attributes.points} />
         <ReactMarkdown
@@ -85,7 +88,7 @@ export default function BlogTemplate() {
           className="markdown"
           skipHtml={true}
           components={{
-            // Map `h1` (`# heading`) to use `h2`s.
+            // Map `h4` (`# heading`) to use `h1`s for SEO
             h4(props) {
               const { node, ...rest } = props
               return (
@@ -156,4 +159,22 @@ export default function BlogTemplate() {
       {!isSubscribed && <EmailSignUp />}
     </div>
   )
+}
+
+export const meta: MetaFunction = ({ data }: IData) => {
+  const { title, subTitle } = data.attributes //useLoaderData<IData>()
+  return [
+    { title: `Blog: ${title}` },
+    { property: 'og:title', content: `Blog: ${title}` },
+    {
+      name: 'description',
+      content: subTitle
+    }
+  ]
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError()
+  console.log('ERROR FROM BOUNDARY', error)
+  return <div>Error</div>
 }

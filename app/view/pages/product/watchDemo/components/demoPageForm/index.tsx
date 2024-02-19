@@ -10,13 +10,14 @@ export default function DemoPageForm() {
   return (
     <div className="w-[100%]">
       <div className="min-h-[751px] w-full items-center justify-center bg-[#191919] p-10">
-        <h2 className="font-raleway mb-[40px] font-semibold leading-10">
-          Schedule a Demo Today.
-        </h2>
+        <h1 className="font-raleway mb-[40px] text-5xl font-semibold leading-10">
+          Schedule a Demo Today
+        </h1>
         <fetcher.Form
           method="post"
           action="/api/contact-us"
-          className="flex min-h-[652px] w-full flex-col">
+          className="flex min-h-[652px] w-full flex-col"
+        >
           <input
             type="text"
             placeholder="First Name"
@@ -62,7 +63,8 @@ export default function DemoPageForm() {
           <input type="hidden" name="source" value="demoPage" />
           <button
             type="submit"
-            className="button-gradient mt-[8px] min-h-[60px] w-full rounded-md bg-red-500">
+            className="button-gradient mt-[8px] min-h-[60px] w-full rounded-md bg-red-500"
+          >
             Submit
           </button>
           {fetcher.data && (

@@ -18,7 +18,6 @@ const bullet = () => {
 export default function Points({ points }: IProps) {
   return (
     <div className="border-b-[1px] border-t-[1px] border-gray-800">
-      <br />
       <h4 className="font-sans tracking-wide">Summary</h4>
       {points.map((ele) => (
         <div key={ele} className="mt-3 flex flex-row items-center gap-3">

@@ -7,8 +7,8 @@ export default function Pricing() {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Pricing' },
-    { property: 'og:title', content: 'Pricing' },
+    { title: 'Pricing: No-Code Data Science Platform' },
+    { property: 'og:title', content: 'Pricing: No-Code Data Science Platform' },
     {
       name: 'description',
       content:

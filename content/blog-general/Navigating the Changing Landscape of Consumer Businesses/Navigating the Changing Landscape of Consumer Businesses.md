@@ -1,7 +1,7 @@
 ---
 title: Navigating the Changing Landscape of Consumer Businesses
 subTitle: Adapting to Disruptions and Seizing Opportunities
-category: Uncategorised
+category: Uncategorized
 date: January 2024
 headers:
   - 'Cache-Control: max-age=86400'
@@ -47,4 +47,3 @@ regardless of your starting point, is now.
 - [Deloitte: AI's potential for consumer products companies](https://www2.deloitte.com/nl/nl/pages/consumer-industrial-products/articles/artificial-intelligence-in-the-consumer-products-industry.html)
 - [KPMG: Geneartive AI Consumer Retail Survey Report](https://kpmg.com/kpmg-us/content/dam/kpmg/pdf/2023/kpmg-generative-ai-consumer-retail-survey-report.pdf)
 - [McKinsey: How Consumer Companies Outcompete: High-performing Operating Models](https://www.mckinsey.com/industries/consumer-packaged-goods/our-insights/how-consumer-companies-outcompete-high-performing-operating-models)
-
