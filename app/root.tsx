@@ -69,7 +69,8 @@ export const meta = () => {
     },
     {
       name: 'description',
-      content: 'Akila: Modern Day Business Analytics'
+      content:
+        'Simplify and automate your data analytics with an intuitive and easy-to-use interface.'
     }
   ]
 }

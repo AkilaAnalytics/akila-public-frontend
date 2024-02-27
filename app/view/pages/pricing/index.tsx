@@ -57,7 +57,7 @@ const priceData = [
   },
   {
     title: 'Professional',
-    price: 'Contact Us',
+    price: '2,000 / month',
     description:
       'Great for start-ups and small businesses that do not already have mature cloud-based solutions.',
     keyPoints: [

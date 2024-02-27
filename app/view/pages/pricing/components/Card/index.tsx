@@ -23,7 +23,7 @@ export default function Card({
     <div className="min-h-[500px] w-full rounded-lg border border-gray-200 bg-secondaryBackground p-4 shadow sm:p-8">
       <div className="flex min-h-full flex-col">
         <div className=" text-xl font-medium text-linkText">{title}</div>
-        <div className="flex items-baseline text-gray-900 dark:text-white">
+        <div className="flex items-baseline text-white">
           {price !== 'Contact Us' && (
             <span className="text-3xl font-semibold">$</span>
           )}
@@ -58,7 +58,8 @@ export default function Card({
         <br />
         <Link
           to={path}
-          className="mt-auto w-full rounded-lg bg-periwinkle p-3 text-center hover:scale-105">
+          className="mt-auto w-full rounded-lg bg-periwinkle p-3 text-center hover:scale-105"
+        >
           {buttonText}
         </Link>
       </div>
