@@ -16,7 +16,7 @@ export default function WatchDemo() {
       <div className="container_class">
         <div className="mt-[120px] flex flex-col justify-between gap-4 lg:flex-row ">
           <DemoPageFormDemoPageForm />
-          <DemoVideoOfAkilaSection video={DemoVideoImage} />
+          <DemoVideoOfAkilaSection />
         </div>
         <TrustedBySection heading="Trusted Customers">
           <img src={Fjord} alt="" />

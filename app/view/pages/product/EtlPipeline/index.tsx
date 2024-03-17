@@ -1,40 +1,42 @@
 import {
-  DataProcessingBg,
+  DataExplorationBg,
   AiDataSetsCard,
   AiGuideCard,
-  StreamlineData,
-  TransformyourData
+  DiscoverInsights,
+  UnlockInsights,
+  ChartsDashboard
 } from '~/view/assets'
 import {
   BannerImage,
-  DescriptionImageComponent,
   GettingStartedSection,
-  ReleatedResources,
-  ReleatedResourcesCard
+  ReleatedResourcesCard,
+  DescriptionImageComponent,
+  ReleatedResources
 } from '~/view/components'
 
-export default function DataProcessing() {
+export default function EtlPipeline() {
   return (
     <div>
-      <div>
-        <BannerImage
-          title="Easy Data Cleaning & Manipulation"
-          subTitle="Simplify your data processing workflow and save time and resources with Akila Analytics. Start transforming your data today, no coding required."
-          image={DataProcessingBg}
-        />
-      </div>
+      <BannerImage
+        title="Automate ETL pipelines"
+        subTitle="Streamline your data processes with intuitive ETL pipeline tools."
+        image={DataExplorationBg}
+      />
       <DescriptionImageComponent
-        heading="Streamline Your Data 
-        Processing Workflow"
-        description="Transform your data quickly and easily with Akila Analytics' streamlined data processing workflow. Our clean and modern interface makes it easy for non-technical users to process data without coding. Plus, our cost-efficient solution saves you money and time."
-        img={StreamlineData}
+        heading="Connect to data effortlessly"
+        description="With Akila Analytics' connecting to your data is intuitive and easy."
+        img={DiscoverInsights}
       />
       <DescriptionImageComponent
         changeOrder
-        heading="Transform Your Data 
-        Quickly and Easily"
-        description="Akila Analytics' streamlined data processing workflow simplifies the process of transforming your data. Our modern interface makes it easy for non-technical users to process data without coding. Plus, our cost-efficient solution saves you time and money."
-        img={TransformyourData}
+        heading="Analyze & discover insights"
+        description="Transform your data with Akila's built-in data processing tools.."
+        img={UnlockInsights}
+      />
+      <DescriptionImageComponent
+        heading="Output your data anywhere you need it"
+        description="Using Akila's built-in data connections or building bespoke solutions, save your data anywhere."
+        img={ChartsDashboard}
       />
       <ReleatedResources>
         <div className="grid grid-cols-1 justify-items-center gap-[15px] lg:grid-cols-3">

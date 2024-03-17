@@ -1,21 +1,22 @@
 import { VisualizeDataPage } from '~/view/pages'
 import { MetaFunction } from '@remix-run/node'
 
-export default function VisualizaData() {
-  return <VisualizeDataPage />
-}
+export default VisualizeDataPage
 
 export const meta: MetaFunction = () => {
+  const title = 'Visualize Data: Data Analysis Made Easy'
+  const description =
+    'Visualize your data effectively using Akila Analytics tools. Turn your data into meaningful insights.'
   return [
-    { title: 'Visualize Data: Data Analysis Made Easy' },
-    {
-      property: 'og:title',
-      content: 'Visualize Data: Data Analysis Made Easy'
-    },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content:
-        'Visualize your data effectively using Akila Analytics tools. Turn your data into meaningful insights.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

@@ -12,6 +12,7 @@ export { default as AutomaticRecurringTasksJobs } from './automatic-recurring-ta
 export { default as AutomateTasksWithEase } from './automate-tasks-with-ease.png'
 export { default as UnlockPowerOfMachineLearning } from './unlock-power-machine-learning.png'
 export { default as EmpowerBussinessWithMachineLearning } from './empower-bussiness-with-machine-learning.png'
+export { default as ChartsDashboard } from './charts-dashboard.jpg'
 
 export { default as TalkToSalesBg } from './talk-to-sales-bg.png'
 

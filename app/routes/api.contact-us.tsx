@@ -2,6 +2,7 @@ import { json } from '@remix-run/node'
 import type { ActionFunctionArgs } from '@remix-run/node'
 
 import { sendEmail } from '~/api/emails/index.server'
+import { logger } from '~/utils'
 
 function sanitizeString(input: string) {
   // Use a basic method to sanitize: strip out any non-alphanumeric characters, except for spaces.
@@ -33,6 +34,7 @@ export async function action({
   try {
     // parse request
     const body = await request.formData()
+    logger.log(body, '<<< body')
     const [
       firstName,
       lastName,
@@ -41,7 +43,8 @@ export async function action({
       source,
       phone,
       jobTitle,
-      company
+      company,
+      address
     ] = [
       'firstName',
       'lastName',
@@ -50,9 +53,11 @@ export async function action({
       'source',
       'phone',
       'jobTitle',
-      'company'
+      'company',
+      'address'
     ].map((field) => {
       const rawValue = body.get(field) as string
+      console.log(rawValue, '<<< rawValue')
       if (field === 'email') {
         return sanitizeEmail(rawValue)
       } else if (field === 'phone') {
@@ -62,17 +67,20 @@ export async function action({
       }
     })
 
-    // send email
-    await sendEmail({
-      firstName,
-      lastName,
-      email,
-      message,
-      source,
-      phone,
-      jobTitle,
-      company
-    })
+    // NOTE: ADDRESS IS A HONEYPOT honey pot. If the user added a field then
+    // it is a bot. We will not send an email and return a 200 status code
+    if (!address) {
+      await sendEmail({
+        firstName,
+        lastName,
+        email,
+        message,
+        source,
+        phone,
+        jobTitle,
+        company
+      })
+    }
     return json({
       ok: true
     })

@@ -1,21 +1,22 @@
 import { EndToEndSolutionsPage } from '~/view/pages'
 import { MetaFunction } from '@remix-run/node'
 
-export default function EndToEndSolutions() {
-  return <EndToEndSolutionsPage />
-}
+export default EndToEndSolutionsPage
 
 export const meta: MetaFunction = () => {
+  const title = 'End-to-End Solutions - Akila Analytics Platform'
+  const description =
+    'Discover our comprehensive solutions that cover your data needs from start to finish.'
   return [
-    { title: 'End-to-End Solutions - Akila Analytics Platform' },
-    {
-      property: 'og:title',
-      content: 'End-to-End Solutions - Akila Analytics Platform'
-    },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content:
-        'Discover our comprehensive solutions that cover your data needs from start to finish.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

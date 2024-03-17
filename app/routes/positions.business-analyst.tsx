@@ -1,18 +1,22 @@
 import { BusinessAnalystPage } from '~/view/pages'
 import { MetaFunction } from '@remix-run/node'
 
-export default function BusinessAnalyst() {
-  return <BusinessAnalystPage />
-}
+export default BusinessAnalystPage
 
 export const meta: MetaFunction = () => {
+  const title = 'Business Analyst Position'
+  const description =
+    'Leverage the power of Akila Analytics as a Business Analyst. Explore features tailored for business analysis tasks.'
   return [
-    { title: 'Business Analyst Position' },
-    { property: 'og:title', content: 'Business Analyst Position' },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content:
-        'Leverage the power of Akila Analytics as a Business Analyst. Explore features tailored for business analysis tasks.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

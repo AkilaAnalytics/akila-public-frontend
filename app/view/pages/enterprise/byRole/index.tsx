@@ -119,7 +119,8 @@ export default function ByRole() {
 
       <AkilaBussinessCloudSection
         heading="Akila is where work gets done faster and smarter."
-        description="Akila Analytics can help you harness the power of your data with apps to drive business action.">
+        description="Akila Analytics can help you harness the power of your data with apps to drive business action."
+      >
         <div className="grid gap-[30px] md:grid-flow-col">
           {akilaWherWorkDoneData?.map((data, index) => (
             <CommonGrayCard

@@ -4,7 +4,7 @@ export default function UseCaseSection({ heading, children }) {
   return (
     <div>
       <div className="flex flex-col items-center">
-        <div className="font-raleway pb-[20px] text-[40px] font-semibold leading-[88%]">
+        <div className="pb-[20px] font-sans text-[40px] font-semibold leading-[88%]">
           {heading}
         </div>
         <HorizontalLine />

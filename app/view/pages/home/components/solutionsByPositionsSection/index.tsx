@@ -1,10 +1,15 @@
 import HorizontalLine from '../horizontailLine'
 
-export default function SolutionsByPositions({ heading, children }) {
+interface IProps {
+  heading: string
+  children: React.ReactNode
+}
+
+export default function SolutionsByPositions({ heading, children }: IProps) {
   return (
     <div className="container_class">
       <div className="my-[50px] flex flex-col items-center">
-        <div className="font-raleway pb-[20px] text-[40px] font-semibold leading-[88%]">
+        <div className="pb-[20px] text-center font-sans text-[40px] font-semibold leading-[88%]">
           {heading}
         </div>
         <HorizontalLine />

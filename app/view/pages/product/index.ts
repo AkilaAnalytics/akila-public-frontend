@@ -6,6 +6,7 @@ export { default as DevOpsPage } from './DevOps'
 export { default as DataExplorationPage } from './DataExploration'
 export { default as DataProcessingPage } from './DataProcessing'
 export { default as MachineLearningPage } from './MachineLearning'
+export { default as EtlPipeline } from './EtlPipeline'
 export { default as RecurringJobsPage } from './RecurringJobs'
 
 export { default as WatchDemoPage } from './watchDemo'

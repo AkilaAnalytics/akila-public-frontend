@@ -1,18 +1,22 @@
 import { RecurringJobsPage } from '~/view/pages'
 import { MetaFunction } from '@remix-run/node'
 
-export default function RecurringJobs() {
-  return <RecurringJobsPage />
-}
+export default RecurringJobsPage
 
 export const meta: MetaFunction = () => {
+  const title = 'Recurring Jobs'
+  const description =
+    'Schedule and manage recurring jobs efficiently with Akila Analytics. Ensure your data workflows run smoothly and consistently.'
   return [
-    { title: 'Recurring Jobs' },
-    { property: 'og:title', content: 'Recurring Jobs' },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content:
-        'Schedule and manage recurring jobs efficiently with Akila Analytics. Ensure your data workflows run smoothly and consistently.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

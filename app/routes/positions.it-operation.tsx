@@ -1,18 +1,21 @@
 import { ItOperationPage } from '~/view/pages'
 import { MetaFunction } from '@remix-run/node'
 
-export default function DevOps() {
-  return <ItOperationPage />
-}
+export default ItOperationPage
 
 export const meta: MetaFunction = () => {
+  const title = 'IT Operation Position'
+  const description = 'Learn how executives in IT are leveraging Akila.'
   return [
-    { title: 'IT Operation Position' },
-    { property: 'og:title', content: 'IT Operation Position' },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content:
-        'Join Akila Analytics as part of our IT operations team to help maintain and optimize our no-code data science platform.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

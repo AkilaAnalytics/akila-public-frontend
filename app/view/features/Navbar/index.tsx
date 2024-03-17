@@ -47,14 +47,16 @@ export default function Navbar() {
                 setIsOpen(false)
                 setActiveSubMenu(null)
               }
-            }}>
+            }}
+          >
             <Link className="flex items-center" to={items.href && items.href}>
-              <span
-                className={`mr-1 uppercase ${
-                  index === activeSubMenu ? 'border-b-2' : ''
-                } `}>
+              <p
+                className={`mr-1 pb-2 uppercase ${
+                  index === activeSubMenu ? 'border-b-[1px]' : ''
+                } `}
+              >
                 {items.name}
-              </span>
+              </p>
               {items.submenu && (
                 <ChevronDownIcon
                   className={`  ml-1 h-[15px] w-[15px] transform ${
@@ -74,8 +76,9 @@ export default function Navbar() {
                     onClick={() => {
                       setIsOpen(false)
                       setActiveSubMenu(null)
-                    }}>
-                    <Link to={item.href}> {item.name}</Link>
+                    }}
+                  >
+                    <Link to={item.href}> {item.name} </Link>
                   </li>
                 )
               })}
@@ -118,7 +121,8 @@ export default function Navbar() {
           href={privatePages}
           target="_blank"
           rel="noreferrer"
-          className="my-auto">
+          className="my-auto"
+        >
           <button className="z-50 my-auto flex w-full items-center whitespace-nowrap rounded-md p-2 text-xs uppercase tracking-widest hover:scale-105 md:w-auto">
             Sign In
           </button>
@@ -134,7 +138,8 @@ export default function Navbar() {
   return (
     <nav
       className="sticky top-0 z-[999] bg-black px-2 py-[22px] text-xs"
-      ref={sidebarRef}>
+      ref={sidebarRef}
+    >
       <div className="relative mx-auto flex w-10/12 items-center justify-between gap-2">
         <Link to="/" onClick={() => setIsOpen(false)}>
           <img
@@ -186,7 +191,8 @@ export default function Navbar() {
                           <Link
                             to={subItems.href}
                             key={subItems.href}
-                            className="px-3 py-3">
+                            className="px-3 py-3"
+                          >
                             <li className="cursor-pointer font-semibold uppercase tracking-[0.3px]">
                               {subItems.name}
                             </li>
@@ -207,7 +213,8 @@ export default function Navbar() {
                   key={index}
                   className={`${
                     matches[1]?.pathname === menu?.href ? 'active' : ''
-                  }  text-text_clr`}>
+                  }  text-text_clr`}
+                >
                   <li className="text-xs uppercase">{menu.name}</li>
                 </Link>
               )
@@ -232,11 +239,13 @@ export default function Navbar() {
       <div
         className={`fixed bottom-0 left-0 right-0 top-[70px] transform ${
           isOpen ? 'translate-y-0' : 'translate-y-[-1000px]'
-        } bg-black lg:hidden`}>
+        } bg-black lg:hidden`}
+      >
         <div
           className={`h-full transform overflow-y-auto   ${
             isOpen ? 'opacity-100 ' : 'opacity-0 '
-          } transition-all  duration-1000  ease-in-out`}>
+          } transition-all  duration-1000  ease-in-out`}
+        >
           <div className="flex h-full flex-col pt-[40px]">
             <ul ref={menuRef}>
               {renderMenus(navigation)}
@@ -326,6 +335,11 @@ const navigation = [
         name: 'Recurring Jobs',
         href: '/product/recurring-jobs',
         description: 'Automate your recurring tasks and jobs easily.'
+      },
+      {
+        name: 'ETL Pipelines',
+        href: '/product/etl-pipeline',
+        description: 'Set up ETL pipelines & automate processes faster.'
       },
       {
         name: 'Watch Demo',

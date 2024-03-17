@@ -25,7 +25,7 @@ export default function IntegrateData() {
     <div>
       <div>
         <BannerImage
-          title="Integrate Data"
+          title="Data Integration Made Easy"
           subTitle="We understand you have preferred data visualization tools, and we don’t want to change that. Akila outputs data to your preferred visualization tools. "
           image={IntegarteDataBg}
         />

@@ -16,10 +16,10 @@ export default function TryAkilaForFreeSection() {
     <div className="container_class">
       <div className="mx-auto mb-[50px] mt-[120px] min-h-[436px] max-w-[575px] ">
         <div className="  pb-[70px]">
-          <h1 className="font-raleway mb-[11px] text-center text-[32px] font-semibold sm:text-[40px]">
+          <h1 className="mb-[11px] text-center font-sans text-[32px] font-semibold sm:text-[40px]">
             Try Akila for Free
           </h1>
-          <p className="font-raleway mb-[40px] text-center text-[14px] font-medium sm:text-[18px]">
+          <p className="mb-[40px] text-center font-sans text-[14px] font-medium sm:text-[18px]">
             Sign up for our free trial to see how Akila Analytics can help you
             gain insights from your data, make data-driven decisions, and drive
             business growth.
@@ -48,7 +48,7 @@ export default function TryAkilaForFreeSection() {
           {tryAkilaForFreeListData.map((data, index) => (
             <div className="flex " key={data.heading + index}>
               <TickComponent />
-              <div className="font-raleway mb-[16px] ml-[16px] text-[20px] leading-[28px] text-[#E7E7E7]">
+              <div className="mb-[16px] ml-[16px] font-sans text-[20px] leading-[28px] text-[#E7E7E7]">
                 <span className=" font-bold">{data.heading}</span>.
                 <span className="ml-[3px]">{data.description}</span>
               </div>

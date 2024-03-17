@@ -14,12 +14,13 @@ export default function PlatformOverview() {
       <BannerImage
         horizontalLine
         image={PaltformOverviewBg}
-        title="Platform Overview"
-        subTitle="Explore how Akila is increasing efficiency "
+        title="Leverage AI Data Analytics"
+        subTitle="Achieve maximum efficiency by pairing tools like SQL & python with AI Analytics."
       />
       <ExperiencePerksSection
-        heading="Experience the perks of the platform"
-        description="Unlock the full potential of your data with Akila Analytics - the ultimate no-code solution for business analytics and data science. Our platform empowers you to explore, process, and analyze your data effortlessly, while our automated workflows streamline your entire project's life cycle. With Akila Analytics, you'll enjoy these benefits:">
+        heading="Automate your workflows using Akila Analytics"
+        description="Sometimes more traditional tools like SQL & python are sufficient to do the job. Other times, we need to leverage cutting-edge AI data analytics tools to achieve maximum efficiency."
+      >
         <div className="grid grid-cols-1 justify-items-center gap-[30px] sm:grid-cols-2 md:grid-cols-4">
           {experienceThePerksData?.map((data) => (
             <ExperienceThePerksCard
@@ -79,6 +80,10 @@ const experienceThePerksData = [
 
 const overviewBottomCards = [
   {
+    heading: 'AI Data Analytics',
+    description: 'Leverage cutting-edge analytics using no-code tools.'
+  },
+  {
     heading: 'Effortless Data Exploration',
     description:
       "Discover insights and trends in your data effortlessly with Akila Analytics' intuitive data exploration workflow. No coding required."
@@ -94,14 +99,9 @@ const overviewBottomCards = [
       "Build and train powerful machine learning models quickly and easily with Akila Analytics' user-friendly machine learning workflow. No coding needed."
   },
   {
-    heading: 'Automated Recurring Jobs',
+    heading: 'Automate Recurring Jobs',
     description:
       "Automate your recurring tasks and jobs, such as data extraction or report generation, with Akila Analytics' efficient recurring job workflow."
-  },
-  {
-    heading: 'Flexible Deployment Options',
-    description:
-      'Deploy Akila Analytics with full control over your data and infrastructure. Maintaining flexibility and control is critical.'
   },
   {
     heading: 'Secure and Reliable Platform',

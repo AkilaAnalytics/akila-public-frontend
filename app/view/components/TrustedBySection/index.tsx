@@ -2,7 +2,7 @@ export default function TrustedBySection({ heading, children }) {
   return (
     <div className="container_class hidden">
       <div className="my-[50px] ">
-        <h2 className="font-raleway pb-[48px] text-center text-[40px] font-semibold leading-[48px] text-[#E7E7E7]">
+        <h2 className="pb-[48px] text-center font-sans text-[40px] font-semibold leading-[48px] text-[#E7E7E7]">
           {heading}
         </h2>
 

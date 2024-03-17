@@ -3,9 +3,7 @@ import {
   AiDataSetsCard,
   AiGuideCard,
   DiscoverInsights,
-  UnlockInsights,
-  gettingStarted,
-  akilaAnalyticsLogo
+  UnlockInsights
 } from '~/view/assets'
 import {
   BannerImage,
@@ -18,13 +16,11 @@ import {
 export default function DataExploration() {
   return (
     <div>
-      <div>
-        <BannerImage
-          title="Understand your data"
-          subTitle="Unlock the power of your data and discover insights effortlessly with Akila Analytics' intuitive data exploration workflow. Try it now."
-          image={DataExplorationBg}
-        />
-      </div>
+      <BannerImage
+        title="Understand your data"
+        subTitle="Unlock the power of your data and discover insights effortlessly with Akila Analytics' intuitive data exploration workflow. Try it now."
+        image={DataExplorationBg}
+      />
       <DescriptionImageComponent
         heading="Discover Insights Effortlessly"
         description="With Akila Analytics' intuitive data exploration workflow, you can unlock the power of your data and gain insights effortlessly. Our user-friendly interface and no-code platform make it easy for anyone to explore data without technical expertise. Plus, our cost-efficient solution saves you time and resources."

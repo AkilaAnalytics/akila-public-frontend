@@ -1,21 +1,25 @@
 import { PlatformOverviewPage } from '~/view/pages'
 import { MetaFunction } from '@remix-run/node'
 
-export default function Overview() {
-  return <PlatformOverviewPage />
-}
+export default PlatformOverviewPage
 
 export const meta: MetaFunction = () => {
+  const title = 'AI Data Analysis: Simplify Your Data Analytics Journey'
+  const description =
+    'Explore AI Data Analysis with Akila. Gain a comprehensive understanding of our powerful data science tools designed for ease of use and robust insights.'
   return [
-    { title: 'Platform Overview: Data Analytics Made Easy' },
+    { title },
     {
-      property: 'og:title',
-      content: 'Platform Overview: Data Analytics Made Easy'
+      name: 'og:title',
+      content: title
     },
     {
       name: 'description',
-      content:
-        'Discover the full capabilities of Akila Analytics platform. Get a holistic view of our robust and comprehensive data science platform.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

@@ -1,20 +1,22 @@
 import { MarketingAnalyticsPage } from '~/view/pages'
 import { MetaFunction } from '@remix-run/node'
 
-export default function PrivateEquity() {
-  return <MarketingAnalyticsPage />
-}
+export default MarketingAnalyticsPage
 
 export const meta: MetaFunction = () => {
+  const title = 'Marketing Analytics: Gain Insights Faster'
+  const description =
+    'Optimize your marketing strategies using Akila Analytics.'
   return [
-    { title: 'Marketing Analytics: Gain Insights Faster' },
-    {
-      property: 'og:title',
-      content: 'Marketing Analytics: Gain Insights Faster'
-    },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content: 'Optimize your marketing strategies using Akila Analytics.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

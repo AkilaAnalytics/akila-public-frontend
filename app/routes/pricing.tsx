@@ -1,18 +1,22 @@
 import { PricingPage } from '~/view/pages'
 import { MetaFunction } from '@remix-run/node'
 
-export default function Pricing() {
-  return <PricingPage />
-}
+export default PricingPage
 
 export const meta: MetaFunction = () => {
+  const title = 'Pricing: No-Code Data Science Platform'
+  const description =
+    'Discover pricing options for Akila Analytics and choose the plan that fits your needs.'
   return [
-    { title: 'Pricing: No-Code Data Science Platform' },
-    { property: 'og:title', content: 'Pricing: No-Code Data Science Platform' },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content:
-        'Discover pricing options for Akila Analytics and choose the plan that fits your needs.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

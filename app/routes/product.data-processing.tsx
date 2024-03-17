@@ -1,18 +1,23 @@
-import { DataProcessingPage } from '~/view/pages'
-import { MetaFunction } from '@remix-run/node'
+import type { MetaFunction } from '@remix-run/react'
 
-export default function DataProcessing() {
-  return <DataProcessingPage />
-}
+import { DataProcessingPage } from '~/view/pages'
+
+export default DataProcessingPage
 
 export const meta: MetaFunction = () => {
+  const title = 'Data Processing'
+  const description =
+    'Process vast amounts of data with ease. Akila Analytics provides powerful tools for data cleansing, transformation, and more.'
   return [
-    { title: 'Data Processing' },
-    { property: 'og:title', content: 'Data Processing' },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content:
-        'Process vast amounts of data with ease. Akila Analytics provides powerful tools for data cleansing, transformation, and more.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

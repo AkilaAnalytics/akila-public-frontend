@@ -1,20 +1,25 @@
 import { IntegrateDataPage } from '~/view/pages'
 import { MetaFunction } from '@remix-run/node'
 
-export default function IntegrateData() {
-  return <IntegrateDataPage />
-}
+export default IntegrateDataPage
 
 export const meta: MetaFunction = () => {
+  const title = 'Data Integration: Easily Connect Data'
+  const description =
+    "Using Akila's data integration tools, Seamlessly integrate data with off-the-shelf or bespoke solutions."
   return [
-    { title: 'Integrate Data: Easily Work with Your Data' },
+    { title: title },
     {
       property: 'og:title',
-      content: 'Integrate Data: Easily Work with Your Data'
+      content: title
     },
     {
       name: 'description',
-      content: 'Seamlessly integrate your data with Akila Analytics.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

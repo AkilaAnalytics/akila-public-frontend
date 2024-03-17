@@ -10,18 +10,25 @@ export default function TermsAndConditions() {
       <div
         name="termly-embed"
         data-id="42a6d74b-c8c2-4956-b82a-37fd34a74056"
-        data-type="iframe"></div>
+        data-type="iframe"
+      ></div>
     </div>
   )
 }
 
 export const meta: MetaFunction = () => {
+  const title = 'Terms and Conditions - Akila Analytics'
+  const description = 'Our terms and conditions to ensure transparent services.'
   return [
-    { title: 'Terms and Conditions - Akila Analytics' },
-    { property: 'og:title', content: 'Terms and Conditions - Akila Analytics' },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content: 'Our terms and conditions to ensure transparent services.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

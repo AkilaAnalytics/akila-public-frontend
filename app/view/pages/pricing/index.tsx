@@ -13,7 +13,7 @@ export default function PricingPage() {
   return (
     <div>
       <div>
-        <div className="space-y-16 p-16 sm:px-32">
+        <div className="space-y-16 px-2 md:p-16">
           <h1 className="text-2xl font-semibold text-white sm:text-3xl md:text-5xl md:font-medium">
             Platform and Plans
           </h1>

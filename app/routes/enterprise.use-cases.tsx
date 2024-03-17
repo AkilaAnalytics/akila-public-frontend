@@ -1,18 +1,22 @@
 import { UseCasesPage } from '~/view/pages/enterprise'
 import { MetaFunction } from '@remix-run/node'
 
-export default function UseCases() {
-  return <UseCasesPage />
-}
+export default UseCasesPage
 
 export const meta: MetaFunction = () => {
+  const title = 'Enterprise Use Cases'
+  const description =
+    'Discover the variety of enterprise use cases that Akila Analytics supports.'
   return [
-    { title: 'Enterprise Use Cases' },
-    { property: 'og:title', content: 'Enterprise Use Cases' },
+    { title },
+    { property: 'og:title', title },
     {
       name: 'description',
-      content:
-        'Discover the variety of enterprise use cases that Akila Analytics supports.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

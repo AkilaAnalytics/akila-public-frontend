@@ -1,20 +1,22 @@
 import { CustomerProfitabilityPage } from '~/view/pages'
 import { MetaFunction } from '@remix-run/node'
 
-export default function PrivateEquity() {
-  return <CustomerProfitabilityPage />
-}
+export default CustomerProfitabilityPage
 
 export const meta: MetaFunction = () => {
+  const title = 'Profitability: Drive Value with Analytics'
+  const description =
+    'Dive deep into customer profitability analytics with Akila.'
   return [
-    { title: 'Customer Profitability: Drive Value with Analytics' },
-    {
-      property: 'og:title',
-      content: 'Customer Profitability: Drive Value with Analytics'
-    },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content: 'Dive deep into customer profitability analytics with Akila.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

@@ -16,10 +16,10 @@ export default function BackgroundLessCard({
           <img src={icon} alt="" />
         </div>
 
-        <div className="font-raleway mb-4 text-center text-xl font-bold leading-7 text-[#e7e7e7]">
+        <div className="mb-4 text-center font-sans text-xl font-bold leading-7 text-[#e7e7e7]">
           {heading}
         </div>
-        <div className="font-raleway text-center text-sm font-normal leading-5 text-[#969696]">
+        <div className="text-center font-sans text-sm font-normal leading-5 text-[#969696]">
           {description}
         </div>
       </div>

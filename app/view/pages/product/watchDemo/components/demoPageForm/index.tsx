@@ -10,7 +10,7 @@ export default function DemoPageForm() {
   return (
     <div className="w-[100%]">
       <div className="min-h-[751px] w-full items-center justify-center bg-[#191919] p-10">
-        <h1 className="font-raleway mb-[40px] text-5xl font-semibold leading-10">
+        <h1 className="mb-[40px] text-center font-sans text-5xl font-semibold leading-10">
           Schedule a Demo Today
         </h1>
         <fetcher.Form

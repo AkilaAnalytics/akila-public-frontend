@@ -1,18 +1,22 @@
 import { UseCasesPage } from '~/view/pages/enterprise'
 import { MetaFunction } from '@remix-run/node'
 
-export default function Security() {
-  return <UseCasesPage />
-}
+export default UseCasesPage
 
 export const meta: MetaFunction = () => {
+  const title = 'Platform Security'
+  const description =
+    'Understand the security measures Akila Analytics implements to keep your data safe and secure.'
   return [
-    { title: 'Platform Security' },
-    { property: 'og:title', content: 'Platform Security' },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content:
-        'Understand the security measures Akila Analytics implements to keep your data safe and secure.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

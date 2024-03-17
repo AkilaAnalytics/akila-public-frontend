@@ -1,17 +1,21 @@
 import { LeverageTheCloudPage } from '~/view/pages'
 import { MetaFunction } from '@remix-run/node'
 
-export default function LeverageTheCloud() {
-  return <LeverageTheCloudPage />
-}
+export default LeverageTheCloudPage
 
 export const meta: MetaFunction = () => {
+  const title = 'Leverage the Cloud: Easily Scale'
+  const description = 'Harness the power of the cloud with Akila Analytics.'
   return [
-    { title: 'Leverage the Cloud: Easily Scale' },
-    { property: 'og:title', content: 'Leverage the Cloud: Easily Scale' },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content: 'Harness the power of the cloud with Akila Analytics.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

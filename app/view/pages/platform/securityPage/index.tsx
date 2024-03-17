@@ -77,8 +77,9 @@ export default function SecurityPage() {
         featuresListData={featuresSectionData}
       />
       <AkilaBussinessCloudSection
-        heading="The Akila’s Business Cloud is where work gets done faster and smarter."
-        description="Akila Analytics can help you harness the power of your data with apps to drive business action.">
+        heading="Akila’s Business Cloud is where work gets done faster and smarter."
+        description="Akila Analytics can help you harness the power of your data with apps to drive business action."
+      >
         <div className="grid justify-center gap-[30px] md:grid-flow-col">
           {akilaBussinessCloudSectionData.map((data, index) => (
             <CommonGrayCard

@@ -163,9 +163,29 @@ export default function BlogTemplate() {
 
 export const meta: MetaFunction = ({ data }: IData) => {
   const { title, subTitle } = data.attributes //useLoaderData<IData>()
+
+  // ensure titles don't have more than 70 characters
+  let formattedTitle = title
+
+  // Check if title is more than 70 characters
+  if (title.length > 70) {
+    const indexOfColon = title.indexOf(':')
+
+    if (indexOfColon !== -1) {
+      // If there's a colon, take everything to the left of it
+      formattedTitle = title.slice(0, indexOfColon)
+    } else {
+      // If there's no colon, take all full words that fit within 70 characters
+      const trimmedTitle = title.slice(0, 70)
+      const lastSpaceIndex = trimmedTitle.lastIndexOf(' ')
+
+      formattedTitle = trimmedTitle.slice(0, lastSpaceIndex)
+    }
+  }
+
   return [
-    { title: `Blog: ${title}` },
-    { property: 'og:title', content: `Blog: ${title}` },
+    { title: `Blog: ${formattedTitle}` },
+    { property: 'og:title', content: `Blog: ${formattedTitle}` },
     {
       name: 'description',
       content: subTitle

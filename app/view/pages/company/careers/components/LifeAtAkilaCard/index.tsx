@@ -5,7 +5,7 @@ export default function LifeAtAkilaCard({ img, heading, description }) {
         <img src={img} alt="" />
       </div>
       <div className=" px-[20px]">
-        <h2 className="font-raleway mb-[20px] text-[20px] font-semibold leading-[28px] text-[#E7E7E7]">
+        <h2 className="mb-[20px] font-sans text-[20px] font-semibold leading-[28px] text-[#E7E7E7]">
           {heading}
         </h2>
         <p className="font-manrope line-clamp-3 text-[14px] font-normal leading-[22px] text-[#969696]">

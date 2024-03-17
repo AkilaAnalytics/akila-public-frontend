@@ -40,7 +40,7 @@ export default function Form() {
     <div>
       <div className="mx-auto flex w-full flex-col gap-10 p-10 md:flex-row">
         <div className="md:max-w-3/4 mx-auto w-full">
-          <h2 className="font-raleway mx-auto mb-[32px] font-semibold leading-[40px] text-[#E7E7E7] text-[push32px]">
+          <h2 className="mx-auto mb-[32px] font-sans font-semibold leading-[40px] text-[#E7E7E7] text-[push32px]">
             Contact Us
           </h2>
           <p className="w-full md:w-1/2">
@@ -64,7 +64,8 @@ export default function Form() {
         <fetcher.Form
           method="post"
           action="/api/contact-us"
-          className="mx-auto w-full md:w-10/12">
+          className="mx-auto w-full md:w-10/12"
+        >
           <div className="flex flex-col gap-x-[20px] sm:flex-row">
             <input
               name="firstName"

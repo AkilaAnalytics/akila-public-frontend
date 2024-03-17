@@ -5,7 +5,7 @@ export default function FAQsSection({ children, sectionHeading }) {
   return (
     <div className="my-[50px]">
       <div className="container_class space-y-5  ">
-        <div className="font-raleway mb-12 text-center text-[32px] font-semibold leading-10">
+        <div className="mb-12 text-center font-sans text-[32px] font-semibold leading-10">
           {sectionHeading}
         </div>
         {children}

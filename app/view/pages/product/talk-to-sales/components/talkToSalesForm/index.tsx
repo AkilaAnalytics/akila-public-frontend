@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useFetcher } from 'react-router-dom'
 
-import { Button } from '~/view/components'
+import { Button, StatusMessageFetcher } from '~/view/components'
 
 export default function TalkToSalesForm() {
   const [form, setForm] = useState({
@@ -17,12 +17,13 @@ export default function TalkToSalesForm() {
 
   return (
     <div className="w-[100%]  ">
-      <div className="flex  w-full items-center justify-center bg-[#191919] p-[40px]">
+      <div className="flex w-full flex-col items-center justify-center bg-[#191919] p-[40px]">
         <fetcher.Form
           className="flex min-h-[492px] w-full flex-col"
           action="/api/contact-us"
-          method="post">
-          <h2 className="font-raleway mb-[40px] text-[24px] font-semibold leading-8">
+          method="post"
+        >
+          <h2 className="mb-[40px] font-sans text-[24px] font-semibold leading-8">
             Request a call from Akila’s sales representative.
           </h2>
           <input
@@ -45,16 +46,30 @@ export default function TalkToSalesForm() {
           />
           <input
             type="text"
+            placeholder="Email"
+            name="email"
+            className="mb-[24px] w-full bg-[#030912] p-[16px] placeholder:text-[#8B8B8B]"
+          />
+          <input
+            type="text"
             placeholder="Phone"
             name="phone"
             className="mb-[24px] w-full bg-[#030912] p-[16px] placeholder:text-[#8B8B8B]"
           />
+          <input type="hidden" name="address" value="" />
           <input type="hidden" name="source" value="TalkToSalesForm" />
 
           <button className="mt-[8px] min-h-[60px] w-full bg-red-500 bg-gradient-to-r from-linkText to-turqoise">
             Submit
           </button>
         </fetcher.Form>
+        {fetcher.data && (
+          <StatusMessageFetcher
+            fetcher={fetcher}
+            successMessage="Thank you for the message. A sales representative will reach out shortly."
+            errorMessage="There was an unexpected erorr receiving your message. Please try reaching out again."
+          />
+        )}
       </div>
     </div>
   )

@@ -1,21 +1,25 @@
 import { OverviewPage } from '~/view/pages'
 import { MetaFunction } from '@remix-run/node'
 
-export default function Overview() {
-  return <OverviewPage />
-}
+export default OverviewPage
 
 export const meta: MetaFunction = () => {
+  const title = 'Overview: No-Code Data Science'
+  const description =
+    'Akila Analytics is data science and businesss analytics platform, using generative and predictive AI with broad ecosystem interoperability to ensure the success of your initiatives every step of the way.'
   return [
-    { title: 'Overview: No-Code Data Science' },
+    { title },
     {
       property: 'og:title',
-      content: 'Overview: No-Code Data Science'
+      content: title
     },
     {
       name: 'description',
-      content:
-        'Akila Analytics is data science and businesss analytics platform, using generative and predictive AI with broad ecosystem interoperability to ensure the success of your initiatives every step of the way.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

@@ -1,9 +1,6 @@
-import HomePage from '~/view/pages/home'
-import { MetaFunction } from '@remix-run/node'
+export { default } from '~/view/pages/home'
 
-export default function Home() {
-  return <HomePage />
-}
+import { MetaFunction } from '@remix-run/node'
 
 export const meta: MetaFunction = () => {
   return [
@@ -11,7 +8,8 @@ export const meta: MetaFunction = () => {
     { property: 'og:title', content: 'Home - Akila Analytics' },
     {
       name: 'description',
-      content: 'Akila Analytics - Your No Code Data Science Platform.'
+      content:
+        'Akila Analytics powers exceptional business outcomes with a no-code data science platform, streamlining the path to advanced analytics and data-driven insights.'
     }
   ]
 }

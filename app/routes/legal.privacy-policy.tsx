@@ -18,20 +18,27 @@ export default function PrivacyPolicy() {
         <div
           name="termly-embed"
           data-id="d393b018-1047-4036-bc07-5678eb8dad47"
-          data-type="iframe"></div>
+          data-type="iframe"
+        ></div>
       </div>
     </div>
   )
 }
 
 export const meta: MetaFunction = () => {
+  const title = 'Privacy Policy'
+  const description =
+    "Learn about Akila Analytics' commitment to user privacy and how we protect your data."
   return [
-    { title: 'Privacy Policy' },
-    { property: 'og:title', content: 'Privacy Policy' },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content:
-        "Learn about Akila Analytics' commitment to user privacy and how we protect your data."
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

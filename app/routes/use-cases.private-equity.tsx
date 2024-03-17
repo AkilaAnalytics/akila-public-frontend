@@ -1,18 +1,22 @@
 import { PrivateEquityPage } from '~/view/pages'
 import { MetaFunction } from '@remix-run/node'
 
+export default PrivateEquityPage
+
 export const meta: MetaFunction = () => {
+  const title = 'Private Equity  | Use Case'
+  const description =
+    'Discover how Akila Analytics enhances private equity decisions with state-of-the-art data science and analytics capabilities.'
   return [
-    { title: 'Private Equity  | Use Case' },
-    { property: 'og:title', content: 'Private Equity Use Case' },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content:
-        'Discover how Akila Analytics enhances private equity decisions with state-of-the-art data science and analytics capabilities.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
-}
-
-export default function PrivateEquity() {
-  return <PrivateEquityPage />
 }

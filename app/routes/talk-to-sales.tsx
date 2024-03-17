@@ -1,18 +1,22 @@
 import { TalkToSalesPage } from '~/view/pages'
 import { MetaFunction } from '@remix-run/node'
 
-export default function TalkToSales() {
-  return <TalkToSalesPage />
-}
+export default TalkToSalesPage
 
 export const meta: MetaFunction = () => {
+  const title = 'Talk to Sales'
+  const description =
+    'Interested in Akila Analytics? Talk to our sales team to learn how we can transform your business analytics journey.'
   return [
-    { title: 'Talk to Sales' },
-    { property: 'og:title', content: 'Talk to Sales' },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content:
-        'Interested in Akila Analytics? Talk to our sales team to learn how we can transform your business analytics journey.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

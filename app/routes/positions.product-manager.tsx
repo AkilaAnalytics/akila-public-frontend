@@ -1,18 +1,22 @@
 import { ProductManagerPage } from '~/view/pages'
 import { MetaFunction } from '@remix-run/node'
 
-export default function DevOps() {
-  return <ProductManagerPage />
-}
+export default ProductManagerPage
 
 export const meta: MetaFunction = () => {
+  const title = 'Product Manager Position'
+  const description =
+    'Learn how product managers are leveraging Akila to drive new insights'
   return [
-    { title: 'Product Manager Position' },
-    { property: 'og:title', content: 'Product Manager Position' },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content:
-        'Akila Analytics is on the lookout for innovative product managers to drive our product to new heights.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

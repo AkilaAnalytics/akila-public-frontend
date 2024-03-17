@@ -12,7 +12,7 @@ export default function BlogCard({
       </div>
       <div className="flex w-full flex-col justify-between ">
         <div>
-          <h3 className="font-raleway text-2xl font-medium leading-[46px] text-white">
+          <h3 className="font-sans text-2xl font-medium leading-[46px] text-white">
             {title}
           </h3>
           <h4 className="font-manrope truncate-description text-sm font-normal leading-[22px] text-[#969696]">
@@ -24,11 +24,11 @@ export default function BlogCard({
             <div className="font-manrope mr-1 text-sm font-normal leading-[22px] text-[#969696]">
               {date}
             </div>
-            <div className="font-raleway text-sm font-normal leading-[22px] text-[#969696]">
+            <div className="font-sans text-sm font-normal leading-[22px] text-[#969696]">
               {timeToRead} read
             </div>
           </div>
-          <div className="font-raleway text-base font-normal leading-6 text-[#E7E7E7]">
+          <div className="font-sans text-base font-normal leading-6 text-[#E7E7E7]">
             Read More
           </div>
         </div>

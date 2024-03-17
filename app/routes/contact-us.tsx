@@ -8,18 +8,22 @@ export const loader = () => {
   }
 }
 
-export default function ContactUs() {
-  return <ContactUsPage />
-}
+export default <ContactUsPage />
 
 export const contact: MetaFunction = () => {
+  const title = 'Contact Us'
+  const description =
+    'Reach out to Akila Analytics. We’re here to answer any questions you might have as you expand your data analytics capabilities.'
   return [
-    { title: 'Contact Us' },
-    { property: 'og:title', content: 'Contact Us' },
+    { title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content:
-        'Reach out to Akila Analytics. We’re here to help and answer any questions you might have about our no-code data science platform.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

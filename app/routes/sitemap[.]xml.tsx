@@ -72,6 +72,9 @@ export const loader = () => {
     <loc>https://www.akilaanalytics.com/product/recurring-jobs</loc>
   </url>
   <url>
+    <loc>https://www.akilaanalytics.com/product/etl-pipeline</loc>
+  </url>
+  <url>
     <loc>https://www.akilaanalytics.com/talk-to-sales</loc>
   </url>
   <url>

@@ -10,9 +10,10 @@ export default function CareerBanner({ title = '', image }: Props) {
   return (
     <div
       className="mb-[50px] flex h-[345px] flex-col justify-center bg-cover bg-center"
-      style={styles}>
+      style={styles}
+    >
       <div className=" flex justify-center ">
-        <h1 className="font-raleway max-w-[950px] text-center text-[42px] font-semibold leading-[48px] text-[#E7E7E7]">
+        <h1 className="max-w-[950px] text-center font-sans text-[42px] font-semibold leading-[48px] text-[#E7E7E7]">
           {title}
         </h1>
       </div>

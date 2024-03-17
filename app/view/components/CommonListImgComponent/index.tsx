@@ -22,8 +22,9 @@ export default function CommonListImgComponent({
         <div
           className={`flex max-w-[471px] flex-col justify-center  ${
             changeOrder ? 'order-2' : 'order-1'
-          }`}>
-          <div className="font-raleway  mb-[40px] text-[32px] font-semibold leading-[40px] text-[#E3E3E3] sm:text-[40px] sm:leading-[45px]">
+          }`}
+        >
+          <div className="mb-[40px]  font-sans text-[32px] font-semibold leading-[40px] text-[#E3E3E3] sm:text-[40px] sm:leading-[45px]">
             {heading}
           </div>
 
@@ -32,7 +33,8 @@ export default function CommonListImgComponent({
         <div
           className={`h-auto w-full max-w-[520px]  ${
             changeOrder ? 'order-1' : 'order-2'
-          }`}>
+          }`}
+        >
           <img src={img} alt="" className="h-full w-full object-cover" />
         </div>
       </div>
@@ -48,8 +50,9 @@ const renderLists = (listData, normalList, description) => {
         <ul className="list-disc">
           {listData?.map((data, index) => (
             <li
-              className="font-raleway my-[24px] ml-8 text-[14px]  font-medium leading-[25px] text-[#e7e7e7] sm:text-lg"
-              key={data.description + index}>
+              className="my-[24px] ml-8 font-sans text-[14px]  font-medium leading-[25px] text-[#e7e7e7] sm:text-lg"
+              key={data.description + index}
+            >
               {data.description}
             </li>
           ))}
@@ -62,11 +65,12 @@ const renderLists = (listData, normalList, description) => {
         {listData?.map((data, index) => (
           <div
             className="flex items-center gap-4"
-            key={data.desecription + index}>
+            key={data.desecription + index}
+          >
             <div className="h-[32px] w-full max-w-[32px] ">
               <img src={data.icon} className="" alt="" />
             </div>
-            <div className="font-raleway my-[24px] text-lg font-medium leading-[25px] text-[#e7e7e7] ">
+            <div className="my-[24px] font-sans text-lg font-medium leading-[25px] text-[#e7e7e7] ">
               {data.description}
             </div>
           </div>

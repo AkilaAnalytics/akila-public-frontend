@@ -196,13 +196,18 @@ export function ErrorBoundary() {
 }
 
 export const meta: MetaFunction = () => {
+  const title = 'Insights: No-Code Data Science'
+  const description = `Stay updated with the latest insights in data science, platform updates, and more from the Akila Analytics team.`
   return [
-    { title: 'Insights: No-Code Data Science' },
-    { property: 'og:title', content: 'Insights: No-Code Data Science' },
+    { title: title },
+    { property: 'og:title', content: title },
     {
       name: 'description',
-      content:
-        'Stay updated with the latest insights in data science, platform updates, and more from the Akila Analytics team.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }

@@ -3,16 +3,17 @@ import { TickComponent } from '~/view/components'
 export default function DemoVideoOfAkilaSection() {
   return (
     <div className="flex w-[100%] flex-col items-center p-10">
-      <h2 className="font-raleway mb-[42px] leading-[36px] text-[#E7E7E7] sm:leading-[48px]">
+      <h2 className="mb-[42px] text-center font-sans leading-[36px] text-[#E7E7E7] sm:leading-[48px]">
         Watch Demo Video
       </h2>
-      <p className="font-raleway mb-[27px] text-center text-[14px] font-normal leading-[22px] text-[#E7E7E7] sm:text-base">
+      <p className="mb-[27px] text-center font-sans text-[14px] font-normal leading-[22px] text-[#E7E7E7] sm:text-base">
         See how Akila Analytics can help you gain insights from your data, make
         data-driven decisions, and drive business growth.
       </p>
       <div
         className="relative mb-[29px] h-0 w-full max-w-[540px] overflow-hidden"
-        style={{ paddingTop: '56.25%' }}>
+        style={{ paddingTop: '56.25%' }}
+      >
         <iframe
           className="absolute left-0 top-0 h-full w-full"
           src="https://www.youtube.com/embed/noGW8OFr6Ko?si=xzNP8MrtwninZZMU&controls=1&showinfo=0"
@@ -20,7 +21,8 @@ export default function DemoVideoOfAkilaSection() {
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           rel={'0'}
-          allowFullScreen></iframe>
+          allowFullScreen
+        ></iframe>
       </div>
       <ul className="">
         {demoVideoAkilaSectionListData.map((data, index) => (

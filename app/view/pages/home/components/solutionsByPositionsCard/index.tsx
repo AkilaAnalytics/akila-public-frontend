@@ -16,13 +16,13 @@ export default function SolutionsByPositionsCard({
           className="h-[300px] w-full object-cover"
           alt={`${heading} logo`}
         />
-        <h3 className="font-raleway absolute inset-0 mx-auto my-auto flex h-1/3 w-4/5 items-center justify-center rounded-md border-[1px] border-periwinkle bg-black p-4 text-xl font-medium leading-7 text-white">
+        <h3 className="absolute inset-0 mx-auto my-auto flex h-1/3 w-4/5 items-center justify-center rounded-md border-[1px] border-periwinkle bg-black p-4 font-sans text-xl font-medium leading-7 text-white">
           {heading}
         </h3>
       </div>
 
       <div className="p-[16px]">
-        <p className="font-raleway mb-[15px] line-clamp-4 font-normal leading-[22px] text-[#E7E7E7]">
+        <p className="mb-[15px] line-clamp-4 font-sans font-normal leading-[22px] text-[#E7E7E7]">
           {description}
         </p>
         <Link to={link} className="flex items-center">

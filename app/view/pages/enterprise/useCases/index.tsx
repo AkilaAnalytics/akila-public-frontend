@@ -57,7 +57,7 @@ export default function UseCases() {
         normalList
       />
       <AkilaBussinessCloudSection
-        heading="The Akila’s Business Cloud is where work gets done faster and smarter."
+        heading="Akila’s Business Cloud is where work gets done faster and smarter."
         description="Akila Analytics can help you harness the power of your data with apps to drive business action."
       >
         <div className="grid justify-items-center gap-[30px] md:grid-flow-col">

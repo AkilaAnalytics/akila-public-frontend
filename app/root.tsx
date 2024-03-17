@@ -60,17 +60,25 @@ export const links: LinksFunction = () => {
   ]
 }
 
+const title =
+  'Akila Analytics: An intuitive and easy-to-use tool for data analytics'
+
+const description =
+  'Simplify and automate your data analytics workflows with an intuitive and easy-to-use interface.'
 export const meta = () => {
   return [
-    { title: 'Akila Analytics' },
+    { property: 'title', content: description },
     {
       property: 'og:title',
-      content: 'Akila Analytics'
+      content: title
     },
     {
       name: 'description',
-      content:
-        'Simplify and automate your data analytics with an intuitive and easy-to-use interface.'
+      content: description
+    },
+    {
+      name: 'og:description',
+      content: description
     }
   ]
 }
@@ -133,6 +141,12 @@ export default function App() {
         ) : (
           ''
         )}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body>
         <Navbar />

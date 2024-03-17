@@ -21,19 +21,19 @@ export default function CommonGrayCard({
         <div className="logo mb-10 flex min-h-[64px] w-full max-w-[64px] items-center justify-center rounded-full bg-[#3C4354]">
           <img src={logo} alt="" />
         </div>
-        <div className="font-raleway line-clamp-2 text-xl font-semibold text-[#e7e7e7]">
+        <div className="line-clamp-2 font-sans text-xl font-semibold text-[#e7e7e7]">
           {heading}
           <br />
           <br />
         </div>
         <br />
         <br />
-        <div className="description font-raleway mb-6 text-sm font-normal leading-[20px] text-[#969696]">
+        <div className="description mb-6 font-sans text-sm font-normal leading-[20px] text-[#969696]">
           {description}
         </div>
       </div>{' '}
       {link && (
-        <div className="read-more font-raleway  flex items-center text-base font-normal leading-[24px] text-[#e7e7e7]">
+        <div className="read-more flex  items-center font-sans text-base font-normal leading-[24px] text-[#e7e7e7]">
           <Link to={link} className="mr-[8px] hover:text-periwinkle">
             Read More
           </Link>

@@ -47,16 +47,16 @@ export default function HomeBanner() {
         alt="Earth from outer space"
         className="absolute inset-0 z-10 h-[80vh] w-full overflow-hidden object-fill md:hidden"
       />
-      <div className="z-50 mt-[15vh]">
-        <div className="my-auto text-center">
+      <div className="z-50 mt-[15vh] w-full">
+        <div className="text-center">
           <div className={`rollingText ${animateOut ? 'rollOut' : 'rollIn'}`}>
-            <h1 className="whitespace-nowrap">
-              <p className="text-gradient">{currentText}</p>
+            <h1 className="text-gradient whitespace-nowrap text-4xl md:text-6xl">
+              {currentText}
             </h1>
           </div>
-          <h2>Made Easy</h2>
+          <h2 className="text-2xl">Made Easy</h2>
         </div>
-        <p className="text-md px-5 text-white md:text-lg">
+        <p className="mt-8 px-5 text-center text-sm text-white md:text-lg">
           Simplify and automate your data analytics workflows with an intuitive
           and easy-to-use interface.
         </p>

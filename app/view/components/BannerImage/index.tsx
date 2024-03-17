@@ -22,16 +22,18 @@ export default function BannerImage({
   return (
     <div
       className="mb-[50px] flex h-[500px] flex-col justify-center bg-cover bg-center p-4"
-      style={styles}>
+      style={styles}
+    >
       <div className="max-w-[522px] sm:pl-[164px]">
-        <h4 className="font-raleway mb-[10px] text-[15px] font-semibold leading-7 text-[#E7E7E7] sm:text-[20px]">
+        <h4 className="mb-[10px] font-sans text-[15px] font-semibold leading-7 text-[#E7E7E7] sm:text-[20px]">
           {superTitle}
         </h4>
         <div className="mb-[12px] sm:mb-[17px]">
           <h1
             className={` text-[25px] ${
               horizontalLine ? 'mb-[15px]' : ''
-            } font-semibold text-white sm:text-3xl md:text-4xl`}>
+            } font-semibold text-white sm:text-3xl md:text-4xl`}
+          >
             {title}
           </h1>
           {horizontalLine && (

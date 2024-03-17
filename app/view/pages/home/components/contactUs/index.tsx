@@ -11,7 +11,7 @@ export default function ContactUs() {
   return (
     <div className="my-[50px] flex items-center justify-center p-3 ">
       <div>
-        <h2 className="font-raleway pb-[72px] text-center text-[24px] font-semibold leading-[88.19%] text-[#E3E3E3]">
+        <h2 className="pb-[72px] text-center font-sans text-[24px] font-semibold leading-[88.19%] text-[#E3E3E3]">
           Contact Us
         </h2>
         <fetcher.Form action="/api/contact-us" method="post">
@@ -38,7 +38,10 @@ export default function ContactUs() {
           <textarea
             placeholder="Message"
             name="message"
-            className="mb-[40px] min-h-[146px]  w-full rounded-[5px] border-2 border-white border-opacity-25 bg-transparent p-[17px] focus:outline-none"></textarea>
+            className="mb-[40px] min-h-[146px]  w-full rounded-[5px] border-2 border-white border-opacity-25 bg-transparent p-[17px] focus:outline-none"
+          ></textarea>
+          {/* hidden fields */}
+          <input placeholder="Address" type="hidden" name="Address" value="" />
           <input
             type="hidden"
             name="source"
@@ -47,7 +50,8 @@ export default function ContactUs() {
           <div className="flex items-center justify-center">
             <button
               type="submit"
-              className="button-gradient hover:button-gradient-hover w-full max-w-[100%] rounded-md bg-periwinkle py-3 hover:scale-105">
+              className="button-gradient hover:button-gradient-hover w-full max-w-[100%] rounded-md bg-periwinkle py-3 hover:scale-105"
+            >
               SEND
             </button>
           </div>

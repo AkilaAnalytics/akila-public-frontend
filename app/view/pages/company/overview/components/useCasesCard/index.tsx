@@ -19,7 +19,7 @@ export default function UseCasesCard({
             <div className="h-[1px] w-[73px] bg-[#3134DB]"></div>
           </div>
           <div>
-            <h3 className="font-raleway mb-[20px] text-[20px] font-semibold text-[#E7E7E7]">
+            <h3 className="mb-[20px] font-sans text-[20px] font-semibold text-[#E7E7E7]">
               {heading}
             </h3>
             <p className="font-manrope mb-[20px] line-clamp-4 h-[86px]  text-[14px] font-normal leading-[22px] text-[#969696]">

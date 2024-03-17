@@ -55,20 +55,20 @@ export default function EmailSignUp() {
   if (res?.isSubscribed) return null
 
   return (
-    <div className="sticky bottom-0 flex w-screen flex-col border-t-[1px] border-t-periwinkle bg-secondaryBackground px-5">
+    <div className="sticky bottom-0 flex w-full flex-col border-t-[1px] border-t-periwinkle bg-secondaryBackground px-5">
       <XMarkIcon
         className="m-2 ml-auto h-5 w-5 cursor-pointer text-white"
         onClick={() => setShowForm(false)}
       />
       <div className="mx-auto">
-        <h4 className="text-center">Sign up for emails on new articles</h4>
+        <h4 className="wrap text-center">Sign up for emails on new articles</h4>
         <p className="block text-center">
           Never miss an insight. We'll email you when new articles are
           published.
         </p>
         <br />
 
-        <div className="mx-auto flex w-screen flex-col gap-5 md:w-3/4 md:flex-row">
+        <div className="mx-auto flex w-full flex-col gap-5 md:w-3/4 md:flex-row">
           <input
             type="email"
             className="w-full p-2 text-black focus:outline-none"
