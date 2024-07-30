@@ -8,14 +8,14 @@ export const loader = () => {
   }
 }
 
-export default <ContactUsPage />
+export default ContactUsPage
 
 export const contact: MetaFunction = () => {
   const title = 'Contact Us'
   const description =
     'Reach out to Akila Analytics. We’re here to answer any questions you might have as you expand your data analytics capabilities.'
   return [
-    { title },
+    { title: 'Contact Us' },
     { property: 'og:title', content: title },
     {
       name: 'description',

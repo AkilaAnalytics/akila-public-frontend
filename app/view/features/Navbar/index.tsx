@@ -124,7 +124,7 @@ export default function Navbar() {
           className="my-auto"
         >
           <button className="z-50 my-auto flex w-full items-center whitespace-nowrap rounded-md p-2 text-xs uppercase tracking-widest hover:scale-105 md:w-auto">
-            Sign In
+            Try Free
           </button>
         </a>
       </div>
@@ -252,7 +252,7 @@ export default function Navbar() {
               <BookDemo />
               <a href={privatePages} target="_blank" rel="noreferrer">
                 <button className="z-50 mx-auto my-auto flex w-full items-center justify-center rounded-md p-2 text-center text-xs uppercase tracking-widest hover:scale-105 md:w-auto md:whitespace-nowrap">
-                  Sign In
+                  Try Free
                 </button>
               </a>
             </ul>

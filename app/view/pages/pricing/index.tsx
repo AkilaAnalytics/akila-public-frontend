@@ -5,7 +5,7 @@ interface ICardData {
   price: string
   description: string
   keyPoints: string[]
-  buttonTex: string
+  buttonText: string
   link: string
 }
 
@@ -25,7 +25,7 @@ export default function PricingPage() {
                 title={data.title}
                 price={data.price}
                 description={data.description}
-                buttonText={data.buttonTex}
+                buttonText={data.buttonText}
                 keyPoints={data.keyPoints}
                 path={data.link}
               />
@@ -41,10 +41,10 @@ export default function PricingPage() {
 
 const priceData = [
   {
-    title: 'Free',
-    price: '0',
+    title: 'Starter',
+    price: '500',
     description:
-      'Get started with Akila Analytics for free. Upload data, run jobs, and get insights from our no-code platform.',
+      'Perfect for teams with lower data volumes. We recommend most small companies start with this package.',
     keyPoints: [
       'Upload data',
       'Run data processing jobs',
@@ -52,8 +52,8 @@ const priceData = [
       'Schedule recurring jobs',
       'Access advanced analytics tools'
     ],
-    buttonTex: 'Try for free',
-    link: 'https://app.akilaanalytics.com/auth/login'
+    buttonText: 'Contact Us',
+    link: '/contact-us'
   },
   {
     title: 'Professional',
@@ -66,7 +66,7 @@ const priceData = [
       'Zero maintenance',
       'Unlimited Processing'
     ],
-    buttonTex: 'Contact Us',
+    buttonText: 'Contact Us',
     link: '/contact-us'
   },
   {
@@ -78,7 +78,7 @@ const priceData = [
       'Everything in the Professional package',
       'Configure Akila in your own cloud environment'
     ],
-    buttonTex: 'Contact Us',
+    buttonText: 'Contact Us',
     link: '/contact-us'
   }
 ]
