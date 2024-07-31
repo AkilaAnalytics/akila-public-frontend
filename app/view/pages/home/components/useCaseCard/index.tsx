@@ -15,17 +15,6 @@ export default function UseCaseCard({
   link,
   img
 }: IProps) {
-  //<div className="min-h-[231px] ">
-  //  <img src={img} className="w-full" alt="" />
-  //</div>
-  //<div className="p-[16px]">
-  //  <h3 className="font-sans mb-[12px] text-xl font-medium leading-7 text-[#ffffff]">
-  //    {heading}
-  //  </h3>
-  //  <p className="font-sans font-normal leading-[22px] text-[#E7E7E7]">
-  //    {description}
-  //  </p>
-  //</div>
   return (
     <div className="">
       <Link to={link} className="p-4">
@@ -40,9 +29,9 @@ export default function UseCaseCard({
                   className="h-full w-full object-cover"
                 />
               </div>
-              <h6 className="w-full pl-4 text-left font-semibold tracking-wider">
+              <p className="w-full pl-4 text-left font-semibold tracking-wider">
                 {heading}
-              </h6>
+              </p>
               <p className="p-4 text-sm">{description}</p>
               <br />
             </div>

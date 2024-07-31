@@ -118,7 +118,7 @@ export default function Navbar() {
       <div className="hidden gap-2 md:flex">
         <BookDemo />
         <a
-          href={privatePages}
+          href={'/coming-soon'}
           target="_blank"
           rel="noreferrer"
           className="my-auto"
@@ -130,10 +130,6 @@ export default function Navbar() {
       </div>
     )
   }
-
-  const privatePages = location.pathname.includes('staging')
-    ? 'https://app.akilaanalytics.com'
-    : 'https://app.akilaanalytics.com'
 
   return (
     <nav
@@ -250,7 +246,7 @@ export default function Navbar() {
             <ul ref={menuRef}>
               {renderMenus(navigation)}
               <BookDemo />
-              <a href={privatePages} target="_blank" rel="noreferrer">
+              <a href="/coming-soon" target="_blank" rel="noreferrer">
                 <button className="z-50 mx-auto my-auto flex w-full items-center justify-center rounded-md p-2 text-center text-xs uppercase tracking-widest hover:scale-105 md:w-auto md:whitespace-nowrap">
                   Try Free
                 </button>

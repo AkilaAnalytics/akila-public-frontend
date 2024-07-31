@@ -212,6 +212,7 @@ export default function Footer() {
                   className="my-[24px] text-lg font-semibold"
                   height="200"
                   width="400"
+                  alt="Akila Analytics Logo"
                 />
                 <p className="text-white">
                   Simplify and automate your data analytics workflows with an
@@ -232,9 +233,9 @@ export default function Footer() {
             <div>{displayLinks('Resources', resourceLinks)}</div>
             <div>{displayLinks('Company', companyLinks)}</div>
             <div>
-              <li className="my-[24px] list-none text-lg font-semibold text-white">
+              <p className="my-[24px] list-none text-lg font-semibold text-white">
                 Contact
-              </li>
+              </p>
               <ul className="flex flex-wrap justify-start gap-3  text-greyText md:flex-col">
                 <li>{createEmailLink('sales')}</li>
                 <li>{createEmailLink('support')}</li>
