@@ -1,159 +1,159 @@
-import { Link, useLoaderData } from '@remix-run/react'
-import type { ILoaderData } from '~/utils'
+import { Link, useLoaderData } from "@remix-run/react";
+import { logger, type ILoaderData } from "~/utils";
 
-import { akilaAnalyticsLogo } from '~/view/assets'
+import { akilaAnalyticsLogo } from "~/view/assets";
 
 const platformLinks = [
   {
-    text: 'Overview',
-    path: '/platform/overview',
-    key: 'platform'
+    text: "Overview",
+    path: "/platform/overview",
+    key: "platform",
   },
   {
-    text: 'Visualize Data',
-    path: '/platform/visualize-data',
-    key: 'platform'
+    text: "Visualize Data",
+    path: "/platform/visualize-data",
+    key: "platform",
   },
   {
-    text: 'Integrate Data',
-    path: '/platform/integrate-data',
-    key: 'platform'
+    text: "Integrate Data",
+    path: "/platform/integrate-data",
+    key: "platform",
   },
   {
-    text: 'Leverage The Cloud',
-    path: '/platform/leverage-the-cloud',
-    key: 'platform'
+    text: "Leverage The Cloud",
+    path: "/platform/leverage-the-cloud",
+    key: "platform",
   },
   {
-    text: 'End-to-end Solutions',
-    path: '/platform/end-to-end-solutions',
-    key: 'platform'
+    text: "End-to-end Solutions",
+    path: "/platform/end-to-end-solutions",
+    key: "platform",
   },
 
   {
-    text: 'Governance',
-    path: '/platform/governance',
-    key: 'platform'
+    text: "Governance",
+    path: "/platform/governance",
+    key: "platform",
   },
   {
-    text: 'Security',
-    path: '/platform/security',
-    key: 'platform'
-  }
-]
+    text: "Security",
+    path: "/platform/security",
+    key: "platform",
+  },
+];
 
 const productLinks = [
   {
-    text: 'Data Exploration',
-    path: '/product/data-exploration',
-    key: 'product'
+    text: "Data Exploration",
+    path: "/product/data-exploration",
+    key: "product",
   },
   {
-    text: 'Data Processing',
-    path: '/product/data-processing',
-    key: 'product'
+    text: "Data Processing",
+    path: "/product/data-processing",
+    key: "product",
   },
   {
-    text: 'Machine Learning',
-    path: '/product/machine-learning',
-    key: 'product'
+    text: "Machine Learning",
+    path: "/product/machine-learning",
+    key: "product",
   },
   {
-    text: 'Recurring Jobs',
-    path: '/product/recurring-jobs',
-    key: 'product'
+    text: "Recurring Jobs",
+    path: "/product/recurring-jobs",
+    key: "product",
   },
   {
-    text: 'Pricing',
-    path: '/pricing',
-    key: 'product'
+    text: "Pricing",
+    path: "/pricing",
+    key: "product",
   },
   {
-    text: 'Watch Demo',
-    path: '/product/watch-demo',
-    key: 'product'
+    text: "Watch Demo",
+    path: "/product/watch-demo",
+    key: "product",
   },
   {
-    text: 'Try Free',
-    path: 'product/try-free',
-    key: 'product'
-  }
-]
+    text: "Try Free",
+    path: "product/try-free",
+    key: "product",
+  },
+];
 
 const enterpriseLinks = [
   {
-    text: 'Use Cases',
-    path: 'enterprise/use-cases',
-    key: 'advantages'
+    text: "Use Cases",
+    path: "enterprise/use-cases",
+    key: "advantages",
   },
   {
-    text: 'By Role',
-    path: 'enterprise/by-role',
-    key: 'about-us'
+    text: "By Role",
+    path: "enterprise/by-role",
+    key: "about-us",
   },
   {
-    text: 'Data Science',
-    path: 'enterprise/data-science',
-    key: 'contact-us'
-  }
-]
+    text: "Data Science",
+    path: "enterprise/data-science",
+    key: "contact-us",
+  },
+];
 
 const resourceLinks = [
   {
-    text: 'Documentation',
-    path: 'resources/documentation',
-    key: 'resources'
+    text: "Documentation",
+    path: "resources/documentation",
+    key: "resources",
   },
 
   {
-    text: 'Insights',
-    path: 'resources/insights',
-    key: 'resource'
-  }
-]
+    text: "Insights",
+    path: "resources/insights",
+    key: "resource",
+  },
+];
 
 const companyLinks = [
   {
-    text: 'Overview',
-    path: 'company/overview',
-    key: 'company'
+    text: "Overview",
+    path: "company/overview",
+    key: "company",
   },
   {
-    text: 'Talk to Sales',
-    path: 'talk-to-sales',
-    key: 'product'
-  }
-]
+    text: "Talk to Sales",
+    path: "talk-to-sales",
+    key: "product",
+  },
+];
 
 const socialMediaLinks = [
   {
-    text: 'Instagram',
-    path: 'instagram',
-    key: 'instagram'
+    text: "Instagram",
+    path: "instagram",
+    key: "instagram",
   },
   {
-    text: 'LinkedIn',
-    path: 'linkedin',
-    key: 'linkedin'
+    text: "LinkedIn",
+    path: "linkedin",
+    key: "linkedin",
   },
   {
-    text: 'LinkedIn',
-    path: 'linkedin',
-    key: 'linkedin'
+    text: "LinkedIn",
+    path: "linkedin",
+    key: "linkedin",
   },
   {
-    text: 'LinkedIn',
-    path: 'linkedin',
-    key: 'linkedin'
-  }
-]
+    text: "LinkedIn",
+    path: "linkedin",
+    key: "linkedin",
+  },
+];
 
 function createEmailLink(email: string) {
   return (
     <a href={`mailto:${email}@akilaanalytics.com`}>
       {email}@AkilaAnalytics.com
     </a>
-  )
+  );
 }
 
 function displayLinks(category: string, links: Array<any>) {
@@ -174,15 +174,16 @@ function displayLinks(category: string, links: Array<any>) {
                 <span className="ml-2 md:hidden">|</span>
               )}
             </li>
-          )
+          );
         })}
       </ul>
     </div>
-  )
+  );
 }
 
 export default function Footer() {
-  const loaderData = useLoaderData<ILoaderData>()
+  const loaderData = useLoaderData<ILoaderData>();
+  logger.log(loaderData, "<<<< loaderData from Footer");
   return (
     <footer className="contact-us-gradient mx-auto mt-[50px] overflow-hidden">
       <div className="wave ">
@@ -222,25 +223,25 @@ export default function Footer() {
                 <p>
                   Call our sales or technical support team: <br />
                   <span className="font-poppins">
-                    {loaderData.PHONE_NUMBER}
+                    {loaderData?.PHONE_NUMBER}
                   </span>
                 </p>
               </div>
             </div>
-            <div>{displayLinks('Platform', platformLinks)}</div>
-            <div>{displayLinks('Product', productLinks)}</div>
-            <div>{displayLinks('Enterprise', enterpriseLinks)}</div>
-            <div>{displayLinks('Resources', resourceLinks)}</div>
-            <div>{displayLinks('Company', companyLinks)}</div>
+            <div>{displayLinks("Platform", platformLinks)}</div>
+            <div>{displayLinks("Product", productLinks)}</div>
+            <div>{displayLinks("Enterprise", enterpriseLinks)}</div>
+            <div>{displayLinks("Resources", resourceLinks)}</div>
+            <div>{displayLinks("Company", companyLinks)}</div>
             <div>
               <p className="my-[24px] list-none text-lg font-semibold text-white">
                 Contact
               </p>
               <ul className="flex flex-wrap justify-start gap-3  text-greyText md:flex-col">
-                <li>{createEmailLink('sales')}</li>
-                <li>{createEmailLink('support')}</li>
-                <li>{createEmailLink('careers')}</li>
-                <li>{createEmailLink('press')}</li>
+                <li>{createEmailLink("sales")}</li>
+                <li>{createEmailLink("support")}</li>
+                <li>{createEmailLink("careers")}</li>
+                <li>{createEmailLink("press")}</li>
               </ul>
             </div>
             {/* <div className="hidden md:inline">
@@ -258,12 +259,12 @@ export default function Footer() {
                 <div className="mr-4 cursor-pointer pb-1 hover:underline sm:pb-0 md:mr-6">
                   <Link to="/legal/terms-and-conditions">
                     Terms and Conditions
-                  </Link>{' '}
+                  </Link>{" "}
                 </div>
               </li>
               <li className="mb-3 sm:mb-0">
                 <div className="mr-4 cursor-pointer pb-1 hover:underline sm:pb-0 md:mr-6">
-                  <Link to="/legal/privacy-policy">Privacy Policy</Link>{' '}
+                  <Link to="/legal/privacy-policy">Privacy Policy</Link>{" "}
                 </div>
               </li>
               <li className="mb-3 hidden sm:mb-0">
@@ -281,5 +282,5 @@ export default function Footer() {
         <br />
       </div>
     </footer>
-  )
+  );
 }

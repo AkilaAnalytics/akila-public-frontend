@@ -1,100 +1,114 @@
-import type { LoaderArgs, ActionArgs } from '@remix-run/node'
-import { MetaFunction, createCookie } from '@remix-run/node'
+import type { LoaderArgs, ActionArgs } from "@remix-run/node";
+import { MetaFunction, createCookie, json } from "@remix-run/node";
 
-import { GetObjectCommand } from '@aws-sdk/client-s3'
-import { json } from '@remix-run/node'
+import { GetObjectCommand } from "@aws-sdk/client-s3";
 import {
   useLoaderData,
   Link,
   useFetcher,
   useLocation,
-  useRouteError
-} from '@remix-run/react'
-import { useEffect, useState } from 'react'
-import { ChevronRightIcon } from '@heroicons/react/24/solid'
+  useRouteError,
+} from "@remix-run/react";
+import { useEffect, useState } from "react";
+import { ChevronRightIcon } from "@heroicons/react/24/solid";
 
-import { MissingPage } from '~/view/pages/misc'
-import { s3Client } from '~/utils/server/index.server'
-import { logger } from '~/utils'
-import { InsightsBannerImage } from '~/view/assets'
-import { BannerImage } from '~/view/components'
-import { EmailSignUp } from '~/view/features'
+import { MissingPage } from "~/view/pages/misc";
+import { s3Client } from "~/utils/server/index.server";
+import { logger } from "~/utils";
+import { InsightsBannerImage } from "~/view/assets";
+import { ArticleCard, BannerImage } from "~/view/components";
+import { EmailSignUp } from "~/view/features";
 
 interface IArticles {
-  title: string
-  subTitle: string
-  category: string
-  recommended: boolean
-  preview: string
-  image_link: string
-  article_link: string
+  title: string;
+  subTitle: string;
+  category: string;
+  recommended: boolean;
+  preview: string;
+  image_link: string;
+  article_link: string;
 }
 interface IVideos extends IArticles {
-  link: string
+  link: string;
 }
 
 export interface IBlogMeta {
   meta: {
-    articles: IArticles[]
-    videos: IVideos[]
-  }
-  isSubscribed: boolean
-  basePath: string
+    articles: IArticles[];
+    videos: IVideos[];
+  };
+  isSubscribed: boolean;
+  basePath: string;
 }
 
 export const loader = async ({ request }) => {
-  const cookie = createCookie('isSubscribed')
-  const cookies = await cookie.parse(request.headers.get('Cookie'))
+  const cookie = createCookie("isSubscribed");
+  const cookies = await cookie.parse(request.headers.get("Cookie"));
   try {
     const params = {
       Bucket: process.env.STATIC_BUCKET,
-      Key: '_blog/meta.json'
-    }
-    const command = new GetObjectCommand(params)
-    const response = await s3Client.send(command)
+      Key: "_blog/meta.json",
+    };
+    const command = new GetObjectCommand(params);
+    const response = await s3Client.send(command);
     //console.log(response, '<<<< response from resources.insights')
-    const str = await response.Body.transformToString()
+    const str = await response.Body.transformToString();
     //logger.log(str, '<<<< str from resources.insights')
-    let basePath
-    if (process.env.NODE_ENV === 'production') {
-      basePath = 'https://www.akilaanalytics.com/_blog'
+    let basePath;
+    if (process.env.NODE_ENV === "production") {
+      basePath = "https://www.akilaanalytics.com/_blog";
     } else {
-      basePath = 'https://www.staging.akilaanalytics.com/_blog'
+      basePath = "https://www.staging.akilaanalytics.com/_blog";
     }
     return json(
       {
         ok: true,
         meta: JSON.parse(str),
         isSubscribed: cookies?.isSubscribed,
-        basePath
+        basePath,
       },
       {
         headers: {
-          'Content-Type': 'application/json; charset=utf-8',
-          'Cache-Control': 'no-store'
-        }
+          "Content-Type": "application/json; charset=utf-8",
+          "Cache-Control": "no-store",
+        },
       }
-    )
+    );
   } catch (e) {
-    console.log(e, '<<<  e from routes/resources.insights')
-    return { ok: false }
+    console.log(e, "<<<  e from routes/resources.insights");
+    return { ok: false };
   }
-}
+};
+
+const techForNonTechFounders = [
+  {
+    title: "What is the Cloud",
+    preview: "Why am I using it and should I choose AWS, Azure, or GCP?",
+    image_link: "what-is-the-cloud/image.jpg",
+    category: "A Primer on Technology",
+  },
+  {
+    title: "What are SQL Databases",
+    preview: "Do I need one and which one do I choose?",
+    image_link: "what-are-sql-databases/image.jpg",
+    category: "A Primer on Technology",
+  },
+];
 
 export default function Insights() {
-  const res = useLoaderData<IBlogMeta>()
-  const location = useLocation()
-  const [basePath, setBasePath] = useState<string>(res.basePath)
+  const res = useLoaderData<IBlogMeta>();
+  const location = useLocation();
+  const [basePath, setBasePath] = useState<string>(res.basePath);
 
-  if (!res?.meta?.articles) return <MissingPage />
-  logger.log(res.meta.articles[10], '<<< res from useLoaderData')
+  if (!res?.meta?.articles) return <MissingPage />;
+  logger.log(res.meta.articles[10], "<<< res from useLoaderData");
 
   const recommendedArticles = res.meta?.articles.filter(
     (ele) => ele.recommended === true
-  )
+  );
   const allOtherArticles = res.meta?.articles.filter(
     (ele) => ele.recommended !== true
-  )
+  );
 
   return (
     <div>
@@ -116,7 +130,7 @@ export default function Insights() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             className="h-full w-full rounded-md bg-gray-800 p-5"
             allowFullScreen
-          />{' '}
+          />{" "}
         </div>
         <div className="w-full p-5 md:w-3/4 md:p-0">
           <h4>Recommended</h4>
@@ -129,12 +143,14 @@ export default function Insights() {
                 <h2>{idx + 1}</h2>
                 <div key={ele.title} className="my-auto">
                   <span className="text-periwinkle">{ele.category}</span>
-                  <Link
-                    prefetch="intent"
-                    to={`/resources/insights/${ele.title}`}
+                  <a
+                    href={`/resources/insights/${ele.title}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:font-bold"
                   >
-                    <h5 className="hover:font-bold">{ele.title}</h5>
-                  </Link>
+                    <h5>{ele.title}</h5>
+                  </a>
                 </div>
               </div>
             ))}
@@ -142,72 +158,67 @@ export default function Insights() {
       </div>
       <br />
       <div className="px-[5vw]">
+        {/* Series */}
+        <h3>Series: A Primer on Technology for Non-Tech Founders</h3>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+          {techForNonTechFounders.map((ele) => {
+            return (
+              <ArticleCard
+                isPdf={true}
+                key={ele.title}
+                basePath={basePath}
+                title={ele.title}
+                link={`/resources/insights/pdf/${ele.title}`}
+                image_link={ele.image_link}
+                category={ele.category}
+                preview={ele.preview}
+              />
+            );
+          })}
+        </div>
+        {/* All articles */}
+        <h3 className="mt-16">All Articles</h3>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
           {allOtherArticles.map((ele) => {
             return (
-              <div
-                className="h-full rounded-lg border border-gray-500 p-4 shadow-md md:h-[60vh]"
+              <ArticleCard
                 key={ele.title}
-              >
-                <img
-                  src={`${basePath}/${ele.image_link}`}
-                  className="h-1/3 w-full"
-                  alt={`${ele.title}`}
-                />
-                <br />
-
-                <span className="text-sm">{ele.category}</span>
-                <div className="flex items-center">
-                  <Link to={ele.title}>
-                    <h5 className="h-[7rem] items-center justify-start font-semibold">
-                      {/* Display the whole title except the last word */}
-                      {ele.title.substring(0, ele.title.lastIndexOf(' '))}
-                      <span className="whitespace-nowrap">
-                        {/* Display the last word of the title */}{' '}
-                        {ele.title.substring(ele.title.lastIndexOf(' ') + 1)}
-                        {'  '}
-                        <span className="h-6 w-20 text-2xl text-periwinkle">
-                          &rsaquo;
-                        </span>
-                      </span>
-                    </h5>
-                  </Link>
-                </div>
-
-                <br />
-                <p className="line-clamp-3">
-                  {' '}
-                  {ele.preview.replace(/[^a-zA-Z0-9 ]/g, '')}
-                </p>
-              </div>
-            )
+                isPdf={false}
+                basePath={basePath}
+                title={ele.title}
+                link={`/resources/insights/${ele.title}`}
+                image_link={ele.image_link}
+                category={ele.category}
+                preview={ele.preview}
+              />
+            );
           })}
         </div>
       </div>
       {!res.isSubscribed && <EmailSignUp />}
     </div>
-  )
+  );
 }
 
 export function ErrorBoundary() {
-  const error = useRouteError()
-  console.log('ERROR FROM BOUNDARY', error)
-  return <div>Error</div>
+  const error = useRouteError();
+  console.log("ERROR FROM BOUNDARY", error);
+  return <div>Error</div>;
 }
 
 export const meta: MetaFunction = () => {
-  const title = 'Insights: No-Code Data Science'
-  const description = `Stay updated with the latest insights in data science, platform updates, and more from the Akila Analytics team.`
+  const title = "Insights: No-Code Data Science";
+  const description = `Stay updated with the latest insights in data science, platform updates, and more from the Akila Analytics team.`;
   return [
     { title: title },
-    { property: 'og:title', content: title },
+    { property: "og:title", content: title },
     {
-      name: 'description',
-      content: description
+      name: "description",
+      content: description,
     },
     {
-      name: 'og:description',
-      content: description
-    }
-  ]
-}
+      name: "og:description",
+      content: description,
+    },
+  ];
+};

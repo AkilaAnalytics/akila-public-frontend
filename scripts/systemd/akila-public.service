@@ -1,0 +1,15 @@
+[Unit]
+Description=Akila public pages
+After=network.target
+
+[Service]
+Type=simple
+User=goldney
+WorkingDirectory=/ebs-data/akila-public
+EnvironmentFile=/etc/environment
+ExecStart=/bin/zsh -c 'npm run start'
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+

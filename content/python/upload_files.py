@@ -8,7 +8,6 @@ from botocore.exceptions import NoCredentialsError, ClientError
 # AWS S3 Configuration
 
 env = sys.argv[1]
-print(env, "<<< env \n\n", flush=True)
 if env == "staging":
     session = boto3.Session(profile_name="akila-staging")
     bucket_name = "staging-akila-analytics-static-assets"

@@ -96,10 +96,7 @@
     /* background-color: #0c0c0c; */
     background-color: #0c0c0c;
     color: white;
-  }
-
-  html {
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 16px;
     font-weight: 400;
   }
@@ -148,24 +145,26 @@
 
   /* Fonts */
   @font-face {
+    font-family: "Bitter";
+    src: url("/font/Bitter-VariableFont_wght.ttf") format("truetype");
     font-weight: 400;
-    font-family: 'Bitter'; /* serif */
-    font-size: 12px;
-    line-height: 32px;
-    /*src: url('../../public/font/Bitter-VariableFont_wght.ttf');*/
-    src: url('../../public/font/Bitter-VariableFont_wght.ttf');
+    font-style: normal;
+    font-display: swap; /* Optional, improves loading behavior */
+  }
+
+  @font-face {
+    font-family: "Raleway";
+    src: url("/font/Raleway-VariableFont_wght.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
   }
   @font-face {
-    font-family: 'Raleway'; /* sans-serif */
-    font-size: 12px;
-    line-height: 32px;
-    src: url('../../public/font/Raleway-VariableFont_wght.ttf');
-  }
-  @font-face {
-    font-family: 'Poppins'; /* sans-serif */
-    font-size: 12px;
-    line-height: 32px;
-    src: url('../../public/font/Poppins-Regular.ttf');
+    font-family: "Poppins"; /* sans-serif */
+    src: url("/font/Poppins-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
   }
 
   /* Banners & Linear gradients */
