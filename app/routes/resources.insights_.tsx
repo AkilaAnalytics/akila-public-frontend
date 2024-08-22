@@ -60,6 +60,8 @@ export const loader = async ({ request }) => {
     } else {
       basePath = "https://www.staging.akilaanalytics.com/_blog";
     }
+    console.log(basePath, "<<< basePath v1");
+    //console.log(str, "<<< str");
     return json(
       {
         ok: true,
