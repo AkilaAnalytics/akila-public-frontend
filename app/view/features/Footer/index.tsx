@@ -183,7 +183,7 @@ function displayLinks(category: string, links: Array<any>) {
 
 export default function Footer() {
   const loaderData = useLoaderData<ILoaderData>();
-  logger.log(loaderData, "<<<< loaderData from Footer");
+  //logger.log(loaderData, "<<<< loaderData from Footer");
   return (
     <footer className="contact-us-gradient mx-auto mt-[50px] overflow-hidden">
       <div className="wave ">

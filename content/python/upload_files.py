@@ -28,7 +28,7 @@ def upload_file_to_s3(file_path, s3_path):
         print(f"Error uploading {file_path}: {e}")
 
 
-def process_folder(folder_path):
+def process_md_files(folder_path):
     for root, dirs, files in os.walk(folder_path):
         for file in files:
             print(file, "<<< file", flush=True)
@@ -56,6 +56,26 @@ def process_folder(folder_path):
                 print(result, "<<< result \n\n\n", flush=True)
 
 
+def upload_pdfs(folder_path: str):
+    for root, dirs, files in os.walk(folder_path):
+        # print(root, dirs, "<<< root, dirs")
+        for file in files:
+            if file.endswith(".pdf"):
+                # S3 Paths
+                folder = file.split(".pdf")[0]
+                pdf_file_path = os.path.join(root, file)  # f"_blog/{folder}/{file}"
+                image_file_path = os.path.join(
+                    root, "image.jpg"
+                )  # f"_blog/{folder}/{file}"
+                print(pdf_file_path, "<<< file_path")
+                print(image_file_path, "<<< image_file_path")
+
+                # Upload Markdown file
+                upload_file_to_s3(pdf_file_path, f"_blog/{folder}/{file}")
+                upload_file_to_s3(image_file_path, f"_blog/{folder}/image.jpg")
+                print("----uploaded---- \n\n\n")
+
+
 base_path = "/Users/brandongoldney/Documents/Akila-Analytics/public/frontend/content"
 folders = [
     f"{base_path}/blog-general",
@@ -63,5 +83,7 @@ folders = [
     # f"{base_path}/blog-programming",
     f"{base_path}/json",
 ]
-for folder in folders:
-    process_folder(folder)
+# for folder in folders:
+#    process_md_files(folder)
+
+upload_pdfs(f"{base_path}/tech-for-non-tech-founders")
