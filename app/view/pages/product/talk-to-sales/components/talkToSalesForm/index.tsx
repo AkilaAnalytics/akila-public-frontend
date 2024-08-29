@@ -1,19 +1,37 @@
-import { useState } from 'react'
-import { useFetcher } from 'react-router-dom'
+import { useState } from "react";
+import { useFetcher } from "react-router-dom";
 
-import { Button, StatusMessageFetcher } from '~/view/components'
+import { Button, StatusMessageFetcher } from "~/view/components";
 
 export default function TalkToSalesForm() {
   const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
+    firstName: "",
+    lastName: "",
 
-    businessName: '',
-    phone: '',
-    jobTitle: '',
-    department: ''
-  })
-  const fetcher = useFetcher()
+    businessName: "",
+    phone: "",
+    jobTitle: "",
+    department: "",
+  });
+  const fetcher = useFetcher();
+
+  async function onClick(e) {
+    e.preventDefault();
+    window.grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute(
+        "6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr",
+        { action: "LOGIN" }
+      );
+      console.log(token, "<<< token");
+
+      // Create a FormData object and append the form values and the token
+      const formData = new FormData(e.target.form);
+      formData.append("g-recaptcha-response", token);
+
+      // Use fetcher.submit to send the form data
+      fetcher.submit(formData, { method: "post", action: "/api/contact-us" });
+    });
+  }
 
   return (
     <div className="w-[100%]  ">
@@ -59,7 +77,10 @@ export default function TalkToSalesForm() {
           <input type="hidden" name="address" value="" />
           <input type="hidden" name="source" value="TalkToSalesForm" />
 
-          <button className="mt-[8px] min-h-[60px] w-full bg-red-500 bg-gradient-to-r from-linkText to-turqoise">
+          <button
+            className="mt-[8px] min-h-[60px] w-full bg-red-500 bg-gradient-to-r from-linkText to-turqoise"
+            onClick={onClick}
+          >
             Submit
           </button>
         </fetcher.Form>
@@ -72,5 +93,5 @@ export default function TalkToSalesForm() {
         )}
       </div>
     </div>
-  )
+  );
 }

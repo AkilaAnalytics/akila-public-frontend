@@ -1,12 +1,37 @@
-import { useFetcher } from 'react-router-dom'
+import { useFetcher } from "react-router-dom";
 
-import { StatusMessageFetcher } from '~/view/components'
+import { StatusMessageFetcher } from "~/view/components";
 
 export default function DemoPageForm() {
-  const fetcher = useFetcher()
+  const fetcher = useFetcher();
 
   const inputClassName =
-    'mb-[24px] w-full bg-[#030912] p-[16px] placeholder:text-[#8B8B8B] rounded-md outline-none'
+    "mb-[24px] w-full bg-[#030912] p-[16px] placeholder:text-[#8B8B8B] rounded-md outline-none";
+  async function onClick(e: FormEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    window.grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute(
+        "6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr",
+        { action: "LOGIN" }
+      );
+      console.log(token, "<<< token");
+
+      // Get the form element explicitly
+      const form = e.currentTarget.closest("form");
+
+      if (form) {
+        // Create a FormData object and append the form values and the token
+        const formData = new FormData(form);
+        formData.append("g-recaptcha-response", token);
+
+        // Use fetcher.submit to send the form data
+        fetcher.submit(formData, { method: "post", action: "/api/contact-us" });
+      } else {
+        console.error("Form element not found.");
+      }
+    });
+  }
+
   return (
     <div className="w-[100%]">
       <div className="min-h-[751px] w-full items-center justify-center bg-[#191919] p-10">
@@ -64,6 +89,7 @@ export default function DemoPageForm() {
           <button
             type="submit"
             className="button-gradient mt-[8px] min-h-[60px] w-full rounded-md bg-red-500"
+            onClick={onClick}
           >
             Submit
           </button>
@@ -77,5 +103,5 @@ export default function DemoPageForm() {
         </fetcher.Form>
       </div>
     </div>
-  )
+  );
 }

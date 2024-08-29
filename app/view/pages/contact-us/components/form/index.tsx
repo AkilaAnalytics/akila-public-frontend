@@ -1,29 +1,29 @@
-import type { IFetcherResponse } from '~/view/pages/home/components/contactUs'
+import type { IFetcherResponse } from "~/view/pages/home/components/contactUs";
 
-import type { ILoaderData } from '~/utils/types'
+import type { ILoaderData } from "~/utils/types";
 
-import { useFetcher } from 'react-router-dom'
+import { useFetcher } from "react-router-dom";
 
-import { StatusMessageFetcher } from '~/view/components'
-import { useLoaderData } from '@remix-run/react'
-import { email, internet, phone, location } from '~/view/assets'
+import { StatusMessageFetcher } from "~/view/components";
+import { useLoaderData } from "@remix-run/react";
+import { email, internet, phone, location } from "~/view/assets";
 
 export default function Form() {
-  const fetcher = useFetcher<IFetcherResponse>()
-  const loaderData = useLoaderData<ILoaderData>()
+  const fetcher = useFetcher<IFetcherResponse>();
+  const loaderData = useLoaderData<ILoaderData>();
 
   const contactInfo = [
     {
       image: email,
-      text: loaderData.SUPPORT_EMAIL
+      text: loaderData.SUPPORT_EMAIL,
     },
     {
       image: phone,
-      text: <p className="font-poppins">{loaderData.PHONE_NUMBER}</p>
+      text: <p className="font-poppins">{loaderData.PHONE_NUMBER}</p>,
     },
     {
       image: internet,
-      text: <p className="font-poppins">AkilaAnalytics.com</p>
+      text: <p className="font-poppins">AkilaAnalytics.com</p>,
     },
     {
       image: location,
@@ -32,9 +32,45 @@ export default function Form() {
           66 W Flagler St <br />
           Miami, FL 33130
         </p>
-      )
-    }
-  ]
+      ),
+    },
+  ];
+
+  async function onClick(e) {
+    e.preventDefault();
+    window.grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute(
+        "6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr",
+        { action: "LOGIN" }
+      );
+      console.log(token, "<<< token");
+
+      // Create a FormData object and append the form values and the token
+      const formData = new FormData(e.target.form);
+      formData.append("g-recaptcha-response", token);
+
+      // Use fetcher.submit to send the form data
+      fetcher.submit(formData, { method: "post", action: "/api/contact-us" });
+    });
+  }
+
+  async function onClick(e) {
+    e.preventDefault();
+    window.grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute(
+        "6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr",
+        { action: "LOGIN" }
+      );
+      console.log(token, "<<< token");
+
+      // Create a FormData object and append the form values and the token
+      const formData = new FormData(e.target.form);
+      formData.append("g-recaptcha-response", token);
+
+      // Use fetcher.submit to send the form data
+      fetcher.submit(formData, { method: "post", action: "/api/contact-us" });
+    });
+  }
 
   return (
     <div>
@@ -112,9 +148,12 @@ export default function Form() {
             placeholder="Message"
             className="min-h-[203px] w-full rounded-md border-[1px] border-periwinkle bg-transparent px-[8px] py-[8px] focus:outline-none"
             name="message"
-          />{' '}
+          />{" "}
           <input type="hidden" name="source" value="contact-us form" />
-          <button className="button-gradient hover:button-gradient-hover mt-[32px] w-full rounded-md px-1 py-[16px] hover:scale-105">
+          <button
+            className="button-gradient hover:button-gradient-hover mt-[32px] w-full rounded-md px-1 py-[16px] hover:scale-105"
+            onClick={onClick}
+          >
             Submit
           </button>
           {fetcher.data && (
@@ -127,5 +166,5 @@ export default function Form() {
         </fetcher.Form>
       </div>
     </div>
-  )
+  );
 }

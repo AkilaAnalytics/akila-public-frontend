@@ -1,11 +1,5 @@
 import { useFetcher } from "react-router-dom";
-import {
-  GoogleReCaptchaProvider,
-  GoogleReCaptcha,
-} from "react-google-recaptcha-v3";
-
 import { StatusMessageFetcher } from "~/view/components";
-import { useRef, useState } from "react";
 
 export interface IFetcherResponse {
   ok: boolean;

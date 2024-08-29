@@ -101,14 +101,16 @@ export async function action({
     logger.log(body, "<<< body");
     const recaptchaToken = body.get("g-recaptcha-response");
     logger.log(recaptchaToken, "<<<< recaptcha token");
-    const res = await createAssessment({
+    const res = (await createAssessment({
       // TODO: Replace the token and reCAPTCHA action variables before running the sample.
       projectID: "akilaanalytics",
       recaptchaKey: "6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr",
       token: recaptchaToken,
       recaptchaAction: "LOGIN",
-    });
-    console.log(res, "<<< res");
+    })) as number;
+    if (res < 0.5) {
+      throw new Error("Invalid reCAPTCHA");
+    }
     // parse request
     const [
       firstName,
