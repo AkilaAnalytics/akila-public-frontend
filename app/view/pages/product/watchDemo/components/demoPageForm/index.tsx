@@ -7,6 +7,7 @@ export default function DemoPageForm() {
 
   const inputClassName =
     "mb-[24px] w-full bg-[#030912] p-[16px] placeholder:text-[#8B8B8B] rounded-md outline-none";
+
   async function onClick(e: FormEvent<HTMLButtonElement>) {
     e.preventDefault();
     window.grecaptcha.enterprise.ready(async () => {
@@ -89,6 +90,7 @@ export default function DemoPageForm() {
           <button
             type="submit"
             className="button-gradient mt-[8px] min-h-[60px] w-full rounded-md bg-red-500"
+            data-sitekey="6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr"
             onClick={onClick}
           >
             Submit
