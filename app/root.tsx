@@ -49,6 +49,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr"></script>
         {gaTrackingId ? (
           <>
             <script

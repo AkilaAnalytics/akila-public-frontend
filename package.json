@@ -13,6 +13,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.635.0",
     "@aws-sdk/client-ses": "^3.635.0",
+    "@google-cloud/recaptcha-enterprise": "^5.10.0",
     "@headlessui/react": "^2.1.2",
     "@heroicons/react": "^2.1.5",
     "@remix-run/express": "^2.11.2",
@@ -27,6 +28,7 @@
     "morgan": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-google-recaptcha-v3": "^1.10.1",
     "react-helmet": "^6.1.0",
     "react-markdown": "^9.0.1",
     "react-share": "^5.1.0",

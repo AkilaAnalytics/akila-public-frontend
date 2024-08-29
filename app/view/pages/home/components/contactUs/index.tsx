@@ -1,12 +1,35 @@
-import { useFetcher } from 'react-router-dom'
+import { useFetcher } from "react-router-dom";
+import {
+  GoogleReCaptchaProvider,
+  GoogleReCaptcha,
+} from "react-google-recaptcha-v3";
 
-import { StatusMessageFetcher } from '~/view/components'
+import { StatusMessageFetcher } from "~/view/components";
+import { useRef, useState } from "react";
 
 export interface IFetcherResponse {
-  ok: boolean
+  ok: boolean;
 }
 export default function ContactUs() {
-  const fetcher = useFetcher<IFetcherResponse>()
+  const fetcher = useFetcher<IFetcherResponse>();
+
+  async function onClick(e) {
+    e.preventDefault();
+    window.grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute(
+        "6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr",
+        { action: "LOGIN" }
+      );
+      console.log(token, "<<< token");
+
+      // Create a FormData object and append the form values and the token
+      const formData = new FormData(e.target.form);
+      formData.append("g-recaptcha-response", token);
+
+      // Use fetcher.submit to send the form data
+      fetcher.submit(formData, { method: "post", action: "/api/contact-us" });
+    });
+  }
 
   return (
     <div className="my-[50px] flex items-center justify-center p-3 ">
@@ -49,8 +72,9 @@ export default function ContactUs() {
           />
           <div className="flex items-center justify-center">
             <button
-              type="submit"
+              data-sitekey="6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr"
               className="button-gradient hover:button-gradient-hover w-full max-w-[100%] rounded-md bg-periwinkle py-3 hover:scale-105"
+              onClick={onClick}
             >
               SEND
             </button>
@@ -65,5 +89,5 @@ export default function ContactUs() {
         )}
       </div>
     </div>
-  )
+  );
 }
