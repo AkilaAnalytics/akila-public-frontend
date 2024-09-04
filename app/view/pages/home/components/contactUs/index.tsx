@@ -7,24 +7,6 @@ export interface IFetcherResponse {
 export default function ContactUs() {
   const fetcher = useFetcher<IFetcherResponse>();
 
-  async function onClick(e) {
-    e.preventDefault();
-    window.grecaptcha.enterprise.ready(async () => {
-      const token = await grecaptcha.enterprise.execute(
-        "6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr",
-        { action: "LOGIN" }
-      );
-      console.log(token, "<<< token");
-
-      // Create a FormData object and append the form values and the token
-      const formData = new FormData(e.target.form);
-      formData.append("g-recaptcha-response", token);
-
-      // Use fetcher.submit to send the form data
-      fetcher.submit(formData, { method: "post", action: "/api/contact-us" });
-    });
-  }
-
   return (
     <div className="my-[50px] flex items-center justify-center p-3 ">
       <div>
@@ -43,7 +25,7 @@ export default function ContactUs() {
               placeholder="Last Name"
               name="lastName"
               type="text"
-              className="min-h-[45px]  w-full rounded-[5px] border-2 border-white border-opacity-25 bg-transparent p-[10px]  focus:outline-none"
+              className="min-h-[45px] w-full rounded-[5px] border-2 border-white border-opacity-25 bg-transparent p-[10px]  focus:outline-none"
             />
           </div>
           <input
@@ -58,17 +40,23 @@ export default function ContactUs() {
             className="mb-[40px] min-h-[146px]  w-full rounded-[5px] border-2 border-white border-opacity-25 bg-transparent p-[17px] focus:outline-none"
           ></textarea>
           {/* hidden fields */}
-          <input placeholder="Address" type="hidden" name="Address" value="" />
           <input
             type="hidden"
             name="source"
             value="contact us form on home-page"
           />
+          <input
+            className="absolute-0 opacity-0"
+            autoComplete="off"
+            type="text"
+            id="message2"
+            name="message2"
+            placeholder="Second Message"
+          />
           <div className="flex items-center justify-center">
             <button
-              data-sitekey="6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr"
               className="button-gradient hover:button-gradient-hover w-full max-w-[100%] rounded-md bg-periwinkle py-3 hover:scale-105"
-              onClick={onClick}
+              type="submit"
             >
               SEND
             </button>

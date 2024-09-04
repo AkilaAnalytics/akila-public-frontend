@@ -7,31 +7,12 @@ export default function TalkToSalesForm() {
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
-
     businessName: "",
     phone: "",
     jobTitle: "",
     department: "",
   });
   const fetcher = useFetcher();
-
-  async function onClick(e) {
-    e.preventDefault();
-    window.grecaptcha.enterprise.ready(async () => {
-      const token = await grecaptcha.enterprise.execute(
-        "6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr",
-        { action: "LOGIN" }
-      );
-      console.log(token, "<<< token");
-
-      // Create a FormData object and append the form values and the token
-      const formData = new FormData(e.target.form);
-      formData.append("g-recaptcha-response", token);
-
-      // Use fetcher.submit to send the form data
-      fetcher.submit(formData, { method: "post", action: "/api/contact-us" });
-    });
-  }
 
   return (
     <div className="w-[100%]  ">
@@ -74,13 +55,20 @@ export default function TalkToSalesForm() {
             name="phone"
             className="mb-[24px] w-full bg-[#030912] p-[16px] placeholder:text-[#8B8B8B]"
           />
-          <input type="hidden" name="address" value="" />
           <input type="hidden" name="source" value="TalkToSalesForm" />
 
+          {/* hidden fields */}
+          <input
+            className="absolute-0 opacity-0"
+            autoComplete="off"
+            type="text"
+            id="message2"
+            name="message2"
+            placeholder="Second Message"
+          />
           <button
             className="mt-[8px] min-h-[60px] w-full bg-red-500 bg-gradient-to-r from-linkText to-turqoise"
-            data-sitekey="6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr"
-            onClick={onClick}
+            type="submit"
           >
             Submit
           </button>

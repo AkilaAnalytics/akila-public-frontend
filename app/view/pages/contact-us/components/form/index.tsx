@@ -36,42 +36,6 @@ export default function Form() {
     },
   ];
 
-  async function onClick(e) {
-    e.preventDefault();
-    window.grecaptcha.enterprise.ready(async () => {
-      const token = await grecaptcha.enterprise.execute(
-        "6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr",
-        { action: "LOGIN" }
-      );
-      console.log(token, "<<< token");
-
-      // Create a FormData object and append the form values and the token
-      const formData = new FormData(e.target.form);
-      formData.append("g-recaptcha-response", token);
-
-      // Use fetcher.submit to send the form data
-      fetcher.submit(formData, { method: "post", action: "/api/contact-us" });
-    });
-  }
-
-  async function onClick(e) {
-    e.preventDefault();
-    window.grecaptcha.enterprise.ready(async () => {
-      const token = await grecaptcha.enterprise.execute(
-        "6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr",
-        { action: "LOGIN" }
-      );
-      console.log(token, "<<< token");
-
-      // Create a FormData object and append the form values and the token
-      const formData = new FormData(e.target.form);
-      formData.append("g-recaptcha-response", token);
-
-      // Use fetcher.submit to send the form data
-      fetcher.submit(formData, { method: "post", action: "/api/contact-us" });
-    });
-  }
-
   return (
     <div>
       <div className="mx-auto flex w-full flex-col gap-10 p-10 md:flex-row">
@@ -150,10 +114,18 @@ export default function Form() {
             name="message"
           />{" "}
           <input type="hidden" name="source" value="contact-us form" />
+          {/* hidden fields */}
+          <input
+            className="absolute-0 opacity-0"
+            autoComplete="off"
+            type="text"
+            id="message2"
+            name="message2"
+            placeholder="Second Message"
+          />
           <button
             className="button-gradient hover:button-gradient-hover mt-[32px] w-full rounded-md px-1 py-[16px] hover:scale-105"
-            data-sitekey="6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr"
-            onClick={onClick}
+            type="submit"
           >
             Submit
           </button>

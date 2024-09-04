@@ -1,12 +1,12 @@
-import Card from './components/Card'
+import Card from "./components/Card";
 
 interface ICardData {
-  title: string
-  price: string
-  description: string
-  keyPoints: string[]
-  buttonText: string
-  link: string
+  title: string;
+  price: string;
+  description: string;
+  keyPoints: string[];
+  buttonText: string;
+  link: string;
 }
 
 export default function PricingPage() {
@@ -34,51 +34,51 @@ export default function PricingPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 // create a tyepscript interface for priceData
 
 const priceData = [
   {
-    title: 'Starter',
-    price: '500',
+    title: "Starter",
+    price: "500",
     description:
-      'Perfect for teams with lower data volumes. We recommend most small companies start with this package.',
+      "Perfect for teams with lower data volumes. We recommend most small companies start with this package.",
     keyPoints: [
-      'Upload data',
-      'Run data processing jobs',
-      'Run machine learning jobs',
-      'Schedule recurring jobs',
-      'Access advanced analytics tools'
+      "Upload data",
+      "Run data processing jobs",
+      "Run machine learning jobs",
+      "Schedule recurring jobs",
+      "Access advanced analytics tools",
     ],
-    buttonText: 'Contact Us',
-    link: '/contact-us'
+    buttonText: "Contact Us",
+    link: "/contact-us",
   },
   {
-    title: 'Professional',
-    price: '2,000 / month',
+    title: "Professional",
+    price: "2,000 / month",
     description:
-      'Great for start-ups and small businesses that do not already have mature cloud-based solutions.',
+      "Great for start-ups and small businesses that do not already have mature cloud-based solutions.",
     keyPoints: [
-      'Everything in the Free package',
-      'Easy configuration',
-      'Zero maintenance',
-      'Unlimited Processing'
+      "Everything in the Starter package",
+      "Easy configuration",
+      "Zero maintenance",
+      "Unlimited Processing",
     ],
-    buttonText: 'Contact Us',
-    link: '/contact-us'
+    buttonText: "Contact Us",
+    link: "/contact-us",
   },
   {
-    title: 'Enterprise',
-    price: 'Contact Us',
+    title: "Enterprise",
+    price: "Contact Us",
     description:
-      'Take your data analysis to the next level with the full suite of Akila Analytics features, plus expert support and enhanced security.',
+      "Take your data analysis to the next level with the full suite of Akila Analytics features, plus expert support and enhanced security.",
     keyPoints: [
-      'Everything in the Professional package',
-      'Configure Akila in your own cloud environment'
+      "Everything in the Professional package",
+      "Configure Akila in your own cloud environment",
     ],
-    buttonText: 'Contact Us',
-    link: '/contact-us'
-  }
-]
+    buttonText: "Contact Us",
+    link: "/contact-us",
+  },
+];

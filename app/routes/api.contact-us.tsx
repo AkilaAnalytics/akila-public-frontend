@@ -38,7 +38,7 @@ async function createAssessment({
     parent: projectPath,
   };
 
-  const [response] = await client.createAssessment(request);
+  //const [response] = await client.createAssessment(request);
   logger.log(response, "<<< response");
 
   // Check if the token is valid.
@@ -99,18 +99,18 @@ export async function action({
   try {
     const body = await request.formData();
     logger.log(body, "<<< body");
-    const recaptchaToken = body.get("g-recaptcha-response");
-    logger.log(recaptchaToken, "<<<< recaptcha token");
-    const res = (await createAssessment({
-      // TODO: Replace the token and reCAPTCHA action variables before running the sample.
-      projectID: "akilaanalytics",
-      recaptchaKey: "6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr",
-      token: recaptchaToken,
-      recaptchaAction: "LOGIN",
-    })) as number;
-    if (res < 0.5) {
-      throw new Error("Invalid reCAPTCHA");
-    }
+    //const recaptchaToken = body.get("g-recaptcha-response");
+    //logger.log(recaptchaToken, "<<<< recaptcha token");
+    //const res = (await createAssessment({
+    //  // TODO: Replace the token and reCAPTCHA action variables before running the sample.
+    //  projectID: "akilaanalytics",
+    //  recaptchaKey: "6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr",
+    //  token: recaptchaToken,
+    //  recaptchaAction: "LOGIN",
+    //})) as number;
+    //if (res < 0.5) {
+    //  throw new Error("Invalid reCAPTCHA");
+    //}
     // parse request
     const [
       firstName,
@@ -121,7 +121,7 @@ export async function action({
       phone,
       jobTitle,
       company,
-      address,
+      message2,
     ] = [
       "firstName",
       "lastName",
@@ -131,7 +131,7 @@ export async function action({
       "phone",
       "jobTitle",
       "company",
-      "address",
+      "message2",
     ].map((field) => {
       const rawValue = body.get(field) as string;
       console.log(rawValue, "<<< rawValue");
@@ -146,13 +146,13 @@ export async function action({
 
     // NOTE: ADDRESS IS A HONEYPOT honey pot. If the user added a field then
     // it is a bot. We will not send an email and return a 200 status code
-    if (!address) {
+    if (!message2) {
       await sendEmail({
         firstName,
         lastName,
         email,
         message,
-        source,
+        source: `${source}`,
         phone,
         jobTitle,
         company,
