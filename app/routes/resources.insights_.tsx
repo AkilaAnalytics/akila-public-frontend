@@ -18,6 +18,7 @@ import { logger } from "~/utils";
 import { InsightsBannerImage } from "~/view/assets";
 import { ArticleCard, BannerImage } from "~/view/components";
 import { EmailSignUp } from "~/view/features";
+import axios from "axios";
 
 interface IArticles {
   title: string;
@@ -32,6 +33,14 @@ interface IVideos extends IArticles {
   link: string;
 }
 
+interface Article {
+  title: string;
+  slug: string;
+  description: string;
+  recommended: boolean;
+  category: string;
+}
+
 export interface IBlogMeta {
   meta: {
     articles: IArticles[];
@@ -39,11 +48,29 @@ export interface IBlogMeta {
   };
   isSubscribed: boolean;
   basePath: string;
+  articles: Article[];
 }
 
 export const loader = async ({ request }) => {
   const cookie = createCookie("isSubscribed");
   const cookies = await cookie.parse(request.headers.get("Cookie"));
+  let articles = await fetch(
+    "http://localhost:1337/api/articles?fields[0]=title&fields[1]=slug&fields[2]=description&fields[3]=recommended&populate[category][fields]=name&populate[cover]=*"
+  );
+  articles = await articles.json();
+  //logger.log(articles, "<<< articles from strapi");
+  // category is nested so we'll flatten the objects
+  articles = articles.data.map((ele) => {
+    return {
+      ...ele,
+      category: ele.category.name,
+      cover: ele.cover.url,
+      slug: ele.slug,
+    };
+  });
+
+  logger.log(articles, "<<< articles from strapi");
+
   try {
     const params = {
       Bucket: process.env.STATIC_BUCKET,
@@ -53,20 +80,19 @@ export const loader = async ({ request }) => {
     const response = await s3Client.send(command);
     //console.log(response, '<<<< response from resources.insights')
     const str = await response.Body.transformToString();
-    //logger.log(str, '<<<< str from resources.insights')
     let basePath;
     if (process.env.NODE_ENV === "production") {
       basePath = "https://www.akilaanalytics.com/_blog";
     } else {
       basePath = "https://www.staging.akilaanalytics.com/_blog";
     }
-    console.log(basePath, "<<< basePath v1");
     //console.log(str, "<<< str");
     return json(
       {
         ok: true,
         meta: JSON.parse(str),
         isSubscribed: cookies?.isSubscribed,
+        articles: articles,
         basePath,
       },
       {
@@ -82,35 +108,14 @@ export const loader = async ({ request }) => {
   }
 };
 
-const techForNonTechFounders = [
-  {
-    title: "What is the Cloud",
-    preview: "Why am I using it and should I choose AWS, Azure, or GCP?",
-    image_link: "what-is-the-cloud/image.jpg",
-    category: "A Primer on Technology",
-  },
-  {
-    title: "What are SQL Databases",
-    preview: "Do I need one and which one do I choose?",
-    image_link: "what-are-sql-databases/image.jpg",
-    category: "A Primer on Technology",
-  },
-];
-
 export default function Insights() {
   const res = useLoaderData<IBlogMeta>();
+  logger.log(res, "<<< res");
   const location = useLocation();
   const [basePath, setBasePath] = useState<string>(res.basePath);
 
   if (!res?.meta?.articles) return <MissingPage />;
   logger.log(res.meta.articles[10], "<<< res from useLoaderData");
-
-  const recommendedArticles = res.meta?.articles.filter(
-    (ele) => ele.recommended === true
-  );
-  const allOtherArticles = res.meta?.articles.filter(
-    (ele) => ele.recommended !== true
-  );
 
   return (
     <div>
@@ -136,8 +141,8 @@ export default function Insights() {
         </div>
         <div className="w-full p-5 md:w-3/4 md:p-0">
           <h4>Recommended</h4>
-          {res.meta?.articles &&
-            recommendedArticles.map((ele, idx) => (
+          {res.articles &&
+            res.articles.map((ele, idx) => (
               <div
                 className="border-periwinkle-[1px] flex w-full flex-row items-center gap-5 border-b border-t py-3"
                 key={ele.title}
@@ -146,7 +151,10 @@ export default function Insights() {
                 <div key={ele.title} className="my-auto">
                   <span className="text-periwinkle">{ele.category}</span>
                   <a
-                    href={`/resources/insights/${ele.title}`}
+                    href={`/resources/insights/${ele.title.replace(
+                      "?",
+                      ""
+                    )}?slug=${ele.slug}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:font-bold"
@@ -163,36 +171,40 @@ export default function Insights() {
         {/* Series */}
         <h3>Series: A Primer on Technology for Non-Tech Founders</h3>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-          {techForNonTechFounders.map((ele) => {
+          {res.articles.map((ele) => {
             return (
-              <ArticleCard
-                isPdf={true}
-                key={ele.title}
-                basePath={basePath}
-                title={ele.title}
-                link={`/resources/insights/pdf/${ele.title}`}
-                image_link={ele.image_link}
-                category={ele.category}
-                preview={ele.preview}
-              />
+              ele.category === "Tech for Non-Technical Founders" && (
+                <ArticleCard
+                  isPdf={false}
+                  key={ele.title}
+                  basePath={basePath}
+                  title={ele.title}
+                  link={ele.slug}
+                  image_link={ele.cover}
+                  category={ele.category}
+                  preview={ele.description}
+                />
+              )
             );
           })}
         </div>
         {/* All articles */}
         <h3 className="mt-16">All Articles</h3>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-          {allOtherArticles.map((ele) => {
+          {res.articles.map((ele) => {
             return (
-              <ArticleCard
-                key={ele.title}
-                isPdf={false}
-                basePath={basePath}
-                title={ele.title}
-                link={`/resources/insights/${ele.title}`}
-                image_link={ele.image_link}
-                category={ele.category}
-                preview={ele.preview}
-              />
+              ele.category !== "Tech for Non-Technical Founders" && (
+                <ArticleCard
+                  isPdf={false}
+                  key={ele.title}
+                  basePath={basePath}
+                  title={ele.title}
+                  link={ele.slug}
+                  image_link={ele.cover}
+                  category={ele.category}
+                  preview={ele.description}
+                />
+              )
             );
           })}
         </div>

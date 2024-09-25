@@ -1,4 +1,5 @@
 import { createCookie, type LinksFunction } from "@remix-run/node";
+
 import { MetaFunction } from "@remix-run/node";
 
 import { GetObjectCommand } from "@aws-sdk/client-s3";
@@ -11,46 +12,87 @@ import { GettingStartedSection } from "~/view/components";
 import { Summary, Title } from "~/view/features/Blog";
 import { logger } from "~/utils";
 import { EmailSignUp } from "~/view/features";
+import "~/styles/blog.css";
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: "~/styles/blog.css" },
-];
+//export const links: LinksFunction = () => [
+//  { rel: "stylesheet", href: "~/styles/blog.css" },
+//];
 
 interface IProps {
   params: {
     title: string;
   };
 }
+
+interface StrapiBlog {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  slug: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  body: string;
+  recommended: boolean;
+  summary: string[];
+  cover: string;
+}
+interface StrapiResponse<T> {
+  data: T;
+  meta?: {
+    pagination?: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}
+
 export const loader = async ({ request, params }: IProps) => {
   // check if user is already subscribed to receive email alerts on the blog
   const cookie = createCookie("isSubscribed");
   const cookies = await cookie.parse(request.headers.get("Cookie"));
+  const url = new URL(request.url);
 
-  const bucketParams = {
-    Bucket: process.env.STATIC_BUCKET,
-    Key: `_blog/${params.title}/${params.title}.md`,
-  };
-  logger.log(bucketParams, "<<< bucketParams from resources.blog.$title");
+  // Extract the 'slug' query parameter
+  const slug = url.searchParams.get("slug");
 
-  let str;
   try {
-    const command = new GetObjectCommand(bucketParams);
-    const response = await s3Client.send(command);
-    str = await response.Body.transformToString();
-    //logger.log(response, "<<< response from s3 in insights.$title");
+    const res = await fetch(
+      `http://localhost:1337/api/articles?filters[slug]=${slug}&populate=*`
+    );
+    const resJson = await res.json();
+    let articles: StrapiBlog[] = resJson.data as StrapiBlog[];
+    //logger.log(articles.data[0].cover, "<<< final article from insights.title");
+
+    articles = articles.map((ele) => {
+      return {
+        ...ele,
+        category: ele.category.name,
+        coverImageLink: `${process.env.STRAPI_BASE_PATH}${ele.cover.formats.large.url}`,
+        cover: "", // don't send unnecessary information to the browser
+        content_images: "",
+      };
+    });
+    articles = articles[0];
+    logger.log(articles, "<<< articles from insights.$title");
+
+    return {
+      //attributes,
+      body: articles.body,
+      title: articles.title,
+      description: articles.description,
+      summaryPoints: articles.summary,
+      coverImageLink: articles.coverImageLink,
+      category: articles.category,
+      isSubscribed: cookies?.isSubscribed,
+      createdAt: articles.createdAt,
+    };
   } catch (error) {
     logger.log(error, "<<< error from s3 in insights.$title");
   }
-  //createCookie
-  //logger.log(response, '<<< response from insights.$title')
-  //logger.log(str, '<<< str from insights.$title')
-  const { attributes, body } = fm(str);
-  return {
-    attributes,
-    body,
-    title: params.title,
-    isSubscribed: cookies?.isSubscribed,
-  };
 };
 
 interface IAttributes {
@@ -68,44 +110,40 @@ interface IData {
 }
 
 export default function BlogTemplate() {
-  const { attributes, body, title, isSubscribed } = useLoaderData<IData>();
+  const {
+    attributes,
+    body,
+    title,
+    summaryPoints,
+    createdAt,
+    coverImage,
+    category,
+    isSubscribed,
+    coverImageLink,
+    description,
+  } = useLoaderData<IData>();
   return (
     <div className="flex flex-col gap-5">
       <Title
-        category={attributes.category}
-        date={attributes.date}
-        title={attributes.title}
-        subTitle={attributes.subTitle}
-        link={`${title}/image.jpg`}
+        category={category}
+        date={createdAt}
+        title={title}
+        subTitle={description}
+        link={coverImageLink}
       />
-      <div className="mx-auto flex w-full flex-col justify-center border-b-[1px] border-gray-800 px-5 md:w-1/2 md:px-0">
-        <Summary points={attributes.points} />
+      <div className="mx-auto flex w-full flex-col justify-center pb-5 border-b-[1px] border-gray-800 px-5 md:w-1/2 md:px-0">
+        <Summary points={summaryPoints} />
         <ReactMarkdown
-          linkTarget="_blank"
+          //linkTarget="_blank"
           className="markdown"
-          skipHtml={true}
+          skipHtml={false}
           components={{
-            // Map `h4` (`# heading`) to use `h1`s for SEO
-            h4(props) {
-              const { node, ...rest } = props;
-              return (
-                <h4
-                  style={{
-                    borderBottom: "1px solid rgb(41, 38, 122)",
-                    fontStyle: "normal",
-                    fontFamily: "serif",
-                    letterSpacing: "0.025em",
-                  }}
-                  {...rest}
-                />
-              );
-            },
             ul(props) {
               const { node, ...rest } = props;
               return (
                 <ul
                   style={{
-                    width: "100%",
+                    width: "10%",
                   }}
                   {...rest}
                 />
@@ -117,6 +155,20 @@ export default function BlogTemplate() {
                 <li
                   style={{
                     width: "100%",
+                  }}
+                  {...rest}
+                />
+              );
+            },
+            code(props) {
+              const { node, ...rest } = props;
+              return (
+                <p
+                  style={{
+                    backgroundColor: "#919098",
+                    color: "black",
+                    padding: "20px",
+                    borderRadius: "20px",
                   }}
                   {...rest}
                 />
@@ -142,7 +194,21 @@ export default function BlogTemplate() {
             },
             blockquote(props) {
               const { node, ...rest } = props;
-              return <blockquote {...rest} />;
+              return (
+                <blockquote
+                  style={{
+                    backgroundColor: "rgb(41, 38, 122)",
+                    fontStyle: "normal",
+                    fontFamily: "sans-serif",
+                    padding: "20px",
+                    borderRadius: "20px",
+                    float: "right",
+                    width: "40%",
+                    marginLeft: "20px",
+                  }}
+                  {...rest}
+                />
+              );
             },
           }}
         >
@@ -158,37 +224,37 @@ export default function BlogTemplate() {
   );
 }
 
-export const meta: MetaFunction = ({ data }: IData) => {
-  const { title, subTitle } = data.attributes; //useLoaderData<IData>()
-
-  // ensure titles don't have more than 70 characters
-  let formattedTitle = title;
-
-  // Check if title is more than 70 characters
-  if (title.length > 70) {
-    const indexOfColon = title.indexOf(":");
-
-    if (indexOfColon !== -1) {
-      // If there's a colon, take everything to the left of it
-      formattedTitle = title.slice(0, indexOfColon);
-    } else {
-      // If there's no colon, take all full words that fit within 70 characters
-      const trimmedTitle = title.slice(0, 70);
-      const lastSpaceIndex = trimmedTitle.lastIndexOf(" ");
-
-      formattedTitle = trimmedTitle.slice(0, lastSpaceIndex);
-    }
-  }
-
-  return [
-    { title: `Blog: ${formattedTitle}` },
-    { property: "og:title", content: `Blog: ${formattedTitle}` },
-    {
-      name: "description",
-      content: subTitle,
-    },
-  ];
-};
+//export const meta: MetaFunction = ({ data }: IData) => {
+//  const { title, subTitle } = data.attributes; //useLoaderData<IData>()
+//
+//  // ensure titles don't have more than 70 characters
+//  let formattedTitle = title;
+//
+//  // Check if title is more than 70 characters
+//  if (title.length > 70) {
+//    const indexOfColon = title.indexOf(":");
+//
+//    if (indexOfColon !== -1) {
+//      // If there's a colon, take everything to the left of it
+//      formattedTitle = title.slice(0, indexOfColon);
+//    } else {
+//      // If there's no colon, take all full words that fit within 70 characters
+//      const trimmedTitle = title.slice(0, 70);
+//      const lastSpaceIndex = trimmedTitle.lastIndexOf(" ");
+//
+//      formattedTitle = trimmedTitle.slice(0, lastSpaceIndex);
+//    }
+//  }
+//
+//  return [
+//    { title: `Blog: ${formattedTitle}` },
+//    { property: "og:title", content: `Blog: ${formattedTitle}` },
+//    {
+//      name: "description",
+//      content: subTitle,
+//    },
+//  ];
+//};
 
 export function ErrorBoundary() {
   const error = useRouteError();

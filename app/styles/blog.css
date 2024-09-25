@@ -1,51 +1,76 @@
 .markdown p {
-  font-family: sans-serif;
+  margin-top: 20px;
   font-size: 1.25rem;
-  margin-top: 1rem;
+}
+
+.markdown img {
+  margin-bottom: 0px;
 }
 
 .markdown a {
-  color: rgb(83, 75, 244);
+  color: #00b8e9;
 }
 
-blockquote p {
-  font-style: normal;
-  font-family: sans-serif;
-  font-size: 1rem;
-  margin: 20px;
+.markdown h1 + p,
+.markdown h2 + p,
+.markdown h3 + p,
+.markdown h4 + p,
+.markdown h5 + p,
+.markdown h6 + p {
+  margin-top: 0px;
 }
 
-blockquote p:first-child {
-  border-top: 1px solid #544bfd;
-  padding-top: 20px;
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  margin-top: 20px;
+  border-bottom: 1px solid rgb(31 41 55);
 }
 
-blockquote p:last-child {
-  border-bottom: 1px solid #544bfd;
-  padding-bottom: 20px;
+.markdown h1 {
+  font-size: 3.8888888809rem;
+}
+.markdown h2 {
+  font-size: 2.757rem;
+}
+.markdown h3 {
+  font-size: 1.969rem;
+}
+.markdown h4 {
+  font-size: 1.37rem;
+}
+.markdown h5 {
+  font-size: 1.133rem;
+}
+.markdown h6 {
+  font-size: 1.05rem;
 }
 
-/* Set margin-top as 0.5 for a paragraph following any "h" heading */
-h1 + p,
-h2 + p,
-h3 + p,
-h4 + p,
-h5 + p,
-h6 + p {
-  margin-top: 0rem;
-}
-
-/* "pre" is the element that is used before all "code" elements */
-.markdown pre {
-  margin-top: 2rem;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 2rem;
-  font-family: serif;
+@media (max-width: 640px) {
+  html {
+    font-size: 16px;
+    padding: 0 0px;
+  }
+  h1 {
+    font-size: 3.8rem;
+  }
+  h2 {
+    font-size: 2.8rem;
+  }
+  h3 {
+    font-size: 2.1rem;
+  }
+  h4 {
+    font-size: 1.57rem;
+  }
+  h5 {
+    font-size: 1.2rem;
+  }
+  h6 {
+    font-size: 1.05rem;
+    font-family: serif;
+  }
 }

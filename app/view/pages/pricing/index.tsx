@@ -42,7 +42,7 @@ export default function PricingPage() {
 const priceData = [
   {
     title: "Starter",
-    price: "500",
+    price: "500 / month",
     description:
       "Perfect for teams with lower data volumes. We recommend most small companies start with this package.",
     keyPoints: [

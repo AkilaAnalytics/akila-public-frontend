@@ -19,6 +19,7 @@
     "@remix-run/express": "^2.11.2",
     "@remix-run/node": "^2.11.2",
     "@remix-run/react": "^2.11.2",
+    "axios": "^1.7.7",
     "compression": "^1.7.4",
     "cross-env": "^7.0.3",
     "express": "^4.19.2",
@@ -32,6 +33,7 @@
     "react-helmet": "^6.1.0",
     "react-markdown": "^9.0.1",
     "react-share": "^5.1.0",
+    "rehype-raw": "^7.0.0",
     "stripe": "^16.8.0"
   },
   "devDependencies": {

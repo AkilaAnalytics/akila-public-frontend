@@ -1,5 +1,5 @@
 interface IProps {
-  points: string[]
+  points: string[];
 }
 
 const bullet = () => {
@@ -12,12 +12,12 @@ const bullet = () => {
     >
       <polygon points="250,60 100,400 400,400" fill="rgb(83,75,244)" />
     </svg>
-  )
-}
+  );
+};
 
 export default function Points({ points }: IProps) {
   return (
-    <div className="border-b-[1px] border-t-[1px] border-gray-800">
+    <div className="bg-secondaryBackground rounded-md p-5">
       <h4 className="font-sans tracking-wide">Summary</h4>
       {points.map((ele) => (
         <div key={ele} className="mt-3 flex flex-row items-center gap-3">
@@ -25,7 +25,6 @@ export default function Points({ points }: IProps) {
           {ele}
         </div>
       ))}
-      <br />
     </div>
-  )
+  );
 }

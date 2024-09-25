@@ -23,7 +23,7 @@ export default function ArticleCard({
       key={title}
     >
       <img
-        src={`${basePath}/${image_link}`}
+        src={`http://localhost:1337/${image_link}`}
         className="h-1/3 w-full"
         alt={`${title}`}
       />
@@ -31,7 +31,7 @@ export default function ArticleCard({
       <span className="text-sm">{category}</span>
       <div className="flex items-center">
         <a
-          href={link}
+          href={`/resources/insights/${link}?slug=${link}`}
           className="no-underline"
           target={isPdf ? "_blank" : undefined}
           rel="noreferrer"
@@ -52,7 +52,7 @@ export default function ArticleCard({
       </div>
 
       <br />
-      <p className="line-clamp-3"> {preview.replace(/[^a-zA-Z0-9 ]/g, "")}</p>
+      <p className="line-clamp-3"> {preview?.replace(/[^a-zA-Z0-9 ]/g, "")}</p>
     </div>
   );
 }

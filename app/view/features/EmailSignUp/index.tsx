@@ -1,58 +1,56 @@
-import type { IBlogMeta } from '~/routes/resources.insights_'
+import type { IBlogMeta } from "~/routes/resources.insights_";
 
-import { XMarkIcon } from '@heroicons/react/24/outline'
-import { useFetcher, useLoaderData, useLocation } from '@remix-run/react'
-import { useEffect, useState } from 'react'
-import { logger } from '~/utils'
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import { useFetcher, useLoaderData, useLocation } from "@remix-run/react";
+import { useEffect, useState } from "react";
+import { logger } from "~/utils";
 
 function sanitizeEmail(input: string) {
-  const trimmed = input.trim().toLowerCase()
-  if (trimmed.includes('@') && trimmed.includes('.')) {
-    return true
+  const trimmed = input.trim().toLowerCase();
+  if (trimmed.includes("@") && trimmed.includes(".")) {
+    return true;
   } else {
-    return false
+    return false;
   }
 }
 
 export default function EmailSignUp() {
-  logger.log('-------------------- inside EmailSignUp')
   // state
-  const [showForm, setShowForm] = useState<boolean>(true)
-  const [email, setEmail] = useState<string>('')
-  const [isValidEmail, setIsValidEmail] = useState<boolean>(false)
-  const [honeyPot, setHoneyPot] = useState<string>('')
-  const fetcher = useFetcher()
-  const location = useLocation()
-  const res = useLoaderData<IBlogMeta>()
+  const [showForm, setShowForm] = useState<boolean>(true);
+  const [email, setEmail] = useState<string>("");
+  const [isValidEmail, setIsValidEmail] = useState<boolean>(false);
+  const [honeyPot, setHoneyPot] = useState<string>("");
+  const fetcher = useFetcher();
+  const location = useLocation();
+  const res = useLoaderData<IBlogMeta>();
 
   if (res?.isSubscribed) {
-    logger.log('setting showForm to false')
-    setShowForm(false)
+    setShowForm(false);
   }
 
   // set up cookie so that user does not see the pop up form after they subscribe
   const onClick = () => {
     if (isValidEmail) {
-      setShowForm(false)
+      setShowForm(false);
       fetcher.submit(
         {
           email,
-          actionType: 'subscribe',
+          actionType: "subscribe",
           source: location.pathname,
-          hPot: honeyPot
+          hPot: honeyPot,
         },
-        { action: '/api/email-sign-up', method: 'post' }
-      )
+        { action: "/api/email-sign-up", method: "post" }
+      );
     }
-  }
+  };
 
   useEffect(() => {
-    const valid = sanitizeEmail(email)
-    setIsValidEmail(valid)
-    logger.log(isValidEmail, '<<< isValidEmail')
-  }, [email])
-  if (!showForm) return null
-  if (res?.isSubscribed) return null
+    const valid = sanitizeEmail(email);
+    setIsValidEmail(valid);
+    logger.log(isValidEmail, "<<< isValidEmail");
+  }, [email]);
+  if (!showForm) return null;
+  if (res?.isSubscribed) return null;
 
   return (
     <div className="sticky bottom-0 flex w-full flex-col border-t-[1px] border-t-periwinkle bg-secondaryBackground px-5">
@@ -78,7 +76,7 @@ export default function EmailSignUp() {
           />
           <button
             className={`cursor-pointer rounded-md bg-periwinkle p-2 ${
-              !isValidEmail ? 'disabled' : ''
+              !isValidEmail ? "disabled" : ""
             }`}
             onClick={onClick}
             disabled={!isValidEmail}
@@ -96,5 +94,5 @@ export default function EmailSignUp() {
       <br />
       <br />
     </div>
-  )
+  );
 }
