@@ -1,7 +1,21 @@
-export const loader = () => {
-  const content = `
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+import { logger } from "~/utils";
+
+export const loader = async () => {
+  let articles = await fetch(
+    "http://localhost:1337/api/articles?fields[0]=title&fields[1]=slug&fields[2]=description&fields[3]=recommended&populate[category][fields]=name"
+  );
+  articles = await articles.json();
+  //logger.log(articles, "<<< articles from strapi");
+
+  // Category is nested, so we'll flatten the objects and build the URLs
+  const urls = articles.data.map((ele) => {
+    const link = `https://akilaanalytics.com/resources/insights/${ele.title.replace(
+      "?",
+      ""
+    )}?slug=${ele.slug}`;
+    return `<url><loc>${link}</loc></url>`;
+  });
+  const staticUrls = `
   <url>
     <loc>https://data-automation.akilaanalytics.com</loc>
   </url>
@@ -90,9 +104,6 @@ export const loader = () => {
     <loc>https://www.akilaanalytics.com/resources/blog</loc>
   </url>
   <url>
-    <loc>https://www.akilaanalytics.com/resources/documentation</loc>
-  </url>
-  <url>
     <loc>https://www.akilaanalytics.com/resources/training</loc>
   </url>
   <url>
@@ -104,13 +115,20 @@ export const loader = () => {
   <url>
     <loc>https://www.akilaanalytics.com/use-cases/private-equity</loc>
   </url>
-</urlset>
-  `.trim()
+  `.trim();
 
+  const content = `
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ${staticUrls}
+  ${urls.join("\n")}
+</urlset>
+  `.trim();
+  logger.log(content, "<<< content from sitemap.xml");
   return new Response(content, {
     status: 200,
     headers: {
-      'Content-Type': 'application/xml'
-    }
-  })
-}
+      "Content-Type": "application/xml",
+    },
+  });
+};

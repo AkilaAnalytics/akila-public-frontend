@@ -1,14 +1,14 @@
-export let loader = () => {
+export const loader = () => {
   const content = `
 User-agent: *
 Disallow:
 Sitemap: https://akilaanalytics.com/sitemap.xml
-  `.trim()
+  `.trim();
 
   return new Response(content, {
     status: 200,
     headers: {
-      'Content-Type': 'text/plain'
-    }
-  })
-}
+      "Content-Type": "text/plain",
+    },
+  });
+};

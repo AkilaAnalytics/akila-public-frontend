@@ -1,12 +1,12 @@
 ---
-title: 'Navigating the Power of Generative AI: Key Questions for Boards'
+title: "Navigating the Power of Generative AI: Key Questions for Boards"
 subTitle:
   Ensuring Value Creation and Risk Management in the Age of Rapid Technological
   Advancements
 category: Technology
 date: January 2024
 headers:
-  - 'Cache-Control: max-age=86400'
+  - "Cache-Control: max-age=86400"
 points:
   - Generative AI has the potential to disrupt operating models in all
     industries, and executives scramble to understand and respond to its power.
