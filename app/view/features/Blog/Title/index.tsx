@@ -1,15 +1,12 @@
-//import { PeopleStandingInRoom } from '~/view/assets'
-
 import { logger } from "~/utils";
 import ShareOnSocialMedia from "../ShareOnSocialMedia";
-import { useLoaderData } from "@remix-run/react";
 
 interface IProps {
-  category: "Private Equity" | "Technology";
+  category: string;
   date: string;
   title: string;
   subTitle: string;
-  coverImageLink: string;
+  link: string;
 }
 
 export default function Title({
