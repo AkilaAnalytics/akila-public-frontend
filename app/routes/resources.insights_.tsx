@@ -1,99 +1,84 @@
-import type { LoaderArgs, ActionArgs } from "@remix-run/node";
-import { MetaFunction, createCookie, json } from "@remix-run/node";
-
-import { GetObjectCommand } from "@aws-sdk/client-s3";
 import {
-  useLoaderData,
-  Link,
-  useFetcher,
-  useLocation,
-  useRouteError,
-} from "@remix-run/react";
-import { useEffect, useState } from "react";
-import { ChevronRightIcon } from "@heroicons/react/24/solid";
+  LoaderFunctionArgs,
+  MetaFunction,
+  createCookie,
+  json,
+} from "@remix-run/node";
+
+import { useLoaderData, useLocation, useRouteError } from "@remix-run/react";
 
 import { MissingPage } from "~/view/pages/misc";
-import { s3Client } from "~/utils/server/index.server";
 import { logger } from "~/utils";
 import { InsightsBannerImage } from "~/view/assets";
 import { ArticleCard, BannerImage } from "~/view/components";
 import { EmailSignUp } from "~/view/features";
-import axios from "axios";
 
-interface IArticles {
+type StrapiResponse = {
   title: string;
-  subTitle: string;
-  category: string;
+  slug: string;
+  description: string;
   recommended: boolean;
-  preview: string;
-  image_link: string;
-  article_link: string;
-}
-interface IVideos extends IArticles {
-  link: string;
-}
+  category: {
+    name: string;
+  };
+  cover: {
+    url: string;
+  };
+};
 
-interface Article {
+type StrapiCleanedResponse = {
   title: string;
   slug: string;
   description: string;
   recommended: boolean;
   category: string;
-}
+  cover: string;
+};
+
+type Articles = {
+  id: number;
+  data: StrapiResponse[];
+};
 
 export interface IBlogMeta {
-  meta: {
-    articles: IArticles[];
-    videos: IVideos[];
-  };
+  ok: boolean;
   isSubscribed: boolean;
-  basePath: string;
-  articles: Article[];
+  articles: StrapiCleanedResponse[];
 }
 
-export const loader = async ({ request }) => {
-  const cookie = createCookie("isSubscribed");
-  const cookies = await cookie.parse(request.headers.get("Cookie"));
-  let articles = await fetch(
-    "http://localhost:1337/api/articles?fields[0]=title&fields[1]=slug&fields[2]=description&fields[3]=recommended&populate[category][fields]=name&populate[cover]=*"
-  );
-  articles = await articles.json();
-  //logger.log(articles, "<<< articles from strapi");
-  // category is nested so we'll flatten the objects
-  articles = articles.data.map((ele) => {
-    return {
-      ...ele,
-      category: ele.category.name,
-      cover: ele.cover.url,
-      slug: ele.slug,
-    };
-  });
-
-  logger.log(articles, "<<< articles from strapi");
-
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   try {
-    const params = {
-      Bucket: process.env.STATIC_BUCKET,
-      Key: "_blog/meta.json",
+    // fetch cookie
+    // this cookie parsing flow is laid out here:
+    // https://remix.run/docs/en/main/utils/cookies
+    const cookieHeader = request.headers.get("Cookie");
+    const isSubscribedCookie = createCookie("isSubscribed");
+    const isSubscribed = (await isSubscribedCookie.parse(cookieHeader)) as {
+      isSubscribed: boolean;
     };
-    const command = new GetObjectCommand(params);
-    const response = await s3Client.send(command);
-    //console.log(response, '<<<< response from resources.insights')
-    const str = await response.Body.transformToString();
-    let basePath;
-    if (process.env.NODE_ENV === "production") {
-      basePath = "https://www.akilaanalytics.com/_blog";
-    } else {
-      basePath = "https://www.staging.akilaanalytics.com/_blog";
-    }
-    //console.log(str, "<<< str");
+    logger.log({ cookieHeader, isSubscribedCookie, isSubscribed });
+
+    // fetch articles
+    const response = await fetch(
+      "http://localhost:1337/api/articles?fields[0]=title&fields[1]=slug&fields[2]=description&fields[3]=recommended&populate[category][fields]=name&populate[cover]=*"
+    );
+    //articles = await articles.json();
+    const baseImageLink = process.env.STRAPI_BASE_PATH;
+    const articlesJson = (await response.json()) as Articles;
+    const articles = articlesJson.data.map((ele: StrapiResponse) => {
+      return {
+        ...ele,
+        category: ele.category.name,
+        cover: `${baseImageLink}/${ele.cover.url}`,
+        slug: ele.slug,
+      };
+    });
+
     return json(
       {
         ok: true,
-        meta: JSON.parse(str),
-        isSubscribed: cookies?.isSubscribed,
+        isSubscribed: isSubscribed.isSubscribed,
         articles: articles,
-        basePath,
       },
       {
         headers: {
@@ -112,10 +97,8 @@ export default function Insights() {
   const res = useLoaderData<IBlogMeta>();
   logger.log(res, "<<< res");
   const location = useLocation();
-  const [basePath, setBasePath] = useState<string>(res.basePath);
 
-  if (!res?.meta?.articles) return <MissingPage />;
-  logger.log(res.meta.articles[10], "<<< res from useLoaderData");
+  if (!res?.articles) return <MissingPage />;
 
   return (
     <div>
@@ -177,7 +160,6 @@ export default function Insights() {
                 <ArticleCard
                   isPdf={false}
                   key={ele.title}
-                  basePath={basePath}
                   title={ele.title}
                   link={ele.slug}
                   image_link={ele.cover}
@@ -197,7 +179,6 @@ export default function Insights() {
                 <ArticleCard
                   isPdf={false}
                   key={ele.title}
-                  basePath={basePath}
                   title={ele.title}
                   link={ele.slug}
                   image_link={ele.cover}
@@ -216,7 +197,6 @@ export default function Insights() {
 
 export function ErrorBoundary() {
   const error = useRouteError();
-  console.log("ERROR FROM BOUNDARY", error);
   return <div>Error</div>;
 }
 

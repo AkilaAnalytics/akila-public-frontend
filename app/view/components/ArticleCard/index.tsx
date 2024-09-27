@@ -1,6 +1,5 @@
 interface IProps {
   isPdf: boolean;
-  basePath: string;
   title: string;
   link: string;
   image_link: string;
@@ -10,7 +9,6 @@ interface IProps {
 
 export default function ArticleCard({
   isPdf,
-  basePath,
   title,
   link,
   image_link,
@@ -22,11 +20,7 @@ export default function ArticleCard({
       className="h-full rounded-lg border border-gray-500 p-4 shadow-md md:h-[60vh]"
       key={title}
     >
-      <img
-        src={`http://localhost:1337/${image_link}`}
-        className="h-1/3 w-full"
-        alt={`${title}`}
-      />
+      <img src={image_link} className="h-1/3 w-full" alt={`${title}`} />
       <br />
       <span className="text-sm">{category}</span>
       <div className="flex items-center">
