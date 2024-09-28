@@ -69,7 +69,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       return {
         ...ele,
         category: ele.category.name,
-        cover: `${baseImageLink}/${ele.cover.url}`,
+        cover: `${baseImageLink}${ele.cover.url}`,
         slug: ele.slug,
       };
     });

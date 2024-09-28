@@ -70,7 +70,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
     );
     const resJson = (await res.json()) as { data: StrapiBlog[] };
     const articles: StrapiBlog[] = resJson.data;
-    //logger.log(articles.data[0].cover, "<<< final article from insights.title");
+    logger.log(articles.data, "<<< final article from insights.title");
 
     const articlesCleaned = articles.map((ele) => {
       return {
