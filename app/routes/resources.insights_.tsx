@@ -77,7 +77,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     return json(
       {
         ok: true,
-        isSubscribed: isSubscribed.isSubscribed,
+        isSubscribed: isSubscribed?.isSubscribed,
         articles: articles,
       },
       {
