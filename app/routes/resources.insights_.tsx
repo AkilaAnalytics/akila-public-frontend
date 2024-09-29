@@ -123,31 +123,33 @@ export default function Insights() {
             allowFullScreen
           />{" "}
         </div>
-        <div className="w-full p-5 md:w-3/4 md:p-0">
+        <div className="w-full p-5 md:w-3/4 md:p-0 h-[50vh] overflow-scroll">
           <h4>Recommended</h4>
           {res.articles &&
-            res.articles.map((ele, idx) => (
-              <div
-                className="border-periwinkle-[1px] flex w-full flex-row items-center gap-5 border-b border-t py-3"
-                key={ele.title}
-              >
-                <h2>{idx + 1}</h2>
-                <div key={ele.title} className="my-auto">
-                  <span className="text-periwinkle">{ele.category}</span>
-                  <a
-                    href={`/resources/insights/${ele.title.replace(
-                      "?",
-                      ""
-                    )}?slug=${ele.slug}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:font-bold"
-                  >
-                    <h5>{ele.title}</h5>
-                  </a>
+            res.articles
+              .filter((ele) => ele.recommended)
+              .map((ele, idx) => (
+                <div
+                  className="border-periwinkle-[1px] flex w-full flex-row items-center gap-5 border-b border-t py-3"
+                  key={ele.title}
+                >
+                  <h2>{idx + 1}</h2>
+                  <div key={ele.title} className="my-auto">
+                    <span className="text-periwinkle">{ele.category}</span>
+                    <a
+                      href={`/resources/insights/${ele.title.replace(
+                        "?",
+                        ""
+                      )}?slug=${ele.slug}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:font-bold"
+                    >
+                      <h5>{ele.title}</h5>
+                    </a>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
         </div>
       </div>
       <br />
