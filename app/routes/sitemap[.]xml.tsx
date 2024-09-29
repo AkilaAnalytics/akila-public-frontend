@@ -14,11 +14,10 @@ export const loader = async () => {
 
   // Category is nested, so we'll flatten the objects and build the URLs
   const urls: string[] = articles.data.map((ele) => {
-    const link = `https://akilaanalytics.com/resources/insights/${ele.title.replace(
+    return `https://akilaanalytics.com/resources/insights/${ele.title.replace(
       "?",
       ""
     )}?slug=${ele.slug}`;
-    return `<url><loc>${link}</loc></url>`;
   });
   const staticUrls = `
   <url>
