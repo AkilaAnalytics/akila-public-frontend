@@ -65,6 +65,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     //articles = await articles.json();
     const baseImageLink = process.env.STRAPI_BASE_PATH;
     const articlesJson = (await response.json()) as Articles;
+    logger.log(articlesJson, "<<< articleJson from routes/resources.insights");
     const articles = articlesJson.data.map((ele: StrapiResponse) => {
       return {
         ...ele,

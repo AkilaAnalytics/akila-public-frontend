@@ -204,6 +204,16 @@ export default function BlogTemplate() {
           {body}
         </ReactMarkdown>
       </div>
+      {/* Putting this outside of the div above this let's this have a wider width 
+      so it doesn't get pushed to two lines */}
+      <div className="mt-40 text-center bg-periwinkleDark rounded-md p-24 w-full md:w-3/4 mx-auto">
+        <h4>Do you want to discuss this further?</h4>
+        <h5>
+          <a href="mailto:Brandon@AkilaAnalytics.com">
+            Brandon@AkilaAnalytics.com
+          </a>
+        </h5>
+      </div>
       <br />
       <br />
       <br />
