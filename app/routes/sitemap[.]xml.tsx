@@ -1,4 +1,9 @@
 import { logger } from "~/utils";
+import { StrapiResponse } from "./resources.insights_";
+
+const encodeUrl = (url) => {
+  return url.replace(/&/g, "&amp;").replace(/ /g, "%20");
+};
 
 export const loader = async () => {
   let articles = await fetch(
@@ -8,7 +13,7 @@ export const loader = async () => {
   //logger.log(articles, "<<< articles from strapi");
 
   // Category is nested, so we'll flatten the objects and build the URLs
-  const urls = articles.data.map((ele) => {
+  const urls: string[] = articles.data.map((ele) => {
     const link = `https://akilaanalytics.com/resources/insights/${ele.title.replace(
       "?",
       ""
@@ -121,7 +126,7 @@ export const loader = async () => {
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${staticUrls}
-  ${urls.join("\n")}
+  ${urls.map((url) => `<url><loc>${encodeUrl(url)}</loc></url>`).join("\n")}
 </urlset>
   `.trim();
   logger.log(content, "<<< content from sitemap.xml");

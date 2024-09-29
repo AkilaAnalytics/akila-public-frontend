@@ -13,7 +13,7 @@ import { InsightsBannerImage } from "~/view/assets";
 import { ArticleCard, BannerImage } from "~/view/components";
 import { EmailSignUp } from "~/view/features";
 
-type StrapiResponse = {
+export type StrapiResponse = {
   title: string;
   slug: string;
   description: string;
