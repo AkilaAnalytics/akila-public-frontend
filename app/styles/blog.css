@@ -28,6 +28,7 @@
 .markdown h6 {
   margin-top: 20px;
   border-bottom: 1px solid rgb(31 41 55);
+  text-transform: uppercase;
 }
 
 .markdown h1 {
