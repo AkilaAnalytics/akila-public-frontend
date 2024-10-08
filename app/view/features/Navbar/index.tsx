@@ -1,38 +1,38 @@
 import {
   Bars3Icon,
   XMarkIcon,
-  ChevronDownIcon
-} from '@heroicons/react/24/outline'
-import { Link, useLocation, useMatches } from '@remix-run/react'
-import { useState, useEffect, useRef } from 'react'
+  ChevronDownIcon,
+} from "@heroicons/react/24/outline";
+import { Link, useLocation, useMatches } from "@remix-run/react";
+import { useState, useEffect, useRef } from "react";
 
-import { Triangle, akilaAnalyticsLogo } from '~/view/assets'
-import { BookDemo } from '~/view/components'
+import { Triangle, akilaAnalyticsLogo } from "~/view/assets";
+import { BookDemo } from "~/view/components";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   //
 
-  const matches = useMatches()
+  const matches = useMatches();
 
-  const [activeSubMenu, setActiveSubMenu] = useState(null)
-  const menuRef = useRef(null)
+  const [activeSubMenu, setActiveSubMenu] = useState(null);
+  const menuRef = useRef(null);
 
   function openSubMenu(index) {
     if (index === activeSubMenu) {
-      return setActiveSubMenu(null)
+      return setActiveSubMenu(null);
     }
-    setActiveSubMenu(index)
+    setActiveSubMenu(index);
   }
 
   useEffect(() => {
     if (isOpen) {
-      document.body.className = 'stop-scroll'
+      document.body.className = "stop-scroll";
     } else {
-      document.body.className = ''
-      setActiveSubMenu(null)
+      document.body.className = "";
+      setActiveSubMenu(null);
     }
-  }, [isOpen])
+  }, [isOpen]);
 
   function renderMenus(menuList) {
     return menuList.map((items, index) => {
@@ -42,17 +42,17 @@ export default function Navbar() {
             className="w-[fit-content] px-[24px] pb-[24px] text-[32px]"
             onClick={() => {
               if (items.submenu) {
-                openSubMenu(index)
+                openSubMenu(index);
               } else {
-                setIsOpen(false)
-                setActiveSubMenu(null)
+                setIsOpen(false);
+                setActiveSubMenu(null);
               }
             }}
           >
             <Link className="flex items-center" to={items.href && items.href}>
               <p
                 className={`mr-1 pb-2 uppercase ${
-                  index === activeSubMenu ? 'border-b-[1px]' : ''
+                  index === activeSubMenu ? "border-b-[1px]" : ""
                 } `}
               >
                 {items.name}
@@ -60,7 +60,7 @@ export default function Navbar() {
               {items.submenu && (
                 <ChevronDownIcon
                   className={`  ml-1 h-[15px] w-[15px] transform ${
-                    index === activeSubMenu && 'rotate-180'
+                    index === activeSubMenu && "rotate-180"
                   }`}
                 />
               )}
@@ -74,43 +74,43 @@ export default function Navbar() {
                     key={item.name + index}
                     className={`my-[24px] px-[24px] text-xl text-slate-200 `}
                     onClick={() => {
-                      setIsOpen(false)
-                      setActiveSubMenu(null)
+                      setIsOpen(false);
+                      setActiveSubMenu(null);
                     }}
                   >
                     <Link to={item.href}> {item.name} </Link>
                   </li>
-                )
+                );
               })}
             </ul>
           )}
         </li>
-      )
-    })
+      );
+    });
   }
 
-  const sidebarRef = useRef(null)
+  const sidebarRef = useRef(null);
 
   const toggleSidebar = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   const handleClickOutside = (event) => {
     if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-      setIsOpen(false)
+      setIsOpen(false);
     }
-  }
+  };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   // sign in button
   //via-gray-periwinkleDark bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-periwinkle to-periwinkleDark  const location = useLocation()
-  const location = useLocation()
+  const location = useLocation();
 
   //console.log(location, '<<< location')
   const signInButton = () => {
@@ -118,7 +118,7 @@ export default function Navbar() {
       <div className="hidden gap-2 md:flex">
         <BookDemo />
         <a
-          href={'/coming-soon'}
+          href={"/coming-soon"}
           target="_blank"
           rel="noreferrer"
           className="my-auto"
@@ -128,12 +128,12 @@ export default function Navbar() {
           </button>
         </a>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <nav
-      className="sticky top-0 z-[999] bg-black px-2 py-[22px] text-xs"
+      className="w-full sticky top-0 z-[999] bg-black px-2 py-[22px] text-xs"
       ref={sidebarRef}
     >
       <div className="relative mx-auto flex w-10/12 items-center justify-between gap-2">
@@ -155,7 +155,7 @@ export default function Navbar() {
                   </span>
                   <div className="absolute top-[62px] hidden w-9 justify-center group-hover:flex">
                     <img
-                      style={{ filter: 'invert(100%)' }}
+                      style={{ filter: "invert(100%)" }}
                       src={Triangle}
                       alt=""
                     />
@@ -208,7 +208,7 @@ export default function Navbar() {
                   to={menu.href}
                   key={index}
                   className={`${
-                    matches[1]?.pathname === menu?.href ? 'active' : ''
+                    matches[1]?.pathname === menu?.href ? "active" : ""
                   }  text-text_clr`}
                 >
                   <li className="text-xs uppercase">{menu.name}</li>
@@ -234,12 +234,12 @@ export default function Navbar() {
       </div>
       <div
         className={`fixed bottom-0 left-0 right-0 top-[70px] transform ${
-          isOpen ? 'translate-y-0' : 'translate-y-[-1000px]'
+          isOpen ? "translate-y-0" : "translate-y-[-1000px]"
         } bg-black lg:hidden`}
       >
         <div
           className={`h-full transform overflow-y-auto   ${
-            isOpen ? 'opacity-100 ' : 'opacity-0 '
+            isOpen ? "opacity-100 " : "opacity-0 "
           } transition-all  duration-1000  ease-in-out`}
         >
           <div className="flex h-full flex-col pt-[40px]">
@@ -256,153 +256,154 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
 const navigation = [
   {
-    name: 'Platform',
-    href: '#',
+    name: "Platform",
+    href: "#",
     current: true,
     submenu: [
       {
-        name: 'Overview',
-        href: '/platform/overview',
-        description: 'Discover insights & trends in your data effortlessly'
+        name: "Overview",
+        href: "/platform/overview",
+        description: "Discover insights & trends in your data effortlessly",
       },
       {
-        name: 'Visualize Data',
-        href: '/platform/visualize-data',
-        description: 'Akila outputs data to your preferred visualization tools.'
-      },
-      {
-        name: 'Integrate Data',
-        href: '/platform/integrate-data',
+        name: "Visualize Data",
+        href: "/platform/visualize-data",
         description:
-          'Streamline data processing workflows to gain insights faster.'
+          "Akila outputs data to your preferred visualization tools.",
       },
       {
-        name: 'Leverage The Cloud',
-        href: '/platform/leverage-the-cloud',
-        description: 'We offer a range of cloud-based deployment options.'
-      },
-      {
-        name: 'End-to-end Solutions',
-        href: '/platform/end-to-end-solutions',
+        name: "Integrate Data",
+        href: "/platform/integrate-data",
         description:
-          'Uncover the simplicity of data science with our end-to-end, no-code solutions.'
+          "Streamline data processing workflows to gain insights faster.",
       },
       {
-        name: 'Governance',
-        href: '/platform/governance',
-        description:
-          'Data governance and security have never been more important. Akila is here to make that process easier.'
+        name: "Leverage The Cloud",
+        href: "/platform/leverage-the-cloud",
+        description: "We offer a range of cloud-based deployment options.",
       },
       {
-        name: 'Security',
-        href: '/platform/security',
+        name: "End-to-end Solutions",
+        href: "/platform/end-to-end-solutions",
         description:
-          'By deploying our infrastructure into your account, we help ensure that sensitive data remains secure.'
-      }
-    ]
+          "Uncover the simplicity of data science with our end-to-end, no-code solutions.",
+      },
+      {
+        name: "Governance",
+        href: "/platform/governance",
+        description:
+          "Data governance and security have never been more important. Akila is here to make that process easier.",
+      },
+      {
+        name: "Security",
+        href: "/platform/security",
+        description:
+          "By deploying our infrastructure into your account, we help ensure that sensitive data remains secure.",
+      },
+    ],
   },
   {
-    name: 'Product',
-    href: '/',
+    name: "Product",
+    href: "/",
     current: false,
     submenu: [
       {
-        name: 'Data Exploration',
-        href: '/product/data-exploration',
-        description: 'Unlock the power of your data.'
+        name: "Data Exploration",
+        href: "/product/data-exploration",
+        description: "Unlock the power of your data.",
       },
       {
-        name: 'Data Processing',
-        href: '/product/data-processing',
-        description: 'Transform your data quickly and easily.'
+        name: "Data Processing",
+        href: "/product/data-processing",
+        description: "Transform your data quickly and easily.",
       },
       {
-        name: 'Machine Learning',
-        href: '/product/machine-learning',
+        name: "Machine Learning",
+        href: "/product/machine-learning",
         description:
-          'Take your business to the next level powerful machine learning workflows'
+          "Take your business to the next level powerful machine learning workflows",
       },
       {
-        name: 'Recurring Jobs',
-        href: '/product/recurring-jobs',
-        description: 'Automate your recurring tasks and jobs easily.'
+        name: "Recurring Jobs",
+        href: "/product/recurring-jobs",
+        description: "Automate your recurring tasks and jobs easily.",
       },
       {
-        name: 'ETL Pipelines',
-        href: '/product/etl-pipeline',
-        description: 'Set up ETL pipelines & automate processes faster.'
+        name: "ETL Pipelines",
+        href: "/product/etl-pipeline",
+        description: "Set up ETL pipelines & automate processes faster.",
       },
       {
-        name: 'Watch Demo',
-        href: '/product/watch-demo',
-        description: 'Watch a demo video to see how Akila can help you.'
+        name: "Watch Demo",
+        href: "/product/watch-demo",
+        description: "Watch a demo video to see how Akila can help you.",
       },
       {
-        name: 'Try Free',
-        href: '/product/try-free',
-        description: 'Sign up for our free trial.'
-      }
-    ]
+        name: "Try Free",
+        href: "/product/try-free",
+        description: "Sign up for our free trial.",
+      },
+    ],
   },
   {
-    name: 'Company',
+    name: "Company",
     submenu: [
       {
-        name: 'Overview',
-        href: '/company/overview',
+        name: "Overview",
+        href: "/company/overview",
         description:
-          'Akila Analytics is a cutting-edge, no-code data science platform.'
+          "Akila Analytics is a cutting-edge, no-code data science platform.",
       },
       {
-        name: 'Use Cases',
-        href: '/enterprise/use-cases',
+        name: "Use Cases",
+        href: "/enterprise/use-cases",
         description:
-          'Scale your data analytics capabilities with ease and drive business growth.'
+          "Scale your data analytics capabilities with ease and drive business growth.",
       },
       {
-        name: 'By Role',
-        href: '/enterprise/by-role',
+        name: "By Role",
+        href: "/enterprise/by-role",
         description:
-          'Build data solutions to help your team improve and expand how they work.'
+          "Build data solutions to help your team improve and expand how they work.",
       },
       {
-        name: 'Data Science',
-        href: '/enterprise/data-science',
+        name: "Data Science",
+        href: "/enterprise/data-science",
         description:
-          'Akila’s full-stack, modern BI platform allows you to connect all your data and systems.'
+          "Akila’s full-stack, modern BI platform allows you to connect all your data and systems.",
       },
       {
-        name: 'Customer Profitability',
-        href: '/use-cases/customer-profitability',
+        name: "Customer Profitability",
+        href: "/use-cases/customer-profitability",
         description:
-          'Learn how clients are leveraging Akila to drive profitability.'
+          "Learn how clients are leveraging Akila to drive profitability.",
       },
       {
-        name: 'Marketing Analytics',
-        href: '/use-cases/marketing-analytics',
-        description: 'Identify key drivers and target markets in big data.'
+        name: "Marketing Analytics",
+        href: "/use-cases/marketing-analytics",
+        description: "Identify key drivers and target markets in big data.",
       },
       {
-        name: 'Private Equity',
-        href: '/use-cases/private-equity',
+        name: "Private Equity",
+        href: "/use-cases/private-equity",
         description:
-          'Explore how Akila is increasing efficiency during the due diligence process'
-      }
-    ]
+          "Explore how Akila is increasing efficiency during the due diligence process",
+      },
+    ],
   },
   {
-    name: 'Pricing',
-    href: '/pricing',
-    current: false
+    name: "Pricing",
+    href: "/pricing",
+    current: false,
   },
   {
-    name: 'Contact Us',
-    href: '/contact-us',
-    current: false
-  }
-]
+    name: "Contact Us",
+    href: "/contact-us",
+    current: false,
+  },
+];
