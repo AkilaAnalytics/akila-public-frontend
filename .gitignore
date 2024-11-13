@@ -6,6 +6,7 @@ package-lock.json
 .env
 public/*
 server/*
+build/*
 
 .DS_Store
 **/.DS_Store
