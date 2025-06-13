@@ -56,20 +56,6 @@ const priceData = [
     link: "/contact-us",
   },
   {
-    title: "Professional",
-    price: "2,000 / month",
-    description:
-      "Great for start-ups and small businesses that do not already have mature cloud-based solutions.",
-    keyPoints: [
-      "Everything in the Starter package",
-      "Easy configuration",
-      "Zero maintenance",
-      "Unlimited Processing",
-    ],
-    buttonText: "Contact Us",
-    link: "/contact-us",
-  },
-  {
     title: "Enterprise",
     price: "Contact Us",
     description:

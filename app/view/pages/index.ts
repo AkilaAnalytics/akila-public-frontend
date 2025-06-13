@@ -1,10 +1,11 @@
-export * from './use-cases'
-export * from './positions'
-export * from './product'
-export * from './platform'
-export * from './comingSoon'
-export * from './resources'
-export * from './company'
-export * from './home'
-export * from './contact-us'
-export {default as PricingPage} from './pricing'
+export * from "./use-cases";
+export * from "./positions";
+export * from "./product";
+export * from "./platform";
+export * from "./comingSoon";
+export * from "./resources";
+export * from "./company";
+export * from "./home";
+export * from "./contact-us";
+export { default as PricingPage } from "./pricing";
+export { default as Calendar } from "./calendar";
