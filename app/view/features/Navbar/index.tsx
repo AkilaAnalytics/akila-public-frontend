@@ -344,6 +344,11 @@ const navigation = [
         description: "Watch a demo video to see how Akila can help you.",
       },
       {
+        name: "Hardware",
+        href: "/product/hardware",
+        description: "Purchase hardware directly from us.",
+      },
+      {
         name: "Try Free",
         href: "/product/try-free",
         description: "Sign up for our free trial.",
