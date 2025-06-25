@@ -1,5 +1,12 @@
 export { Hardware as default } from "~/view/pages";
-import { MetaFunction } from "@remix-run/node";
+import { json, MetaFunction } from "@remix-run/node";
+import type { LoaderFunctionArgs } from "@remix-run/node";
+import { logger } from "~/utils";
+import { products } from "~/utils/server/index.server";
+
+export async function loader({ params }: LoaderFunctionArgs) {
+  return json({ products });
+}
 
 export const meta: MetaFunction = () => {
   const title = "Servers, Computers, GPUS & Hardware for sale.";

@@ -5,19 +5,50 @@ import {
   CpuChipIcon,
   ServerIcon,
   ShieldCheckIcon,
+  PlayIcon,
 } from "@heroicons/react/24/outline";
 import { Link, useLoaderData } from "@remix-run/react";
+import { logger } from "~/utils";
 
-// Component for individual spec row
+// Types
 interface ProductSpec {
   item: string;
   product: string;
 }
+
+interface MediaItem {
+  url: string;
+  type: "image" | "video";
+  thumbnail?: string;
+}
+
+interface ProductData {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  priceDisplay: string;
+  category: string;
+  image: string;
+  images: string[];
+  videos?: string[];
+  specs: ProductSpec[];
+  features: string[];
+  inStock: boolean;
+  stripeProductId: string;
+  stripePriceId: string;
+}
+
+interface LoaderData {
+  product: ProductData;
+}
+
 interface SpecRowProps {
   spec: ProductSpec;
   isEven: boolean;
 }
 
+// Component for individual spec row
 const SpecRow: React.FC<SpecRowProps> = ({ spec, isEven }) => (
   <tr
     className={`${
@@ -34,39 +65,57 @@ const SpecRow: React.FC<SpecRowProps> = ({ spec, isEven }) => (
 // Main product detail component
 export default function ProductDetail() {
   const { product } = useLoaderData<LoaderData>();
-  const [selectedImage, setSelectedImage] = useState(0);
+  logger.log({ product, source: "ProductDetail" });
+  //return null;
+  const [selectedMedia, setSelectedMedia] = useState(0);
   const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+  // Create unified media array from images and videos
+  const mediaItems: MediaItem[] = [
+    // Add all images first
+    ...product.images.map((img) => ({
+      url: img,
+      type: "image" as const,
+    })),
+    // Add all videos with thumbnails
+    ...(product.videos || []).map((video) => ({
+      url: video,
+      type: "video" as const,
+      thumbnail: product.image, // Use main product image as video thumbnail fallback
+    })),
+  ];
 
   // Stripe checkout handler
   const handleCheckout = async () => {
     setIsCheckingOut(true);
 
-    try {
-      const response = await fetch("/api/create-checkout-session", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          priceId: product.stripePriceId,
-          productId: product.stripeProductId,
-          quantity: 1,
-        }),
-      });
+    //try {
+    //  const response = await fetch("/api/create-checkout-session", {
+    //    method: "POST",
+    //    headers: {
+    //      "Content-Type": "application/json",
+    //    },
+    //    body: JSON.stringify({
+    //      priceId: product.stripePriceId,
+    //      productId: product.stripeProductId,
+    //      quantity: 1,
+    //    }),
+    //  });
 
-      const session = await response.json();
+    //  const session = await response.json();
 
-      if (session.url) {
-        window.location.href = session.url;
-      }
-    } catch (error) {
-      console.error("Error creating checkout session:", error);
-      alert("There was an error processing your request. Please try again.");
-    } finally {
-      setIsCheckingOut(false);
-    }
+    //  if (session.url) {
+    //    window.location.href = session.url;
+    //  }
+    //} catch (error) {
+    //  console.error("Error creating checkout session:", error);
+    //  alert("There was an error processing your request. Please try again.");
+    //} finally {
+    //  setIsCheckingOut(false);
+    //}
   };
 
+  logger.log({ selectedMedia: mediaItems[selectedMedia] });
   return (
     <div className="min-h-screen">
       {/* Navigation */}
@@ -84,32 +133,60 @@ export default function ProductDetail() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Product Images */}
           <div className="space-y-4">
             <div className="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden">
-              <img
-                src={product.images[selectedImage]}
-                alt={product.name}
-                className="w-full h-96 object-cover"
-              />
+              {mediaItems[selectedMedia]?.type === "video" ? (
+                <video
+                  src={`/hardware/${mediaItems[selectedMedia].url}`}
+                  controls
+                  className="w-full h-96 object-cover"
+                  poster={mediaItems[selectedMedia].thumbnail}
+                >
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <img
+                  src={`${mediaItems[selectedMedia].url}`}
+                  alt={product.name}
+                  className="w-full h-auto object-cover"
+                />
+              )}
             </div>
-            {product.images.length > 1 && (
+
+            {/* Thumbnail Grid */}
+            {mediaItems.length > 1 && (
               <div className="grid grid-cols-3 gap-4">
-                {product.images.map((image, index) => (
+                {mediaItems.map((media, index) => (
                   <button
                     key={index}
-                    onClick={() => setSelectedImage(index)}
-                    className={`aspect-w-4 aspect-h-3 rounded-lg overflow-hidden border-2 transition-colors ${
-                      selectedImage === index
+                    onClick={() => setSelectedMedia(index)}
+                    className={`relative aspect-w-4 aspect-h-3 rounded-lg overflow-hidden border-2 transition-colors ${
+                      selectedMedia === index
                         ? "border-blue-500"
                         : "border-gray-200"
                     }`}
                   >
-                    <img
-                      src={image}
-                      alt={`${product.name} view ${index + 1}`}
-                      className="w-full h-24 object-cover"
-                    />
+                    {media.type === "video" ? (
+                      <>
+                        <img
+                          src={media.thumbnail || product.image}
+                          alt={`${product.name} video ${index + 1}`}
+                          className="w-full h-24 object-cover"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
+                          <PlayIcon className="w-8 h-8 text-white" />
+                        </div>
+                        <div className="absolute bottom-1 right-1 bg-black bg-opacity-70 text-white text-xs px-1 rounded">
+                          VIDEO
+                        </div>
+                      </>
+                    ) : (
+                      <img
+                        src={media.url}
+                        alt={`${product.name} view ${index + 1}`}
+                        className="w-full h-24 object-cover"
+                      />
+                    )}
                   </button>
                 ))}
               </div>
@@ -152,24 +229,18 @@ export default function ProductDetail() {
                 </div>
               </div>
 
-              <button
-                onClick={handleCheckout}
-                disabled={!product.inStock || isCheckingOut}
+              <Link
+                to={product.stripeLink}
                 className={`w-full flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 ${
                   product.inStock && !isCheckingOut
                     ? "bg-blue-600 hover:bg-blue-700 text-white transform hover:scale-105"
                     : "bg-gray-400 text-gray-200 cursor-not-allowed"
                 }`}
               >
-                {isCheckingOut ? (
-                  "Processing..."
-                ) : (
-                  <>
-                    <ShoppingCartIcon className="w-6 h-6 mr-2" />
-                    {product.inStock ? "Buy Now" : "Out of Stock"}
-                  </>
-                )}
-              </button>
+                {" "}
+                <ShoppingCartIcon className="w-6 h-6 mr-2" />
+                {product.inStock ? "Buy Now" : "Out of Stock"}
+              </Link>
             </div>
 
             {/* Features */}
@@ -189,7 +260,7 @@ export default function ProductDetail() {
 
         {/* Technical Specifications */}
         <div className="mt-16">
-          <h2 className="text-2xl font-bold  mb-8">Technical Specifications</h2>
+          <h2 className="text-2xl font-bold mb-8">Technical Specifications</h2>
           <div className="rounded-lg shadow overflow-hidden">
             <table className="min-w-full">
               <thead className="bg-gray-800">
