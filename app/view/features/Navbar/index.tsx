@@ -133,7 +133,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="w-full sticky top-0 z-[999] bg-black px-2 py-[22px] text-xs"
+      className="w-full sticky top-0 z-[999] px-2 py-[22px] text-xs bg-background"
       ref={sidebarRef}
     >
       <div className="relative mx-auto flex w-10/12 items-center justify-between gap-2">
@@ -235,7 +235,7 @@ export default function Navbar() {
       <div
         className={`fixed bottom-0 left-0 right-0 top-[70px] transform ${
           isOpen ? "translate-y-0" : "translate-y-[-1000px]"
-        } bg-black lg:hidden`}
+        } lg:hidden`}
       >
         <div
           className={`h-full transform overflow-y-auto   ${

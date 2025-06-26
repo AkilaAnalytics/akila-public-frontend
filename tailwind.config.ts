@@ -18,13 +18,17 @@ export default {
         // other colors
         turqoise: "#3BB3C1",
         darkGrey: "#292B2C",
-        background: "#0C0C0C",
-        secondaryBackground: "#1E1E1E",
+        //background: "#0C0C0C", //
+        secondaryBackground: "#0C0C0C", // #1E1E1E
         alternateBackground: "#18181B",
         lightGrey: "#555555",
         linkText: "#3b82f6", // same as text-blue-500
         greyText: "#71717A",
         redText: "#fe87a1",
+        // new
+        background: "#08090a", // #0C0C0C
+        textPrimary: "#f7f8f8",
+        buttonBgPrimary: "#e6e6e6",
       },
     },
     listStyleType: {

@@ -1,4 +1,5 @@
-export { default } from "~/view/pages/home";
+//export { default } from "~/view/pages/home";
+export { default } from "~/view/pages/home/index2";
 
 import { MetaFunction } from "@remix-run/node";
 

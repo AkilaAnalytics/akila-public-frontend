@@ -76,7 +76,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           ""
         )}
       </head>
-      <body>
+      <body className="bg-background">
         <Navbar />
         {children}
         <ScrollRestoration />

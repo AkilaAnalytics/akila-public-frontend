@@ -1,6 +1,41 @@
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
+
+.button-primary {
+  @apply px-5 py-2 bg-buttonBgPrimary hover:scale-105 text-background rounded-md flex justify-center items-center h-auto w-auto;
+}
+
+.button-secondary {
+  @apply px-5 py-2 font-semibold cursor-pointer transition-all duration-300 ease-in-out rounded-md;
+  @apply bg-transparent;
+  @apply flex justify-center items-center h-14 w-auto;
+
+  /* Custom gradient text (can't be done with pure Tailwind) */
+  background-image: linear-gradient(to right, #ffffff, #9ca3af);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.button-secondary:hover {
+  @apply bg-gray-600 text-gray-100;
+  @apply hover:scale-105;
+
+  /* Reset gradient text properties on hover */
+  background-image: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: unset;
+}
+
+.text-gradient {
+  background-image: linear-gradient(to right, #ffffff, #9ca3af);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
 
 @layer utilities {
    {
