@@ -6,6 +6,9 @@
 /.react-router/
 /build/
 
+# prisma
+app/utils/server/generated/
+
 /.cache
 /build
 .env
