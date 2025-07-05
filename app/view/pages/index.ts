@@ -1,0 +1,13 @@
+export * from "./use-cases";
+export * from "./positions";
+export * from "./product";
+export * from "./platform";
+export * from "./comingSoon";
+export * from "./resources";
+export * from "./company";
+export * from "./home";
+export { default as ContactUs } from "./contact-us";
+export * from "./LandingPages";
+export { default as PricingPage } from "./pricing";
+export { default as Calendar } from "./calendar";
+export { default as Chat } from "./chat";

@@ -1,0 +1,371 @@
+@tailwind utilities;
+@reference "./tailwind.css";
+
+@layer components {
+  .button-gradient {
+    @apply bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-periwinkle to-periwinkleDark;
+  }
+  ,
+  .button-gradient-hover {
+    @apply bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-periwinkleDark to-periwinkle;
+  }
+  .cyan-gradient {
+    @apply bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-cyan to-darkBlue hover:scale-105;
+  }
+  .cyan-gradient-hover {
+    @apply bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-darkBlue to-cyan hover:scale-105;
+  }
+
+  .contact-us-gradient {
+    @apply bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[rgb(16,15,23)] via-gray-900 to-periwinkleDark;
+  }
+}
+
+.gradient-div {
+  background-image: radial-gradient(
+    circle at center top,
+    var(--periwinkle) 0%,
+    var(--periwinkleDark) 30%
+  );
+}
+
+@keyframes rollIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rollOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.rollingText {
+  width: 100%;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.rollIn {
+  animation: rollIn 0.3s ease-in-out forwards;
+}
+
+.rollOut {
+  animation: rollOut 0.3s ease-in-out forwards;
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text; /* For Safari */
+  color: transparent;
+  background-image: linear-gradient(
+    to right,
+    var(--cyan),
+    var(--periwinkle),
+    var(--cyan)
+  );
+  z-index: 50;
+}
+
+@layer base {
+  :root {
+    /* Gradient */
+    --gradient-angle: 89.93deg;
+    --gradient-start-color: rgba(0, 0, 0, 0.7) 3.02%;
+    --gradient-middle-color: rgba(0, 0, 0, 0.56) 55.25%;
+    --gradient-end-color: rgba(0, 0, 0, 0) 98.73%;
+    /* Colors */
+    --periwinkle: rgb(84, 75, 253);
+    --periwinkleDark: rgba(84, 75, 253, 0.2);
+    --cyan: rgb(0, 184, 233);
+    --darkBlue: rgb(200, 0, 201);
+  }
+
+  body {
+    /* background-color: #0c0c0c; */
+    background-color: #0c0c0c;
+    color: white;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  h1 {
+    font-size: 4.209rem;
+  }
+  h2 {
+    font-size: 3.157rem;
+  }
+  h3 {
+    font-size: 2.369rem;
+  }
+  h4 {
+    font-size: 1.77rem;
+  }
+  h5 {
+    font-size: 1.333rem;
+  }
+
+  @media (max-width: 640px) {
+    html {
+      font-size: 16px;
+      padding: 0 0px;
+    }
+    h1 {
+      font-size: 3.8rem;
+    }
+    h2 {
+      font-size: 2.8rem;
+    }
+    h3 {
+      font-size: 2.1rem;
+    }
+    h4 {
+      font-size: 1.57rem;
+    }
+    h5 {
+      font-size: 1.2rem;
+    }
+    h6 {
+      font-size: 1.05rem;
+      font-family: serif;
+    }
+  }
+
+  /* Fonts */
+  @font-face {
+    font-family: "Bitter";
+    src: url("/font/Bitter-VariableFont_wght.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap; /* Optional, improves loading behavior */
+  }
+
+  @font-face {
+    font-family: "Raleway";
+    src: url("/font/Raleway-VariableFont_wght.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Poppins"; /* sans-serif */
+    src: url("/font/Poppins-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Banners & Linear gradients */
+  .banner {
+    /*position: absolute;
+    z-index: -10;
+    left: 0;
+    right: 0;*/
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 40vh;
+  } /*
+  .pricing-page-banner {
+    background-image: linear-gradient(
+        var(--gradient-angle),
+        var(--gradient-start-color),
+        var(--gradient-middle-color),
+        var(--gradient-end-color)
+      ),
+      url("../../public/assets/company-pages/dollar-bill.jpg");
+  }
+  .platform-str-page-banner {
+    background-image: linear-gradient(
+        var(--gradient-angle),
+        var(--gradient-start-color),
+        var(--gradient-middle-color),
+        var(--gradient-end-color)
+      ),
+      url("../../public/assets/company-pages/building.png");
+  }
+  .platform-advantages-banner {
+    background-image: linear-gradient(
+        var(--gradient-angle),
+        var(--gradient-start-color),
+        var(--gradient-middle-color),
+        var(--gradient-end-color)
+      ),
+      url("../../public/assets/company-pages/building-balcony.png");
+  }
+  .company-about-us-banner {
+    background-image: linear-gradient(
+        var(--gradient-angle),
+        var(--gradient-start-color),
+        var(--gradient-middle-color),
+        var(--gradient-end-color)
+      ),
+      url("../../public/assets/company-pages/contact-us.png");
+  }
+  .company-contact-us-banner {
+    background-image: linear-gradient(
+        var(--gradient-angle),
+        var(--gradient-start-color),
+        var(--gradient-middle-color),
+        var(--gradient-end-color)
+      ),
+      url("../../public/assets/company-pages/about-us.png");
+  }*/
+  /* Stop Chrome's autofill feature from overriding input background colors.
+ * For example, the first namea and last name inputs backgrounds will change 
+ * from black to white  
+ */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+
+  /* Any other styles you want to apply for printing only 
+  body {
+    font-size: 14pt;
+    color: black;
+  } */
+}
+
+.ant-menu-light.ant-menu-root.ant-menu-inline {
+  /* background-color: orange; */
+  background-color: #0c0c0c;
+  /* border-bottom: 1px solid #636363; */
+  /* border-bottom: 1px solid white; */
+  color: #ffff;
+  margin: 0.5rem 0;
+
+  max-height: 30vh;
+  overflow-x: auto;
+}
+
+/* antd submenu bg color */
+.ant-menu-light.ant-menu-root.ant-menu-inline {
+  /* background-color: bisque; */
+}
+/*  */
+
+/* antd submenu colors on selected */
+.ant-menu-light .ant-menu-item-selected {
+  color: #ffff;
+  border-radius: 0;
+  background-color: #0c0c0c;
+}
+/*  */
+
+/* removing bue colorof antd submenu title */
+.ant-menu-light .ant-menu-submenu-selected > .ant-menu-submenu-title {
+  color: unset;
+}
+/*  */
+
+/* for hovering on mobile menu sun antd title menu */
+
+:where(.css-dev-only-do-not-override-ph9edi).ant-menu-light
+  .ant-menu-item:hover:not(.ant-menu-item-selected):not(
+    .ant-menu-submenu-selected
+  ),
+:where(.css-dev-only-do-not-override-ph9edi).ant-menu-light
+  .ant-menu-submenu-title:hover:not(.ant-menu-item-selected):not(
+    .ant-menu-submenu-selected
+  ) {
+  /* color: rgba(0, 0, 0, 0.88); */
+  color: white;
+}
+
+/*  */
+
+/* removing active color on antd submenu title */
+
+:where(.css-dev-only-do-not-override-ph9edi).ant-menu-light:not(
+    .ant-menu-horizontal
+  )
+  .ant-menu-submenu-title:active {
+  background-color: #0c0c0c;
+}
+/*  */
+
+/* non submenu menus styles */
+:where(.css-dev-only-do-not-override-ph9edi).ant-menu-light {
+  background-color: #0c0c0c;
+  color: white;
+}
+
+/*  */
+
+/* antd submenu container style */
+
+:where(.css-dev-only-do-not-override-ph9edi).ant-menu-light.ant-menu-inline
+  .ant-menu-sub.ant-menu-inline {
+  /* color: red; */
+  margin-left: 20px;
+}
+/*  */
+
+/* menu open and close with animation */
+
+.menu-open-close {
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+.menu-open-close:hover {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+/* container */
+.container_class {
+  max-width: 1110px;
+  margin: 0 auto;
+  padding: 2px 6px;
+}
+/*  */
+
+/* truncate text */
+.truncate-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5; /* Number of lines to show */
+  overflow: hidden;
+}
+
+/* Add this within your global CSS file */
+@keyframes shooting-star {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(300px, 600px); /* These values will be dynamic */
+    opacity: 0;
+  }
+}
+
+/* Use this to ensure auto suggesstions appear as black*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #000 !important; /* Set the text color to black */
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset; /* Optional: Change the background color */
+  transition: background-color 5000s ease-in-out 0s; /* Prevent background color change */
+}

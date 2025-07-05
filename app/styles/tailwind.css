@@ -1,0 +1,65 @@
+@import "tailwindcss";
+@tailwind utilities;
+@theme {
+  --color-cyan: #00b8e9;
+  --color-periwinkle: #544bfd;
+  --color-darkBlue: #2325c9;
+  --color-periwinkleDark: rgb(41, 38, 122);
+  --color-background: #171513;
+  --color-border: rgba(107, 114, 128, 0.5);
+  --color-chart: #2b2e32;
+  --color-secondary: #1b1918;
+  --color-secondary2: #121212;
+  --color-alternate: #18181b;
+  --color-lightGrey: #252121;
+  --color-darkGrey: #292b2c;
+  --color-linkText: #3b82f6;
+  --color-greyText: #71717a;
+  --color-redText: #fe87a1;
+  --color-akilaPink: rgb(110, 70, 128);
+  --color-blue: rgb(21, 18, 56);
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border-bottom: 1px solid gray-800;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px #1b1918 inset;
+  box-shadow: 0 0 0px 1000px #1b1918 inset;
+  transition: background-color secondary 5000s ease-in-out 0s;
+  color: white;
+}
+
+@layer utilities {
+   {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .testimonial-container {
+    max-width: 1278px;
+    display: grid;
+    grid-template-columns: minmax(343px, 1fr) minmax(434px, 1fr) minmax(
+        343px,
+        1fr
+      );
+
+    margin: 0 auto;
+    column-gap: 20px;
+    width: 100%;
+  }
+  @media screen and (max-width: 965px) {
+    .testimonial-container {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}

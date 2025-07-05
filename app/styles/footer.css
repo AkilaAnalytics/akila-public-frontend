@@ -1,0 +1,17 @@
+@reference "./tailwind.css"
+
+.footer-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+  min-height: 60vh;
+  max-height: 80vh;
+}
+.wave svg {
+  position: relative;
+  display: block;
+  width: calc(152% + 1.3px);
+  height: 147px;
+}

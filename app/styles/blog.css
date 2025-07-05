@@ -1,0 +1,79 @@
+@reference "./tailwind.css"
+
+.markdown p {
+  margin-top: 20px;
+  font-size: 1.25rem;
+}
+
+.markdown img {
+  margin-bottom: 0px;
+}
+
+.markdown a {
+  color: #00b8e9;
+}
+
+.markdown h1 + p,
+.markdown h2 + p,
+.markdown h3 + p,
+.markdown h4 + p,
+.markdown h5 + p,
+.markdown h6 + p {
+  margin-top: 0px;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  margin-top: 20px;
+  border-bottom: 1px solid rgb(31 41 55);
+  text-transform: uppercase;
+}
+
+.markdown h1 {
+  font-size: 3.8888888809rem;
+}
+.markdown h2 {
+  font-size: 2.757rem;
+}
+.markdown h3 {
+  font-size: 1.969rem;
+}
+.markdown h4 {
+  font-size: 1.37rem;
+}
+.markdown h5 {
+  font-size: 1.133rem;
+}
+.markdown h6 {
+  font-size: 1.05rem;
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 16px;
+    padding: 0 0px;
+  }
+  h1 {
+    font-size: 3.8rem;
+  }
+  h2 {
+    font-size: 2.8rem;
+  }
+  h3 {
+    font-size: 2.1rem;
+  }
+  h4 {
+    font-size: 1.57rem;
+  }
+  h5 {
+    font-size: 1.2rem;
+  }
+  h6 {
+    font-size: 1.05rem;
+    font-family: serif;
+  }
+}

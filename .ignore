@@ -1,0 +1,8 @@
+package-lock.json
+public/static
+public/assets/icons/
+public/build
+server/
+coverage/
+node_modules/
+content/

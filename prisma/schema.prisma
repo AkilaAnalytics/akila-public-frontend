@@ -1,0 +1,53 @@
+generator client {
+  provider      = "prisma-client"
+  output        = "../app/utils/server/generated"
+  binaryTargets = ["native", "linux-arm64-openssl-3.0.x", "debian-openssl-3.0.x", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+// prisma/schema.prisma
+
+model ChatSession {
+  id           String            @id @default(cuid())
+  sessionId    String            @unique // The frontend-generated session ID
+  userName     String
+  userEmail    String
+  status       ChatSessionStatus @default(ACTIVE)
+  createdAt    DateTime          @default(now())
+  lastActivity DateTime          @default(now())
+
+  // Relationships
+  messages ChatMessage[]
+
+  @@map("chat_sessions")
+}
+
+model ChatMessage {
+  id        String        @id @default(cuid())
+  sessionId String
+  text      String
+  sender    MessageSender
+  timestamp DateTime      @default(now())
+  createdAt DateTime      @default(now())
+
+  // Relationships
+  session ChatSession @relation(fields: [sessionId], references: [sessionId], onDelete: Cascade)
+
+  @@index([sessionId, timestamp])
+  @@map("chat_messages")
+}
+
+enum ChatSessionStatus {
+  ACTIVE
+  CLOSED
+  ARCHIVED
+}
+
+enum MessageSender {
+  USER
+  BOT
+}
