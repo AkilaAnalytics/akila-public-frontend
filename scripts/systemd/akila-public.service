@@ -7,6 +7,7 @@ Type=simple
 User=goldney
 WorkingDirectory=/ebs-data/akila-public
 EnvironmentFile=/etc/environment
+EnvironmentFile=/ebs-data/akila-public/.env
 ExecStart=/bin/zsh -c 'npm run start'
 Restart=on-failure
 
