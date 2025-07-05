@@ -1,3 +1,1 @@
-import ComingSoonPage from '~/view/pages/comingSoon'
-
-export default ComingSoonPage
+export * as default from "~/view/pages/comingSoon";

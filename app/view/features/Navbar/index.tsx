@@ -305,6 +305,12 @@ const navigation = [
         description:
           "By deploying our infrastructure into your account, we help ensure that sensitive data remains secure.",
       },
+      {
+        name: "AI Business Solutions",
+        href: "/platform/ai",
+        description:
+          "Learn how we can integrate AI into your workflows to automate workflows.",
+      },
     ],
   },
   {

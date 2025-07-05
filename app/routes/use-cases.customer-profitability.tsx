@@ -1,22 +1,20 @@
-import { CustomerProfitabilityPage } from '~/view/pages'
-import { MetaFunction } from '@remix-run/node'
-
-export default CustomerProfitabilityPage
+export { CustomerProfitabilityPage as default } from "~/view/pages";
+import { MetaFunction } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
-  const title = 'Profitability: Drive Value with Analytics'
+  const title = "Profitability: Drive Value with Analytics";
   const description =
-    'Dive deep into customer profitability analytics with Akila.'
+    "Dive deep into customer profitability analytics with Akila.";
   return [
     { title: title },
-    { property: 'og:title', content: title },
+    { property: "og:title", content: title },
     {
-      name: 'description',
-      content: description
+      name: "description",
+      content: description,
     },
     {
-      name: 'og:description',
-      content: description
-    }
-  ]
-}
+      name: "og:description",
+      content: description,
+    },
+  ];
+};

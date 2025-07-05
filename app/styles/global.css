@@ -360,3 +360,13 @@
     opacity: 0;
   }
 }
+
+/* Use this to ensure auto suggesstions appear as black*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #000 !important; /* Set the text color to black */
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset; /* Optional: Change the background color */
+  transition: background-color 5000s ease-in-out 0s; /* Prevent background color change */
+}

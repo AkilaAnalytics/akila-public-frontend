@@ -13,12 +13,12 @@ import "./styles/footer.css";
 import "./styles/tailwind.css";
 import "./styles/global.css"; // this must be after tailwind or the h1 font-size breaks
 import { logger } from "./utils";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import * as gtag from "~/utils/client/gtags.client";
 import Footer from "~/view/features/Footer";
 import { Navbar } from "./view/features";
 import { MissingPage } from "./view/pages/misc";
-import { LinksFunction } from "@remix-run/node";
+import { Chat } from "./view/pages";
 
 logger.log(
   "%cAkila Analytics",
@@ -35,6 +35,7 @@ export const loader = () => {
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const { gaTrackingId } = useLoaderData<typeof loader>();
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   useEffect(() => {
     if (gaTrackingId?.length) {
@@ -78,6 +79,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Navbar />
+        <Chat isOpen={isChatOpen} onToggle={() => setIsChatOpen(!isChatOpen)} />
         {children}
         <ScrollRestoration />
         <Scripts />

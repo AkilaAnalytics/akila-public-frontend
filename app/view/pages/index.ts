@@ -9,3 +9,4 @@ export * from "./home";
 export * from "./contact-us";
 export { default as PricingPage } from "./pricing";
 export { default as Calendar } from "./calendar";
+export { default as Chat } from "./chat";
