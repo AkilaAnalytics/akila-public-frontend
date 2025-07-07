@@ -220,7 +220,7 @@ export default function BlogTemplate() {
 }
 
 export function meta({}: Route.MetaArgs) {
-  const { title, description } = data; //useLoaderData<IData>()
+  const { title, description } = useLoaderData<object>();
 
   // ensure titles don't have more than 70 characters
   let formattedTitle = title;
