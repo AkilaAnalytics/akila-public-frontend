@@ -3,9 +3,14 @@ import CheckMarkIcon from "../CheckMark";
 interface Props {
   price: string;
   features: string[];
+  handleGetStartedClick: () => void;
 }
 
-export default function PricingCard({ price, features }: Props) {
+export default function PricingCard({
+  price,
+  features,
+  handleGetStartedClick,
+}: Props) {
   return (
     <div className="w-full md:w-1/4 border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-200 justify-center mx-auto">
       <h3 className="text-xl font-semibold text-gray-900 mb-2">Pro</h3>
@@ -21,7 +26,10 @@ export default function PricingCard({ price, features }: Props) {
           </li>
         ))}
       </ul>
-      <button className="cursor-pointer w-full border-2 border-gray-300 text-gray-700 py-3 rounded-lg hover:border-gray-400 transition-all duration-200">
+      <button
+        onClick={handleGetStartedClick}
+        className="cursor-pointer w-full border-2 border-gray-300 text-gray-700 py-3 rounded-lg hover:border-gray-400 transition-all duration-200"
+      >
         Start Free Trial
       </button>
     </div>

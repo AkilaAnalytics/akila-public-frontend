@@ -2,6 +2,8 @@ export * from "./aws/index.server";
 export * from "./stripe/index.server";
 export { default as logger } from "./logger.server";
 export { default as prisma } from "./prisma.server";
+export { default as pool } from "./pool.server";
+export { createUserIfNotExists } from "./sql.server";
 
 export interface ProductSpec {
   item: string;

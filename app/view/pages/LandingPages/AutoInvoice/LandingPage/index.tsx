@@ -1,102 +1,48 @@
-import { useState, useEffect } from 'react';
-import { hamburgerMenu } from '~/view/assets/icons';
-import { CheckMarkIcon, PricingCard } from '../components';
+import { useState, useEffect } from "react";
+import { hamburgerMenu } from "~/view/assets/icons";
+import { CheckMarkIcon, PricingCard } from "../components";
+import { steps, features, proPlanFeatures } from "./text";
+import { useNavigate } from "react-router";
 
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate;
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleGetStartedClick = () => {
-    // Get the current window's location object
-    const { protocol, host } = window.location;
+    const { protocol, hostname, port } = window.location;
 
-    // Replace the 'auto-invoice' part of the host with 'app'
-    const newHost = host.replace('auto-invoice', 'app');
+    // Remove the specific subdomain (or any subdomain before .yourdomain.com)
+    const domainParts = hostname.split(".");
+    const filteredParts = domainParts.filter((part) => part !== "auto-invoice");
+    const newHost = filteredParts.join(".");
 
-    // Construct the full, new URL for the checkout page
-    const checkoutUrl = `${protocol}//${newHost}/checkout?product=auto-invoice`;
+    // Reconstruct the base URL (with port if needed)
+    const origin = `${protocol}//${newHost}${port ? `:${port}` : ""}`;
 
-    // Navigate the browser to the new URL
-    window.location.href = checkoutUrl;
+    // If we're still on the same top-level origin, use SPA navigation
+    if (newHost === window.location.hostname) {
+      navigate("/checkout?product=auto-invoice");
+    } else {
+      // Otherwise, do a full browser redirect
+      window.location.href = `${origin}/checkout?product=auto-invoice`;
+    }
   };
-
-  const features = [
-    {
-      icon: '⚡',
-      title: 'Lightning Fast',
-      description:
-        'Generate hundreds of professional invoices in seconds, not hours.',
-    },
-    {
-      icon: '🎨',
-      title: 'Custom Branding',
-      description:
-        'Upload your company logo and maintain consistent brand identity.',
-    },
-    {
-      icon: '📊',
-      title: 'Bulk Processing',
-      description:
-        'Process entire CSV files with all your invoice data at once.',
-    },
-    {
-      icon: '📱',
-      title: 'Easy to Use',
-      description:
-        'Simple drag-and-drop interface. No technical skills required.',
-    },
-    {
-      icon: '🔒',
-      title: 'Secure & Private',
-      description:
-        'Your data is processed securely and never stored permanently.',
-    },
-    {
-      icon: '💼',
-      title: 'Professional Output',
-      description: 'Clean, professional PDF invoices ready for your clients.',
-    },
-  ];
-
-  const steps = [
-    {
-      step: '01',
-      title: 'Upload Your Data',
-      description: 'Simply upload your CSV file with invoice information.',
-    },
-    {
-      step: '02',
-      title: 'Add Your Logo',
-      description: 'Upload your company logo for professional branding.',
-    },
-    {
-      step: '03',
-      title: 'Generate Invoices',
-      description: 'Click generate and get a ZIP file with all your PDFs.',
-    },
-  ];
-
-  const proPlanFeatures = [
-    'First 7 days are free',
-    'Up to 100 invoices/month',
-    'Custom logo support',
-    'Email support',
-  ];
 
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav
         className={`fixed z-50 w-full transition-all duration-300 ${
-          scrolled ? 'bg-white/95 shadow-sm backdrop-blur-md' : 'bg-transparent'
+          scrolled ? "bg-white/95 shadow-sm backdrop-blur-md" : "bg-transparent"
         }`}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -158,7 +104,7 @@ export default function LandingPage() {
             <h1 className="mb-6 text-4xl leading-tight font-bold text-gray-900 md:text-6xl">
               Turn Your Data Into
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                {' '}
+                {" "}
                 Professional Invoices
               </span>
             </h1>
@@ -170,7 +116,10 @@ export default function LandingPage() {
             </p>
 
             <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <button className="transform cursor-pointer rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-1 hover:from-blue-700 hover:to-purple-700 hover:shadow-xl">
+              <button
+                onClick={handleGetStartedClick}
+                className="transform cursor-pointer rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-1 hover:from-blue-700 hover:to-purple-700 hover:shadow-xl"
+              >
                 Start Free Trial
               </button>
               <button className="cursor-pointer rounded-lg border-2 border-gray-300 px-8 py-4 text-lg font-semibold text-gray-700 transition-all duration-200 hover:border-gray-400">
@@ -308,7 +257,11 @@ export default function LandingPage() {
               Simple, transparent pricing
             </h2>
           </div>
-          <PricingCard price="29" features={proPlanFeatures} />
+          <PricingCard
+            price="29"
+            features={proPlanFeatures}
+            handleGetStartedClick={handleGetStartedClick}
+          />
         </div>
       </section>
 
@@ -321,7 +274,10 @@ export default function LandingPage() {
           <p className="mb-8 text-xl text-gray-300">
             Join thousands of businesses saving time and money with AutoInvoice
           </p>
-          <button className="transform cursor-pointer rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-1 hover:from-blue-700 hover:to-purple-700 hover:shadow-xl">
+          <button
+            onClick={handleGetStartedClick}
+            className="transform cursor-pointer rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-1 hover:from-blue-700 hover:to-purple-700 hover:shadow-xl"
+          >
             Start Your Free Trial
           </button>
           <p className="mt-4 text-gray-400">
@@ -407,17 +363,15 @@ export default function LandingPage() {
                     Blog
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="hover:text-gray-900">
-                    Careers
-                  </a>
-                </li>
               </ul>
             </div>
           </div>
 
-          <div className="mt-8 border-t border-gray-200 pt-8 text-center text-gray-600">
-            <p>&copy; 2025 AutoInvoice. All rights reserved.</p>
+          <div className="mt-8 border-t border-gray-200 pt-8  text-gray-600">
+            <p>
+              &copy; {new Date().getFullYear()} AutoInvoice. All rights
+              reserved.
+            </p>
           </div>
         </div>
       </footer>

@@ -16,10 +16,6 @@ export default [
   route("/api/chat", "routes/api.chat.tsx"),
   route("/api/contact-us", "routes/api.contact-us.tsx"),
   route("/api/email-sign-up", "routes/api.email-sign-up.tsx"),
-  route(
-    "/api/payment/payment-confirmation",
-    "routes/api.payment.payment-confirmation.ts"
-  ),
 
   // Company Routes
   route("/company/overview", "routes/company.overview.tsx"),
@@ -76,7 +72,7 @@ export default [
     "routes/resources-training.training.tsx"
   ),
   route("/resources/documentation", "routes/resources.documentation.tsx"),
-  route("/resources/insights", "routes/resources.insights_.tsx", () => [
+  route("/resources/insights", "routes/resources.insights_.tsx", [
     route(":title", "routes/resources.insights.$title.tsx"),
     route("pdf/:title", "routes/resources.insights.pdf.$title.tsx"),
   ]),

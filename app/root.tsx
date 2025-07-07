@@ -40,12 +40,6 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
   const hostname = url.hostname;
   let tenant = hostname && hostname.split(".")[0]; // gets "app" from "app.akilaanalytics.com"
   const temp = new URL(request.url);
-  logger.log({
-    hostname_: hostname, // Hostname is ignored in the logger
-    tenant,
-    temp,
-    source: "root loader with hostname",
-  });
   if (["auto-invoice", "ai"].includes(tenant)) {
     return data({
       ...envVars,
@@ -107,6 +101,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
           )}
         </head>
         <body>
+          <Chat
+            isOpen={isChatOpen}
+            onToggle={() => setIsChatOpen(!isChatOpen)}
+          />
           {tenant == "auto-invoice" && <AutoInvoice />}
           {tenant === "ai" && <FineTuning />}
           <ScrollRestoration />
