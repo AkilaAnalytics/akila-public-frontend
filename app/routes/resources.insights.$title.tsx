@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 
 import { GettingStartedSection } from "~/view/components";
 import { Summary, Title } from "~/view/features/Blog";
-import { logger } from "~/utils";
+import { logger } from "~/utils/server/index.server";
 import { EmailSignUp } from "~/view/features";
 import "~/styles/blog.css";
 

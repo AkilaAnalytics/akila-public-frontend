@@ -15,6 +15,7 @@ app/utils/server/generated/
 public/*
 server/*
 build/*
+logs/
 
 .DS_Store
 **/.DS_Store
