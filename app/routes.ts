@@ -55,6 +55,12 @@ export default [
   route("/positions/product-manager", "routes/positions.product-manager.tsx"),
 
   // Product Routes
+  route(
+    "/product/automated-reporting",
+    "routes/product.automated-reporting.tsx"
+  ),
+  route("/product/ai-consulting", "routes/product.ai-consulting.tsx"),
+  route("/product/private-llm", "routes/product.private-llm.tsx"),
   route("/product/data-exploration", "routes/product.data-exploration.tsx"),
   route("/product/data-processing", "routes/product.data-processing.tsx"),
   route("/product/etl-pipeline", "routes/product.etl-pipeline.tsx"),

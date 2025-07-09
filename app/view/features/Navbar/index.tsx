@@ -318,40 +318,25 @@ const navigation = [
     current: false,
     submenu: [
       {
-        name: "Data Exploration",
-        href: "/product/data-exploration",
-        description: "Unlock the power of your data.",
+        name: "Automated Reporting",
+        href: "/product/automated-reporting",
+        description: "Automate your workflows.",
       },
       {
-        name: "Data Processing",
-        href: "/product/data-processing",
-        description: "Transform your data quickly and easily.",
+        name: "Private LLM",
+        href: "/product/private-llm",
+        description: "Ensure your data and messages are private.",
       },
       {
-        name: "Machine Learning",
-        href: "/product/machine-learning",
+        name: "AI Consulting",
+        href: "/product/ai-consulting",
         description:
-          "Take your business to the next level powerful machine learning workflows",
-      },
-      {
-        name: "Recurring Jobs",
-        href: "/product/recurring-jobs",
-        description: "Automate your recurring tasks and jobs easily.",
-      },
-      {
-        name: "ETL Pipelines",
-        href: "/product/etl-pipeline",
-        description: "Set up ETL pipelines & automate processes faster.",
-      },
-      {
-        name: "Watch Demo",
-        href: "/product/watch-demo",
-        description: "Watch a demo video to see how Akila can help you.",
+          "Take your business to the next level with bespoke solutions.",
       },
       {
         name: "Hardware",
         href: "/product/hardware",
-        description: "Purchase hardware directly from us.",
+        description: "Purchase servers directly from us.",
       },
       {
         name: "Try Free",

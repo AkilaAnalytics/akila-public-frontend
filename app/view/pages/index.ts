@@ -11,3 +11,6 @@ export * from "./LandingPages";
 export { default as PricingPage } from "./pricing";
 export { default as Calendar } from "./calendar";
 export { default as Chat } from "./chat";
+export { default as AIConsutling } from "./AiConsulting";
+export { default as PrivateLlm } from "./PrivateLlm";
+export { default as SaaS } from "./SaaS";

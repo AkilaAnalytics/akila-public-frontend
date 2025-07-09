@@ -72,7 +72,7 @@ export default function DemoPageForm() {
           />
           <button
             type="submit"
-            className="button-gradient mt-[8px] min-h-[60px] w-full rounded-md bg-red-500"
+            className="button-gradient mt-[8px] min-h-[60px] w-full rounded-md"
           >
             Submit
           </button>

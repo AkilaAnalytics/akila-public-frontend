@@ -3,7 +3,7 @@
 
 @layer components {
   .button-gradient {
-    @apply bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-periwinkle to-periwinkleDark;
+    @apply bg-[radial-gradient(ellipse_at_bottom,theme(colors.periwinkle),theme(colors.periwinkleDark))];
   }
   ,
   .button-gradient-hover {

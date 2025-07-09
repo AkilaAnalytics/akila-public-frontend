@@ -4,6 +4,7 @@ import { CheckMarkIcon, PricingCard } from "../components";
 import { steps, features, proPlanFeatures } from "./text";
 import { useNavigate } from "react-router";
 
+const link = "https://app.akilaanalytics.com/checkout?product=auto-invoice";
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -30,10 +31,10 @@ export default function LandingPage() {
 
     // If we're still on the same top-level origin, use SPA navigation
     if (newHost === window.location.hostname) {
-      navigate("/checkout?product=auto-invoice");
+      navigate(link);
     } else {
       // Otherwise, do a full browser redirect
-      window.location.href = `${origin}/checkout?product=auto-invoice`;
+      window.location.href = link;
     }
   };
 
@@ -257,11 +258,21 @@ export default function LandingPage() {
               Simple, transparent pricing
             </h2>
           </div>
-          <PricingCard
-            price="29"
-            features={proPlanFeatures}
-            handleGetStartedClick={handleGetStartedClick}
-          />
+          <div className="flex flex-col md:flex-row gap-5 justify-center">
+            <PricingCard
+              title="Pro"
+              price="29"
+              features={proPlanFeatures}
+              handleGetStartedClick={handleGetStartedClick}
+              showGreenChecks={true}
+              buttonText="Start free trial"
+            />
+            <div className="my-auto md:ml-5">
+              <h4 className="text-gray-800">
+                Chat with us for a custom solution.
+              </h4>{" "}
+            </div>
+          </div>
         </div>
       </section>
 
