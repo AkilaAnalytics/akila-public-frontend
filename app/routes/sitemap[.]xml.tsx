@@ -12,17 +12,25 @@ export const loader = async () => {
     .filter((p): p is string => typeof p === "string" && p && !p.includes(":"));
 
   let dynamicUrls: string[] = [];
-  if (process.env.NODE_ENV === "production") {
-    const res = await fetch(
-      `${process.env.STRAPI_URL}/api/articles?fields[0]=title&fields[1]=slug`
-    );
-    const articles = await res.json();
-    dynamicUrls = articles.data.map(
-      (a: any) =>
-        `${BASE_URL}/resources/insights/${encodeUrl(
-          a.title.replace("?", "")
-        )}?slug=${a.slug}`
-    );
+  try {
+    if (process.env.NODE_ENV === "production") {
+      const res = await fetch(
+        `localhost:1337/api/articles?fields[0]=title&fields[1]=slug`
+      );
+      const articles = await res.json();
+      dynamicUrls = articles.data.map(
+        (a: any) =>
+          `${BASE_URL}/resources/insights/${encodeUrl(
+            a.title.replace("?", "")
+          )}?slug=${a.slug}`
+      );
+    }
+  } catch (e) {
+    logger.error({
+      message: "There was an error while fetching the blog routes.",
+      error: e,
+      source: "sitemap",
+    });
   }
 
   const urlEntries = [
