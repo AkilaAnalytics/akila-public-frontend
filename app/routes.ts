@@ -3,7 +3,6 @@ import { type RouteConfig, index, route } from "@react-router/dev/routes";
 export default [
   // Main and Index Routes
   index("routes/home.tsx"), // Root index page at "/"
-  route("_index", "routes/_index.tsx"), // Path for /_index
   route("/coming-soon", "routes/coming-soon.tsx"),
   route("/contact-us", "routes/contact-us.tsx"),
   route("/pricing", "routes/pricing.tsx"),
@@ -68,9 +67,8 @@ export default [
   route("/product/recurring-jobs", "routes/product.recurring-jobs.tsx"),
   route("/product/try-free", "routes/product.try-free.tsx"),
   route("/product/watch-demo", "routes/product.watch-demo.tsx"),
-  route("/product/hardware", "routes/product.hardware_.tsx", () => [
-    route(":server", "routes/product.hardware.$server.tsx"),
-  ]),
+  route("/product/hardware", "routes/product.hardware_.tsx"),
+  route("/product/hardware/:server", "routes/product.hardware.$server.tsx"),
 
   // Resources & Training Routes
   route(
@@ -95,8 +93,8 @@ export default [
   route("/use-cases/private-equity", "routes/use-cases.private-equity.tsx"),
 
   // Special File Routes
-  route("robots.txt", "routes/robots[.]txt.tsx"),
-  route("sitemap.xml", "routes/sitemap[.]xml.tsx"),
+  route("/robots.txt", "routes/robots[.]txt.tsx"),
+  route("/sitemap.xml", "routes/sitemap[.]xml.tsx"),
 
   // Splat Route (Catch-all for 404s) - Must be last
   route("*", "routes/$.tsx"),

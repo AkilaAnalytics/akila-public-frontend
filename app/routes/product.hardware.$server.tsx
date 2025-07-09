@@ -2,7 +2,7 @@ export { HardwareDetails as default } from "~/view/pages";
 import type { Route } from "./+types/home";
 import { logger } from "~/utils";
 import { type ProductData, getProductData } from "~/utils/server/index.server";
-import type { LoaderFunctionArgs } from "react-router";
+import { data, type LoaderFunctionArgs } from "react-router";
 
 interface LoaderData {
   product: ProductData;
@@ -22,7 +22,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
     throw new Response("Product not found", { status: 404 });
   }
 
-  return json<LoaderData>({ product });
+  return data<LoaderData>({ product });
 }
 
 export function meta({}: Route.MetaArgs) {
