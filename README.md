@@ -27,7 +27,7 @@
 
 **Update Assets**
 
-1. Run `npm run strapi export`
+1. Run `npm run strapi export --no-encrypt`
 2. This created a `export_<date>.tar.gz` file, which needs to be transferred to
    the EC2 instance.
 3. On the EC2 instance, run `npm run strapi import -- -f ./exports/<file_name>.tar.gz.enc`

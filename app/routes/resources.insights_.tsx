@@ -8,6 +8,7 @@ import { logger } from "~/utils";
 import { InsightsBannerImage } from "~/view/assets";
 import { ArticleCard, BannerImage } from "~/view/components";
 import { EmailSignUp } from "~/view/features";
+import ArticleByCategory from "~/view/features/Blog/ArticlesByCategory";
 
 export type StrapiResponse = {
   title: string;
@@ -52,21 +53,37 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const isSubscribed = (await isSubscribedCookie.parse(cookieHeader)) as {
       isSubscribed: boolean;
     };
-    logger.log({ cookieHeader, isSubscribedCookie, isSubscribed });
+    logger.log({
+      apiToken: process.env.STRAPI_API_TOKEN,
+      cookieHeader,
+      isSubscribedCookie,
+      isSubscribed,
+    });
 
     // fetch articles
-    const response = await fetch(
-      "http://localhost:1337/api/articles?fields[0]=title&fields[1]=slug&fields[2]=description&fields[3]=recommended&populate[category][fields]=name&populate[cover]=*"
-    );
-    //articles = await articles.json();
     const baseImageLink = process.env.STRAPI_BASE_PATH;
+    const response = await fetch(
+      //`${process.env.STRAPI_BASE_PATH}/api/blogs?populate=*`,
+      `${process.env.STRAPI_BASE_PATH}/api/blogs?fields=title,slug,subtitle,category,recommended,summary&populate=*`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+          "Content-Type": "application/json", // optional
+        },
+      }
+    );
     const articlesJson = (await response.json()) as Articles;
-    logger.log(articlesJson, "<<< articleJson from routes/resources.insights");
+    logger.log({
+      articlesJson: articlesJson.data[0],
+      //banner: articlesJson.data[0].summary,
+      source: "<<< response from routes/resources.insights",
+    });
+    //logger.log(articlesJson, "<<< articleJson from routes/resources.insights");
     const articles = articlesJson.data.map((ele: StrapiResponse) => {
       return {
         ...ele,
-        category: ele.category.name,
-        cover: `${baseImageLink}${ele.cover.url}`,
+        category: ele.category,
+        cover: `${baseImageLink}${ele.banner.url}`,
         slug: ele.slug,
       };
     });
@@ -74,7 +91,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     return data(
       {
         ok: true,
-        isSubscribed: isSubscribed?.isSubscribed,
+        isSubscribed: true, //isSubscribed?.isSubscribed,
         articles: articles,
       },
       {
@@ -92,7 +109,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 export default function Insights() {
   const res = useLoaderData<IBlogMeta>();
-  logger.log(res, "<<< res");
+  //logger.log(res, "<<< res");
   const location = useLocation();
 
   if (!res?.articles) return <MissingPage />;
@@ -149,46 +166,7 @@ export default function Insights() {
         </div>
       </div>
       <br />
-      <div className="px-[5vw]">
-        {/* Series */}
-        <h3>Series: A Primer on Technology for Non-Tech Founders</h3>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-          {res.articles.map((ele) => {
-            return (
-              ele.category === "Tech for Non-Technical Founders" && (
-                <ArticleCard
-                  isPdf={false}
-                  key={ele.title}
-                  title={ele.title}
-                  link={ele.slug}
-                  image_link={ele.cover}
-                  category={ele.category}
-                  preview={ele.description}
-                />
-              )
-            );
-          })}
-        </div>
-        {/* All articles */}
-        <h3 className="mt-16">All Articles</h3>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-          {res.articles.map((ele) => {
-            return (
-              ele.category !== "Tech for Non-Technical Founders" && (
-                <ArticleCard
-                  isPdf={false}
-                  key={ele.title}
-                  title={ele.title}
-                  link={ele.slug}
-                  image_link={ele.cover}
-                  category={ele.category}
-                  preview={ele.description}
-                />
-              )
-            );
-          })}
-        </div>
-      </div>
+      <ArticleByCategory res={res} />
       {!res.isSubscribed && <EmailSignUp />}
     </div>
   );

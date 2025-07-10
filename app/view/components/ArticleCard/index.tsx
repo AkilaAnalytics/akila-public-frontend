@@ -17,10 +17,15 @@ export default function ArticleCard({
 }: IProps) {
   return (
     <div
-      className="h-full rounded-lg border border-gray-500 p-4 shadow-md md:h-[60vh]"
+      className="relative h-full rounded-lg border border-gray-500 p-4 shadow-md md:h-[60vh]"
       key={title}
     >
-      <img src={image_link} className="h-1/3 w-full" alt={`${title}`} />
+      <img
+        src={image_link}
+        className="bg-gradient-to-r from-black via-transparent to-black opacity-60 h-1/3 w-full"
+        alt={`${title}`}
+      />
+
       <br />
       <span className="text-sm">{category}</span>
       <div className="flex items-center">

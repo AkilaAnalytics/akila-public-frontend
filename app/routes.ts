@@ -75,10 +75,12 @@ export default [
     "routes/resources-training.training.tsx"
   ),
   route("/resources/documentation", "routes/resources.documentation.tsx"),
-  route("/resources/insights", "routes/resources.insights_.tsx", [
-    route(":title", "routes/resources.insights.$title.tsx"),
-    route("pdf/:title", "routes/resources.insights.pdf.$title.tsx"),
-  ]),
+  route("/resources/insights", "routes/resources.insights_.tsx"),
+  route("/resources/insights/:slug", "routes/resources.insights.$slug.tsx"),
+  //route("/resources/insights", "routes/resources.insights_.tsx", [
+  //  route(":title", "routes/resources.insights.$title.tsx"),
+  //  route("pdf/:title", "routes/resources.insights.pdf.$title.tsx"),
+  //]),
 
   // Use Cases Routes
   route(

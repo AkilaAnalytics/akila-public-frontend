@@ -24,6 +24,7 @@ import { Navbar } from "./view/features";
 import { MissingPage } from "./view/pages/misc";
 import { Chat, FineTuning, AutoInvoice } from "./view/pages";
 import { useEffect, useState } from "react";
+import { AppContextProvider } from "./view/context";
 
 logger.log(
   "%cAkila Analytics",
@@ -149,12 +150,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
         )}
       </head>
       <body>
-        <Navbar />
-        <Chat isOpen={isChatOpen} onToggle={() => setIsChatOpen(!isChatOpen)} />
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-        <Footer />
+        <AppContextProvider>
+          <Navbar />
+          <Chat
+            isOpen={isChatOpen}
+            onToggle={() => setIsChatOpen(!isChatOpen)}
+          />
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+          <Footer />
+        </AppContextProvider>
       </body>
     </html>
   );

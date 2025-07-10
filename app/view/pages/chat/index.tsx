@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useAppContext } from "~/view/context";
 
 interface Message {
   id: string;
@@ -32,7 +33,10 @@ const safeLocalStorage = {
   },
 };
 
-export default function Chatbot({ isOpen, onToggle }: Props) {
+export default function Chatbot() {
+  const { toggleChat, isChatOpen } = useAppContext();
+  const onToggle = toggleChat;
+  const isOpen = isChatOpen;
   const [sessionId, setSessionId] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState("");
