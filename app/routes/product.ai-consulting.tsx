@@ -10,8 +10,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 }
 
 export function meta({}: Route.MetaArgs) {
-  const title =
-    "AI Consulting Services | Custom Solutions & Implementation | Akila Analytics";
+  const title = "AI Consulting Services";
   const description =
     "Transform your business with comprehensive AI consulting services. We provide end-to-end AI solutions combining our no-code platform, custom hardware, and expert consulting for measurable results.";
   return [

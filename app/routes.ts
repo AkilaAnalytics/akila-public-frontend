@@ -32,7 +32,6 @@ export default [
   route("/legal/terms-and-conditions", "routes/legal.terms-and-conditions.tsx"),
 
   // Platform Routes
-  route("/platform/ai", "routes/platform.ai.tsx"),
   route(
     "/platform/end-to-end-solutions",
     "routes/platform.end-to-end-solutions.tsx"

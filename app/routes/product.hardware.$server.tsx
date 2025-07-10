@@ -2,7 +2,7 @@ export { HardwareDetails as default } from "~/view/pages";
 import type { Route } from "./+types/home";
 import { logger } from "~/utils";
 import { type ProductData, getProductData } from "~/utils/server/index.server";
-import { data, type LoaderFunctionArgs } from "react-router";
+import { data, useLoaderData, type LoaderFunctionArgs } from "react-router";
 
 interface LoaderData {
   product: ProductData;
@@ -26,7 +26,9 @@ export async function loader({ params }: LoaderFunctionArgs) {
 }
 
 export function meta({}: Route.MetaArgs) {
-  const title = "Business Workstations & AI Servers - Custom Built PCs";
+  const { product } = useLoaderData();
+
+  const title = `Business Workstations & AI Servers - ${product.name}`;
   const description =
     "Professional workstations and AI servers built for business. From budget workstations to enterprise AI/ML powerhouses with NVIDIA A100 GPUs.";
   return [
