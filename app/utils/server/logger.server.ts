@@ -51,21 +51,10 @@ function createLogger(fileName: string): ExtendedLogger {
 
     transport = pino.transport({
       targets: [
-        // File target for all logs
         {
           target: "pino/file",
-          options: { destination: logFilePath },
-          level: "info",
-        },
-        // Console target for all logs in production
-        {
-          target: "pino-pretty",
-          options: {
-            destination: 1, // stdout
-            colorize: true,
-            translateTime: "yyyy-mm-dd HH:MM:ss",
-            ignore: "pid,hostname",
-          },
+          options: { destination: 1 }, // stdout
+          //options: { destination: logFilePath },
           level: "info",
         },
       ],

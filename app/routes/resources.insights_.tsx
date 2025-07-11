@@ -61,7 +61,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     });
 
     // fetch articles
-    const baseImageLink = process.env.STRAPI_BASE_PATH;
+    const baseImageLink = process.env.STRAPI_FRONTEND_URL;
     const response = await fetch(
       //`${process.env.STRAPI_BASE_PATH}/api/blogs?populate=*`,
       `${process.env.STRAPI_BASE_PATH}/api/blogs?fields=title,slug,subtitle,category,recommended,summary&populate=*`,
@@ -74,11 +74,11 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     );
     const articlesJson = (await response.json()) as Articles;
     logger.log({
-      articlesJson: articlesJson.data[0],
-      //banner: articlesJson.data[0].summary,
+      articlesJson: Array.isArray(articlesJson?.data)
+        ? articlesJson.data[0]
+        : [],
       source: "<<< response from routes/resources.insights",
     });
-    //logger.log(articlesJson, "<<< articleJson from routes/resources.insights");
     const articles = articlesJson.data.map((ele: StrapiResponse) => {
       return {
         ...ele,

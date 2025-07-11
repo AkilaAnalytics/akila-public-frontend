@@ -79,9 +79,9 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
     const articlesCleaned = articles.map((ele) => {
       let coverImageLink;
       if (ele.banner.formats.large) {
-        coverImageLink = `${process.env.STRAPI_BASE_PATH}${ele.banner.formats?.large?.url}`;
+        coverImageLink = `${process.env.STRAPI_FRONTEND_URL}${ele.banner.formats?.large?.url}`;
       } else if (ele.banner.formats.thumbnail) {
-        coverImageLink = `${process.env.STRAPI_BASE_PATH}${ele.banner.formats?.thumbnail?.url}`;
+        coverImageLink = `${process.env.STRAPI_FRONTEND_URL}${ele.banner.formats?.thumbnail?.url}`;
       }
       return {
         ...ele,
