@@ -102,14 +102,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
           )}
         </head>
         <body>
-          <Chat
-            isOpen={isChatOpen}
-            onToggle={() => setIsChatOpen(!isChatOpen)}
-          />
-          {tenant == "auto-invoice" && <AutoInvoice />}
-          {tenant === "ai" && <FineTuning />}
-          <ScrollRestoration />
-          <Scripts />
+          <AppContextProvider>
+            <Chat
+              isOpen={isChatOpen}
+              onToggle={() => setIsChatOpen(!isChatOpen)}
+            />
+            {tenant == "auto-invoice" && <AutoInvoice />}
+            {tenant === "ai" && <FineTuning />}
+            <ScrollRestoration />
+            <Scripts />
+          </AppContextProvider>
         </body>
       </html>
     );
