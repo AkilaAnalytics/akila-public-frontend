@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
+import { useAppContext } from "~/view/context";
+import { Calendly } from "~/view/features";
+import { Link } from "react-router";
+import { akilaAnalyticsLogo, logoBlackFont } from "~/view/assets";
+import { LandingPageNavbar } from "~/view/components";
 
 export default function PrivateFineTuning() {
+  const { openChat, toggleCalendly } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -21,8 +27,7 @@ export default function PrivateFineTuning() {
     {
       icon: "🔒",
       title: "Complete Data Privacy",
-      description:
-        "Your training data never leaves our secure infrastructure. Private fine-tuning with full data isolation.",
+      description: "Private fine-tuning with full data isolation.",
     },
     {
       icon: "🛡️",
@@ -60,8 +65,7 @@ export default function PrivateFineTuning() {
     {
       step: "01",
       title: "Secure Data Upload",
-      description:
-        "Upload your sensitive training data to our encrypted, isolated environment.",
+      description: "Upload data to an encrypted environment.",
     },
     {
       step: "02",
@@ -116,72 +120,14 @@ export default function PrivateFineTuning() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav
-        className={`fixed z-50 w-full transition-all duration-300 ${
-          scrolled ? "bg-white/95 shadow-sm backdrop-blur-md" : "bg-transparent"
-        }`}
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-4">
-            <div className="flex items-center space-x-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600">
-                <span className="text-sm font-bold text-white">AP</span>
-              </div>
-              <span className="text-xl font-bold text-gray-900">
-                Akila Private
-              </span>
-            </div>
-
-            <div className="hidden items-center space-x-8 md:flex">
-              <a
-                href="#features"
-                className="text-gray-600 transition-colors hover:text-gray-900"
-              >
-                Features
-              </a>
-              <a
-                href="#how-it-works"
-                className="text-gray-600 transition-colors hover:text-gray-900"
-              >
-                How it Works
-              </a>
-              <a
-                href="#use-cases"
-                className="text-gray-600 transition-colors hover:text-gray-900"
-              >
-                Use Cases
-              </a>
-              <button
-                onClick={handleContactUsClick}
-                className="cursor-pointer rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-6 py-2 text-white transition-all duration-200 hover:from-purple-700 hover:to-indigo-700"
-              >
-                Contact Us
-              </button>
-            </div>
-
-            <button
-              className="cursor-pointer md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </nav>
-
+      <LandingPageNavbar
+        navLinks={[
+          { href: "#features", label: "Features" },
+          { href: "#how-it-works", label: "How it Works" },
+          { href: "#use-cases", label: "Use Cases" },
+          { href: "#pricing", label: "Pricing" },
+        ]}
+      />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-purple-50 via-white to-indigo-50 px-4 pt-20 pb-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -199,20 +145,21 @@ export default function PrivateFineTuning() {
             </h1>
 
             <p className="mx-auto mb-8 max-w-3xl text-xl leading-relaxed text-gray-600">
-              Train custom language models on your sensitive data with complete
-              privacy. Our secure infrastructure ensures your proprietary
-              information never leaves our encrypted environment.
+              Train custom language models with complete privacy.
             </p>
 
             <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <button
-                onClick={handleContactUsClick}
+                onClick={toggleCalendly}
                 className="transform cursor-pointer rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-1 hover:from-purple-700 hover:to-indigo-700 hover:shadow-xl"
               >
-                Get Quote
+                Schedule a call
               </button>
-              <button className="cursor-pointer rounded-lg border-2 border-gray-300 px-8 py-4 text-lg font-semibold text-gray-700 transition-all duration-200 hover:border-gray-400">
-                Video Overview
+              <button
+                onClick={openChat}
+                className="cursor-pointer rounded-lg border-2 border-gray-300 px-8 py-4 text-lg font-semibold text-gray-700 transition-all duration-200 hover:border-gray-400"
+              >
+                Chat
               </button>
             </div>
 
@@ -277,7 +224,6 @@ export default function PrivateFineTuning() {
           </div>
         </div>
       </section>
-
       {/* Privacy Benefits Section */}
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -287,8 +233,7 @@ export default function PrivateFineTuning() {
             </h2>
             <p className="mx-auto max-w-3xl text-xl text-gray-600">
               Traditional fine-tuning services expose your sensitive data to
-              security risks. Our private infrastructure ensures complete data
-              protection.
+              security risks.
             </p>
           </div>
 
@@ -343,7 +288,6 @@ export default function PrivateFineTuning() {
           </div>
         </div>
       </section>
-
       {/* Features Section */}
       <section id="features" className="bg-gray-50 px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -373,7 +317,6 @@ export default function PrivateFineTuning() {
           </div>
         </div>
       </section>
-
       {/* Use Cases Section */}
       <section id="use-cases" className="bg-white px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -402,7 +345,6 @@ export default function PrivateFineTuning() {
           </div>
         </div>
       </section>
-
       {/* How it Works Section */}
       <section
         id="how-it-works"
@@ -433,7 +375,6 @@ export default function PrivateFineTuning() {
           </div>
         </div>
       </section>
-
       {/* Stats Section */}
       <section className="bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl text-center text-white">
@@ -456,7 +397,6 @@ export default function PrivateFineTuning() {
           </div>
         </div>
       </section>
-
       {/* Pricing Section */}
       <section id="pricing" className="bg-white px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -514,17 +454,16 @@ export default function PrivateFineTuning() {
                 </div>
 
                 <button
-                  onClick={handleContactUsClick}
+                  onClick={toggleCalendly}
                   className="w-full cursor-pointer rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 py-4 text-lg font-semibold text-white transition-all duration-200 hover:from-purple-700 hover:to-indigo-700"
                 >
-                  Get Quote
+                  Schedule a call
                 </button>
               </div>
             </div>
           </div>
         </div>
       </section>
-
       {/* CTA Section */}
       <section className="bg-gray-900 px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
@@ -547,19 +486,19 @@ export default function PrivateFineTuning() {
           </p>
         </div>
       </section>
-
       {/* Footer */}
       <footer className="bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 md:grid-cols-4">
             <div>
               <div className="mb-4 flex items-center space-x-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600">
-                  <span className="text-sm font-bold text-white">AP</span>
-                </div>
-                <span className="text-xl font-bold text-gray-900">
-                  Akila Private
-                </span>
+                <Link to="/">
+                  <img
+                    src={logoBlackFont}
+                    alt="Akila Analytics logo"
+                    className="h-full w-full"
+                  />
+                </Link>
               </div>
               <p className="mb-4 text-gray-600">
                 Private & secure LLM fine-tuning

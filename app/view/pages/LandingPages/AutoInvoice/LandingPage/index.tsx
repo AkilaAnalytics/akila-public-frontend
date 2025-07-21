@@ -2,10 +2,14 @@ import { useState, useEffect } from "react";
 import { hamburgerMenu } from "~/view/assets/icons";
 import { CheckMarkIcon, PricingCard } from "../components";
 import { steps, features, proPlanFeatures } from "./text";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { logoBlackFont } from "~/view/assets";
+import { useAppContext } from "~/view/context";
+import { LandingPageNavbar } from "~/view/components";
 
 const link = "https://app.akilaanalytics.com/checkout?product=auto-invoice";
 export default function LandingPage() {
+  const { openChat, toggleCalendly } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate;
@@ -41,58 +45,13 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav
-        className={`fixed z-50 w-full transition-all duration-300 ${
-          scrolled ? "bg-white/95 shadow-sm backdrop-blur-md" : "bg-transparent"
-        }`}
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-4">
-            <div className="flex items-center space-x-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-purple-600">
-                <span className="text-sm font-bold text-white">AI</span>
-              </div>
-              <span className="text-xl font-bold text-gray-900">
-                AutoInvoice
-              </span>
-            </div>
-
-            <div className="hidden items-center space-x-8 md:flex">
-              <a
-                href="#features"
-                className="text-gray-600 transition-colors hover:text-gray-900"
-              >
-                Features
-              </a>
-              <a
-                href="#how-it-works"
-                className="text-gray-600 transition-colors hover:text-gray-900"
-              >
-                How it Works
-              </a>
-              <a
-                href="#pricing"
-                className="text-gray-600 transition-colors hover:text-gray-900"
-              >
-                Pricing
-              </a>
-              <button
-                onClick={handleGetStartedClick}
-                className="cursor-pointer rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-2 text-white transition-all duration-200 hover:from-blue-700 hover:to-purple-700"
-              >
-                Get Started
-              </button>
-            </div>
-
-            <button
-              className="cursor-pointer md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              <img src={hamburgerMenu} alt="" />
-            </button>
-          </div>
-        </div>
-      </nav>
+      <LandingPageNavbar
+        navLinks={[
+          { href: "#features", label: "Features" },
+          { href: "#how-it-works", label: "How it Works" },
+          { href: "#pricing", label: "Pricing" },
+        ]}
+      />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-50 via-white to-purple-50 px-4 pt-20 pb-16 sm:px-6 lg:px-8">

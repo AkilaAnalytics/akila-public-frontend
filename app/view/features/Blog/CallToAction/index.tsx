@@ -47,7 +47,7 @@ export default function CallToAction() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href="mailto:Brandon@AkilaAnalytics.com"
+                href="mailto:Support@AkilaAnalytics.com"
                 className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 font-semibold rounded-2xl hover:bg-slate-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 min-w-[200px]"
               >
                 <svg

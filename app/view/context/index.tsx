@@ -6,6 +6,9 @@ interface AppContextType {
   openChat: () => void;
   closeChat: () => void;
   toggleChat: () => void;
+  showCalendly: boolean;
+  setShowCalendly: (isOpen: boolean) => void;
+  toggleCalendly: () => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -15,11 +18,15 @@ export function AppContextProvider({
 }: {
   children: React.ReactNode;
 }) {
+  // chat
   const [isChatOpen, setIsChatOpen] = useState(false);
-
   const openChat = () => setIsChatOpen(true);
   const closeChat = () => setIsChatOpen(false);
   const toggleChat = () => setIsChatOpen(!isChatOpen);
+
+  // calendly
+  const [showCalendly, setShowCalendly] = useState(false);
+  const toggleCalendly = () => setShowCalendly(!showCalendly);
 
   return (
     <AppContext.Provider
@@ -29,6 +36,9 @@ export function AppContextProvider({
         openChat,
         closeChat,
         toggleChat,
+        showCalendly,
+        setShowCalendly,
+        toggleCalendly,
       }}
     >
       {children}

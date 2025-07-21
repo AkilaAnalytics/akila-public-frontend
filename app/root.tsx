@@ -20,9 +20,9 @@ import "./styles/tailwind.css";
 import { logger } from "./utils";
 import * as gtag from "~/utils/client/gtags.client";
 import Footer from "~/view/features/Footer";
-import { Navbar } from "./view/features";
+import { Calendly, Navbar } from "./view/features";
 import { MissingPage } from "./view/pages/misc";
-import { Chat, FineTuning, AutoInvoice } from "./view/pages";
+import { Chat, FineTuning, AutoInvoice, AI } from "./view/pages";
 import { useEffect, useState } from "react";
 import { AppContextProvider } from "./view/context";
 
@@ -41,7 +41,7 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
   const hostname = url.hostname;
   let tenant = hostname && hostname.split(".")[0]; // gets "app" from "app.akilaanalytics.com"
   const temp = new URL(request.url);
-  if (["auto-invoice", "ai"].includes(tenant)) {
+  if (["auto-invoice", "ai", "private-llm"].includes(tenant)) {
     return data({
       ...envVars,
       tenant,
@@ -103,12 +103,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </head>
         <body>
           <AppContextProvider>
-            <Chat
-              isOpen={isChatOpen}
-              onToggle={() => setIsChatOpen(!isChatOpen)}
-            />
+            <Chat />
+            <Calendly />
             {tenant == "auto-invoice" && <AutoInvoice />}
-            {tenant === "ai" && <FineTuning />}
+            {tenant === "private-llm" && <FineTuning />}
+            {tenant === "ai" && <AI />}
             <ScrollRestoration />
             <Scripts />
           </AppContextProvider>

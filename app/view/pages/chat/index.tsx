@@ -254,7 +254,7 @@ export default function Chatbot() {
     return (
       <button
         onClick={onToggle}
-        className="fixed bottom-6 right-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 text-white rounded-full p-4 shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 z-50 transform hover:scale-110 hover:-translate-y-1"
+        className="cursor-pointer fixed bottom-6 right-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 text-white rounded-full p-4 shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 z-50 transform hover:scale-110 hover:-translate-y-1"
         aria-label="Open chat"
       >
         <svg
