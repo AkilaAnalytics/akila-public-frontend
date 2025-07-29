@@ -1,4 +1,4 @@
-import { TickComponent } from '~/view/components'
+import { TickComponent } from "~/view/components";
 
 export default function DemoVideoOfAkilaSection() {
   return (
@@ -12,15 +12,16 @@ export default function DemoVideoOfAkilaSection() {
       </p>
       <div
         className="relative mb-[29px] h-0 w-full max-w-[540px] overflow-hidden"
-        style={{ paddingTop: '56.25%' }}
+        style={{ paddingTop: "56.25%" }}
       >
         <iframe
           className="absolute left-0 top-0 h-full w-full"
-          src="https://www.youtube.com/embed/noGW8OFr6Ko?si=xzNP8MrtwninZZMU&controls=1&showinfo=0"
+          src="https://www.youtube.com/embed/ksr7Nd0Fb1k?si=Z-bxTfIy138XWVc7"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          rel={'0'}
+          referrerPolicy="strict-origin-when-cross-origin"
+          rel={"0"}
           allowFullScreen
         ></iframe>
       </div>
@@ -33,19 +34,19 @@ export default function DemoVideoOfAkilaSection() {
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
 const demoVideoAkilaSectionListData = [
   {
     description:
-      'Learn how Akila Analytics can help you collaborate with your team in real time, share insights, and make informed decisions faster.'
+      "Learn how Akila Analytics can help you collaborate with your team in real time, share insights, and make informed decisions faster.",
   },
   {
-    description: 'Use Akila to quickly analyze data and drive results.'
+    description: "Use Akila to quickly analyze data and drive results.",
   },
   {
     description:
-      'Improve your business performance by using Akila to make data-driven decisions.'
-  }
-]
+      "Improve your business performance by using Akila to make data-driven decisions.",
+  },
+];

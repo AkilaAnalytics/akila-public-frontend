@@ -7,25 +7,22 @@ import CustomSelect from "./Dropdown";
 import { useFetcher } from "react-router";
 
 const employeeOptions = [
+  { value: "10-50", label: "10-50 employees" },
   { value: "50-100", label: "50-100 employees" },
   { value: "100-250", label: "100-250 employees" },
-  { value: "250-500", label: "250-500 employees" },
-  { value: "500+", label: "500+ employees" },
+  { value: "250+", label: "250+ employees" },
 ];
-const challengeOptions = [
-  { value: "manual-processes", label: "Too many manual processes" },
-  { value: "data-analysis", label: "Need better data analysis" },
-  { value: "cost-reduction", label: "Want to reduce operational costs" },
-  {
-    value: "ai-implementation",
-    label: "Want to implement AI but don't know how",
-  },
-  { value: "competitive-advantage", label: "Need competitive advantage" },
+
+const useCase = [
+  { value: "data-analysis", label: "Better data analysis & insights" },
+  { value: "process-automation", label: "Automate repetitive tasks" },
+  { value: "cost-optimization", label: "Reduce operational costs" },
+  { value: "ai-implementation", label: "Implement AI workflows" },
+  { value: "competitive-edge", label: "Stay ahead of competition" },
 ];
 
 export default function AI() {
   const { toggleCalendly } = useAppContext();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -33,7 +30,7 @@ export default function AI() {
     email: "",
     company: "",
     employees: "",
-    currentChallenges: "",
+    useCase: "",
   });
 
   useEffect(() => {
@@ -46,29 +43,19 @@ export default function AI() {
 
   const fetcher = useFetcher();
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
+  const handleFormSubmit = () => {
     fetcher.submit({ formData });
-    // Handle form submission here - integrate with your CRM/email system
-    const formDataString = Object.entries(formData)
-      .map(([key, value]) => `${key}: ${value}`)
-      .join("\n");
 
-    // In production, send to your CRM/email service
-    // Example: sendToHubSpot(formData) or sendToSalesforce(formData)
+    // Simple success message
+    alert("Thanks! We'll be in touch within 24 hours to schedule a demo.");
 
-    alert(
-      "🎉 Success! Our AI specialist will contact you within 24 hours with your custom profit analysis."
-    );
-
-    // Reset form or redirect to thank you page
     setFormData({
       firstName: "",
       lastName: "",
       email: "",
       company: "",
       employees: "",
-      currentChallenges: "",
+      useCase: "",
     });
   };
 
@@ -80,62 +67,52 @@ export default function AI() {
     }));
   };
 
-  const painPoints = [
-    {
-      icon: "⏰",
-      title: "Manual Processes Killing Productivity",
-      description:
-        "Your team spends 40+ hours weekly on tasks AI could handle in minutes",
-    },
-    {
-      icon: "💰",
-      title: "Missing Revenue Opportunities",
-      description:
-        "Without AI insights, you're leaving 15-25% potential revenue on the table",
-    },
-    {
-      icon: "📊",
-      title: "Data Sitting Unused",
-      description:
-        "Your business data could predict trends and optimize operations, but it's trapped in spreadsheets",
-    },
-  ];
-
-  const solutions = [
+  const features = [
     {
       icon: "🚀",
-      title: "End-to-End AI Platform",
+      title: "No-Code AI Workflows",
       description:
-        "No-code automation that's 90% cheaper than DataRobot. Your team builds AI workflows without developers.",
-      roi: "Save 25-40 hours/week per employee",
+        "Build and deploy AI automations without writing code. Drag, drop, and connect data sources in minutes.",
     },
     {
       icon: "🔒",
-      title: "Private AI Systems",
+      title: "Private & Secure",
       description:
-        "Secure, on-premises AI that reduces cloud costs by 60% while keeping your data completely private.",
-      roi: "Cut AI costs by $50K-200K annually",
+        "Keep your data on-premises or in your private cloud. Full control, zero vendor lock-in.",
     },
     {
-      icon: "🎯",
-      title: "Custom AI Implementation",
+      icon: "🔧",
+      title: "Custom Integrations",
       description:
-        "We build bespoke AI solutions using our platform and hardware, tailored to your exact business needs.",
-      roi: "Increase efficiency by 40-70%",
+        "Connect to your existing tools and databases. We build custom connectors for your specific needs.",
     },
     {
-      icon: "📄",
-      title: "Automated Business Processes",
+      icon: "📊",
+      title: "Real-Time Analytics",
       description:
-        "From invoice generation to data reporting - automate repetitive tasks that drain your team's time.",
-      roi: "Reduce manual work by 80%",
+        "Monitor performance, track improvements, and get insights from all your automated processes.",
     },
   ];
 
-  const results = [
-    { metric: "Average ROI", value: "340%", timeframe: "within 6 months" },
-    { metric: "Time Saved", value: "35 hrs", timeframe: "per employee/week" },
-    { metric: "Cost Reduction", value: "60%", timeframe: "in AI spending" },
+  const useCases = [
+    {
+      title: "Document Processing",
+      description:
+        "Automatically extract, categorize, and process documents from emails, uploads, or scanned files.",
+      tags: ["OCR", "Classification", "Data Extraction"],
+    },
+    {
+      title: "Predictive Analytics",
+      description:
+        "Forecast demand, identify trends, and make data-driven decisions with custom ML models.",
+      tags: ["Forecasting", "Trend Analysis", "Risk Assessment"],
+    },
+    {
+      title: "Process Automation",
+      description:
+        "Automate repetitive workflows like invoicing, reporting, and customer onboarding.",
+      tags: ["Workflow", "Integration", "Scheduling"],
+    },
   ];
 
   return (
@@ -144,94 +121,171 @@ export default function AI() {
       <LandingPageNavbar
         navLinks={[
           { href: "#features", label: "Features" },
-          { href: "#how-it-works", label: "How it Works" },
-          { href: "#pricing", label: "Pricing" },
+          { href: "#use-cases", label: "Use Cases" },
+          { href: "#demo", label: "Request Demo" },
         ]}
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 via-white to-purple-50 px-4 pt-20 pb-16 sm:px-6 lg:px-8">
+      <section className="px-4 pt-20 pb-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Value Prop */}
-            <div>
-              <div className="mb-6 inline-flex items-center rounded-full bg-green-100 px-4 py-2 text-sm font-medium text-green-800">
-                ✅ Discuss AI solutions with one of our engineers.
+          <div className="text-center">
+            <div className="mb-6">
+              <span className="inline-flex items-center rounded-full bg-blue-50 border border-blue-200 px-4 py-1.5 text-sm font-medium text-blue-700">
+                🆕 Now supporting private cloud deployments
+              </span>
+            </div>
+
+            <h1 className="mb-6 text-4xl leading-tight font-bold text-gray-900 md:text-6xl lg:text-7xl max-w-4xl mx-auto">
+              Build AI workflows
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                {" "}
+                without code
+              </span>
+            </h1>
+
+            <p className="mb-8 text-xl leading-relaxed text-gray-600 max-w-2xl mx-auto">
+              Design, deploy, and manage AI automations for your business. No
+              technical expertise required.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <button
+                onClick={toggleCalendly}
+                className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+              >
+                Request Demo
+              </button>
+              <button className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-medium hover:border-gray-400 transition-colors">
+                View Examples
+              </button>
+            </div>
+
+            {/* Social Proof */}
+            <div className="flex items-center justify-center space-x-8 text-sm text-gray-500">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span>Trusted by 50+ companies</span>
               </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <span>SOC 2 compliant</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <h1 className="mb-6 text-4xl leading-tight font-bold text-gray-900 md:text-5xl">
-                Integrate AI,
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  {" "}
-                  Maximize Profit
-                </span>
-              </h1>
+      {/* Features Section */}
+      <section id="features" className="bg-gray-50 px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl mb-4">
+              Everything you need to automate with AI
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              From simple data processing to complex decision workflows
+            </p>
+          </div>
 
-              <p className="mb-8 text-xl leading-relaxed text-gray-600">
-                <strong>
-                  Medium-sized businesses using our AI automation see 340% ROI
-                  within 6 months.
-                </strong>
-                Stop losing revenue to manual processes. Let us show you exactly
-                how AI can transform your business.
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg p-6 shadow-sm border border-gray-100"
+              >
+                <div className="text-3xl mb-4">{feature.icon}</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 text-sm">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Use Cases Section */}
+      <section id="use-cases" className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl mb-4">
+              Built for real business problems
+            </h2>
+            <p className="text-xl text-gray-600">
+              See how teams use Akila to automate their workflows
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {useCases.map((useCase, index) => (
+              <div
+                key={index}
+                className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
+              >
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  {useCase.title}
+                </h3>
+                <p className="text-gray-600 mb-4">{useCase.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {useCase.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Demo Request Section */}
+      <section id="demo" className="bg-gray-50 px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Copy */}
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl mb-4">
+                See Akila in action
+              </h2>
+              <p className="text-xl text-gray-600 mb-6">
+                Get a personalized demo showing how AI can work for your
+                specific use case.
               </p>
 
-              {/* Key Benefits */}
-              <div className="mb-8 space-y-4 text-gray-800">
+              <div className="space-y-3 text-gray-700">
                 <div className="flex items-center space-x-3">
-                  <CheckMarkIcon className="h-6 w-6 text-green-500 flex-shrink-0" />
-                  <span className="text-lg">
-                    <strong>Save 35+ hours per employee weekly</strong> with AI
-                    automation
-                  </span>
+                  <CheckMarkIcon className="h-5 w-5 text-green-500 flex-shrink-0" />
+                  <span>30-minute personalized walkthrough</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <CheckMarkIcon className="h-6 w-6 text-green-500 flex-shrink-0" />
-                  <span className="text-lg">
-                    <strong>Cut AI costs by 60%</strong> with private, secure
-                    systems
-                  </span>
+                  <CheckMarkIcon className="h-5 w-5 text-green-500 flex-shrink-0" />
+                  <span>Custom workflow examples for your industry</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <CheckMarkIcon className="h-6 w-6 text-green-500 flex-shrink-0" />
-                  <span className="text-lg">
-                    <strong>Increase revenue by 23%</strong> through AI-driven
-                    insights
-                  </span>
-                </div>
-              </div>
-
-              {/* Social Proof */}
-              <div className="flex items-center space-x-6 text-sm text-gray-600">
-                <div className="flex items-center space-x-2">
-                  <span className="font-semibold text-blue-600">100+</span>
-                  <span>Companies work with us</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="font-semibold text-blue-600">$10M+</span>
-                  <span>Cost Savings Generated</span>
+                  <CheckMarkIcon className="h-5 w-5 text-green-500 flex-shrink-0" />
+                  <span>Implementation timeline and pricing</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Column - Lead Form */}
-            <div className="bg-white rounded-2xl shadow-2xl p-8 border-2 border-blue-100">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  Learn how AI can help drive your business
-                </h3>
-              </div>
+            {/* Right Column - Form */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+              <h3 className="text-xl font-semibold text-gray-900 mb-6">
+                Request a Demo
+              </h3>
 
-              <form
-                onSubmit={handleFormSubmit}
-                className="space-y-4  text-gray-800"
-              >
+              <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <input
                     type="text"
                     name="firstName"
-                    placeholder="First Name*"
-                    required
+                    placeholder="First Name"
                     value={formData.firstName}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -239,8 +293,7 @@ export default function AI() {
                   <input
                     type="text"
                     name="lastName"
-                    placeholder="Last Name*"
-                    required
+                    placeholder="Last Name"
                     value={formData.lastName}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -250,9 +303,17 @@ export default function AI() {
                 <input
                   type="email"
                   name="email"
-                  placeholder="Business Email*"
-                  required
+                  placeholder="Work Email"
                   value={formData.email}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+
+                <input
+                  type="text"
+                  name="company"
+                  placeholder="Company Name"
+                  value={formData.company}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
@@ -261,153 +322,64 @@ export default function AI() {
                   options={employeeOptions}
                   value={formData.employees}
                   onChange={handleInputChange}
-                  placeholder="Number of Employees*"
+                  placeholder="Company Size"
                   name="employees"
                 />
+
                 <CustomSelect
-                  options={challengeOptions}
-                  value={formData.currentChallenges}
+                  options={useCase}
+                  value={formData.useCase}
                   onChange={handleInputChange}
-                  placeholder="Biggest Challenge*"
-                  name="currentChallenges"
+                  placeholder="Primary Use Case"
+                  name="useCase"
                 />
 
                 <button
-                  type="submit"
-                  className="cursor-pointer w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg"
+                  onClick={handleFormSubmit}
+                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
                 >
-                  Set up a call
+                  Schedule Demo
                 </button>
-              </form>
+              </div>
+
+              <p className="text-xs text-gray-500 mt-4 text-center">
+                We'll follow up within 24 hours to schedule your demo
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Pain Points Section */}
-      <section className="bg-gray-50 px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl mb-4">
-              Is Your Business Bleeding Money on Manual Work?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Medium-sized businesses lose an average of{" "}
-              <strong>$2.3M annually</strong> to inefficient processes that AI
-              could automate
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {painPoints.map((point, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl p-8 shadow-lg border-l-4 border-periwinkleDark"
-              >
-                <div className="text-4xl mb-4">{point.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {point.title}
-                </h3>
-                <p className="text-gray-600">{point.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Solutions Section */}
-      <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl mb-4">
-              How We Help Medium-Sized Businesses Dominate with AI
-            </h2>
-            <p className="text-xl text-gray-600">
-              Complete AI solutions designed specifically for companies with
-              50-500 employees
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {solutions.map((solution, index) => (
-              <div
-                key={index}
-                className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-8 border border-blue-200"
-              >
-                <div className="text-4xl mb-4">{solution.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {solution.title}
-                </h3>
-                <p className="text-gray-700 mb-4">{solution.description}</p>
-                <div className="bg-emerald-300 rounded-lg p-3">
-                  <span className="text-green-800 font-semibold">
-                    💰 ROI: {solution.roi}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Results Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl text-center text-white">
+      {/* Final CTA */}
+      <section className="bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl text-center text-white">
           <h2 className="text-3xl font-bold md:text-4xl mb-4">
-            Real Results from Real Medium-Sized Businesses
+            Ready to automate your workflows?
           </h2>
-          <p className="text-xl text-blue-100 mb-12">
-            Here's what our clients achieve within the first 6 months
+          <p className="text-xl text-blue-100 mb-8">
+            Join teams already building with Akila
           </p>
 
-          <div className="flex flex-col md:flex-row justify-center gap-5 md:gap-24">
-            {results.map((result, index) => (
-              <div key={index} className="text-center">
-                <div className="text-5xl font-bold mb-2">{result.value}</div>
-                <div className="text-lg font-medium text-blue-100 mb-1">
-                  {result.metric}
-                </div>
-                <div className="text-sm text-blue-200">{result.timeframe}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Urgency CTA Section */}
-      <section className="bg-gray-900 px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
-          <h3 className="font-bold text-white md:text-4xl mb-6">
-            Don't lose competitive advantages while other firms are adopting
-            best practices
-          </h3>
-
-          <div className="bg-white rounded-2xl p-8 max-w-md mx-auto">
-            <button
-              onClick={toggleCalendly}
-              className="cursor-pointer w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg"
-            >
-              Set up a call
-            </button>
-          </div>
+          <button
+            onClick={toggleCalendly}
+            className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+          >
+            Get Started Today
+          </button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
+      <footer className="bg-white border-t border-gray-200 px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-2 mb-4">
-              <img
-                src={logoBlackFont}
-                alt="Akila Analytics"
-                className="h-5 w-50"
-              />
+              <img src={logoBlackFont} alt="Akila Analytics" className="h-6" />
             </div>
-            <p className="text-gray-600 mb-4">
-              Driving businesses with AI automation
+            <p className="text-gray-500 text-sm">
+              AI automation platform for modern businesses
             </p>
-            <p className="text-xs text-gray-400 mt-6">
+            <p className="text-xs text-gray-400 mt-4">
               &copy; {new Date().getFullYear()} Akila Analytics. All rights
               reserved.
             </p>
