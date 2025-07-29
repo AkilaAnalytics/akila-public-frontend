@@ -120,7 +120,7 @@ const companyLinks = [
   },
   {
     text: "Talk to Sales",
-    path: "talk-to-sales",
+    path: "product/watch-demo",
     key: "product",
   },
 ];

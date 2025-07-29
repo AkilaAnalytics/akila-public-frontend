@@ -143,7 +143,7 @@ export default function Navbar() {
             className="h-full w-full"
           />
         </Link>
-        <div>
+        <div className="">
           <ul className="relative hidden items-center gap-[40px] lg:flex">
             {navigation.map((menu, index) =>
               menu.submenu ? (
@@ -152,17 +152,9 @@ export default function Navbar() {
                     <span className="text-xs uppercase">{menu.name}</span>
                     <ChevronDownIcon className="ml-1 inline h-[15px] w-[15px] transform group-hover:rotate-180" />
                   </span>
-                  <div className="absolute top-[62px] hidden w-9 justify-center group-hover:flex">
-                    <img
-                      style={{ filter: "invert(100%)" }}
-                      src={Triangle}
-                      alt=""
-                    />
-                  </div>
-
-                  <ul className="fixed left-[25%] hidden min-h-[140px] max-w-[1000px] transition duration-700 ease-in-out group-hover:flex">
+                  <ul className="fixed left-[25%] hidden min-h-[140px] max-w-[1000px] transition duration-700 ease-in-out group-hover:flex py-5">
                     <div className="mt-[50px] flex rounded-md bg-gradient-to-r from-[rgb(32,30,100)] to-[rgb(7,6,9)]">
-                      <div className="flex min-h-full w-3/12 flex-col justify-center rounded-l-lg px-5 text-left">
+                      <div className="flex min-h-full w-3/12 flex-col justify-center rounded-l-lg px-5 text-left py-5">
                         <h5 className="uppercase leading-7">
                           Learn more about Akila
                         </h5>
@@ -171,13 +163,16 @@ export default function Navbar() {
                         </span>
                         <br />
                         <br />
-                        <Link to="/talk-to-sales" className="uppercase">
+                        <Link to="/product/watch-demo" className="uppercase">
                           <span>Talk to Sales</span>
                         </Link>
                         <Link to="/product/watch-demo" className="uppercase">
                           <span>Watch a Demo</span>
                         </Link>
-                        <Link to="#" className="uppercase">
+                        <Link
+                          to="https://docs.akilaanalytics.com/"
+                          className="uppercase"
+                        >
                           <span>Documentation</span>
                         </Link>
                       </div>
@@ -337,11 +332,6 @@ const navigation = [
         name: "Hardware",
         href: "/product/hardware",
         description: "Purchase servers directly from us.",
-      },
-      {
-        name: "Try Free",
-        href: "/product/try-free",
-        description: "Sign up for our free trial.",
       },
     ],
   },
