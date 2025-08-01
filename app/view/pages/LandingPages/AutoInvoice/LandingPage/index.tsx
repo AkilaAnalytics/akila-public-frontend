@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router";
 import { logoBlackFont } from "~/view/assets";
 import { useAppContext } from "~/view/context";
 import { LandingPageNavbar } from "~/view/components";
+import Modal from "~/view/components/Modal";
 
 const link = "https://app.akilaanalytics.com/checkout?product=auto-invoice";
 export default function LandingPage() {
@@ -41,6 +42,8 @@ export default function LandingPage() {
       window.location.href = link;
     }
   };
+
+  const [showPreviewVideo, setShowPreviewVideo] = useState(false);
 
   return (
     <div className="min-h-screen bg-white">
@@ -82,9 +85,28 @@ export default function LandingPage() {
               >
                 Start Free Trial
               </button>
-              <button className="cursor-pointer rounded-lg border-2 border-gray-300 px-8 py-4 text-lg font-semibold text-gray-700 transition-all duration-200 hover:border-gray-400">
+              <button
+                className="cursor-pointer rounded-lg border-2 border-gray-300 px-8 py-4 text-lg font-semibold text-gray-700 transition-all duration-200 hover:border-gray-400"
+                onClick={() => setShowPreviewVideo(true)}
+              >
                 Watch Demo
               </button>
+              <Modal
+                openModal={showPreviewVideo}
+                setOpenModal={setShowPreviewVideo}
+                width="w-auto"
+              >
+                <iframe
+                  width="896"
+                  height="504"
+                  src="https://www.youtube.com/embed/efCCgVCRJXQ?si=un5VjzqJgGopwkbZ"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+              </Modal>
             </div>
 
             <div className="flex items-center justify-center space-x-8 text-sm text-gray-500">

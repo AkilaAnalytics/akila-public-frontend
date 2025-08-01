@@ -20,3 +20,4 @@ export { default as TickComponent } from "./TickComponent";
 export { default as StatusMessageFetcher } from "./StatusMessageFetcher";
 export { default as ArticleCard } from "./ArticleCard";
 export { default as LandingPageNavbar } from "./LandingPageNavbar";
+export { default as Modal } from "./Modal";

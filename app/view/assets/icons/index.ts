@@ -17,6 +17,7 @@ export { default as Database } from "./database.svg";
 export { default as Calendar } from "./calendar.svg";
 export { default as CloudComputing } from "./cloud-computing.svg";
 export { default as hamburgerMenu } from "./hamburger-menu.svg";
+export { default as redX } from "./redX.svg";
 
 export { default as SeeAll } from "./see-all.svg";
 export { default as LearnMoreArrow } from "./learn-more-arrow.svg";
