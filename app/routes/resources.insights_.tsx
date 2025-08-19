@@ -128,7 +128,7 @@ export default function Insights() {
           <iframe
             width="896"
             height="504"
-            src="https://www.youtube.com/embed/noGW8OFr6Ko?si=ZXgZdzP9uXDuEjvx"
+            src="https://www.youtube.com/embed/ksr7Nd0Fb1k?si=jYkfw2OQRSxhXsbR"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
