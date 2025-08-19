@@ -1,12 +1,10 @@
 import { type LoaderFunctionArgs, createCookie, data } from "react-router";
 import type { Route } from "./+types/home";
-
 import { useLoaderData, useLocation, useRouteError } from "react-router";
-
 import { MissingPage } from "~/view/pages/misc";
 import { logger } from "~/utils";
 import { InsightsBannerImage } from "~/view/assets";
-import { ArticleCard, BannerImage } from "~/view/components";
+import { BannerImage } from "~/view/components";
 import { EmailSignUp } from "~/view/features";
 import ArticleByCategory from "~/view/features/Blog/ArticlesByCategory";
 
@@ -128,13 +126,15 @@ export default function Insights() {
       <div className="flex w-full flex-col gap-3 md:flex-row md:gap-10 md:px-5">
         <div className="w-full">
           <iframe
-            src="https://www.youtube.com/embed/noGW8OFr6Ko?si=ZXgZdzP9uXDuEjvx"
+            width="896"
+            height="504"
+            src="https://www.youtube.com/embed/efCCgVCRJXQ?si=un5VjzqJgGopwkbZ"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            className="h-full w-full rounded-md bg-gray-800 p-5"
+            referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
-          />{" "}
+          ></iframe>
         </div>
         <div className="w-full p-5 md:w-3/4 md:p-0 h-[50vh] overflow-scroll">
           <h4>Recommended</h4>
