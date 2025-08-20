@@ -43,9 +43,6 @@ export interface IBlogMeta {
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   try {
-    // fetch cookie
-    // this cookie parsing flow is laid out here:
-    // https://remix.run/docs/en/main/utils/cookies
     const cookieHeader = request.headers.get("Cookie");
     const isSubscribedCookie = createCookie("isSubscribed");
     const isSubscribed = (await isSubscribedCookie.parse(cookieHeader)) as {
