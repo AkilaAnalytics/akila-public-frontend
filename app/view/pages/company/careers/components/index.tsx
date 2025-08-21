@@ -1,5 +1,0 @@
-export { default as CareerBanner } from './careerBanner'
-export { default as TeamsAndRolesSection } from './teamsAndRolesSection'
-export { default as TeamsAndRolesCard } from './teamsAndRolesCard'
-export { default as LifeAtAkilaSection } from './lifeAtAkilaSection'
-export { default as LifeAtAkilaCard } from './LifeAtAkilaCard'

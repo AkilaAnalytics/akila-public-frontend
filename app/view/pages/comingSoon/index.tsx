@@ -6,7 +6,7 @@ interface Props {
   showLogo?: boolean;
 }
 
-export default function ComingSoonPage({ title, showLogo }: Props) {
+export default function ComingSoon({ title, showLogo }: Props) {
   return (
     <div className="flex h-[80vh] items-center justify-center bg-black">
       <div className="text-center">

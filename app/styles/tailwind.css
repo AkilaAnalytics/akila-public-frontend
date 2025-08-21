@@ -1,11 +1,14 @@
 @import "tailwindcss";
 @tailwind utilities;
 @theme {
+  --color-background: #08090a;
+  --color-cardBg: #141516;
+  --color-cardText: #a9a9ac;
+  --color-border: #202221;
   --color-cyan: #00b8e9;
   --color-periwinkle: #544bfd;
   --color-darkBlue: #2325c9;
   --color-periwinkleDark: rgb(41, 38, 122);
-  --color-background: #171513;
   --color-border: rgba(107, 114, 128, 0.5);
   --color-chart: #2b2e32;
   --color-secondary: #1b1918;

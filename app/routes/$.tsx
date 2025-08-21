@@ -1,19 +1,15 @@
-import { MissingPage } from '~/view/pages/misc'
+export { MissingPage as default } from "~/view/pages";
 
-export default function MissingRoute() {
-  return <MissingPage />
-}
-
-export const meta: MetaFunction = () => {
+export const meta = () => {
   return [
-    { title: 'Uh Oh | Missing Page' },
+    { title: "Uh Oh | Missing Page" },
     {
-      property: 'og:title',
-      content: 'Uh Oh | Missing Page'
+      property: "og:title",
+      content: "Uh Oh | Missing Page",
     },
     {
-      name: 'description',
-      content: "We're not sure how you got here but this page is missing"
-    }
-  ]
-}
+      name: "description",
+      content: "We're not sure how you got here but this page is missing",
+    },
+  ];
+};

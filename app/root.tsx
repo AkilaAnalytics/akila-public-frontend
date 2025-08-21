@@ -1,6 +1,5 @@
 import {
   data,
-  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
@@ -20,9 +19,9 @@ import "./styles/tailwind.css";
 import { logger } from "./utils";
 import * as gtag from "~/utils/client/gtags.client";
 import Footer from "~/view/features/Footer";
-import { Calendly, Navbar } from "./view/features";
-import { MissingPage } from "./view/pages/misc";
-import { Chat, FineTuning, AutoInvoice, AI } from "./view/pages";
+import { Navbar } from "./view/features";
+import { MissingPage } from "./view/pages";
+//import { Chat, FineTuning, AutoInvoice, AI } from "./view/pages";
 import { useEffect, useState } from "react";
 import { AppContextProvider } from "./view/context";
 
@@ -103,11 +102,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </head>
         <body>
           <AppContextProvider>
-            <Chat />
+            {/*<Chat />
             <Calendly />
             {tenant == "auto-invoice" && <AutoInvoice />}
             {tenant === "private-llm" && <FineTuning />}
-            {tenant === "ai" && <AI />}
+            {tenant === "ai" && <AI />} */}
             <ScrollRestoration />
             <Scripts />
           </AppContextProvider>
@@ -150,13 +149,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
           ""
         )}
       </head>
-      <body>
+      <body className="bg-background">
         <AppContextProvider>
           <Navbar />
-          <Chat
+          {/*<Chat
             isOpen={isChatOpen}
             onToggle={() => setIsChatOpen(!isChatOpen)}
-          />
+          /> */}
           {children}
           <ScrollRestoration />
           <Scripts />
