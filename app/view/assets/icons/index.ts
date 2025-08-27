@@ -8,3 +8,6 @@ export { default as file } from "./file.svg";
 export { default as process } from "./process.svg";
 export { default as chart } from "./chart.svg";
 export { default as howItWorks } from "./how-it-works.svg";
+export { default as users } from "./users.svg";
+export { default as bars } from "./bars.svg";
+export { default as lineChart } from "./lineChart.svg";

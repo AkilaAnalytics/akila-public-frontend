@@ -1,5 +1,6 @@
 import { upload, file, process, chart, howItWorks } from "~/view/assets";
 import { SectionBreak } from "~/view/components";
+import FigmaCard from "./BackgroundCard";
 
 const cards = [
   {
@@ -31,11 +32,11 @@ export default function HowItWorks() {
   return (
     <div className="">
       <SectionBreak breakText="The Akila Workflow" title="How it works" />
-      <div className="flex gap-5 flex-col md:flex-row justify-center mt-10">
+      <div className="flex gap-5 flex-col md:flex-row mt-10">
         <div className="flex flex-col gap-5">
           {cards.map((ele) => {
             return (
-              <div className="bg-cardBg w-full md:w-80 h-60 rounded-lg p-8 flex flex-col gap-5">
+              <div className="px-5 bg-cardBg w-full md:w-[35vw] h-60 rounded-lg p-8 flex flex-col gap-5">
                 <img src={ele.image} alt={ele.title} className="h-10 w-10" />
                 <h5>{ele.title}</h5>
                 <p>{ele.description}</p>
@@ -43,7 +44,15 @@ export default function HowItWorks() {
             );
           })}
         </div>
-        <img src={howItWorks} alt="How it works" className="mb-auto" />
+        <div className="md:ml-10">
+          <FigmaCard>
+            <img
+              src={howItWorks}
+              alt="How it works"
+              className="bg-transparent"
+            />
+          </FigmaCard>
+        </div>
       </div>
     </div>
   );

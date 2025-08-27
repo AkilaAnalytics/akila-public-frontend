@@ -1,4 +1,10 @@
-import { Hero, UseCases, HowItWorks } from "./sections";
+import {
+  Hero,
+  UseCases,
+  HowItWorks,
+  Solutions,
+  GettingStarted,
+} from "./sections";
 
 export default function HomePage() {
   return (
@@ -6,6 +12,8 @@ export default function HomePage() {
       <Hero />
       <UseCases />
       <HowItWorks />
+      <Solutions />
+      <GettingStarted />
     </div>
   );
 }

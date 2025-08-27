@@ -71,7 +71,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10">
         {/* Header */}
-        <SectionBreak title="Made Easy" />
+        <SectionBreak breakText="Made Easy" title="" />
 
         {/* Main content */}
         <div className="flex flex-col items-center justify-center px-4 py-12">
@@ -88,10 +88,10 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex gap-4 mb-16">
-            <button className="bg-white text-black px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors">
+            <button className="cursor-pointer bg-white text-black px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors">
               Book a demo
             </button>
-            <button className="border border-gray-600 text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors">
+            <button className="cursor-pointer border border-gray-600 text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors">
               Try free
             </button>
           </div>

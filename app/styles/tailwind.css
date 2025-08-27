@@ -4,6 +4,7 @@
   --color-background: #08090a;
   --color-cardBg: #141516;
   --color-cardText: #a9a9ac;
+  --color-formBackground: #08090a
   --color-border: #202221;
   --color-cyan: #00b8e9;
   --color-periwinkle: #544bfd;
@@ -48,18 +49,6 @@ select:-webkit-autofill:focus {
     padding: 0;
   }
 
-  .testimonial-container {
-    max-width: 1278px;
-    display: grid;
-    grid-template-columns: minmax(343px, 1fr) minmax(434px, 1fr) minmax(
-        343px,
-        1fr
-      );
-
-    margin: 0 auto;
-    column-gap: 20px;
-    width: 100%;
-  }
   @media screen and (max-width: 965px) {
     .testimonial-container {
       grid-template-columns: repeat(1, 1fr);
