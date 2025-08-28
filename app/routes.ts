@@ -5,6 +5,7 @@ export default [
   index("routes/home.tsx"), // Root index page at "/"
   route("/contact-us", "routes/contact-us.tsx"),
   route("/coming-soon", "routes/coming-soon.tsx"),
+  route("/watch-demo", "routes/watch-demo.tsx"),
   //route("/contact-us", "routes/contact-us.tsx"),
   //route("/pricing", "routes/pricing.tsx"),
   //route("/talk-to-sales", "routes/talk-to-sales.tsx"),

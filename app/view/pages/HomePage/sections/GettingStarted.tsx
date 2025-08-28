@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
-import { useFetcher } from "react-router";
 import { users, bars, lineChart } from "~/view/assets";
-import { GridBackground } from "~/view/components";
-import type { IResponse } from "~/utils";
+import { GridBackground, ContactForm } from "~/view/components";
 
 const cards = [
   {
@@ -20,13 +17,6 @@ const cards = [
 ];
 
 export default function GettingStarted() {
-  const fetcher = useFetcher();
-  const [message, setMessage] = useState<Partial<IResponse<string>>>({});
-
-  useEffect(() => {
-    setMessage({ data: fetcher.data });
-  }, [fetcher.data]);
-
   return (
     <div className="relative flex flex-col md:flex-row mt-10">
       <GridBackground />
@@ -35,9 +25,9 @@ export default function GettingStarted() {
           <h2 className="title-gradient">
             Getting Started with Akila Analytics
           </h2>
-          {cards.map((ele) => {
+          {cards.map((ele, index) => {
             return (
-              <div className="flex gap-5 mt-5">
+              <div key={index} className="flex gap-5 mt-5">
                 <img src={ele.image} alt="" />
                 <p>{ele.text}</p>
               </div>
@@ -48,37 +38,7 @@ export default function GettingStarted() {
             <button className="button-secondary">Request Demo</button>
           </div>
         </div>
-        <div className="flex flex-col w-1/2 bg-formBackground border-borderColor rounded-md z-50">
-          <fetcher.Form method="post" action="/contact-us">
-            <div className="p-5 flex flex-col border-white/5 border-[1px] rounded-md">
-              <h6>Contact Us</h6>
-              <br />
-              <label htmlFor="firstName" className="mt-2">
-                First
-              </label>
-              <input
-                name="firstName"
-                type="text"
-                className="contact-us-input"
-              />
-              <label htmlFor="lastName" className="mt-2">
-                Last
-              </label>
-              <input name="lastName" type="text" className="contact-us-input" />
-              <label htmlFor="email" className="mt-2">
-                Email
-              </label>
-              <input name="email" type="email" className="contact-us-input" />
-              <label htmlFor="message" className="mt-2">
-                Message
-              </label>
-              <textarea rows={6} name="message" className="contact-us-input" />
-              <br />
-              <button className="button-primary">Send</button>
-            </div>
-            {message.message}
-          </fetcher.Form>
-        </div>
+        <ContactForm type="short" className="w-1/2 z-50" />
       </div>
     </div>
   );
