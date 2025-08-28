@@ -11,3 +11,7 @@ export { default as howItWorks } from "./how-it-works.svg";
 export { default as users } from "./users.svg";
 export { default as bars } from "./bars.svg";
 export { default as lineChart } from "./lineChart.svg";
+export { default as email } from "./email.svg";
+export { default as phone } from "./phone.svg";
+export { default as world } from "./world.svg";
+export { default as mapPin } from "./mapPin.svg";

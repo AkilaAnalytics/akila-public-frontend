@@ -1,5 +1,5 @@
 import type { Route } from "./+types/home";
-export { ComingSoon as deafult } from "~/view/pages";
+export { ContactUs as default } from "~/view/pages";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Coming soon";

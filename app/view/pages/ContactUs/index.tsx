@@ -1,25 +1,28 @@
 import { useEffect, useState } from "react";
 import { useFetcher } from "react-router";
-import { users, bars, lineChart } from "~/view/assets";
+import { email, world, mapPin, phone } from "~/view/assets";
 import { GridBackground } from "~/view/components";
 import type { IResponse } from "~/utils";
 
-const cards = [
+const details = [
   {
-    image: users,
-    text: "Learn how Akila Analytics can help you collaborate with your team in real time, share insights, and make informed decisions faster",
+    image: email,
+    text: "support@AkilaAnalytics.com",
   },
   {
-    image: bars,
-    text: "Use Akila to quickly analyze data and drive results",
+    image: phone,
+    text: "(800) 609-0675",
   },
   {
-    image: lineChart,
-    text: "Improve your business performance by using Akila to make data-driven decisions.",
+    image: world,
+    text: "AkilaAnalytics.com",
+  },
+  {
+    image: mapPin,
+    text: "66 W Flagler St 66 W Flagler St Miami, FL 33130",
   },
 ];
-
-export default function GettingStarted() {
+export default function ContactUs() {
   const fetcher = useFetcher();
   const [message, setMessage] = useState<Partial<IResponse<string>>>({});
 
@@ -28,27 +31,25 @@ export default function GettingStarted() {
   }, [fetcher.data]);
 
   return (
-    <div className="relative flex flex-col md:flex-row mt-10">
+    <div className="relative">
       <GridBackground />
-      <div className="py-20 flex flex-col md:flex-row z-50 px-10">
-        <div className="md:w-1/2 m-10 p-10 h-3/4 ">
-          <h2 className="title-gradient">
-            Getting Started with Akila Analytics
-          </h2>
-          {cards.map((ele) => {
+      <div className="flex flex-col md:flex-row">
+        <div>
+          <h2 className="title-gradient">Contact us</h2>
+          <p>
+            One of our product experts will provide a demonstration tailored to
+            your needs.
+          </p>
+          {details.map((ele) => {
             return (
-              <div className="flex gap-5 mt-5">
-                <img src={ele.image} alt="" />
+              <div className="flex gap2">
+                <img src={ele.image} alt={ele.text} className="h-5 w-5" />
                 <p>{ele.text}</p>
               </div>
             );
           })}
-          <div className="flex gap-5 mt-10">
-            <button className="button-primary">Sign Up</button>
-            <button className="button-secondary">Request Demo</button>
-          </div>
         </div>
-        <div className="flex flex-col w-1/2 bg-formBackground border-borderColor rounded-md z-50">
+        <div className="bg-formBackground">
           <fetcher.Form method="post" action="/contact-us">
             <div className="p-5 flex flex-col border-white/5 border-[1px] rounded-md">
               <h6>Contact Us</h6>

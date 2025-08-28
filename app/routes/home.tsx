@@ -1,5 +1,5 @@
 import type { Route } from "./+types/home";
-export { default } from "~/view/pages/HomePage";
+export { HomePage as default } from "~/view/pages";
 
 export function meta({}: Route.MetaArgs) {
   return [

@@ -32,6 +32,10 @@
   .borderColor {
     color: rgb(36, 37, 38);
   }
+
+  .contact-us-input {
+    @apply z-50 p-2 rounded-md focus:outline-none bg-gradient-to-r from-[rgb(25,26,27)] to-[rgb(23,24,25)];
+  }
 }
 
 .gradient-div {
