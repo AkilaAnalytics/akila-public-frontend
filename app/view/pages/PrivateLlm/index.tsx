@@ -165,9 +165,6 @@ export default function PrivateLLM() {
               >
                 Get Your Private LLM
               </button>
-              <button className="cursor-pointer rounded-lg border-2 border-gray-600 px-8 py-4 text-lg font-semibold text-gray-300 transition-all duration-200 hover:border-gray-400 hover:text-white">
-                Calculate Savings
-              </button>
             </div>
 
             <div className="flex items-center justify-center space-x-8 text-sm text-gray-400">
