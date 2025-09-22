@@ -114,8 +114,8 @@ const resourceLinks = [
 
 const companyLinks = [
   {
-    text: "Overview",
-    path: "company/overview",
+    text: "Watch Demo",
+    path: "/product/watch-demo",
     key: "company",
   },
   {
@@ -228,21 +228,19 @@ export default function Footer() {
                 </p>
               </div>
             </div>
-            <div>{displayLinks("Platform", platformLinks)}</div>
-            <div>{displayLinks("Product", productLinks)}</div>
-            <div>{displayLinks("Enterprise", enterpriseLinks)}</div>
-            <div>{displayLinks("Resources", resourceLinks)}</div>
-            <div>{displayLinks("Company", companyLinks)}</div>
-            <div>
-              <p className="my-[24px] list-none text-lg font-semibold text-white">
-                Contact
-              </p>
-              <ul className="flex flex-wrap justify-start gap-3  text-greyText md:flex-col">
-                <li>{createEmailLink("sales")}</li>
-                <li>{createEmailLink("support")}</li>
-                <li>{createEmailLink("careers")}</li>
-                <li>{createEmailLink("press")}</li>
-              </ul>
+            <div className="ml-auto flex flex-col md:flex-row gap-10 md:gap-20">
+              <div>{displayLinks("Company", companyLinks)}</div>
+              <div>
+                <p className="my-[24px] list-none text-lg font-semibold text-white">
+                  Contact
+                </p>
+                <ul className="flex flex-wrap justify-start gap-3  text-greyText md:flex-col">
+                  <li>{createEmailLink("sales")}</li>
+                  <li>{createEmailLink("support")}</li>
+                  <li>{createEmailLink("careers")}</li>
+                  <li>{createEmailLink("press")}</li>
+                </ul>
+              </div>
             </div>
             {/* <div className="hidden md:inline">
             {displayLinks('Social Media', socialMediaLinks)}

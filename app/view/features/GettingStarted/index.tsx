@@ -1,8 +1,8 @@
 import {
   akilaAnalyticsLogo,
-  GettingStartedBackgroundImage
-} from '~/view/assets'
-import ButtonBar from '~/view/components/ButtonsBar'
+  GettingStartedBackgroundImage,
+} from "~/view/assets";
+import ButtonBar from "~/view/components/ButtonsBar";
 
 export default function GettingStarted() {
   return (
@@ -26,5 +26,5 @@ export default function GettingStarted() {
         </div>
       </div>
     </div>
-  )
+  );
 }

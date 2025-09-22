@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { users, bars, lineChart } from "~/view/assets";
 import { GridBackground, ContactForm } from "~/view/components";
 
@@ -34,8 +35,9 @@ export default function GettingStarted() {
             );
           })}
           <div className="flex gap-5 mt-10">
-            <button className="button-primary">Sign Up</button>
-            <button className="button-secondary">Request Demo</button>
+            <button className="button-secondary">
+              <Link to="/watch-demo">Request Demo</Link>
+            </button>
           </div>
         </div>
         <ContactForm type="short" className="w-1/2 z-50" />

@@ -3,10 +3,10 @@
 
 @layer components {
   .button-primary {
-    @apply cursor-pointer bg-[radial-gradient(ellipse_at_bottom,#fff,#676767)] text-black rounded-md py-2 px-5;
+    @apply uppercase cursor-pointer bg-[radial-gradient(ellipse_at_bottom,#fff,#676767)] text-black rounded-md py-2 px-5;
   }
   .button-secondary {
-    @apply cursor-pointer rounded-md py-2 px-5 border-[1px] border-white/30;
+    @apply uppercase cursor-pointer rounded-md py-2 px-5 border-[1px] border-white/30;
   }
   ,
   .button-gradient-hover {

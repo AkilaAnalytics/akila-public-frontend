@@ -10,10 +10,12 @@ export default function HomePage() {
   return (
     <div>
       <Hero />
-      <UseCases />
-      <HowItWorks />
-      <Solutions />
-      <GettingStarted />
+      <div className="px-5">
+        <UseCases />
+        <HowItWorks />
+        <Solutions />
+        <GettingStarted />
+      </div>
     </div>
   );
 }

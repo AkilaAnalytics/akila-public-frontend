@@ -22,7 +22,7 @@ const cards = [
     image: file,
   },
   {
-    title: "Vsiualize",
+    title: "Visualize",
     description:
       "We understand you have preferred data visualization tools, and we don't want to change that. Akila outputs data to your preferred visualization tools.",
     image: chart,
@@ -30,7 +30,7 @@ const cards = [
 ];
 export default function HowItWorks() {
   return (
-    <div className="">
+    <section id="how-it-works" className="">
       <SectionBreak breakText="The Akila Workflow" title="How it works" />
       <div className="flex gap-5 flex-col md:flex-row mt-10">
         <div className="flex flex-col gap-5">
@@ -54,6 +54,6 @@ export default function HowItWorks() {
           </FigmaCard>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

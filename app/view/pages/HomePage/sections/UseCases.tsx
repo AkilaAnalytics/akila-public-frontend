@@ -30,9 +30,9 @@ export default function UseCases() {
     },
   ];
   return (
-    <div className="justify-center flex flex-col gap-5">
+    <section className="justify-center flex flex-col gap-5" id="use-cases">
       <SectionBreak
-        breakText="Use Cases"
+        breakText="Case Studies"
         title="Powerful use cases across industries"
         description={description}
       />
@@ -47,6 +47,6 @@ export default function UseCases() {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }
