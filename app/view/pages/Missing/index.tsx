@@ -1,12 +1,12 @@
 import { Link } from "react-router";
 
-import { RocketMan } from "~/view/assets/";
+import { rocketMan } from "~/view/assets/";
 
 export default function MissingPage() {
   return (
     <div className="flex flex-col bg-black px-5 md:flex-row">
       <img
-        src={RocketMan}
+        src={rocketMan}
         alt="astronaut in space"
         className="mx-auto h-screen w-full  md:w-1/2"
       />

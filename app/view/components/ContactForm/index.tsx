@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
-import { useFetcher } from "react-router";
+import { useFetcher, useLocation } from "react-router";
 import type { IResponse } from "~/utils";
 
 interface ContactFormProps {
   type: "short" | "expanded";
   className?: string;
+  source?: string; // Optional custom source for tracking
 }
 
-export default function ContactForm({ type, className }: ContactFormProps) {
+export default function ContactForm({ type, className, source }: ContactFormProps) {
   const fetcher = useFetcher();
+  const location = useLocation();
   const [message, setMessage] = useState<Partial<IResponse<string>>>({});
 
   useEffect(() => {
-    setMessage({ data: fetcher.data });
+    if (fetcher.data) {
+      setMessage(fetcher.data);
+    }
   }, [fetcher.data]);
 
   const isExpanded = type === "expanded";
@@ -23,7 +27,7 @@ export default function ContactForm({ type, className }: ContactFormProps) {
         className || ""
       }`}
     >
-      <fetcher.Form method="post" action="/contact-us">
+      <fetcher.Form method="post">
         <div className="p-5 flex flex-col border-white/5 border-[1px] rounded-md">
           <h6>Contact Us</h6>
           <br />
@@ -157,6 +161,22 @@ export default function ContactForm({ type, className }: ContactFormProps) {
             </>
           )}
 
+          {/* Hidden source field for tracking */}
+          <input
+            type="hidden"
+            name="source"
+            value={source || `Contact Form - ${location.pathname}`}
+          />
+          
+          {/* Honeypot field - hidden from users but will catch bots */}
+          <input
+            type="text"
+            name="message2"
+            style={{ display: 'none' }}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+
           <br />
           <button
             type="submit"
@@ -166,8 +186,16 @@ export default function ContactForm({ type, className }: ContactFormProps) {
             {fetcher.state === "submitting" ? "Sending..." : "Send"}
           </button>
         </div>
+        
+        {/* Success/Error Messages */}
         {message.message && (
-          <div className="mt-2 text-center text-sm">{message.message}</div>
+          <div className={`mt-3 p-3 rounded-md text-center text-sm ${
+            message.ok 
+              ? 'bg-green-900/20 border border-green-500/30 text-green-400' 
+              : 'bg-red-900/20 border border-red-500/30 text-red-400'
+          }`}>
+            {message.message}
+          </div>
         )}
       </fetcher.Form>
     </div>

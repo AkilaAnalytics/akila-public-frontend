@@ -1,30 +1,60 @@
-import {
-  Bars3Icon,
-  XMarkIcon,
-  ChevronDownIcon,
-} from "@heroicons/react/24/outline";
-import { useState, useEffect, useRef } from "react";
-import { Link, useLocation, useMatches } from "react-router";
-import { Triangle, akilaAnalyticsLogo } from "~/view/assets";
-import { BookDemo } from "~/view/components";
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
+import { akilaAnalyticsLogo } from "~/view/assets";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const navigation = [
-    { name: "Use Cases", id: "use-cases" },
-    { name: "How it works", id: "how-it-works" },
-    { name: "Pricing", id: "pricing", link: "/pricing" },
-    { name: "Contact Us", id: "contact-us", link: "/contact-us" },
+    { name: "Use Cases", id: "use-cases", isSection: true },
+    { name: "How it works", id: "how-it-works", isSection: true },
+    { name: "Pricing", link: "/pricing", isSection: false },
+    { name: "Contact Us", link: "/contact-us", isSection: false },
   ];
 
+  // Handle hash navigation on page load
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash && location.pathname === "/") {
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }, 100);
+    }
+  }, [location.pathname]);
+
   const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+    // If we're not on the home page, navigate there first
+    if (location.pathname !== "/") {
+      navigate(`/#${id}`);
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }, 500);
+    } else {
+      // We're already on the home page, scroll immediately
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      } else {
+        window.location.hash = id;
+      }
     }
     setIsOpen(false); // Close mobile menu after clicking
   };
@@ -43,23 +73,33 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex mx-auto justify-center items-center space-x-8">
-          {navigation.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className="cursor-pointer hover:scale-105 text-white hover:text-gray-300 transition-colors duration-200 font-medium uppercase tracking-wide"
-            >
-              {item.name}
-            </button>
-          ))}
+          {navigation.map((item) =>
+            item.isSection ? (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="cursor-pointer hover:scale-105 text-white hover:text-gray-300 transition-colors duration-200 font-medium uppercase tracking-wide"
+              >
+                {item.name}
+              </button>
+            ) : (
+              <Link
+                key={item.name}
+                to={item.link}
+                className="cursor-pointer hover:scale-105 text-white hover:text-gray-300 transition-colors duration-200 font-medium uppercase tracking-wide"
+              >
+                {item.name}
+              </Link>
+            )
+          )}
         </div>
         <div className="hidden md:flex ml-auto justify-center items-center space-x-8">
-          <button className="button-secondary">
-            <Link to="/contact-us">Contact Us</Link>
-          </button>
-          <button className="button-primary">
-            <Link to="/watch-demo">Demo</Link>
-          </button>
+          <Link to="/contact-us" className="button-secondary">
+            Contact Us
+          </Link>
+          <Link to="/watch-demo" className="button-primary">
+            Demo
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -91,15 +131,26 @@ export default function Navbar() {
         {isOpen && (
           <div className="absolute top-full left-0 right-0 bg-black border-t border-gray-800 md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-left px-3 py-2 text-white hover:text-gray-300 hover:bg-gray-900 transition-colors duration-200 font-medium uppercase tracking-wide"
-                >
-                  {item.name}
-                </button>
-              ))}
+              {navigation.map((item) =>
+                item.isSection ? (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className="block w-full text-left px-3 py-2 text-white hover:text-gray-300 hover:bg-gray-900 transition-colors duration-200 font-medium uppercase tracking-wide"
+                  >
+                    {item.name}
+                  </button>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.link}
+                    className="block w-full text-left px-3 py-2 text-white hover:text-gray-300 hover:bg-gray-900 transition-colors duration-200 font-medium uppercase tracking-wide"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )
+              )}
             </div>
           </div>
         )}

@@ -37,9 +37,10 @@ export default function UseCases() {
         description={description}
       />
       <div className="flex flex-col gap-5 md:flex-row w-full justify-center">
-        {cards.map((ele) => {
+        {cards.map((ele, index) => {
           return (
             <Card
+              key={index}
               title={ele.title}
               image={ele.image}
               description={ele.description}

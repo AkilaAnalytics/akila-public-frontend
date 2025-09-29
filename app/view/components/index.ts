@@ -4,3 +4,4 @@ export { default as SectionBreak } from "./SectionBreak/";
 export { default as Card } from "./Card/";
 export { default as GridBackground } from "./GridBackground/";
 export { default as ContactForm } from "./ContactForm/";
+export { default as ArticleCard } from "./ArticleCard/";

@@ -1,5 +1,6 @@
 import type { Route } from "./+types/home";
 export { ContactUs as default } from "~/view/pages";
+export { action } from "~/routes/api.contact-us";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Contact Us";

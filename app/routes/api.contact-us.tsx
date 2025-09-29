@@ -147,11 +147,13 @@ export async function action({
     }
     return data({
       ok: true,
+      message: "Message sent successfully! We'll be in touch soon."
     });
   } catch (e) {
     console.log(e, "<<< e from contact-us");
     return data({
       ok: false,
+      message: "There was an error sending your message. Please try again."
     });
   }
 }

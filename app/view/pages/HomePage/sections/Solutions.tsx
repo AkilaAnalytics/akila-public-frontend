@@ -5,7 +5,7 @@ const description =
   "Whether you're a Data Scientist, Business Analyst, or Product Manager - Akila adapts to your needs, streamlining workflows and enabling smarter decisions";
 export default function Solutions() {
   return (
-    <div className="">
+    <section id="solutions" className="">
       <SectionBreak
         breakText="For Who"
         title="Solutions Tailored to Every Role"
@@ -45,6 +45,6 @@ export default function Solutions() {
           className="w-full md:w-[60vw] mx-auto mt-10"
         />
       </div>
-    </div>
+    </section>
   );
 }

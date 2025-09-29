@@ -21,3 +21,4 @@ export { default as chartWithLine } from "./chart-with-line.svg";
 export { default as hardDrive } from "./hard-drive.svg";
 export { default as chartBarThin } from "./chart-bar-thin.svg";
 export { default as chartLineThin } from "./chart-line-thin.svg";
+export { default as rocketMan } from "./rocket-man.svg";

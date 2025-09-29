@@ -19,7 +19,7 @@ const cards = [
 
 export default function GettingStarted() {
   return (
-    <div className="relative flex flex-col md:flex-row mt-10">
+    <section id="getting-started" className="relative flex flex-col md:flex-row mt-10">
       <GridBackground />
       <div className="py-20 flex flex-col md:flex-row z-50 px-10">
         <div className="md:w-1/2 m-10 p-10 h-3/4 ">
@@ -42,6 +42,6 @@ export default function GettingStarted() {
         </div>
         <ContactForm type="short" className="w-1/2 z-50" />
       </div>
-    </div>
+    </section>
   );
 }
