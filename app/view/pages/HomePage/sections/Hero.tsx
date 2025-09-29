@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { HomePageBackground } from "~/view/assets";
 import { homePageIcon } from "~/view/assets/icons";
 import { GradientLine, SectionBreak } from "~/view/components";
@@ -88,14 +89,21 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex gap-4 mb-16">
-            <button className="cursor-pointer bg-white text-black px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors">
-              Book a demo
-            </button>
-            <button className="cursor-pointer border border-gray-600 text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors">
-              Try free
-            </button>
+            <Link to="/watch-demo">
+              <button className="cursor-pointer bg-white text-black px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors">
+                Book a demo
+              </button>
+            </Link>
+            <a
+              href="https://app.akilaanalytics.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="cursor-pointer border border-gray-600 text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors">
+                Try free
+              </button>
+            </a>
           </div>
-
           {/* Analytics Interface */}
           <img src={homePageIcon} alt="" />
         </div>
