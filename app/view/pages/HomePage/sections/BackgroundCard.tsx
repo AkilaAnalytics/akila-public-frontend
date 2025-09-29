@@ -1,7 +1,7 @@
 export default function FigmaCard({ children }) {
   return (
     <div
-      className="absolute w-[700px] h-[520px] rounded-[20px] p-[2px]"
+      className="w-[700px] h-[520px] rounded-[20px] p-[2px] md:absolute"
       style={{
         background: `
           radial-gradient(97.57% 210.75% at 0.9% 2.98%, rgba(32, 33, 34, 0) 0%, #202122 100%),
