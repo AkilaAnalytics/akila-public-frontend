@@ -70,7 +70,7 @@ const productLinks = [
   },
   {
     text: "Watch Demo",
-    path: "/product/watch-demo",
+    path: "/watch-demo",
     key: "product",
   },
   {
@@ -115,12 +115,12 @@ const resourceLinks = [
 const companyLinks = [
   {
     text: "Watch Demo",
-    path: "/product/watch-demo",
+    path: "/watch-demo",
     key: "company",
   },
   {
     text: "Talk to Sales",
-    path: "product/watch-demo",
+    path: "/contact-us",
     key: "product",
   },
 ];

@@ -8,7 +8,11 @@ interface ContactFormProps {
   source?: string; // Optional custom source for tracking
 }
 
-export default function ContactForm({ type, className, source }: ContactFormProps) {
+export default function ContactForm({
+  type,
+  className,
+  source,
+}: ContactFormProps) {
   const fetcher = useFetcher();
   const location = useLocation();
   const [message, setMessage] = useState<Partial<IResponse<string>>>({});
@@ -17,7 +21,7 @@ export default function ContactForm({ type, className, source }: ContactFormProp
     if (fetcher.data) {
       setMessage(fetcher.data);
     }
-  }, [fetcher.data]);
+  }, [fetcher.data, fetcher.state]);
 
   const isExpanded = type === "expanded";
 
@@ -27,7 +31,7 @@ export default function ContactForm({ type, className, source }: ContactFormProp
         className || ""
       }`}
     >
-      <fetcher.Form method="post">
+      <fetcher.Form method="post" action="/api/contact-us">
         <div className="p-5 flex flex-col border-white/5 border-[1px] rounded-md">
           <h6>Contact Us</h6>
           <br />
@@ -167,12 +171,12 @@ export default function ContactForm({ type, className, source }: ContactFormProp
             name="source"
             value={source || `Contact Form - ${location.pathname}`}
           />
-          
+
           {/* Honeypot field - hidden from users but will catch bots */}
           <input
             type="text"
             name="message2"
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
             tabIndex={-1}
             autoComplete="off"
           />
@@ -186,14 +190,16 @@ export default function ContactForm({ type, className, source }: ContactFormProp
             {fetcher.state === "submitting" ? "Sending..." : "Send"}
           </button>
         </div>
-        
+
         {/* Success/Error Messages */}
         {message.message && (
-          <div className={`mt-3 p-3 rounded-md text-center text-sm ${
-            message.ok 
-              ? 'bg-green-900/20 border border-green-500/30 text-green-400' 
-              : 'bg-red-900/20 border border-red-500/30 text-red-400'
-          }`}>
+          <div
+            className={`mt-3 p-3 rounded-md text-center text-sm ${
+              message.ok
+                ? "bg-green-900/20 border border-green-500/30 text-green-400"
+                : "bg-red-900/20 border border-red-500/30 text-red-400"
+            }`}
+          >
             {message.message}
           </div>
         )}

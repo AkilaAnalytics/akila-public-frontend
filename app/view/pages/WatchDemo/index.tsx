@@ -52,7 +52,11 @@ export default function WatchDemo() {
           );
         })}
       </div>
-      <ContactForm type="expanded" className="md:w-1/2" />
+      <ContactForm 
+        type="expanded" 
+        className="md:w-1/2" 
+        source="Demo Request - Watch Demo Page"
+      />
     </div>
   );
 }

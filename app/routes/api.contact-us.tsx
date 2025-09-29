@@ -1,32 +1,21 @@
 import { sendEmail } from "~/api/emails/index.server";
-import { logger } from "~/utils";
-import { RecaptchaEnterpriseServiceClient } from "@google-cloud/recaptcha-enterprise";
+import { logger } from "~/utils/server/index.server";
+// import { RecaptchaEnterpriseServiceClient } from "@google-cloud/recaptcha-enterprise";
 import { data } from "react-router";
 import { type ActionFunctionArgs } from "react-router";
 
-const recaptchaenterpriseClient = new RecaptchaEnterpriseServiceClient();
+// const recaptchaenterpriseClient = new RecaptchaEnterpriseServiceClient();
 
-/**
- * Create an assessment to analyze the risk of a UI action.
- *
- * projectID: Your Google Cloud Project ID.
- * recaptchaSiteKey: The reCAPTCHA key associated with the site/app
- * token: The generated token obtained from the client.
- * recaptchaAction: Action name corresponding to the token.
- */
+// TODO: Implement reCAPTCHA assessment when needed
+/*
 async function createAssessment({
-  // TODO: Replace the token and reCAPTCHA action variables before running the sample.
   projectID,
   recaptchaKey,
   token,
   recaptchaAction,
 }) {
-  // Create the reCAPTCHA client.
-  // TODO: Cache the client generation code (recommended) or call client.close() before exiting the method.
   const client = new RecaptchaEnterpriseServiceClient();
   const projectPath = client.projectPath(projectID);
-
-  // Build the assessment request.
   const request = {
     assessment: {
       event: {
@@ -36,37 +25,11 @@ async function createAssessment({
     },
     parent: projectPath,
   };
-
-  //const [response] = await client.createAssessment(request);
-  logger.log(response, "<<< response");
-
-  // Check if the token is valid.
-  if (!response.tokenProperties.valid) {
-    console.log(
-      `The CreateAssessment call failed because the token was: ${response.tokenProperties.invalidReason}`
-    );
-    return null;
-  }
-
-  // Check if the expected action was executed.
-  // The `action` property is set by user client in the grecaptcha.enterprise.execute() method.
-  if (response.tokenProperties.action === recaptchaAction) {
-    // Get the risk score and the reason(s).
-    // For more information on interpreting the assessment, see:
-    // https://cloud.google.com/recaptcha-enterprise/docs/interpret-assessment
-    console.log(`The reCAPTCHA score is: ${response.riskAnalysis.score}`);
-    response.riskAnalysis.reasons.forEach((reason) => {
-      console.log(reason);
-    });
-
-    return response.riskAnalysis.score;
-  } else {
-    console.log(
-      "The action attribute in your reCAPTCHA tag does not match the action you are expecting to score"
-    );
-    return null;
-  }
+  const [response] = await client.createAssessment(request);
+  // ... reCAPTCHA logic here
+  return response.riskAnalysis.score;
 }
+*/
 
 function sanitizeString(input: string) {
   // Use a basic method to sanitize: strip out any non-alphanumeric characters, except for spaces.
@@ -147,13 +110,13 @@ export async function action({
     }
     return data({
       ok: true,
-      message: "Message sent successfully! We'll be in touch soon."
+      message: "Message sent successfully! We'll be in touch soon.",
     });
   } catch (e) {
     console.log(e, "<<< e from contact-us");
     return data({
       ok: false,
-      message: "There was an error sending your message. Please try again."
+      message: "There was an error sending your message. Please try again.",
     });
   }
 }

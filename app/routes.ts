@@ -7,6 +7,7 @@ export default [
   route("/coming-soon", "routes/coming-soon.tsx"),
   route("/watch-demo", "routes/watch-demo.tsx"),
   route("/pricing", "routes/pricing.tsx"),
+  route("/api/contact-us", "routes/api.contact-us.tsx"),
   //route("/contact-us", "routes/contact-us.tsx"),
   //route("/pricing", "routes/pricing.tsx"),
   //route("/talk-to-sales", "routes/talk-to-sales.tsx"),
