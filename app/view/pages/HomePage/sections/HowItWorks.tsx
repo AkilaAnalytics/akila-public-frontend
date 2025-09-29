@@ -44,12 +44,12 @@ export default function HowItWorks() {
             );
           })}
         </div>
-        <div className="md:ml-10">
+        <div className="mt-8 md:mt-0 md:ml-10 w-full md:w-auto flex justify-center">
           <FigmaCard>
             <img
               src={howItWorks}
               alt="How it works"
-              className="bg-transparent"
+              className="bg-transparent w-full h-auto max-w-full object-contain"
             />
           </FigmaCard>
         </div>
