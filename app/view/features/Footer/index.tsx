@@ -98,6 +98,13 @@ const enterpriseLinks = [
   },
 ];
 
+const hardwareLinks = [
+  {
+    text: "Hardware",
+    path: "/product/hardware",
+  },
+];
+
 const resourceLinks = [
   {
     text: "Documentation",
@@ -229,7 +236,8 @@ export default function Footer() {
             </div>
             <div className="ml-auto flex flex-col md:flex-row gap-10 md:gap-20">
               <div>{displayLinks("Company", companyLinks)}</div>
-              <div>{displayLinks("Company", resourceLinks)}</div>
+              <div>{displayLinks("Resources", resourceLinks)}</div>
+              <div>{displayLinks("Products", hardwareLinks)}</div>
               <div>
                 <p className="my-[24px] list-none text-lg font-semibold text-white">
                   Contact
@@ -242,9 +250,6 @@ export default function Footer() {
                 </ul>
               </div>
             </div>
-            {/* <div className="hidden md:inline">
-            {displayLinks('Social Media', socialMediaLinks)}
-          </div> */}
           </div>
         </div>
         {/*  */}

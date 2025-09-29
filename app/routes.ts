@@ -11,6 +11,8 @@ export default [
   route("/watch-demo", "routes/watch-demo.tsx"),
   route("/pricing", "routes/pricing.tsx"),
   route("/api/contact-us", "routes/api.contact-us.tsx"),
+  route("/product/hardware", "routes/product.hardware_.tsx"),
+  route("/product/hardware/:server", "routes/product.hardware.$server.tsx"),
 
   // admin
   route("/legal/privacy-policy", "routes/legal.privacy-policy.tsx"),

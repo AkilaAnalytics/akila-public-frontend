@@ -32,8 +32,8 @@ export const products: Record<string, ProductData> = {
     name: "Workstation Starter",
     description:
       "Budget-friendly business workstation designed for small businesses, content creation, and light AI workloads. Powerful RTX 3090 graphics with reliable AMD Ryzen performance.",
-    price: 3100 * 100, // in cents for stripe
-    priceDisplay: "$3,100",
+    price: 4100 * 100, // in cents for stripe
+    priceDisplay: "$4,100",
     category: "Enterprise",
     image: "/hardware/fractal-north.jpg",
     images: [
@@ -86,7 +86,6 @@ export const products: Record<string, ProductData> = {
       "High-speed DDR5 memory for multitasking performance",
       "2TB NVMe SSD for fast data access and large project storage",
       "Professional build quality with premium components",
-      "1-year warranty with business support options",
     ],
     inStock: true,
     stripeLink: "https://buy.stripe.com/4gM28qbtK9PA5Vb2Hn53O00",
@@ -159,7 +158,6 @@ export const products: Record<string, ProductData> = {
       "IPMI remote management for IT administration",
       "Workstation motherboard with enterprise chipset support",
       "Enhanced power delivery with 1000W PSU for stable operation",
-      "3-year enterprise warranty with priority business support",
     ],
     inStock: true,
     stripeLink: "https://buy.stripe.com/fZu8wO0P69PA2IZ1Dj53O01",
@@ -232,7 +230,6 @@ export const products: Record<string, ProductData> = {
       "Optimized for large language model training and inference",
       "Enterprise Xeon processor with ECC memory for data integrity",
       "1600W Titanium efficiency PSU for A100's 400W TDP",
-      "5-year enterprise warranty with dedicated AI/ML support team",
     ],
     inStock: true,
     stripeLink: "https://buy.stripe.com/28EaEW8hy3rcdnD1Dj53O02",
