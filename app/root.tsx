@@ -100,7 +100,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             ""
           )}
         </head>
-        <body>
+        <body className="textBody">
           <AppContextProvider>
             {/*<Chat />
             <Calendly />

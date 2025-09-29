@@ -11,6 +11,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.635.0",
     "@aws-sdk/client-ses": "^3.635.0",
+    "@aws-sdk/credential-providers": "^3.699.0",
     "@google-cloud/recaptcha-enterprise": "^5.10.0",
     "@headlessui/react": "^2.1.2",
     "@heroicons/react": "^2.1.5",
