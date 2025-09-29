@@ -183,7 +183,6 @@ function displayLinks(category: string, links: Array<any>) {
 
 export default function Footer() {
   const loaderData = useLoaderData<ILoaderData>();
-  //logger.log(loaderData, "<<<< loaderData from Footer");
   return (
     <footer className="contact-us-gradient mx-auto mt-[50px] overflow-hidden">
       <div className="wave ">
@@ -230,6 +229,7 @@ export default function Footer() {
             </div>
             <div className="ml-auto flex flex-col md:flex-row gap-10 md:gap-20">
               <div>{displayLinks("Company", companyLinks)}</div>
+              <div>{displayLinks("Company", resourceLinks)}</div>
               <div>
                 <p className="my-[24px] list-none text-lg font-semibold text-white">
                   Contact
@@ -279,6 +279,7 @@ export default function Footer() {
 
         <br />
       </div>
+      <br />
     </footer>
   );
 }
