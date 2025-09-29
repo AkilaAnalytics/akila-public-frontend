@@ -15,6 +15,7 @@ import "./styles/components.css";
 import "./styles/footer.css";
 import "./styles/tailwind.css";
 import "./styles/global.css";
+import "./styles/blog.css";
 import "./styles/tailwind.css";
 import { logger } from "./utils";
 import * as gtag from "~/utils/client/gtags.client";

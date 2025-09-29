@@ -5,3 +5,6 @@ export { default as Card } from "./Card/";
 export { default as GridBackground } from "./GridBackground/";
 export { default as ContactForm } from "./ContactForm/";
 export { default as ArticleCard } from "./ArticleCard/";
+export { default as GettingStartedSection } from "./GettingStartedSection";
+export { default as ButtonsBar } from "./ButtonsBar";
+export { default as BannerImage } from "./BannerImage";

@@ -57,8 +57,8 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   };
   const url = new URL(request.url);
 
-  // Extract the 'slug' query parameter
-  const slug = url.searchParams.get("slug");
+  // Extract the 'slug' route parameter
+  const slug = params.slug;
   logger.log({ slug, source: "<<< slug from insights.$title loader" });
 
   try {

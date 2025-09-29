@@ -66,12 +66,12 @@ export default function CallToAction() {
                 Email
               </a>
 
-              <button
+              {/*<button
                 onClick={openChat}
                 className="cursor-pointer group inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 min-w-[200px]"
               >
                 Chat with us
-              </button>
+              </button> */}
             </div>
 
             {/* Trust indicator */}

@@ -5,7 +5,9 @@ export default [
   index("routes/home.tsx"), // Root index page at "/"
   route("/contact-us", "routes/contact-us.tsx"),
   route("/coming-soon", "routes/coming-soon.tsx"),
+  route("/resources/insights", "routes/resources.insights_.tsx"),
   route("/resources/documentation", "routes/resources.documentation.tsx"),
+  route("/resources/insights/:slug", "routes/resources.insights.$slug.tsx"),
   route("/watch-demo", "routes/watch-demo.tsx"),
   route("/pricing", "routes/pricing.tsx"),
   route("/api/contact-us", "routes/api.contact-us.tsx"),

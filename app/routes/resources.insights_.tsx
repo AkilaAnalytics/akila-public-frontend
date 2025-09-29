@@ -1,12 +1,12 @@
 import { type LoaderFunctionArgs, createCookie, data } from "react-router";
 import type { Route } from "./+types/home";
 import { useLoaderData, useLocation, useRouteError } from "react-router";
-import { MissingPage } from "~/view/pages/misc";
 import { logger } from "~/utils";
 import { InsightsBannerImage } from "~/view/assets";
 import { BannerImage } from "~/view/components";
 import { EmailSignUp } from "~/view/features";
 import ArticleByCategory from "~/view/features/Blog/ArticlesByCategory";
+import MissingPage from "./$";
 
 export type StrapiResponse = {
   title: string;
