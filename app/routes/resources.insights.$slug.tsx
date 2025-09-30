@@ -167,6 +167,21 @@ export default function BlogTemplate() {
                   {children}
                 </h3>
               ),
+              h4: ({ children }) => (
+                <h4 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+                  {children}
+                </h4>
+              ),
+              h5: ({ children }) => (
+                <h5 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+                  {children}
+                </h5>
+              ),
+              h6: ({ children }) => (
+                <h6 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+                  {children}
+                </h6>
+              ),
 
               // Paragraphs
               p: ({ children }) => (

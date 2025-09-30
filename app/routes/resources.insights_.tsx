@@ -147,10 +147,7 @@ export default function Insights() {
                   <div key={ele.title} className="my-auto">
                     <span className="text-periwinkle">{ele.category}</span>
                     <a
-                      href={`/resources/insights/${ele.title.replace(
-                        "?",
-                        ""
-                      )}?slug=${ele.slug}`}
+                      href={`/resources/insights/${ele.slug}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:font-bold"
