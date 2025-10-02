@@ -291,10 +291,10 @@ export default function Chatbot() {
   }
 
   return (
-    <div className="z-[999] fixed bottom-6 right-6 w-96 h-[32rem] bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 flex flex-col z-50 overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
+    <div className="z-[999] fixed bottom-6 right-6 w-96 h-[32rem] backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 flex flex-col z-50 overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white px-6 py-4 flex justify-between items-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 animate-pulse"></div>
+      <div className="flex justify-between items-center relative overflow-hidden">
+        <div className="absolute inset-0 "></div>
         <div className="relative flex items-center space-x-3">
           <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -305,22 +305,14 @@ export default function Chatbot() {
               />
             </svg>
           </div>
-          <div>
+          <div className="py-5">
             <h3 className="font-semibold text-lg">Chat Support</h3>
             <p className="text-white/80 text-xs">
-              Our chat is monitored by real humans (no bots). Chat with our team
-              now.
+              Our chat is monitored by real humans (no bots).
             </p>
           </div>
         </div>
         <div className="flex items-center space-x-2">
-          <button
-            onClick={clearChat}
-            className="text-white/60 hover:text-white text-xs px-2 py-1 rounded hover:bg-white/10 transition-colors"
-            title="Start new chat"
-          >
-            New
-          </button>
           <button
             onClick={onToggle}
             className="cursor-pointer relative text-white/80 hover:text-white transition-colors duration-200 p-2 hover:bg-white/10 rounded-full"
@@ -346,18 +338,16 @@ export default function Chatbot() {
       {/* Rest of your component JSX remains the same... */}
       {/* User Info Form */}
       {showUserForm && (
-        <div className="p-6 bg-gradient-to-b from-gray-50 to-white border-b border-gray-100">
-          <div className="text-center mb-4">
-            <h4 className="text-lg font-semibold text-gray-800 mb-2">
-              Welcome! 👋
-            </h4>
-            <p className="text-gray-600 text-sm">
+        <div className="flex-1 p-6 bg-background">
+          <div className="text-center mb-6">
+            <h3 className="text-xl font-bold text-white mb-2">Welcome!</h3>
+            <p className="textBody text-sm">
               Let's get started with a quick introduction
             </p>
           </div>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-white mb-2">
                 Your Name
               </label>
               <input
@@ -366,7 +356,7 @@ export default function Chatbot() {
                 onChange={(e) =>
                   setUserInfo((prev) => ({ ...prev, name: e.target.value }))
                 }
-                className="w-full px-4 py-3 border border-gray-200 rounded-xl text-gray-800 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all duration-200 placeholder-gray-400"
+                className="w-full px-4 py-3 bg-secondaryBg border border-borderColor rounded-md text-white placeholder-greyText focus:outline-none focus:border-greyText transition-all duration-200"
                 placeholder="Enter your name"
                 onKeyPress={(e) =>
                   e.key === "Enter" && userInfo.email && handleUserInfoSubmit(e)
@@ -374,7 +364,7 @@ export default function Chatbot() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-white mb-2">
                 Email Address
               </label>
               <input
@@ -383,7 +373,7 @@ export default function Chatbot() {
                 onChange={(e) =>
                   setUserInfo((prev) => ({ ...prev, email: e.target.value }))
                 }
-                className="w-full px-4 py-3 border border-gray-200 rounded-xl text-gray-800 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all duration-200 placeholder-gray-400"
+                className="w-full px-4 py-3 bg-secondaryBg border border-borderColor rounded-md text-white placeholder-greyText focus:outline-none focus:border-greyText transition-all duration-200"
                 placeholder="your@email.com"
                 onKeyPress={(e) =>
                   e.key === "Enter" && userInfo.name && handleUserInfoSubmit(e)
@@ -393,70 +383,63 @@ export default function Chatbot() {
             <button
               onClick={handleUserInfoSubmit}
               disabled={!userInfo.name || !userInfo.email}
-              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-500 text-white py-3 rounded-xl font-medium transition-all duration-200 transform hover:scale-[1.02] hover:shadow-lg disabled:scale-100 disabled:cursor-not-allowed"
+              className="w-full py-3 bg-lightGrey hover:bg-darkGrey text-white font-medium rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
             >
               Start Conversation
             </button>
           </div>
         </div>
       )}
-
-      {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-gray-50/50 to-white/50">
+      <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-background">
         {messages.map((message, index) => (
-          <div
-            key={message.id}
-            className={`flex ${
-              message.sender === "user" ? "justify-end" : "justify-start"
-            } animate-in slide-in-from-bottom-2 duration-300`}
-            style={{ animationDelay: `${index * 50}ms` }}
-          >
+          <div key={message.id} className="space-y-1">
             <div
-              className={`max-w-xs px-4 py-3 rounded-2xl text-sm relative ${
-                message.sender === "user"
-                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25"
-                  : "bg-white text-gray-800 shadow-lg border border-gray-100"
+              className={`flex ${
+                message.sender === "user" ? "justify-end" : "justify-start"
               }`}
             >
-              {message.sender === "bot" && (
-                <div className="absolute -left-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-4 border-r-white"></div>
-              )}
-              {message.sender === "user" && (
-                <div className="absolute -right-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-l-4 border-l-blue-600"></div>
-              )}
-              <p className="leading-relaxed">{message.text}</p>
               <div
-                className={`text-xs mt-1 ${
-                  message.sender === "user" ? "text-blue-100" : "text-gray-500"
+                className={`max-w-xs px-4 py-3 rounded-2xl text-sm ${
+                  message.sender === "user"
+                    ? "bg-secondaryBg text-white"
+                    : "bg-white text-gray-800"
                 }`}
               >
-                {new Date(message.timestamp).toLocaleTimeString([], {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
+                <p className="leading-relaxed">{message.text}</p>
               </div>
+            </div>
+            <div
+              className={`text-xs textBody ${
+                message.sender === "user" ? "text-right" : "text-left"
+              }`}
+            >
+              {new Date(message.timestamp).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
             </div>
           </div>
         ))}
 
         {/* Typing Indicator */}
         {(isLoading || isTyping) && (
-          <div className="flex justify-start animate-in slide-in-from-bottom-2 duration-300">
-            <div className="bg-white text-gray-800 px-4 py-3 rounded-2xl shadow-lg border border-gray-100 relative">
-              <div className="absolute -left-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-4 border-r-white"></div>
-              <div className="flex space-x-1 items-center">
-                <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                  <div
-                    className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
-                    style={{ animationDelay: "0.1s" }}
-                  ></div>
-                  <div
-                    className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
-                    style={{ animationDelay: "0.2s" }}
-                  ></div>
+          <div className="space-y-1">
+            <div className="flex justify-start">
+              <div className="bg-white text-gray-800 px-4 py-3 rounded-2xl">
+                <div className="flex space-x-1 items-center">
+                  <div className="flex space-x-1">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div
+                      className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                      style={{ animationDelay: "0.1s" }}
+                    ></div>
+                    <div
+                      className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                      style={{ animationDelay: "0.2s" }}
+                    ></div>
+                  </div>
+                  <span className="text-xs text-gray-500 ml-2">Typing...</span>
                 </div>
-                <span className="text-xs text-gray-500 ml-2">Typing...</span>
               </div>
             </div>
           </div>
@@ -466,8 +449,8 @@ export default function Chatbot() {
 
       {/* Input */}
       {!showUserForm && (
-        <div className="border-t border-gray-100 p-4 bg-white/80 backdrop-blur-sm">
-          <div className="flex space-x-3 items-end">
+        <div className="p-4 bg-lightGrey">
+          <div className="flex space-x-3 items-center">
             <div className="flex-1 relative">
               <input
                 type="text"
@@ -480,68 +463,25 @@ export default function Chatbot() {
                   sendMessage(e)
                 }
                 placeholder="Type your message..."
-                className="w-full px-4 py-3 pr-12 border border-gray-200 rounded-2xl text-gray-800 bg-white/90 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all duration-200 placeholder-gray-400 resize-none"
+                className="w-full px-4 py-3 pr-12 bg-white rounded-2xl text-gray-800 placeholder-gray-400 focus:outline-none transition-all duration-200"
                 disabled={isLoading}
               />
-              <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                <svg
-                  className="w-4 h-4 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                  />
-                </svg>
-              </div>
-            </div>
-            <button
-              onClick={sendMessage}
-              disabled={isLoading || !inputText.trim()}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-500 text-white p-3 rounded-2xl transition-all duration-200 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
-            >
-              {isLoading ? (
-                <svg
-                  className="w-5 h-5 animate-spin"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-              ) : (
+              <button
+                onClick={sendMessage}
+                disabled={isLoading || !inputText.trim()}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 text-gray-400 hover:text-gray-600 disabled:text-gray-300 transition-colors duration-200"
+              >
                 <svg
                   className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
+                  fill="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                  />
+                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
                 </svg>
-              )}
-            </button>
+              </button>
+            </div>
           </div>
-          <p className="text-xs text-gray-500 mt-2 text-center">
+          <p className="text-xs textBody mt-2 text-center">
             Press Enter to send • We typically reply within a few minutes
           </p>
         </div>

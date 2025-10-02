@@ -4,7 +4,16 @@ import {
   markSessionAsClosed,
 } from "~/utils/server/chatHelpers.server";
 
-import { type ActionFunctionArgs } from "react-router";
+import { type ActionFunctionArgs, type LoaderFunctionArgs } from "react-router";
+
+// Handle GET requests (for Slack URL verification)
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+  console.log('GET request received at /api/chat/interactive');
+  return new Response("Chat Interactive Endpoint Active", { 
+    status: 200,
+    headers: { "Content-Type": "text/plain" }
+  });
+};
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   try {
