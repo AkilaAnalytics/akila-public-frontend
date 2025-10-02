@@ -1,6 +1,5 @@
-import { SendEmailCommand } from "@aws-sdk/client-ses";
-
 import { sesClient } from "~/utils/server/index.server";
+import { SendEmailCommand } from "@aws-sdk/client-ses";
 
 interface ISendEmailArgs {
   firstName: string;

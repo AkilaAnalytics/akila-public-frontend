@@ -84,7 +84,6 @@ export async function action({
       "message2",
     ].map((field) => {
       const rawValue = body.get(field) as string;
-      console.log(rawValue, "<<< rawValue");
       if (field === "email") {
         return sanitizeEmail(rawValue);
       } else if (field === "phone") {
@@ -113,7 +112,7 @@ export async function action({
       message: "Message sent successfully! We'll be in touch soon.",
     });
   } catch (e) {
-    console.log(e, "<<< e from contact-us");
+    logger.error(e, "<<< e from contact-us");
     return data({
       ok: false,
       message: "There was an error sending your message. Please try again.",
