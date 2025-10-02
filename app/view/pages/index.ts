@@ -6,3 +6,5 @@ export { default as WatchDemo } from "./WatchDemo";
 export { default as Pricing } from "./pricing";
 export { default as Hardware } from "./Hardware/Hardware";
 export { default as ProductDetail } from "./Hardware/ProductDetail";
+export { default as Chat } from "./Chat";
+export * from "./LandingPages";

@@ -17,19 +17,16 @@ export default [
   // admin
   route("/legal/privacy-policy", "routes/legal.privacy-policy.tsx"),
   route("/legal/terms-and-conditions", "routes/legal.terms-and-conditions.tsx"),
-  //route("/contact-us", "routes/contact-us.tsx"),
   //route("/pricing", "routes/pricing.tsx"),
   //route("/talk-to-sales", "routes/talk-to-sales.tsx"),
 
-  //// API Routes
-  //route("/api/chat/history", "routes/api.chat.history.tsx"),
-  //route("/api/chat/interactive", "routes/api.chat.interactive.tsx"),
-  //route("/api/chat/poll", "routes/api.chat.poll.tsx"),
-  //route("/api/chat", "routes/api.chat.tsx"),
-  //route("/api/contact-us", "routes/api.contact-us.tsx"),
-  //route("/api/email-sign-up", "routes/api.email-sign-up.tsx"),
+  // API Routes
+  route("/api/chat/history", "routes/api.chat.history.tsx"),
+  route("/api/chat/interactive", "routes/api.chat.interactive.tsx"),
+  route("/api/chat/poll", "routes/api.chat.poll.tsx"),
+  route("/api/chat", "routes/api.chat.tsx"),
 
-  //// Company Routes
+  // Company Routes
   //route("/company/overview", "routes/company.overview.tsx"),
 
   //// Docs Routes

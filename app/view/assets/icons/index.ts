@@ -23,3 +23,4 @@ export { default as chartBarThin } from "./chart-bar-thin.svg";
 export { default as chartLineThin } from "./chart-line-thin.svg";
 export { default as rocketMan } from "./rocket-man.svg";
 export { default as greenCheckMark } from "./green-check-mark.svg";
+export { default as redX } from "./redX.svg";

@@ -8,3 +8,5 @@ export { default as ArticleCard } from "./ArticleCard/";
 export { default as GettingStartedSection } from "./GettingStartedSection";
 export { default as ButtonsBar } from "./ButtonsBar";
 export { default as BannerImage } from "./BannerImage";
+export { default as LandingPageNavbar } from "./LandingPageNavbar";
+export { default as Modal } from "./Modal";

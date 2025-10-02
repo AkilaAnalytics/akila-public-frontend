@@ -7,12 +7,6 @@ import {
 import { type ActionFunctionArgs } from "react-router";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
-  console.log(
-    "=========================================== INTERACTIVE TEST ENDPOINT CALLED ==="
-  );
-  console.log("Method:", request.method);
-  console.log("Headers:", Object.fromEntries(request.headers.entries()));
-
   try {
     const formData = await request.formData();
     const payload = JSON.parse(formData.get("payload") as string);

@@ -49,7 +49,7 @@ export function AppContextProvider({
 export function useAppContext() {
   const context = useContext(AppContext);
   if (context === undefined) {
-    throw new Error("useChat must be used within a ChatProvider");
+    throw new Error("useAppContext must be used within an AppContextProvider");
   }
   return context;
 }

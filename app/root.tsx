@@ -22,9 +22,10 @@ import * as gtag from "~/utils/client/gtags.client";
 import Footer from "~/view/features/Footer";
 import { Navbar } from "./view/features";
 import { MissingPage } from "./view/pages";
-//import { Chat, FineTuning, AutoInvoice, AI } from "./view/pages";
+import { FineTuning, AutoInvoice, AI } from "./view/pages";
 import { useEffect, useState } from "react";
 import { AppContextProvider } from "./view/context";
+import { Chat } from "./view/pages";
 
 logger.log(
   "%cAkila Analytics",
@@ -58,7 +59,6 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const { gaTrackingId } = useLoaderData<typeof loader>();
-  const [isChatOpen, setIsChatOpen] = useState(false);
   const { tenant, isLandingPage } = useLoaderData();
 
   useEffect(() => {
@@ -103,11 +103,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </head>
         <body className="textBody">
           <AppContextProvider>
-            {/*<Chat />
-            <Calendly />
+            <Chat />
+            {/*<Calendly /> */}
             {tenant == "auto-invoice" && <AutoInvoice />}
             {tenant === "private-llm" && <FineTuning />}
-            {tenant === "ai" && <AI />} */}
+            {tenant === "ai" && <AI />}
             <ScrollRestoration />
             <Scripts />
           </AppContextProvider>
@@ -153,10 +153,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body className="bg-background">
         <AppContextProvider>
           <Navbar />
-          {/*<Chat
-            isOpen={isChatOpen}
-            onToggle={() => setIsChatOpen(!isChatOpen)}
-          /> */}
+          <Chat />
           {children}
           <ScrollRestoration />
           <Scripts />
