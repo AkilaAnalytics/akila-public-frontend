@@ -20,7 +20,7 @@ import "./styles/tailwind.css";
 import { logger } from "./utils";
 import * as gtag from "~/utils/client/gtags.client";
 import Footer from "~/view/features/Footer";
-import { Navbar } from "./view/features";
+import { Calendly, Navbar } from "./view/features";
 import { MissingPage } from "./view/pages";
 import { FineTuning, AutoInvoice, AI } from "./view/pages";
 import { useEffect, useState } from "react";
@@ -104,7 +104,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <body className="textBody">
           <AppContextProvider>
             <Chat />
-            {/*<Calendly /> */}
+            <Calendly />
             {tenant == "auto-invoice" && <AutoInvoice />}
             {tenant === "private-llm" && <FineTuning />}
             {tenant === "ai" && <AI />}

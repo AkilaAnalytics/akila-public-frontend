@@ -245,10 +245,17 @@ export default function LandingPage() {
               showGreenChecks={true}
               buttonText="Start free trial"
             />
-            <div className="my-auto md:ml-5">
-              <h4 className="text-gray-800">
-                Chat with us for a custom solution.
-              </h4>{" "}
+            <div className="my-auto md:ml-5 text-center">
+              <h4 className="text-gray-800 mb-4">Need a custom solution?</h4>
+              <button
+                onClick={toggleCalendly}
+                className="transform cursor-pointer rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-1 hover:from-purple-700 hover:to-indigo-700 hover:shadow-xl"
+              >
+                Schedule Call
+              </button>
+              <p className="text-sm text-gray-600 mt-2">
+                Talk to our team about enterprise solutions
+              </p>
             </div>
           </div>
         </div>

@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { CheckMarkIcon } from "../AutoInvoice/components";
 import { LandingPageNavbar } from "~/view/components";
 import { logoBlackFont } from "~/view/assets";
 import { useAppContext } from "~/view/context";
 import CustomSelect from "./Dropdown";
 import { useFetcher } from "react-router";
+import Modal from "~/view/components/Modal";
 
 const employeeOptions = [
   { value: "10-50", label: "10-50 employees" },
@@ -24,6 +25,12 @@ const useCase = [
 export default function AI() {
   const { toggleCalendly } = useAppContext();
   const [scrolled, setScrolled] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState({
+    title: "",
+    message: "",
+    isSuccess: false,
+  });
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -43,21 +50,76 @@ export default function AI() {
 
   const fetcher = useFetcher();
 
-  const handleFormSubmit = () => {
-    fetcher.submit({ formData });
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
-    // Simple success message
-    alert("Thanks! We'll be in touch within 24 hours to schedule a demo.");
+    // Validate required fields
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.email ||
+      !formData.company
+    ) {
+      setModalContent({
+        title: "Missing Information",
+        message:
+          "Please fill in all required fields (First Name, Last Name, Email, and Company).",
+        isSuccess: false,
+      });
+      setShowModal(true);
+      return;
+    }
 
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      company: "",
-      employees: "",
-      useCase: "",
+    // Create FormData for submission
+    const submitData = new FormData();
+    submitData.append("firstName", formData.firstName);
+    submitData.append("lastName", formData.lastName);
+    submitData.append("email", formData.email);
+    submitData.append("company", formData.company);
+    submitData.append("jobTitle", ""); // Optional field
+    submitData.append("phone", ""); // Optional field
+    submitData.append(
+      "message",
+      `Demo request from AI landing page. Company size: ${formData.employees}. Use case: ${formData.useCase}`
+    );
+    submitData.append("source", "AI Landing Page - Demo Request");
+    submitData.append("message2", ""); // Honeypot field
+
+    fetcher.submit(submitData, {
+      method: "POST",
+      action: "/api/contact-us",
     });
   };
+
+  // Handle fetcher response
+  React.useEffect(() => {
+    if (fetcher.data) {
+      if (fetcher.data.ok) {
+        setModalContent({
+          title: "Demo Request Submitted!",
+          message:
+            "Thanks! We'll be in touch within 24 hours to schedule your personalized demo.",
+          isSuccess: true,
+        });
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          company: "",
+          employees: "",
+          useCase: "",
+        });
+      } else {
+        setModalContent({
+          title: "Submission Failed",
+          message:
+            "There was an error submitting your demo request. Please try again or contact us directly.",
+          isSuccess: false,
+        });
+      }
+      setShowModal(true);
+    }
+  }, [fetcher.data]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -115,8 +177,12 @@ export default function AI() {
     },
   ];
 
+  const scrollToDemo = () => {
+    document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white" style={{ scrollBehavior: "smooth" }}>
       {/* Navigation */}
       <LandingPageNavbar
         navLinks={[
@@ -152,13 +218,10 @@ export default function AI() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
               <button
-                onClick={toggleCalendly}
+                onClick={scrollToDemo}
                 className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
                 Request Demo
-              </button>
-              <button className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-medium hover:border-gray-400 transition-colors">
-                View Examples
               </button>
             </div>
 
@@ -167,10 +230,6 @@ export default function AI() {
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 <span>Trusted by 50+ companies</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                <span>SOC 2 compliant</span>
               </div>
             </div>
           </div>
@@ -280,7 +339,7 @@ export default function AI() {
                 Request a Demo
               </h3>
 
-              <div className="space-y-4">
+              <form onSubmit={handleFormSubmit} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <input
                     type="text"
@@ -288,7 +347,8 @@ export default function AI() {
                     placeholder="First Name"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500 bg-white"
+                    required
                   />
                   <input
                     type="text"
@@ -296,7 +356,8 @@ export default function AI() {
                     placeholder="Last Name"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500 bg-white"
+                    required
                   />
                 </div>
 
@@ -306,7 +367,8 @@ export default function AI() {
                   placeholder="Work Email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500 bg-white"
+                  required
                 />
 
                 <input
@@ -315,7 +377,8 @@ export default function AI() {
                   placeholder="Company Name"
                   value={formData.company}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500 bg-white"
+                  required
                 />
 
                 <CustomSelect
@@ -335,12 +398,15 @@ export default function AI() {
                 />
 
                 <button
-                  onClick={handleFormSubmit}
-                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                  type="submit"
+                  disabled={fetcher.state === "submitting"}
+                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
                 >
-                  Schedule Demo
+                  {fetcher.state === "submitting"
+                    ? "Submitting..."
+                    : "Schedule Demo"}
                 </button>
-              </div>
+              </form>
 
               <p className="text-xs text-gray-500 mt-4 text-center">
                 We'll follow up within 24 hours to schedule your demo
@@ -386,6 +452,67 @@ export default function AI() {
           </div>
         </div>
       </footer>
+
+      {/* Success/Error Modal */}
+      <Modal
+        openModal={showModal}
+        setOpenModal={setShowModal}
+        width="max-w-[33vw]"
+        background="bg-white"
+      >
+        <div className="text-center pt-4">
+          <div className="mb-4">
+            {modalContent.isSuccess ? (
+              <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                <svg
+                  className="h-6 w-6 text-green-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+            ) : (
+              <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                <svg
+                  className="h-6 w-6 text-red-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </div>
+            )}
+          </div>
+          <h3 className="text-lg font-medium text-gray-900 mb-2">
+            {modalContent.title}
+          </h3>
+          <p className="text-sm text-gray-500 mb-6">{modalContent.message}</p>
+          <button
+            type="button"
+            onClick={() => setShowModal(false)}
+            className={`w-full inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+              modalContent.isSuccess
+                ? "bg-green-600 hover:bg-green-700 focus:ring-green-500"
+                : "bg-red-600 hover:bg-red-700 focus:ring-red-500"
+            }`}
+          >
+            Close
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 }

@@ -19,7 +19,7 @@ export function AppContextProvider({
   children: React.ReactNode;
 }) {
   // chat
-  const [isChatOpen, setIsChatOpen] = useState(true);
+  const [isChatOpen, setIsChatOpen] = useState(false);
   const openChat = () => setIsChatOpen(true);
   const closeChat = () => setIsChatOpen(false);
   const toggleChat = () => setIsChatOpen(!isChatOpen);

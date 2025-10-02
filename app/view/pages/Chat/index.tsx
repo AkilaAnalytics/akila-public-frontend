@@ -269,7 +269,7 @@ export default function Chatbot() {
     return (
       <button
         onClick={onToggle}
-        className="cursor-pointer fixed bottom-6 right-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 text-white rounded-full p-4 shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 z-50 transform hover:scale-110 hover:-translate-y-1"
+        className="cursor-pointer fixed bottom-6 right-6 bg-gradient-to-r from-background via-secondaryBg to-cardBg hover:from-cardBg hover:via-secondaryBg hover:to-background text-white rounded-full p-4 shadow-2xl hover:shadow-borderColor/25 transition-all duration-300 z-50 transform hover:scale-110 hover:-translate-y-1 border border-borderColor"
         aria-label="Open chat"
       >
         <svg
@@ -291,10 +291,10 @@ export default function Chatbot() {
   }
 
   return (
-    <div className="z-[999] fixed bottom-6 right-6 w-96 h-[32rem] backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 flex flex-col z-50 overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
+    <div className="z-[999] fixed bottom-6 right-6 w-96 h-[32rem] bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 flex flex-col overflow-hidden">
       {/* Header */}
-      <div className="flex justify-between items-center relative overflow-hidden">
-        <div className="absolute inset-0 "></div>
+      <div className="bg-gradient-to-r from-background via-secondaryBg to-cardBg text-white px-6 py-4 flex justify-between items-center relative overflow-hidden border-b border-borderColor">
+        <div className="absolute inset-0 bg-gradient-to-r from-borderColor/10 to-borderColor/20"></div>
         <div className="relative flex items-center space-x-3">
           <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -305,14 +305,21 @@ export default function Chatbot() {
               />
             </svg>
           </div>
-          <div className="py-5">
-            <h3 className="font-semibold text-lg">Chat Support</h3>
+          <div>
+            <h3 className="font-semibold text-lg text-white">Chat Support</h3>
             <p className="text-white/80 text-xs">
               Our chat is monitored by real humans (no bots).
             </p>
           </div>
         </div>
         <div className="flex items-center space-x-2">
+          <button
+            onClick={clearChat}
+            className="text-white/60 hover:text-white text-xs px-2 py-1 rounded hover:bg-white/10 transition-colors"
+            title="Start new chat"
+          >
+            New
+          </button>
           <button
             onClick={onToggle}
             className="cursor-pointer relative text-white/80 hover:text-white transition-colors duration-200 p-2 hover:bg-white/10 rounded-full"

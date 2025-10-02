@@ -152,7 +152,7 @@ export default function PrivateFineTuning() {
                 onClick={toggleCalendly}
                 className="transform cursor-pointer rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-1 hover:from-purple-700 hover:to-indigo-700 hover:shadow-xl"
               >
-                Schedule a call
+                Schedule call
               </button>
               <button
                 onClick={openChat}
@@ -456,7 +456,7 @@ export default function PrivateFineTuning() {
                   onClick={toggleCalendly}
                   className="w-full cursor-pointer rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 py-4 text-lg font-semibold text-white transition-all duration-200 hover:from-purple-700 hover:to-indigo-700"
                 >
-                  Schedule a call
+                  Schedule call
                 </button>
               </div>
             </div>
