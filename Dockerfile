@@ -1,22 +1,49 @@
-FROM node:20-alpine AS development-dependencies-env
-COPY . /app
+# ------------------------------ Build stage ------------------------------
+FROM node:22-slim AS builder
+
 WORKDIR /app
+
+COPY package*.json ./
+COPY prisma ./prisma/
+
 RUN npm ci
+RUN npx prisma generate
 
-FROM node:20-alpine AS production-dependencies-env
-COPY ./package.json package-lock.json /app/
-WORKDIR /app
-RUN npm ci --omit=dev
-
-FROM node:20-alpine AS build-env
-COPY . /app/
-COPY --from=development-dependencies-env /app/node_modules /app/node_modules
-WORKDIR /app
+COPY . .
 RUN npm run build
 
-FROM node:20-alpine
-COPY ./package.json package-lock.json /app/
-COPY --from=production-dependencies-env /app/node_modules /app/node_modules
-COPY --from=build-env /app/build /app/build
+# Prune dev dependencies
+RUN npm prune --production
+
+# ------------------------------ Production stage ------------------------------
+FROM node:22-slim
+ENV NODE_ENV=production
 WORKDIR /app
-CMD ["npm", "run", "start"]
+
+# Install OpenSSL and required libraries
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    openssl \
+    libssl3 \
+    ca-certificates \
+  && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+
+# Copy everything needed from builder
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/build ./build
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/package*.json ./
+
+# Copy prisma engines to avoid prisma errors
+RUN mkdir -p ./build/server/
+COPY --from=builder /app/app/utils/server/generated/libquery_engine-*.so.node ./build/server/
+COPY --from=builder /app/app/utils/server/generated/libquery_engine-*.dylib.node ./build/server/
+
+
+EXPOSE 3000
+
+# Distroless uses different CMD format
+CMD ["npm", "run", "start:docker"]

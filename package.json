@@ -1,11 +1,12 @@
 {
-  "name": "frontend2",
+  "name": "frontend",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "dotenv -e .env -- react-router-serve ./build/server/index.js",
+    "start:docker": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
@@ -15,12 +16,15 @@
     "@google-cloud/recaptcha-enterprise": "^5.10.0",
     "@headlessui/react": "^2.1.2",
     "@heroicons/react": "^2.1.5",
+    "@prisma/client": "6.10.1",
     "@react-router/node": "^7.5.3",
     "@react-router/serve": "^7.5.3",
     "@stripe/react-stripe-js": "^3.7.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/pg": "^8.15.4",
     "crypto-js": "^4.2.0",
+    "dotenv": "^17.2.3",
+    "dotenv-cli": "^10.0.0",
     "helmet": "^8.1.0",
     "heroicons": "^2.1.5",
     "isbot": "^5.1.27",
@@ -29,6 +33,7 @@
     "pg": "^8.16.3",
     "pino": "^9.7.0",
     "pino-pretty": "^13.0.0",
+    "prisma": "6.10.1",
     "react": "^19.1.0",
     "react-calendly": "^4.4.0",
     "react-dom": "^19.1.0",

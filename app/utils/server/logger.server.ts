@@ -15,10 +15,21 @@ function createLogger(fileName: string): ExtendedLogger {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
 
-  // Ensure logs directory exists
-  const logsDir = path.join(__dirname, "../../../logs");
-  if (!fs.existsSync(logsDir)) {
-    fs.mkdirSync(logsDir, { recursive: true });
+  // Ensure logs directory exists at project root (next to app folder)
+  const logsDir = path.join(process.cwd(), "logs");
+  console.log(`Attempting to create logs directory at: ${logsDir}`);
+  try {
+    if (!fs.existsSync(logsDir)) {
+      fs.mkdirSync(logsDir, { recursive: true });
+      console.log(`✅ Created logs directory at: ${logsDir}`);
+    } else {
+      console.log(`✅ Logs directory already exists at: ${logsDir}`);
+    }
+  } catch (error) {
+    console.warn(`⚠️ Could not create logs directory at ${logsDir}:`, error);
+    console.log(`Current working directory: ${process.cwd()}`);
+    console.log(`__dirname: ${__dirname}`);
+    // Fallback to console-only logging
   }
 
   console.log(`Environment: ${process.env.NODE_ENV}`);
