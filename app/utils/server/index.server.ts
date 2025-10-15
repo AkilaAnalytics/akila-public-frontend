@@ -32,8 +32,8 @@ export const products: Record<string, ProductData> = {
     name: "Workstation Starter",
     description:
       "Budget-friendly business workstation designed for small businesses, content creation, and light AI workloads. Powerful RTX 3090 graphics with reliable AMD Ryzen performance.",
-    price: 4100 * 100, // in cents for stripe
-    priceDisplay: "$4,100",
+    price: 2800 * 100, // in cents for stripe
+    priceDisplay: "$2,800",
     category: "Enterprise",
     image: "/hardware/fractal-north.jpg",
     images: [
