@@ -37,6 +37,7 @@ interface ProductData {
   inStock: boolean;
   stripeProductId: string;
   stripePriceId: string;
+  stripeLink: string;
 }
 
 interface LoaderData {

@@ -88,7 +88,7 @@ export const products: Record<string, ProductData> = {
       "Professional build quality with premium components",
     ],
     inStock: true,
-    stripeLink: "https://buy.stripe.com/4gM28qbtK9PA5Vb2Hn53O00",
+    stripeLink: "https://buy.stripe.com/5kQeVc9lCe5Q6Zfa9P53O03",
   },
   "enterprise-workstation": {
     id: "enterprise-workstation",
