@@ -9,14 +9,17 @@ interface AppContextType {
   showCalendly: boolean;
   setShowCalendly: (isOpen: boolean) => void;
   toggleCalendly: () => void;
+  recaptchaSiteKey?: string;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export function AppContextProvider({
   children,
+  recaptchaSiteKey,
 }: {
   children: React.ReactNode;
+  recaptchaSiteKey?: string;
 }) {
   // chat
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -39,6 +42,7 @@ export function AppContextProvider({
         showCalendly,
         setShowCalendly,
         toggleCalendly,
+        recaptchaSiteKey,
       }}
     >
       {children}

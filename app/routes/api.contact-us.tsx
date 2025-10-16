@@ -36,19 +36,35 @@ export async function action({
     const body = await request.formData();
     logger.log(body, "<<< body");
 
-    // Verify reCAPTCHA first
+    // Verify reCAPTCHA if token is present
     const recaptchaToken = body.get('recaptcha_token') as string;
-    const recaptchaResult = await verifyRecaptcha(recaptchaToken);
+    const hasSecretKey = !!process.env.RECAPTCHA_SECRET_KEY;
     
-    if (!recaptchaResult.success) {
-      logger.warn(`reCAPTCHA verification failed: ${recaptchaResult.error}`);
-      return data({
-        ok: false,
-        message: "Spam protection verification failed. Please try again.",
-      });
+    logger.log(`reCAPTCHA Debug - Token present: ${!!recaptchaToken}, Secret key present: ${hasSecretKey}`);
+    
+    if (recaptchaToken && hasSecretKey) {
+      logger.log('Verifying reCAPTCHA token...');
+      const recaptchaResult = await verifyRecaptcha(recaptchaToken);
+      
+      if (!recaptchaResult.success) {
+        logger.warn(`reCAPTCHA verification failed: ${recaptchaResult.error}`);
+        // In development, allow it to proceed even if reCAPTCHA fails
+        if (process.env.NODE_ENV === 'development') {
+          logger.warn('Development mode: allowing request despite reCAPTCHA failure');
+        } else {
+          return data({
+            ok: false,
+            message: "Spam protection verification failed. Please try again.",
+          });
+        }
+      } else {
+        logger.log(`reCAPTCHA verified with score: ${recaptchaResult.score}`);
+      }
+    } else if (!hasSecretKey) {
+      logger.warn('RECAPTCHA_SECRET_KEY not configured, skipping reCAPTCHA verification');
+    } else {
+      logger.warn('No reCAPTCHA token provided but secret key is configured - proceeding anyway in development');
     }
-
-    logger.log(`reCAPTCHA verified with score: ${recaptchaResult.score}`);
 
     // parse request
     const [

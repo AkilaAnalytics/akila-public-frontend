@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useFetcher, useLocation } from "react-router";
 import type { IResponse } from "~/utils";
 import { useRecaptcha } from "~/hooks/useRecaptcha";
+import { useAppContext } from "~/view/context";
 
 interface ContactFormProps {
   type: "short" | "expanded";
@@ -17,7 +18,8 @@ export default function ContactForm({
   const fetcher = useFetcher();
   const location = useLocation();
   const [message, setMessage] = useState<Partial<IResponse<string>>>({});
-  const { isLoaded, executeRecaptcha } = useRecaptcha();
+  const { recaptchaSiteKey } = useAppContext();
+  const { isLoaded, executeRecaptcha } = useRecaptcha(recaptchaSiteKey);
 
   useEffect(() => {
     if (fetcher.data) {
@@ -30,19 +32,25 @@ export default function ContactForm({
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     
-    if (!isLoaded) {
-      console.warn('reCAPTCHA not loaded yet');
+    const form = event.currentTarget;
+    if (!form || !(form instanceof HTMLFormElement)) {
+      console.error('Form element not found');
       return;
     }
 
-    const token = await executeRecaptcha('contact_form');
-    if (!token) {
-      setMessage({ ok: false, message: 'reCAPTCHA verification failed. Please try again.' });
-      return;
+    const formData = new FormData(form);
+    
+    // Try to get reCAPTCHA token if available
+    if (recaptchaSiteKey && isLoaded) {
+      const token = await executeRecaptcha('contact_form');
+      if (token) {
+        formData.append('recaptcha_token', token);
+      } else {
+        console.warn('reCAPTCHA token not available, submitting without it');
+      }
+    } else {
+      console.warn('reCAPTCHA not configured or not loaded, submitting without it');
     }
-
-    const formData = new FormData(event.currentTarget);
-    formData.append('recaptcha_token', token);
     
     fetcher.submit(formData, { method: 'post', action: '/api/contact-us' });
   };

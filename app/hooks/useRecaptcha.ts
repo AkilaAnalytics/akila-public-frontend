@@ -6,14 +6,12 @@ declare global {
       ready: (callback: () => void) => void;
       execute: (siteKey: string, options: { action: string }) => Promise<string>;
     };
-    RECAPTCHA_SITE_KEY?: string;
   }
 }
 
-export function useRecaptcha() {
+export function useRecaptcha(siteKey?: string) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const siteKey = typeof window !== 'undefined' ? window.RECAPTCHA_SITE_KEY : undefined;
 
   useEffect(() => {
     if (!siteKey) {

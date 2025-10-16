@@ -13,15 +13,12 @@ export async function verifyRecaptcha(token: string): Promise<{ success: boolean
   const secretKey = process.env.RECAPTCHA_SECRET_KEY;
   
   if (!secretKey) {
-    logger.warn('RECAPTCHA_SECRET_KEY is not configured - allowing request in development');
-    // In development, allow the request to proceed if reCAPTCHA is not configured
-    if (process.env.NODE_ENV === 'development') {
-      return { success: true, score: 1.0 };
-    }
+    logger.error('RECAPTCHA_SECRET_KEY is not configured');
     return { success: false, error: 'reCAPTCHA not configured' };
   }
 
   if (!token) {
+    logger.warn('No reCAPTCHA token provided');
     return { success: false, error: 'No reCAPTCHA token provided' };
   }
 

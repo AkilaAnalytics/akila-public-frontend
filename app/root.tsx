@@ -33,10 +33,13 @@ logger.log(
 );
 
 export const loader = ({ request }: LoaderFunctionArgs) => {
+  const recaptchaSiteKey = process.env.VITE_RECAPTCHA_SITE_KEY;
+  console.log('reCAPTCHA site key from env:', recaptchaSiteKey ? 'Found' : 'Not found');
+  
   const envVars = {
     gaTrackingId: process.env.GA_TRACKING_ID,
     PHONE_NUMBER: process.env.PHONE_NUMBER,
-    recaptchaSiteKey: process.env.VITE_RECAPTCHA_SITE_KEY,
+    recaptchaSiteKey,
   };
 
   const url = new URL(request.url);
@@ -103,7 +106,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           )}
         </head>
         <body className="textBody">
-          <AppContextProvider>
+          <AppContextProvider recaptchaSiteKey={recaptchaSiteKey}>
             <Chat />
             <Calendly />
             {tenant == "auto-invoice" && <AutoInvoice />}
@@ -125,18 +128,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
         {recaptchaSiteKey && (
-          <>
-            <script
-              src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
-              async
-              defer
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `window.RECAPTCHA_SITE_KEY = "${recaptchaSiteKey}";`,
-              }}
-            />
-          </>
+          <script
+            src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
+            async
+            defer
+          />
         )}
         {gaTrackingId ? (
           <>
@@ -165,7 +161,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         )}
       </head>
       <body className="bg-background">
-        <AppContextProvider>
+        <AppContextProvider recaptchaSiteKey={recaptchaSiteKey}>
           <Navbar />
           <Chat />
           {children}
