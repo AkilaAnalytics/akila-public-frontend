@@ -1,35 +1,9 @@
 import { sendEmail } from "~/api/emails/index.server";
 import { logger } from "~/utils/server/index.server";
-// import { RecaptchaEnterpriseServiceClient } from "@google-cloud/recaptcha-enterprise";
 import { data } from "react-router";
 import { type ActionFunctionArgs } from "react-router";
+import { verifyRecaptcha } from "~/utils/server/recaptcha.server";
 
-// const recaptchaenterpriseClient = new RecaptchaEnterpriseServiceClient();
-
-// TODO: Implement reCAPTCHA assessment when needed
-/*
-async function createAssessment({
-  projectID,
-  recaptchaKey,
-  token,
-  recaptchaAction,
-}) {
-  const client = new RecaptchaEnterpriseServiceClient();
-  const projectPath = client.projectPath(projectID);
-  const request = {
-    assessment: {
-      event: {
-        token: token,
-        siteKey: recaptchaKey,
-      },
-    },
-    parent: projectPath,
-  };
-  const [response] = await client.createAssessment(request);
-  // ... reCAPTCHA logic here
-  return response.riskAnalysis.score;
-}
-*/
 
 function sanitizeString(input: string) {
   // Use a basic method to sanitize: strip out any non-alphanumeric characters, except for spaces.
@@ -61,6 +35,21 @@ export async function action({
   try {
     const body = await request.formData();
     logger.log(body, "<<< body");
+
+    // Verify reCAPTCHA first
+    const recaptchaToken = body.get('recaptcha_token') as string;
+    const recaptchaResult = await verifyRecaptcha(recaptchaToken);
+    
+    if (!recaptchaResult.success) {
+      logger.warn(`reCAPTCHA verification failed: ${recaptchaResult.error}`);
+      return data({
+        ok: false,
+        message: "Spam protection verification failed. Please try again.",
+      });
+    }
+
+    logger.log(`reCAPTCHA verified with score: ${recaptchaResult.score}`);
+
     // parse request
     const [
       firstName,

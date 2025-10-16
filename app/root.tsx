@@ -36,6 +36,7 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
   const envVars = {
     gaTrackingId: process.env.GA_TRACKING_ID,
     PHONE_NUMBER: process.env.PHONE_NUMBER,
+    recaptchaSiteKey: process.env.VITE_RECAPTCHA_SITE_KEY,
   };
 
   const url = new URL(request.url);
@@ -58,7 +59,7 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
-  const { gaTrackingId } = useLoaderData<typeof loader>();
+  const { gaTrackingId, recaptchaSiteKey } = useLoaderData<typeof loader>();
   const { tenant, isLandingPage } = useLoaderData();
 
   useEffect(() => {
@@ -123,7 +124,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcC2TEqAAAAAKI2-z_RqDp3bGXuikASgRr-IaDr"></script>
+        {recaptchaSiteKey && (
+          <>
+            <script
+              src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
+              async
+              defer
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.RECAPTCHA_SITE_KEY = "${recaptchaSiteKey}";`,
+              }}
+            />
+          </>
+        )}
         {gaTrackingId ? (
           <>
             <script

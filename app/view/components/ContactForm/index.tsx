@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useFetcher, useLocation } from "react-router";
 import type { IResponse } from "~/utils";
+import { useRecaptcha } from "~/hooks/useRecaptcha";
 
 interface ContactFormProps {
   type: "short" | "expanded";
   className?: string;
-  source?: string; // Optional custom source for tracking
+  source?: string;
 }
 
 export default function ContactForm({
@@ -16,6 +17,7 @@ export default function ContactForm({
   const fetcher = useFetcher();
   const location = useLocation();
   const [message, setMessage] = useState<Partial<IResponse<string>>>({});
+  const { isLoaded, executeRecaptcha } = useRecaptcha();
 
   useEffect(() => {
     if (fetcher.data) {
@@ -25,13 +27,33 @@ export default function ContactForm({
 
   const isExpanded = type === "expanded";
 
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    
+    if (!isLoaded) {
+      console.warn('reCAPTCHA not loaded yet');
+      return;
+    }
+
+    const token = await executeRecaptcha('contact_form');
+    if (!token) {
+      setMessage({ ok: false, message: 'reCAPTCHA verification failed. Please try again.' });
+      return;
+    }
+
+    const formData = new FormData(event.currentTarget);
+    formData.append('recaptcha_token', token);
+    
+    fetcher.submit(formData, { method: 'post', action: '/api/contact-us' });
+  };
+
   return (
     <div
       className={`flex flex-col z-50 bg-formBackground border-[1px] border-borderColor rounded-md ${
         className || ""
       }`}
     >
-      <fetcher.Form method="post" action="/api/contact-us">
+      <form onSubmit={handleSubmit}>
         <div className="p-5 flex flex-col border-white/5 border-[1px] rounded-md">
           <h6>Contact Us</h6>
           <br />
@@ -203,7 +225,7 @@ export default function ContactForm({
             {message.message}
           </div>
         )}
-      </fetcher.Form>
+      </form>
     </div>
   );
 }
