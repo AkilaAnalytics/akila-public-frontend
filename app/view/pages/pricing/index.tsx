@@ -59,7 +59,7 @@ const priceData = [
     description:
       "Take your data analysis to the next level with the full suite of Akila Analytics features, plus expert support and enhanced security.",
     keyPoints: [
-      "Everything in the Professional package",
+      "Everything in the Starter package",
       "Configure Akila in your own cloud environment",
     ],
     buttonText: "Contact Us",
