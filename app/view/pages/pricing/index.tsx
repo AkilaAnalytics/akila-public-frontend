@@ -44,11 +44,9 @@ const priceData = [
     description:
       "Perfect for teams with lower data volumes. We recommend most small companies start with this package.",
     keyPoints: [
-      "Upload data",
       "Run data processing jobs",
       "Run machine learning jobs",
       "Schedule recurring jobs",
-      "Access advanced analytics tools",
     ],
     buttonText: "Contact Us",
     link: "/contact-us",
@@ -57,10 +55,11 @@ const priceData = [
     title: "Enterprise",
     price: "Contact Us",
     description:
-      "Take your data analysis to the next level with the full suite of Akila Analytics features, plus expert support and enhanced security.",
+      "Take your data analysis to the next level with the full suite of Akila Analytics features.",
     keyPoints: [
       "Everything in the Starter package",
-      "Configure Akila in your own cloud environment",
+      "Custom configurations",
+      "Deploy in your own environment",
     ],
     buttonText: "Contact Us",
     link: "/contact-us",

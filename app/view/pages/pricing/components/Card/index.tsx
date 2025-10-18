@@ -59,7 +59,7 @@ export default function Card({
         </ul>
         <br />
         <br />
-        <Link to={path} className="button-primary">
+        <Link to={path} className="button-primary mt-auto">
           {buttonText}
         </Link>
       </div>
